@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1331E233298D39DD00AFD1E0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331E231298D39DD00AFD1E0 /* HomeViewController.swift */; };
+		1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1331E232298D39DD00AFD1E0 /* HomeViewController.xib */; };
+		1331E237298D3CE700AFD1E0 /* OperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */; };
+		1331E238298D3CE700AFD1E0 /* OperatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */; };
 		36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D08298CFB5F00927B1E /* AppDelegate.swift */; };
 		36939D0B298CFB5F00927B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D0A298CFB5F00927B1E /* SceneDelegate.swift */; };
 		36939D0D298CFB5F00927B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D0C298CFB5F00927B1E /* ViewController.swift */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1331E231298D39DD00AFD1E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1331E232298D39DD00AFD1E0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
+		1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatorsViewController.xib; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36939D08298CFB5F00927B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36939D0A298CFB5F00927B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +48,8 @@
 		36939CFC298CFB5F00927B1E = {
 			isa = PBXGroup;
 			children = (
+				1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */,
+				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
 				36939D07298CFB5F00927B1E /* KidsLove */,
 				36939D06298CFB5F00927B1E /* Products */,
 			);
@@ -59,6 +69,8 @@
 				36939D08298CFB5F00927B1E /* AppDelegate.swift */,
 				36939D0A298CFB5F00927B1E /* SceneDelegate.swift */,
 				36939D0C298CFB5F00927B1E /* ViewController.swift */,
+				1331E231298D39DD00AFD1E0 /* HomeViewController.swift */,
+				1331E232298D39DD00AFD1E0 /* HomeViewController.xib */,
 				36939D0E298CFB5F00927B1E /* Main.storyboard */,
 				36939D11298CFB6000927B1E /* Assets.xcassets */,
 				36939D13298CFB6000927B1E /* LaunchScreen.storyboard */,
@@ -126,8 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				36939D15298CFB6000927B1E /* LaunchScreen.storyboard in Resources */,
+				1331E238298D3CE700AFD1E0 /* OperatorsViewController.xib in Resources */,
 				36939D12298CFB6000927B1E /* Assets.xcassets in Resources */,
 				36939D10298CFB5F00927B1E /* Main.storyboard in Resources */,
+				1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +155,8 @@
 				36939D0D298CFB5F00927B1E /* ViewController.swift in Sources */,
 				36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */,
 				36939D0B298CFB5F00927B1E /* SceneDelegate.swift in Sources */,
+				1331E233298D39DD00AFD1E0 /* HomeViewController.swift in Sources */,
+				1331E237298D3CE700AFD1E0 /* OperatorsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
