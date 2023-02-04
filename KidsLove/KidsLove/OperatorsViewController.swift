@@ -16,11 +16,17 @@ class OperatorsViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     
     @IBAction func plusBtnTapped(_ sender: Any) {
-        present(QuestionViewController(), animated: true)
+        self.navigationController?.pushViewController(QuestionViewController(), animated: true)
     }
     
+    @IBAction func minusBtnTapped(_ sender: Any) {
+        self.navigationController?.pushViewController(QuestionViewController(), animated: true)
+    }
     
     @IBOutlet weak var divideButton: UIButton!
+    
+    
+    
     @IBOutlet weak var productButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     override func viewDidLoad() {

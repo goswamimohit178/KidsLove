@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func controllerbtn(_ sender: Any) {
-        present(HomeViewController(), animated: true)
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
     
     @IBOutlet weak var showButtonTapped: UIButton!

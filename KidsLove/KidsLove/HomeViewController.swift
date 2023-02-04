@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func mathButtonTapped(_ sender: Any) {
-        present(OperatorsViewController(), animated: true)
+        self.navigationController?.pushViewController(OperatorsViewController(), animated: true)
 
     }
     
