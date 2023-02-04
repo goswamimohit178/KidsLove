@@ -22,6 +22,13 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
                                     <action selector="controllerbtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYG-tz-Pfb"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryx-ia-MHT">
+                                <rect key="frame" x="164" y="421" width="66" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Show"/>
+                                <connections>
+                                    <action selector="showButtonTappped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YpS-r2-IUH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,6 +41,9 @@
                             <constraint firstItem="myb-KU-dtD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="303" id="zlw-tI-3y4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="showButtonTapped" destination="Ryx-ia-MHT" id="3D4-L3-s6E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
