@@ -38,6 +38,12 @@ class QuestionViewController: UIViewController {
     @IBAction func continueButton(_ sender: Any) {
         //loadNextQuestion()
         continueBtn.setTitle("Continue", for: .normal)
+        
+        
+        
+    }
+    
+    func checkAnswerBtn() {
         if isBtn1Tapped {
             if checkAnswer(idx: 0){
                 option1Btn.backgroundColor = .green
@@ -68,6 +74,11 @@ class QuestionViewController: UIViewController {
             }
         }
         
+        
+        
+    }
+    
+    func goToNextQuestion() {
         if continueButtonCounter == questions.count{
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
@@ -142,7 +153,6 @@ class QuestionViewController: UIViewController {
     ]
     func checkAnswer(idx: Int) -> Bool {
         if (currentQuestion!.correctAnswer == idx) {
-           
             noCorrect += 1
             return true
         }
