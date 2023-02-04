@@ -15,6 +15,10 @@ class OperatorsViewController: UIViewController {
     
     @IBOutlet weak var plusButton: UIButton!
     
+    @IBAction func plusBtnTapped(_ sender: Any) {
+        present(QuestionViewController(), animated: true)
+    }
+    
     
     @IBOutlet weak var divideButton: UIButton!
     @IBOutlet weak var productButton: UIButton!
@@ -26,6 +30,8 @@ class OperatorsViewController: UIViewController {
       productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width
       minusButton.layer.cornerRadius = 0.5 * minusButton.bounds.size.width
     myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
+       
+
     }
 
 
