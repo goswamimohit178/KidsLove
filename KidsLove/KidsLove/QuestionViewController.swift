@@ -34,13 +34,18 @@ class QuestionViewController: UIViewController {
 
     
     
+    var isContinueButton = false
     var continueButtonCounter = 1
     @IBAction func continueButton(_ sender: Any) {
-        //loadNextQuestion()
-        continueBtn.setTitle("Continue", for: .normal)
-        
-        
-        
+        if isContinueButton {
+            goToNextQuestion()
+            isContinueButton = false
+            continueBtn.setTitle("Check", for: .normal)
+        } else {
+            checkAnswerBtn()
+            isContinueButton = true
+            continueBtn.setTitle("Continue", for: .normal)
+        }
     }
     
     func checkAnswerBtn() {
@@ -50,7 +55,6 @@ class QuestionViewController: UIViewController {
             } else {
                 option1Btn.backgroundColor = .red
             }
-            isBtn1Tapped = false
         }
         if isBtn2Tapped {
             if checkAnswer(idx: 1){
