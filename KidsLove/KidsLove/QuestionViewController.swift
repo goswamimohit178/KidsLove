@@ -34,7 +34,8 @@ class QuestionViewController: UIViewController {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
             resultVC.totalMarks = questions.count
-           present(resultVC, animated: true)
+           //present(resultVC, animated: true)
+            self.navigationController?.pushViewController(resultVC, animated: true)
         } else {
             let model = questions[continueButtonCounter]
             setQuestions(model: model)

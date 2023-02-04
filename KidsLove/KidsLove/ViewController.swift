@@ -8,9 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBAction func controllerbtn(_ sender: Any) {
-     //   self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        //   self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
     
     @IBOutlet weak var showButtonTapped: UIButton!
@@ -19,13 +19,13 @@ class ViewController: UIViewController {
         
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.pushViewController(HomeViewController(), animated: true)
-      
+        
     }
-
-
+    
+    
 }
 
