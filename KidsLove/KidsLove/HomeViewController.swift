@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func mathButtonTapped(_ sender: Any) {
         present(OperatorsViewController(), animated: true)
+
     }
     
     @IBAction func engButtubTapped(_ sender: Any) {

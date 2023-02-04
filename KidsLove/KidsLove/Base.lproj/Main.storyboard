@@ -16,26 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryx-ia-MHT">
-                                <rect key="frame" x="164" y="421" width="66" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myb-KU-dtD">
+                                <rect key="frame" x="0.0" y="362" width="393" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Show"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
-                                    <action selector="showButtonTappped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YpS-r2-IUH"/>
+                                    <action selector="controllerbtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYG-tz-Pfb"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="myb-KU-dtD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DAu-nr-sJE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="myb-KU-dtD" secondAttribute="trailing" id="dsf-53-jvF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="myb-KU-dtD" secondAttribute="bottom" constant="421" id="xhn-q4-YAs"/>
+                            <constraint firstItem="myb-KU-dtD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="303" id="zlw-tI-3y4"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="showButtonTapped" destination="Ryx-ia-MHT" id="3D4-L3-s6E"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="-2"/>
+            <point key="canvasLocation" x="130" y="-2"/>
         </scene>
     </scenes>
     <resources>
