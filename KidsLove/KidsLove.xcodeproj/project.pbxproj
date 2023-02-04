@@ -48,8 +48,6 @@
 		36939CFC298CFB5F00927B1E = {
 			isa = PBXGroup;
 			children = (
-				1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */,
-				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
 				36939D07298CFB5F00927B1E /* KidsLove */,
 				36939D06298CFB5F00927B1E /* Products */,
 			);
@@ -71,6 +69,8 @@
 				36939D0C298CFB5F00927B1E /* ViewController.swift */,
 				1331E231298D39DD00AFD1E0 /* HomeViewController.swift */,
 				1331E232298D39DD00AFD1E0 /* HomeViewController.xib */,
+				1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */,
+				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
 				36939D0E298CFB5F00927B1E /* Main.storyboard */,
 				36939D11298CFB6000927B1E /* Assets.xcassets */,
 				36939D13298CFB6000927B1E /* LaunchScreen.storyboard */,

@@ -10,6 +10,9 @@ import UIKit
 class OperatorsViewController: UIViewController {
 
     
+    @IBOutlet weak var myView: UIView!
+    
+    
     @IBOutlet weak var plusButton: UIButton!
     
     
@@ -22,6 +25,7 @@ class OperatorsViewController: UIViewController {
         divideButton.layer.cornerRadius = 0.5 * divideButton.bounds.size.width
       productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width
       minusButton.layer.cornerRadius = 0.5 * minusButton.bounds.size.width
+    myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
     }
 
 
