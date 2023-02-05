@@ -21,6 +21,7 @@
 		36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6081298D0BAC00F059FB /* QuestionViewController.xib */; };
 		36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6084298E12E000F059FB /* ResultsViewController.swift */; };
 		36DD6087298E12E000F059FB /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6085298E12E000F059FB /* ResultsViewController.xib */; };
+		36DD6089298F73E800F059FB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6088298F73E800F059FB /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		36DD6081298D0BAC00F059FB /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		36DD6084298E12E000F059FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		36DD6085298E12E000F059FB /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
+		36DD6088298F73E800F059FB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
 				36939D0E298CFB5F00927B1E /* Main.storyboard */,
 				36DD6080298D0BAC00F059FB /* QuestionViewController.swift */,
+				36DD6088298F73E800F059FB /* Colors.swift */,
 				36DD6081298D0BAC00F059FB /* QuestionViewController.xib */,
 				36DD6084298E12E000F059FB /* ResultsViewController.swift */,
 				36DD6085298E12E000F059FB /* ResultsViewController.xib */,
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36939D0D298CFB5F00927B1E /* ViewController.swift in Sources */,
+				36DD6089298F73E800F059FB /* Colors.swift in Sources */,
 				36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */,
 				36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */,
 				36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */,

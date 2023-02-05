@@ -9,7 +9,7 @@ import UIKit
 
 class OperatorsViewController: UIViewController {
 
-    
+    let btnBackgroundColor = UIColor.heavyGreen()
     @IBOutlet weak var myView: UIView!
     
     
@@ -29,6 +29,9 @@ class OperatorsViewController: UIViewController {
     
     @IBOutlet weak var productButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      plusButton.layer.cornerRadius = 0.5 * plusButton.bounds.size.width
@@ -36,7 +39,10 @@ class OperatorsViewController: UIViewController {
       productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width
       minusButton.layer.cornerRadius = 0.5 * minusButton.bounds.size.width
     myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
-       
+        plusButton.backgroundColor = btnBackgroundColor
+        productButton.backgroundColor = btnBackgroundColor
+        minusButton.backgroundColor = btnBackgroundColor
+        divideButton.backgroundColor = btnBackgroundColor
 
     }
 

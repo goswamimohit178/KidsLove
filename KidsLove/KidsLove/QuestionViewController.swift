@@ -13,6 +13,10 @@ class QuestionViewController: UIViewController {
     var isBtn2Tapped: Bool = false
     var isBtn3Tapped: Bool = false
     var isBtn4Tapped: Bool = false
+    
+    let background = UIColor.springBlue()
+    let writeAnswerColor = UIColor.writeGreen()
+    let wrongAnswerColor = UIColor.niceRed()
     @IBOutlet weak var progressBar: UIProgressView!
     
     @IBOutlet weak var option1Btn: UIButton!
@@ -31,7 +35,7 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var oprand2Label: UILabel!
     
-
+    
     
     
     var isContinueButton = false
@@ -44,42 +48,41 @@ class QuestionViewController: UIViewController {
         } else {
             checkAnswerBtn()
             isContinueButton = true
+            
             continueBtn.setTitle("Continue", for: .normal)
         }
     }
     
     func checkAnswerBtn() {
         if isBtn1Tapped {
-            if checkAnswer(idx: 0){
-                option1Btn.backgroundColor = .green
+            if checkAnswer(idx: 0) {
+                option1Btn.backgroundColor = writeAnswerColor
+                
             } else {
-                option1Btn.backgroundColor = .red
+                option1Btn.backgroundColor = wrongAnswerColor
             }
         }
         if isBtn2Tapped {
-            if checkAnswer(idx: 1){
-                option2btn.backgroundColor = .green
+            if checkAnswer(idx: 1) {
+                option2btn.backgroundColor = writeAnswerColor
             } else {
-                option2btn.backgroundColor = .red
+                option2btn.backgroundColor = wrongAnswerColor
             }
         }
         if isBtn3Tapped {
-            if checkAnswer(idx: 2){
-                option3Btn.backgroundColor = .green
+            if checkAnswer(idx: 2) {
+                option3Btn.backgroundColor = writeAnswerColor
             } else {
-                option3Btn.backgroundColor = .red
+                option3Btn.backgroundColor = wrongAnswerColor
             }
         }
         if isBtn4Tapped {
-            if checkAnswer(idx: 3){
-                option4Btn.backgroundColor = .green
+            if checkAnswer(idx: 3) {
+                option4Btn.backgroundColor = writeAnswerColor
             } else {
-                option4Btn.backgroundColor = .red
+                option4Btn.backgroundColor = wrongAnswerColor
             }
         }
-        
-        
-        
     }
     
     func goToNextQuestion() {
@@ -98,34 +101,36 @@ class QuestionViewController: UIViewController {
     }
     
     
+    
+    
     @IBAction func choice1Select(_ sender: Any) {
         setTappedbtnFalse()
         isBtn1Tapped = true
-     resetOptionBtnColor()
-        option1Btn.backgroundColor = .blue
+        resetOptionBtnColor()
+        option1Btn.backgroundColor = background
         
     }
     @IBAction func choice2Select(_ sender: Any) {
         setTappedbtnFalse()
         isBtn2Tapped = true
         resetOptionBtnColor()
-        option2btn.backgroundColor = .blue
-//
+        option2btn.backgroundColor = background
+        //
     }
     
     @IBAction func choice3Select(_ sender: Any) {
         setTappedbtnFalse()
         isBtn3Tapped = true
         resetOptionBtnColor()
-        option3Btn.backgroundColor = .blue
-       
+        option3Btn.backgroundColor = background
+        
     }
     
     @IBAction func choice4Select(_ sender: Any) {
         setTappedbtnFalse()
         isBtn4Tapped = true
         resetOptionBtnColor()
-        option4Btn.backgroundColor = .blue
+        option4Btn.backgroundColor = background
         
     }
     
@@ -150,10 +155,10 @@ class QuestionViewController: UIViewController {
     var currentQuestionPosition: Int = 0
     var noCorrect: Int = 0
     var questions: [Model] = [
-    Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
-    Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
-    Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
-    Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
+        Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
+        Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
+        Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
+        Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
     ]
     func checkAnswer(idx: Int) -> Bool {
         if (currentQuestion!.correctAnswer == idx) {
@@ -169,7 +174,7 @@ class QuestionViewController: UIViewController {
         option3Btn.backgroundColor = .lightGray
         option4Btn.backgroundColor = .lightGray
     }
-   
+    
     
     func setQuestions(model: Model){
         
@@ -184,7 +189,7 @@ class QuestionViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let model = questions[0]
         currentQuestion = questions[0]
         setQuestions(model: model)

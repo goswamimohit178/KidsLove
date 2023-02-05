@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    let btnColor = UIColor.heavyGreen()
 
     @IBOutlet weak var mathButton: UIButton!
     
@@ -28,7 +30,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
         engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
-        
+        mathButton.backgroundColor = btnColor
+        engButton.backgroundColor = btnColor
        
     }
 
