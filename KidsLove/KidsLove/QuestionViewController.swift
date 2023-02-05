@@ -70,6 +70,11 @@ class QuestionViewController: UIViewController {
     private func checkAnswerBtn() {
         guard let selectedIndex = selectedIndex else { return }
         let button = optionButtons[selectedIndex]
+        
+        let currentQuestion = questions[currentQuestionNumber]
+        let correctAnswerIndex = currentQuestion.correctAnswer
+        let correctOptionButton = optionButtons[correctAnswerIndex]
+        correctOptionButton.backgroundColor = .green
 
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = .green
@@ -83,7 +88,6 @@ class QuestionViewController: UIViewController {
     private func goToNextQuestion() {
         currentQuestionNumber += 1
         let value = Float(currentQuestionNumber)/Float(questions.count)
-        print(value)
         progressBar.setProgress(value, animated: true)
         if currentQuestionNumber == questions.count {
             let resultVC = ResultsViewController()
