@@ -9,34 +9,24 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
-    
     @IBOutlet weak var option1Btn: UIButton!
-    
-    @IBOutlet weak var option2btn: UIButton!
-    
+    @IBOutlet weak var option2Btn: UIButton!
     @IBOutlet weak var option3Btn: UIButton!
-    
     @IBOutlet weak var option4Btn: UIButton!
-    
     @IBOutlet weak var continueBtn: UIButton!
-    
     @IBOutlet weak var oprand1Label: UILabel!
-    
     @IBOutlet weak var operatorLabel: UILabel!
-    
     @IBOutlet weak var oprand2Label: UILabel!
     
-
-    
-    var isBtn1Tapped: Bool = false
-    var isBtn2Tapped: Bool = false
-    var isBtn3Tapped: Bool = false
-    var isBtn4Tapped: Bool = false
     var isContinueButton = false
     var continueButtonCounter = 1
     var currentQuestion: Model?
     var currentQuestionPosition: Int = 0
     var noCorrect: Int = 0
+    private var selectedIndex: Int? = nil
+
+    
+    private var optionButtons = [UIButton]()
     
     var questions: [Model] = [
     Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
@@ -47,19 +37,36 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let model = questions[0]
-        currentQuestion = questions[0]
-        setQuestions(model: model)
+        addOptionButtons()
+        setupModel()
+        setCornerRadius()
+        
+    }
+    
+    fileprivate func setCornerRadius() {
         option1Btn.btnCorner()
-        option2btn.btnCorner()
+        option2Btn.btnCorner()
         option3Btn.btnCorner()
         option4Btn.btnCorner()
         continueBtn.btnCorner()
     }
+
+    fileprivate func setupModel() {
+        let model = questions[0]
+        currentQuestion = questions[0]
+        setQuestions(model: model)
+    }
+    
+    fileprivate func addOptionButtons() {
+        optionButtons.append(option1Btn)
+        optionButtons.append(option2Btn)
+        optionButtons.append(option3Btn)
+        optionButtons.append(option4Btn)
+    }
     
     @IBAction func continueButton(_ sender: Any) {
         if isContinueButton {
+            selectedIndex = nil
             goToNextQuestion()
             isContinueButton = false
             continueBtn.setTitle("Check", for: .normal)
@@ -71,33 +78,13 @@ class QuestionViewController: UIViewController {
     }
     
     func checkAnswerBtn() {
-        if isBtn1Tapped {
-            if checkAnswer(idx: 0){
-                option1Btn.backgroundColor = .green
-            } else {
-                option1Btn.backgroundColor = .red
-            }
-        }
-        if isBtn2Tapped {
-            if checkAnswer(idx: 1){
-                option2btn.backgroundColor = .green
-            } else {
-                option2btn.backgroundColor = .red
-            }
-        }
-        if isBtn3Tapped {
-            if checkAnswer(idx: 2){
-                option3Btn.backgroundColor = .green
-            } else {
-                option3Btn.backgroundColor = .red
-            }
-        }
-        if isBtn4Tapped {
-            if checkAnswer(idx: 3){
-                option4Btn.backgroundColor = .green
-            } else {
-                option4Btn.backgroundColor = .red
-            }
+        guard let selectedIndex = selectedIndex else { return }
+        let button = optionButtons[selectedIndex]
+
+        if checkAnswer(idx: selectedIndex) {
+            button.backgroundColor = .green
+        } else {
+            button.backgroundColor = .red
         }
     }
     
@@ -113,51 +100,43 @@ class QuestionViewController: UIViewController {
             currentQuestion = model
             continueButtonCounter += 1
         }
-        
     }
-    
     
     @IBAction func choice1Select(_ sender: Any) {
         setTappedbtnFalse()
-        isBtn1Tapped = true
-     resetOptionBtnColor()
+        selectedIndex = 0
+        resetOptionBtnColor()
         option1Btn.backgroundColor = .blue
         
     }
     @IBAction func choice2Select(_ sender: Any) {
         setTappedbtnFalse()
-        isBtn2Tapped = true
+        selectedIndex = 1
         resetOptionBtnColor()
-        option2btn.backgroundColor = .blue
-//
+        option2Btn.backgroundColor = .blue
     }
     
     @IBAction func choice3Select(_ sender: Any) {
         setTappedbtnFalse()
-        isBtn3Tapped = true
+        selectedIndex = 2
         resetOptionBtnColor()
         option3Btn.backgroundColor = .blue
-       
     }
     
     @IBAction func choice4Select(_ sender: Any) {
         setTappedbtnFalse()
-        isBtn4Tapped = true
+        selectedIndex = 3
         resetOptionBtnColor()
         option4Btn.backgroundColor = .blue
-        
     }
     
     func setTappedbtnFalse() {
-        isBtn1Tapped = false
-        isBtn2Tapped = false
-        isBtn3Tapped = false
-        isBtn4Tapped = false
+        selectedIndex = nil
     }
     
     func disabledAll() {
         option1Btn.isEnabled = false
-        option2btn.isEnabled = false
+        option2Btn.isEnabled = false
         option3Btn.isEnabled = false
         option4Btn.isEnabled = false
     }
@@ -172,26 +151,23 @@ class QuestionViewController: UIViewController {
     
     func resetOptionBtnColor() {
         option1Btn.backgroundColor = .lightGray
-        option2btn.backgroundColor = .lightGray
+        option2Btn.backgroundColor = .lightGray
         option3Btn.backgroundColor = .lightGray
         option4Btn.backgroundColor = .lightGray
     }
    
-    
     func setQuestions(model: Model){
-        
         oprand1Label.text = String(model.num1)
         oprand2Label.text = String(model.num2)
         operatorLabel.text = String(model.operation)
         option1Btn.setTitle(String(model.answer[0]), for: .normal)
-        option2btn.setTitle(String(model.answer[1]), for: .normal)
+        option2Btn.setTitle(String(model.answer[1]), for: .normal)
         option3Btn.setTitle(String(model.answer[2]), for: .normal)
         option4Btn.setTitle(String(model.answer[3]), for: .normal)
         resetOptionBtnColor()
     }
-   
-    
 }
+
 extension UIButton {
     func btnCorner() {
         layer.cornerRadius = 10
@@ -199,7 +175,6 @@ extension UIButton {
         backgroundColor = .lightGray
     }
 }
-
 
 struct Model {
     let num1:Int
