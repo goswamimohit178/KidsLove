@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFAudio
 
 class QuestionViewController: UIViewController {
     @IBOutlet private weak var progressBar: UIProgressView!
@@ -72,8 +73,10 @@ class QuestionViewController: UIViewController {
 
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = .green
+            playSound(soundString: "rightButton")
         } else {
             button.backgroundColor = .red
+            playSound(soundString: "wrongButton")
         }
     }
     
@@ -129,6 +132,22 @@ class QuestionViewController: UIViewController {
             button.setTitle(String(model.answer[index]), for: .normal)
         }
         resetOptionBtnColor()
+    }
+    var player: AVAudioPlayer?
+
+    func playSound(soundString: String) {
+        guard let path = Bundle.main.path(forResource: soundString, ofType:"wav") else {
+            return }
+        let url = URL(fileURLWithPath: path)
+                      
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
 
