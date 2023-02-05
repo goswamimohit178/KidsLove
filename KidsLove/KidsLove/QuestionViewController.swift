@@ -8,27 +8,23 @@
 import UIKit
 
 class QuestionViewController: UIViewController {
-    @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var option1Btn: UIButton!
-    @IBOutlet weak var option2Btn: UIButton!
-    @IBOutlet weak var option3Btn: UIButton!
-    @IBOutlet weak var option4Btn: UIButton!
-    @IBOutlet weak var continueBtn: UIButton!
-    @IBOutlet weak var oprand1Label: UILabel!
-    @IBOutlet weak var operatorLabel: UILabel!
-    @IBOutlet weak var oprand2Label: UILabel!
+    @IBOutlet private weak var progressBar: UIProgressView!
+    @IBOutlet private weak var option1Btn: UIButton!
+    @IBOutlet private weak var option2Btn: UIButton!
+    @IBOutlet private weak var option3Btn: UIButton!
+    @IBOutlet private weak var option4Btn: UIButton!
+    @IBOutlet private weak var continueBtn: UIButton!
+    @IBOutlet private weak var oprand1Label: UILabel!
+    @IBOutlet private weak var operatorLabel: UILabel!
+    @IBOutlet private weak var oprand2Label: UILabel!
     
-    var isContinueButton = false
-    var continueButtonCounter = 1
-    var currentQuestion: Model?
-    var currentQuestionPosition: Int = 0
-    var noCorrect: Int = 0
+    private var currentQuestionNumber = 0
+    private var noCorrect: Int = 0
     private var selectedIndex: Int? = nil
 
-    
     private var optionButtons = [UIButton]()
     
-    var questions: [Model] = [
+    private var questions: [Model] = [
     Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
     Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
     Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
@@ -40,20 +36,15 @@ class QuestionViewController: UIViewController {
         addOptionButtons()
         setupModel()
         setCornerRadius()
-        
     }
     
     fileprivate func setCornerRadius() {
-        option1Btn.btnCorner()
-        option2Btn.btnCorner()
-        option3Btn.btnCorner()
-        option4Btn.btnCorner()
+        optionButtons.forEach { $0.btnCorner() }
         continueBtn.btnCorner()
     }
 
     fileprivate func setupModel() {
         let model = questions[0]
-        currentQuestion = questions[0]
         setQuestions(model: model)
     }
     
@@ -64,20 +55,18 @@ class QuestionViewController: UIViewController {
         optionButtons.append(option4Btn)
     }
     
-    @IBAction func continueButton(_ sender: Any) {
-        if isContinueButton {
+    @IBAction private func continueButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Continue" {
             selectedIndex = nil
             goToNextQuestion()
-            isContinueButton = false
             continueBtn.setTitle("Check", for: .normal)
         } else {
             checkAnswerBtn()
-            isContinueButton = true
             continueBtn.setTitle("Continue", for: .normal)
         }
     }
     
-    func checkAnswerBtn() {
+    private func checkAnswerBtn() {
         guard let selectedIndex = selectedIndex else { return }
         let button = optionButtons[selectedIndex]
 
@@ -88,82 +77,54 @@ class QuestionViewController: UIViewController {
         }
     }
     
-    func goToNextQuestion() {
-        if continueButtonCounter == questions.count{
+    private func goToNextQuestion() {
+        if currentQuestionNumber == questions.count - 1 {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
             resultVC.totalMarks = questions.count
             navigationController?.pushViewController(resultVC, animated: true)
         } else {
-            let model = questions[continueButtonCounter]
+            currentQuestionNumber += 1
+            let model = questions[currentQuestionNumber]
             setQuestions(model: model)
-            currentQuestion = model
-            continueButtonCounter += 1
         }
     }
     
-    @IBAction func choice1Select(_ sender: Any) {
+    @IBAction private func choice4Select(_ sender: UIButton) {
         setTappedbtnFalse()
-        selectedIndex = 0
+        selectedIndex = sender.tag
         resetOptionBtnColor()
-        option1Btn.backgroundColor = .blue
-        
-    }
-    @IBAction func choice2Select(_ sender: Any) {
-        setTappedbtnFalse()
-        selectedIndex = 1
-        resetOptionBtnColor()
-        option2Btn.backgroundColor = .blue
+        optionButtons[selectedIndex!].backgroundColor = .blue
     }
     
-    @IBAction func choice3Select(_ sender: Any) {
-        setTappedbtnFalse()
-        selectedIndex = 2
-        resetOptionBtnColor()
-        option3Btn.backgroundColor = .blue
-    }
-    
-    @IBAction func choice4Select(_ sender: Any) {
-        setTappedbtnFalse()
-        selectedIndex = 3
-        resetOptionBtnColor()
-        option4Btn.backgroundColor = .blue
-    }
-    
-    func setTappedbtnFalse() {
+    private func setTappedbtnFalse() {
         selectedIndex = nil
     }
     
-    func disabledAll() {
-        option1Btn.isEnabled = false
-        option2Btn.isEnabled = false
-        option3Btn.isEnabled = false
-        option4Btn.isEnabled = false
+    private func disabledAll() {
+        optionButtons.forEach { $0.isEnabled = false }
     }
     
-    func checkAnswer(idx: Int) -> Bool {
-        if (currentQuestion!.correctAnswer == idx) {
+    private func checkAnswer(idx: Int) -> Bool {
+        let currentModel = questions[currentQuestionNumber]
+        if (currentModel.correctAnswer == idx) {
             noCorrect += 1
             return true
         }
         return false
     }
     
-    func resetOptionBtnColor() {
-        option1Btn.backgroundColor = .lightGray
-        option2Btn.backgroundColor = .lightGray
-        option3Btn.backgroundColor = .lightGray
-        option4Btn.backgroundColor = .lightGray
+    private func resetOptionBtnColor() {
+        optionButtons.forEach { $0.backgroundColor = .lightGray }
     }
    
-    func setQuestions(model: Model){
+    private func setQuestions(model: Model){
         oprand1Label.text = String(model.num1)
         oprand2Label.text = String(model.num2)
         operatorLabel.text = String(model.operation)
-        option1Btn.setTitle(String(model.answer[0]), for: .normal)
-        option2Btn.setTitle(String(model.answer[1]), for: .normal)
-        option3Btn.setTitle(String(model.answer[2]), for: .normal)
-        option4Btn.setTitle(String(model.answer[3]), for: .normal)
+        for (index, button) in optionButtons.enumerated() {
+            button.setTitle(String(model.answer[index]), for: .normal)
+        }
         resetOptionBtnColor()
     }
 }
@@ -182,6 +143,4 @@ struct Model {
     let operation: String
     let answer: [Int]
     let correctAnswer: Int
-    
 }
-
