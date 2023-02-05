@@ -14,8 +14,8 @@
             filePath = "KidsLove/QuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "checkAnswer(idx:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "58C0A930-C476-4B6E-AE0B-0891C7638DC5"
+            uuid = "1910C301-21E4-40DC-9AF7-D89C6426BF18"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KidsLove/QuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "continueButton(_:)"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "goToNextQuestion()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

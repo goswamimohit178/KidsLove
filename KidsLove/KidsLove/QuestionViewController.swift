@@ -78,13 +78,16 @@ class QuestionViewController: UIViewController {
     }
     
     private func goToNextQuestion() {
-        if currentQuestionNumber == questions.count - 1 {
+        currentQuestionNumber += 1
+        let value = Float(currentQuestionNumber)/Float(questions.count)
+        print(value)
+        progressBar.setProgress(value, animated: true)
+        if currentQuestionNumber == questions.count {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
             resultVC.totalMarks = questions.count
             navigationController?.pushViewController(resultVC, animated: true)
         } else {
-            currentQuestionNumber += 1
             let model = questions[currentQuestionNumber]
             setQuestions(model: model)
         }
