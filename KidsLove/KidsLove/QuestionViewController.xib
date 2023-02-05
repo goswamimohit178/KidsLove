@@ -14,9 +14,9 @@
                 <outlet property="operatorLabel" destination="ulK-7v-dHA" id="0at-95-WUE"/>
                 <outlet property="oprand1Label" destination="Zm3-Gi-NFM" id="X82-yS-seM"/>
                 <outlet property="oprand2Label" destination="4u0-ch-zI9" id="p5R-Pr-50A"/>
-                <outlet property="option1Btn" destination="bOp-Z8-42s" id="wES-SG-Kdw"/>
-                <outlet property="option2btn" destination="K1d-kO-OxL" id="TUX-AF-uib"/>
-                <outlet property="option3Btn" destination="r7i-ue-G4a" id="cJc-OT-32L"/>
+                <outlet property="option1Btn" destination="bOp-Z8-42s" id="avg-YH-LjU"/>
+                <outlet property="option2Btn" destination="K1d-kO-OxL" id="UDl-I1-TIi"/>
+                <outlet property="option3Btn" destination="r7i-ue-G4a" id="nUr-tL-rd3"/>
                 <outlet property="option4Btn" destination="SVn-kr-Ti9" id="D7a-PZ-cfb"/>
                 <outlet property="progressBar" destination="CDw-id-BpB" id="IQZ-Ay-gq9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,7 +32,7 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="multiply.circle.fill" catalog="system"/>
                 </button>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="CDw-id-BpB">
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CDw-id-BpB">
                     <rect key="frame" x="93.333333333333314" y="104" width="280" height="4"/>
                 </progressView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Solve This" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBl-iv-TbL">
@@ -87,20 +87,20 @@
                                 <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                             </buttonConfiguration>
                             <connections>
-                                <action selector="choice1Select:" destination="-1" eventType="touchUpInside" id="2ot-Ic-Yea"/>
+                                <action selector="choice4Select:" destination="-1" eventType="touchUpInside" id="Ypy-zM-H6t"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1d-kO-OxL">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1d-kO-OxL">
                             <rect key="frame" x="0.0" y="70" width="353.66666666666669" height="50"/>
                             <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                             <buttonConfiguration key="configuration" style="plain" title="41">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                             </buttonConfiguration>
                             <connections>
-                                <action selector="choice2Select:" destination="-1" eventType="touchUpInside" id="dDf-Bn-MhI"/>
+                                <action selector="choice4Select:" destination="-1" eventType="touchUpInside" id="qca-6b-sAa"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7i-ue-G4a">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7i-ue-G4a">
                             <rect key="frame" x="0.0" y="140" width="353.66666666666669" height="50"/>
                             <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                             <state key="normal" title="Button"/>
@@ -108,10 +108,10 @@
                                 <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                             </buttonConfiguration>
                             <connections>
-                                <action selector="choice3Select:" destination="-1" eventType="touchUpInside" id="gBE-g4-jjP"/>
+                                <action selector="choice4Select:" destination="-1" eventType="touchUpInside" id="C8F-SV-tPx"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVn-kr-Ti9">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVn-kr-Ti9">
                             <rect key="frame" x="0.0" y="210" width="353.66666666666669" height="50"/>
                             <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                             <state key="normal" title="Button"/>
