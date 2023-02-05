@@ -8,11 +8,6 @@
 import UIKit
 
 class QuestionViewController: UIViewController {
-    
-    var isBtn1Tapped: Bool = false
-    var isBtn2Tapped: Bool = false
-    var isBtn3Tapped: Bool = false
-    var isBtn4Tapped: Bool = false
     @IBOutlet weak var progressBar: UIProgressView!
     
     @IBOutlet weak var option1Btn: UIButton!
@@ -33,9 +28,36 @@ class QuestionViewController: UIViewController {
     
 
     
-    
+    var isBtn1Tapped: Bool = false
+    var isBtn2Tapped: Bool = false
+    var isBtn3Tapped: Bool = false
+    var isBtn4Tapped: Bool = false
     var isContinueButton = false
     var continueButtonCounter = 1
+    var currentQuestion: Model?
+    var currentQuestionPosition: Int = 0
+    var noCorrect: Int = 0
+    
+    var questions: [Model] = [
+    Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
+    Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
+    Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
+    Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
+    ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let model = questions[0]
+        currentQuestion = questions[0]
+        setQuestions(model: model)
+        option1Btn.btnCorner()
+        option2btn.btnCorner()
+        option3Btn.btnCorner()
+        option4Btn.btnCorner()
+        continueBtn.btnCorner()
+    }
+    
     @IBAction func continueButton(_ sender: Any) {
         if isContinueButton {
             goToNextQuestion()
@@ -77,9 +99,6 @@ class QuestionViewController: UIViewController {
                 option4Btn.backgroundColor = .red
             }
         }
-        
-        
-        
     }
     
     func goToNextQuestion() {
@@ -143,18 +162,6 @@ class QuestionViewController: UIViewController {
         option4Btn.isEnabled = false
     }
     
-    
-    
-    
-    var currentQuestion: Model?
-    var currentQuestionPosition: Int = 0
-    var noCorrect: Int = 0
-    var questions: [Model] = [
-    Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
-    Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
-    Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
-    Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
-    ]
     func checkAnswer(idx: Int) -> Bool {
         if (currentQuestion!.correctAnswer == idx) {
             noCorrect += 1
@@ -182,18 +189,7 @@ class QuestionViewController: UIViewController {
         option4Btn.setTitle(String(model.answer[3]), for: .normal)
         resetOptionBtnColor()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let model = questions[0]
-        currentQuestion = questions[0]
-        setQuestions(model: model)
-        option1Btn.btnCorner()
-        option2btn.btnCorner()
-        option3Btn.btnCorner()
-        option4Btn.btnCorner()
-        continueBtn.btnCorner()
-    }
+   
     
 }
 extension UIButton {
