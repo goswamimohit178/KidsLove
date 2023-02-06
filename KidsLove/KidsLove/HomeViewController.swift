@@ -71,8 +71,7 @@ class HomeViewController: UIViewController {
     private func buttonAnimation(button: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
             button.transform = button.transform.scaledBy(x: 0.8, y: 0.8)
-        }) { _ in
-            if button == self.mathButton {
+        }); if button == self.mathButton {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.mathButton.transform = self.mathButton.transform.translatedBy(x: 150, y: 50)
                 })
@@ -80,9 +79,6 @@ class HomeViewController: UIViewController {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.engButton.transform = self.engButton.transform.translatedBy(x: -150, y: -250)
                 })
-                {_ in
-                }
-            }
         }
     }
 }

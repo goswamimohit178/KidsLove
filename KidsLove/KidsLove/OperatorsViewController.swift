@@ -8,7 +8,7 @@
 import UIKit
 
 class OperatorsViewController: UIViewController {
-
+    
     
     @IBOutlet weak var myView: UIView!
     
@@ -31,24 +31,42 @@ class OperatorsViewController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-     plusButton.layer.cornerRadius = 0.5 * plusButton.bounds.size.width
+        plusButton.layer.cornerRadius = 0.5 * plusButton.bounds.size.width
         divideButton.layer.cornerRadius = 0.5 * divideButton.bounds.size.width
-      productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width
-      minusButton.layer.cornerRadius = 0.5 * minusButton.bounds.size.width
-    myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
-       
-
+        productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width
+        minusButton.layer.cornerRadius = 0.5 * minusButton.bounds.size.width
+        myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
+        
+        buttonAnimation(button: plusButton)
+        buttonAnimation(button: divideButton)
+        buttonAnimation(button: productButton)
+        buttonAnimation(button: minusButton)
+        
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func buttonAnimation(button: UIButton) {
+        UIView.animate(withDuration: 1, animations: {
+            button.transform = button.transform.scaledBy(x: 1.2, y: 1.2)
+        })
+            if button == self.plusButton {
+                UIView.animate(withDuration: 1, animations: {
+                    self.plusButton.transform = self.plusButton.transform.translatedBy(x: 0, y: 274)
+                })
+            } else if button == self.divideButton  {
+                UIView.animate(withDuration: 1, animations: {
+                    self.divideButton.transform = self.divideButton.transform.translatedBy(x: 0, y: -274)
+                })
+            } else if button == self.productButton  {
+                UIView.animate(withDuration: 1, animations: {
+                    self.productButton.transform = self.productButton.transform.translatedBy(x: 200, y: 0)
+                })
+            } else {
+                UIView.animate(withDuration: 1, animations: {
+                    self.minusButton.transform = self.minusButton.transform.translatedBy(x: -200, y: 0)
+                })
+            }
+        }
     }
-    */
+    
 
-}
