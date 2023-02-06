@@ -9,6 +9,7 @@ import UIKit
 import AVFAudio
 
 class QuestionViewController: UIViewController {
+    
     @IBOutlet private weak var progressBar: UIProgressView!
     @IBOutlet private weak var option1Btn: UIButton!
     @IBOutlet private weak var option2Btn: UIButton!

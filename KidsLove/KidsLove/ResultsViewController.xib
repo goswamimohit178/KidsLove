@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultsViewController" customModule="KidsLove" customModuleProvider="target">
             <connections>
+                <outlet property="footerView" destination="mmd-9J-X3C" id="tes-Co-5LZ"/>
+                <outlet property="headerView" destination="z97-tO-hyd" id="abc-wI-XIN"/>
                 <outlet property="totalMarksOfAll" destination="rX9-1Q-LeL" id="XHx-ar-NTJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yourMarks" destination="Yc9-W7-ZJC" id="SKI-hA-tjH"/>
@@ -62,13 +64,25 @@
                     </constraints>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Excellent Performance!  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1h-c4-HI1">
-                    <rect key="frame" x="19.666666666666657" y="738" width="353.66666666666674" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmd-9J-X3C">
+                    <rect key="frame" x="14.333333333333343" y="688" width="364.33333333333326" height="70"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Excellent Performance!  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1h-c4-HI1">
+                            <rect key="frame" x="18" y="16.666666666666629" width="291.66666666666669" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemPurpleColor"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <constraints>
+                        <constraint firstItem="j1h-c4-HI1" firstAttribute="centerY" secondItem="mmd-9J-X3C" secondAttribute="centerY" multiplier="0.9" id="8v7-XL-aDa"/>
+                        <constraint firstItem="j1h-c4-HI1" firstAttribute="width" secondItem="mmd-9J-X3C" secondAttribute="width" multiplier="0.800549" id="J1U-oz-xRf"/>
+                        <constraint firstItem="j1h-c4-HI1" firstAttribute="centerX" secondItem="mmd-9J-X3C" secondAttribute="centerX" multiplier="0.9" id="S2J-Cx-0R8"/>
+                        <constraint firstAttribute="height" constant="70" id="UkT-7q-sFX"/>
+                    </constraints>
+                </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="happy Small" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-gG-j9B">
                     <rect key="frame" x="141" y="208" width="87" height="104"/>
                 </imageView>
@@ -89,13 +103,12 @@
                 <constraint firstItem="3Ai-aX-Jyh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="SBC-m2-N8F"/>
                 <constraint firstItem="X9t-0t-vEL" firstAttribute="top" secondItem="Yc9-W7-ZJC" secondAttribute="bottom" constant="-10" id="U5F-Bg-ByZ"/>
                 <constraint firstItem="3Ai-aX-Jyh" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.7" id="Vsw-IZ-ZLA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mmd-9J-X3C" secondAttribute="bottom" constant="60" id="agd-3B-3BT"/>
                 <constraint firstItem="3Ai-aX-Jyh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.7" id="bJV-5Q-UvZ"/>
-                <constraint firstItem="j1h-c4-HI1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cbO-9C-d0B"/>
                 <constraint firstItem="YrE-gG-j9B" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.279898" id="iCI-P5-IK2"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j1h-c4-HI1" secondAttribute="bottom" constant="50" id="jqZ-ph-5i2"/>
-                <constraint firstItem="j1h-c4-HI1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="tXf-ub-tmY"/>
                 <constraint firstItem="rX9-1Q-LeL" firstAttribute="centerX" secondItem="3Ai-aX-Jyh" secondAttribute="centerX" id="uXk-Kw-zkD"/>
                 <constraint firstItem="rX9-1Q-LeL" firstAttribute="top" secondItem="X9t-0t-vEL" secondAttribute="bottom" constant="-10" id="vDM-gB-aPf"/>
+                <constraint firstItem="mmd-9J-X3C" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zsK-aU-mmc"/>
             </constraints>
             <point key="canvasLocation" x="136.64122137404578" y="19.718309859154932"/>
         </view>
