@@ -9,6 +9,7 @@ import UIKit
 import AVFAudio
 
 class QuestionViewController: UIViewController {
+    
     @IBOutlet private weak var progressBar: UIProgressView!
     @IBOutlet private weak var option1Btn: UIButton!
     @IBOutlet private weak var option2Btn: UIButton!
@@ -73,9 +74,9 @@ class QuestionViewController: UIViewController {
             continueBtn.backgroundColor = .lightGray
         } else  {
             checkAnswerBtn()
+            continueBtn.setTitle("Continue", for: .normal)
             if selectedIndex == correctAnswerIndex  {
                 continueBtn.setTitle("Continue", for: .normal)
-
                 //                continueBtn.backgroundColor = .green
             }
         }
@@ -100,6 +101,8 @@ class QuestionViewController: UIViewController {
         } else {
             button.backgroundColor = .red
             playSound(soundString: "wrongButton")
+            button.shake()
+            
         }
         isFirstTimeTapped = false
     }
@@ -191,6 +194,7 @@ class QuestionViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+
 }
 
 extension UIButton {
@@ -207,4 +211,15 @@ struct Model {
     let operation: String
     let answer: [Int]
     let correctAnswer: Int
+}
+extension UIView {
+    func shake(){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 3
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 10, y: self.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
+        self.layer.add(animation, forKey: "position")
+    }
 }
