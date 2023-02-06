@@ -57,13 +57,19 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction private func continueButton(_ sender: UIButton) {
+        
         if sender.titleLabel?.text == "Continue" {
             selectedIndex = nil
             goToNextQuestion()
             continueBtn.setTitle("Check", for: .normal)
-        } else {
-            checkAnswerBtn()
-            continueBtn.setTitle("Continue", for: .normal)
+        } else  {
+            //if selectedIndex == Optional(nilLiteral: checkAnswerBtn()) {
+            if selectedIndex != nil {
+                checkAnswerBtn()
+                continueBtn.setTitle("Continue", for: .normal)
+            }else {
+                continueBtn.isEnabled = true
+            }
         }
     }
     
@@ -75,10 +81,13 @@ class QuestionViewController: UIViewController {
         let correctAnswerIndex = currentQuestion.correctAnswer
         let correctOptionButton = optionButtons[correctAnswerIndex]
         correctOptionButton.backgroundColor = .green
+        
+       
 
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = .green
             playSound(soundString: "rightButton")
+            
         } else {
             button.backgroundColor = .red
             playSound(soundString: "wrongButton")
@@ -112,7 +121,15 @@ class QuestionViewController: UIViewController {
     }
     
     private func disabledAll() {
-        optionButtons.forEach { $0.isEnabled = false }
+        if optionButtons.isEmpty {
+            optionButtons.forEach { $0.isEnabled = true }
+        } else {
+            setTappedbtnFalse()
+        }
+        
+        
+//        optionButtons.forEach { $0.isDisabled = false }
+        
     }
     
     private func checkAnswer(idx: Int) -> Bool {
@@ -126,6 +143,7 @@ class QuestionViewController: UIViewController {
     
     private func resetOptionBtnColor() {
         optionButtons.forEach { $0.backgroundColor = .lightGray }
+        
     }
    
     private func setQuestions(model: Model){
@@ -137,6 +155,7 @@ class QuestionViewController: UIViewController {
         }
         resetOptionBtnColor()
     }
+    
     var player: AVAudioPlayer?
 
     func playSound(soundString: String) {
