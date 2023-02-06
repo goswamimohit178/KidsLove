@@ -37,6 +37,7 @@ class QuestionViewController: UIViewController {
         addOptionButtons()
         setupModel()
         setCornerRadius()
+        
     }
     
     fileprivate func setCornerRadius() {
@@ -56,19 +57,30 @@ class QuestionViewController: UIViewController {
         optionButtons.append(option4Btn)
     }
     
+    let customButtonTitle = NSMutableAttributedString(string: "Check", attributes: [
+        NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 38.0),
+//        NSAttributedString.Key.backgroundColor: UIColor.red,
+        NSAttributedString.Key.foregroundColor: UIColor.blue
+    ])
+
+    
+    
     @IBAction private func continueButton(_ sender: UIButton) {
         
         if sender.titleLabel?.text == "Continue" {
             selectedIndex = nil
             goToNextQuestion()
             continueBtn.setTitle("Check", for: .normal)
+         
+            continueBtn.backgroundColor = .lightGray
         } else  {
-            //if selectedIndex == Optional(nilLiteral: checkAnswerBtn()) {
+          
             if selectedIndex != nil {
                 checkAnswerBtn()
                 continueBtn.setTitle("Continue", for: .normal)
-            }else {
-                continueBtn.isEnabled = true
+//                continueBtn.backgroundColor = .green
+            } else {
+                
             }
         }
     }
@@ -81,7 +93,7 @@ class QuestionViewController: UIViewController {
         let correctAnswerIndex = currentQuestion.correctAnswer
         let correctOptionButton = optionButtons[correctAnswerIndex]
         correctOptionButton.backgroundColor = .green
-        
+
        
 
         if checkAnswer(idx: selectedIndex) {
@@ -114,6 +126,10 @@ class QuestionViewController: UIViewController {
         selectedIndex = sender.tag
         resetOptionBtnColor()
         optionButtons[selectedIndex!].backgroundColor = .blue
+        continueBtn.isEnabled = true
+        continueBtn.backgroundColor = .green
+      
+
     }
     
     private func setTappedbtnFalse() {
