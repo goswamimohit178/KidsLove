@@ -23,15 +23,22 @@ class QuestionViewController: UIViewController {
     private var currentQuestionNumber = 0
     private var noCorrect: Int = 0
     private var selectedIndex: Int? = nil
-
+    private var isFirstTimeTapped: Bool = true
+    
     private var optionButtons = [UIButton]()
     
     private var questions: [Model] = [
-    Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
-    Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
-    Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
-    Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
+        Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
+        Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
+        Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
+        Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
     ]
+    
+    private let customButtonTitle = NSMutableAttributedString(string: "Check", attributes: [
+        NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 38.0),
+        //        NSAttributedString.Key.backgroundColor: UIColor.red,
+        NSAttributedString.Key.foregroundColor: UIColor.blue
+    ])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +52,7 @@ class QuestionViewController: UIViewController {
         optionButtons.forEach { $0.btnCorner() }
         continueBtn.btnCorner()
     }
-
+    
     fileprivate func setupModel() {
         let model = questions[0]
         setQuestions(model: model)
@@ -59,35 +66,45 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction private func continueButton(_ sender: UIButton) {
+        var correctAnswerIndex = correctAnsIndex()
         if sender.titleLabel?.text == "Continue" {
             selectedIndex = nil
             goToNextQuestion()
             continueBtn.setTitle("Check", for: .normal)
-        } else {
+            continueBtn.backgroundColor = .lightGray
+        } else  {
             checkAnswerBtn()
             continueBtn.setTitle("Continue", for: .normal)
-            
+            if selectedIndex == correctAnswerIndex  {
+                continueBtn.setTitle("Continue", for: .normal)
+                //                continueBtn.backgroundColor = .green
+            }
         }
+    }
+    
+    private func correctAnsIndex() -> Int {
+        let currentQuestion = questions[currentQuestionNumber]
+        let correctAnswerIndex = currentQuestion.correctAnswer
+        return correctAnswerIndex
     }
     
     private func checkAnswerBtn() {
         guard let selectedIndex = selectedIndex else { return }
-        let button = optionButtons[selectedIndex]
         
-        let currentQuestion = questions[currentQuestionNumber]
-        let correctAnswerIndex = currentQuestion.correctAnswer
-        let correctOptionButton = optionButtons[correctAnswerIndex]
-        correctOptionButton.backgroundColor = .green
-
+        let button = optionButtons[selectedIndex]
+        //      correctOptionButton.backgroundColor = .green
+        
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = .green
             playSound(soundString: "rightButton")
+            
         } else {
             button.backgroundColor = .red
             playSound(soundString: "wrongButton")
             button.shake()
             
         }
+        isFirstTimeTapped = false
     }
     
     private func goToNextQuestion() {
@@ -103,6 +120,8 @@ class QuestionViewController: UIViewController {
             let model = questions[currentQuestionNumber]
             setQuestions(model: model)
         }
+        isFirstTimeTapped = true
+
     }
     
     @IBAction private func choice4Select(_ sender: UIButton) {
@@ -110,6 +129,10 @@ class QuestionViewController: UIViewController {
         selectedIndex = sender.tag
         resetOptionBtnColor()
         optionButtons[selectedIndex!].backgroundColor = .blue
+        continueBtn.isEnabled = true
+        continueBtn.backgroundColor = .green
+        
+        
     }
     
     private func setTappedbtnFalse() {
@@ -117,22 +140,34 @@ class QuestionViewController: UIViewController {
     }
     
     private func disabledAll() {
-        optionButtons.forEach { $0.isEnabled = false }
+        if optionButtons.isEmpty {
+            optionButtons.forEach { $0.isEnabled = true }
+        } else {
+            setTappedbtnFalse()
+        }
+        
+        
+        //        optionButtons.forEach { $0.isDisabled = false }
+        
     }
     
     private func checkAnswer(idx: Int) -> Bool {
         let currentModel = questions[currentQuestionNumber]
-        if (currentModel.correctAnswer == idx) {
-            noCorrect += 1
+        if currentModel.correctAnswer == idx {
+            if isFirstTimeTapped{
+                noCorrect += 1
+            }
             return true
         }
         return false
+        
     }
     
     private func resetOptionBtnColor() {
         optionButtons.forEach { $0.backgroundColor = .lightGray }
+        
     }
-   
+    
     private func setQuestions(model: Model){
         oprand1Label.text = String(model.num1)
         oprand2Label.text = String(model.num2)
@@ -142,14 +177,15 @@ class QuestionViewController: UIViewController {
         }
         resetOptionBtnColor()
     }
+    
     var player: AVAudioPlayer?
-
+    
     func playSound(soundString: String) {
         guard let path = Bundle.main.path(forResource: soundString, ofType:"wav") else {
             return }
         let url = URL(fileURLWithPath: path)
-                      
-
+        
+        
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player?.play()
