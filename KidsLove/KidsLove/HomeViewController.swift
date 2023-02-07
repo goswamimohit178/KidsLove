@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButtonsHome()
         mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
         engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
         buttonAnimation(button: mathButton)
@@ -33,6 +34,18 @@ class HomeViewController: UIViewController {
         
         
     }
+    private func setButtonsHome() {
+        mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
+        engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
+        mathButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        engButton.titleLabel?.font =  UIFont.myAppBodyFonts()
+        mathButton.backgroundColor = UIColor.homeButtonColor()
+        
+    }
+    
+    
+    
+
     private func buttonAnimation(button: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
             button.transform = button.transform.scaledBy(x: 0.8, y: 0.8)

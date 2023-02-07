@@ -34,23 +34,20 @@ class QuestionViewController: UIViewController {
         Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
     ]
     
-    private let customButtonTitle = NSMutableAttributedString(string: "Check", attributes: [
-        NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 38.0),
-        //        NSAttributedString.Key.backgroundColor: UIColor.red,
-        NSAttributedString.Key.foregroundColor: UIColor.blue
-    ])
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addOptionButtons()
+        setQuestionFonts()
         setupModel()
         setCornerRadius()
-        
+        continueBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
     }
     
     fileprivate func setCornerRadius() {
         optionButtons.forEach { $0.btnCorner() }
         continueBtn.btnCorner()
+        continueBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+        
     }
     
     fileprivate func setupModel() {
@@ -66,19 +63,28 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction private func continueButton(_ sender: UIButton) {
-        var correctAnswerIndex = correctAnsIndex()
+        
+        let correctAnswerIndex = correctAnsIndex()
         if sender.titleLabel?.text == "Continue" {
             selectedIndex = nil
             goToNextQuestion()
             continueBtn.setTitle("Check", for: .normal)
-            continueBtn.backgroundColor = .lightGray
+            continueBtn.backgroundColor = UIColor.buttonBackgroundColor()
+            continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
         } else  {
             checkAnswerBtn()
             if selectedIndex == correctAnswerIndex  {
                 continueBtn.setTitle("Continue", for: .normal)
-                //                continueBtn.backgroundColor = .green
+                continueBtn.backgroundColor = UIColor.rightAnswerColor()
+                continueBtn.setNeedsLayout()
+                continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
             }
         }
+    }
+    private func setQuestionFonts() {
+        oprand1Label.font = UIFont.myAppBodyFonts()
+        oprand2Label.font = UIFont.myAppBodyFonts()
+        operatorLabel.font = UIFont.myAppBodyFonts()
     }
     
     private func correctAnsIndex() -> Int {
@@ -94,11 +100,11 @@ class QuestionViewController: UIViewController {
         //      correctOptionButton.backgroundColor = .green
         
         if checkAnswer(idx: selectedIndex) {
-            button.backgroundColor = .green
+            button.backgroundColor = UIColor.rightAnswerColor()
             playSound(soundString: "rightButton")
             
         } else {
-            button.backgroundColor = .red
+            button.backgroundColor = UIColor.wrongAnswerColor()
             playSound(soundString: "wrongButton")
             button.shake()
             
@@ -120,18 +126,16 @@ class QuestionViewController: UIViewController {
             setQuestions(model: model)
         }
         isFirstTimeTapped = true
-
+        
     }
     
     @IBAction private func choice4Select(_ sender: UIButton) {
         setTappedbtnFalse()
         selectedIndex = sender.tag
         resetOptionBtnColor()
-        optionButtons[selectedIndex!].backgroundColor = .blue
+        optionButtons[selectedIndex!].backgroundColor = UIColor.selectBtnColor()
         continueBtn.isEnabled = true
-        continueBtn.backgroundColor = .green
-        
-        
+        continueBtn.backgroundColor = UIColor.rightAnswerColor()
     }
     
     private func setTappedbtnFalse() {
@@ -144,10 +148,6 @@ class QuestionViewController: UIViewController {
         } else {
             setTappedbtnFalse()
         }
-        
-        
-        //        optionButtons.forEach { $0.isDisabled = false }
-        
     }
     
     private func checkAnswer(idx: Int) -> Bool {
@@ -163,7 +163,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func resetOptionBtnColor() {
-        optionButtons.forEach { $0.backgroundColor = .lightGray }
+        optionButtons.forEach { $0.backgroundColor = UIColor.buttonBackgroundColor() }
         
     }
     
@@ -173,6 +173,7 @@ class QuestionViewController: UIViewController {
         operatorLabel.text = String(model.operation)
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
+            button.titleLabel?.font = UIFont.myAppBodyFonts()
         }
         resetOptionBtnColor()
     }
@@ -193,14 +194,14 @@ class QuestionViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-
+    
 }
 
 extension UIButton {
     func btnCorner() {
         layer.cornerRadius = 10
         clipsToBounds = true
-        backgroundColor = .lightGray
+        backgroundColor = UIColor.buttonBackgroundColor()
     }
 }
 
