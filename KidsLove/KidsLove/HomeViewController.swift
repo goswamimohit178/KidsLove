@@ -21,20 +21,14 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func engButtubTapped(_ sender: Any) {
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.engButton.transform = self.engButton.transform.scaledBy(x: 0.8, y: 0.8)
-//        }) { _ in
-//            UIView.animate(withDuration: 0.5, animations: {
-//                self.engButton.transform = self.engButton.transform.translatedBy(x: -150, y: -250)
-//          }) { _ in
-//
-//          }
-//        }
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonsHome()
+        mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
+        engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
         buttonAnimation(button: mathButton)
         buttonAnimation(button: engButton)
         
@@ -51,6 +45,7 @@ class HomeViewController: UIViewController {
     
     
     
+
     private func buttonAnimation(button: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
             button.transform = button.transform.scaledBy(x: 0.8, y: 0.8)

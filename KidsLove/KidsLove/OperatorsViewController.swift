@@ -12,9 +12,8 @@ class OperatorsViewController: UIViewController {
     
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var plusButton: UIButton!
-    
     @IBAction func plusBtnTapped(_ sender: Any) {
-        self.navigationController?.pushViewController(QuestionViewController(), animated: true)
+    self.navigationController?.pushViewController(QuestionViewController(), animated: true)
     }
     
     @IBAction func minusBtnTapped(_ sender: Any) {
