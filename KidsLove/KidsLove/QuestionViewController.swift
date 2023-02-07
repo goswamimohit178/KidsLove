@@ -74,7 +74,6 @@ class QuestionViewController: UIViewController {
             continueBtn.backgroundColor = .lightGray
         } else  {
             checkAnswerBtn()
-            continueBtn.setTitle("Continue", for: .normal)
             if selectedIndex == correctAnswerIndex  {
                 continueBtn.setTitle("Continue", for: .normal)
                 //                continueBtn.backgroundColor = .green
