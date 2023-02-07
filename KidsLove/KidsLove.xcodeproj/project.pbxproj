@@ -23,6 +23,7 @@
 		36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6081298D0BAC00F059FB /* QuestionViewController.xib */; };
 		36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6084298E12E000F059FB /* ResultsViewController.swift */; };
 		36DD6087298E12E000F059FB /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6085298E12E000F059FB /* ResultsViewController.xib */; };
+		36DD608B29911CD100F059FB /* ColorAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD608A29911CD000F059FB /* ColorAndFonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		36DD6081298D0BAC00F059FB /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		36DD6084298E12E000F059FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		36DD6085298E12E000F059FB /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
+		36DD608A29911CD000F059FB /* ColorAndFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAndFonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				36DD6081298D0BAC00F059FB /* QuestionViewController.xib */,
 				36DD6084298E12E000F059FB /* ResultsViewController.swift */,
 				36DD6085298E12E000F059FB /* ResultsViewController.xib */,
+				36DD608A29911CD000F059FB /* ColorAndFonts.swift */,
 				36939D11298CFB6000927B1E /* Assets.xcassets */,
 				36939D13298CFB6000927B1E /* LaunchScreen.storyboard */,
 				36939D16298CFB6000927B1E /* Info.plist */,
@@ -184,6 +187,7 @@
 			files = (
 				36939D0D298CFB5F00927B1E /* ViewController.swift in Sources */,
 				36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */,
+				36DD608B29911CD100F059FB /* ColorAndFonts.swift in Sources */,
 				36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */,
 				36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */,
 				36939D0B298CFB5F00927B1E /* SceneDelegate.swift in Sources */,
