@@ -7,14 +7,40 @@
 //self.navigationController?.pushViewController(QuestionViewController(), animated: true)
 import UIKit
 
+
 final class OperatorsViewController: UIViewController {
     private var unitNameList = [UnitModel]()
+    @IBOutlet weak var plusButton: UIButton!
     
+    @IBAction func plusBtnTapped(_ sender: Any) {
+        self.navigationController?.pushViewController(QuestionViewController(), animated: true)
+    }
     @IBOutlet weak var operatorTableView: UITableView!
     @IBOutlet weak var myView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButtonStyle()
+        buttonAnimation(button: plusButton)
+        buttonAnimation(button: divideButton)
+        buttonAnimation(button: productButton)
+        buttonAnimation(button: minusButton)
+    }
+    
+    private func setButtonStyle() {
+        plusButton.layer.cornerRadius = 0.5 * plusButton.bounds.size.width
+        divideButton.layer.cornerRadius = 0.5 * divideButton.bounds.size.width
+        productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width
+        minusButton.layer.cornerRadius = 0.5 * minusButton.bounds.size.width
+        myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
+        plusButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        divideButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        productButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        minusButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        plusButton.backgroundColor = UIColor.homeButtonColor()
+        divideButton.backgroundColor = UIColor.homeButtonColor()
+        productButton.backgroundColor = UIColor.homeButtonColor()
+        minusButton.backgroundColor = UIColor.homeButtonColor()
         operatorTableView.dataSource = self
         operatorTableView.delegate = self
         operatorTableView.register(UINib(nibName: "OperatorTableViewCell", bundle: nil), forCellReuseIdentifier: "OperatorTableViewCell")
