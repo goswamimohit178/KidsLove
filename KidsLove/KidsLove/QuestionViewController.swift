@@ -17,8 +17,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet private weak var option4Btn: UIButton!
     @IBOutlet private weak var continueBtn: UIButton!
     @IBOutlet private weak var oprand1Label: UILabel!
-    @IBOutlet private weak var operatorLabel: UILabel!
-    @IBOutlet private weak var oprand2Label: UILabel!
+    
     
     private var currentQuestionNumber = 0
     private var noCorrect: Int = 0
@@ -40,14 +39,19 @@ class QuestionViewController: UIViewController {
         setQuestionFonts()
         setupModel()
         setCornerRadius()
-        continueBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+        setOptionButtonsShadow()
+        continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
+        continueBtn.titleLabel?.tintColor = UIColor.bodyFontColor()
+        progressBar.transform = CGAffineTransformMakeScale(1.0, 3.0)
+        progressBar.layer.cornerRadius = 50
+        
+        
     }
     
     fileprivate func setCornerRadius() {
         optionButtons.forEach { $0.btnCorner() }
         continueBtn.btnCorner()
-        continueBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
-        
+        continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
     }
     
     fileprivate func setupModel() {
@@ -63,7 +67,6 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction private func continueButton(_ sender: UIButton) {
-        
         let correctAnswerIndex = correctAnsIndex()
         if sender.titleLabel?.text == "Continue" {
             selectedIndex = nil
@@ -71,11 +74,11 @@ class QuestionViewController: UIViewController {
             continueBtn.setTitle("Check", for: .normal)
             continueBtn.backgroundColor = UIColor.buttonBackgroundColor()
             continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
-        } else  {
+        } else {
             checkAnswerBtn()
             if selectedIndex == correctAnswerIndex  {
                 continueBtn.setTitle("Continue", for: .normal)
-                continueBtn.backgroundColor = UIColor.rightAnswerColor()
+                continueBtn.backgroundColor = UIColor.continueBtnColor()
                 continueBtn.setNeedsLayout()
                 continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
             }
@@ -83,8 +86,6 @@ class QuestionViewController: UIViewController {
     }
     private func setQuestionFonts() {
         oprand1Label.font = UIFont.myAppBodyFonts()
-        oprand2Label.font = UIFont.myAppBodyFonts()
-        operatorLabel.font = UIFont.myAppBodyFonts()
     }
     
     private func correctAnsIndex() -> Int {
@@ -97,25 +98,22 @@ class QuestionViewController: UIViewController {
         guard let selectedIndex = selectedIndex else { return }
         
         let button = optionButtons[selectedIndex]
-        //      correctOptionButton.backgroundColor = .green
-        
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = UIColor.rightAnswerColor()
             playSound(soundString: "rightButton")
-            
         } else {
             button.backgroundColor = UIColor.wrongAnswerColor()
             playSound(soundString: "wrongButton")
             button.shake()
-            
         }
         isFirstTimeTapped = false
     }
     
     private func goToNextQuestion() {
         currentQuestionNumber += 1
-        let value = Float(currentQuestionNumber)/Float(questions.count)
+        let value:Float = Float(currentQuestionNumber)/Float(questions.count)
         progressBar.setProgress(value, animated: true)
+        progressBar.tintColor = UIColor.progressBarColor()
         if currentQuestionNumber == questions.count {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
@@ -135,7 +133,6 @@ class QuestionViewController: UIViewController {
         resetOptionBtnColor()
         optionButtons[selectedIndex!].backgroundColor = UIColor.selectBtnColor()
         continueBtn.isEnabled = true
-        continueBtn.backgroundColor = UIColor.rightAnswerColor()
     }
     
     private func setTappedbtnFalse() {
@@ -162,29 +159,39 @@ class QuestionViewController: UIViewController {
         
     }
     
+    private func setOptionButtonsShadow() {
+        optionButtons.forEach { button in
+            button.layer.shadowColor = UIColor.btnShadowColor().cgColor
+            button.layer.shadowOffset = CGSize(width: 5.0, height: 10)
+            button.layer.shadowOpacity = 3.0
+            button.layer.shadowRadius = 5.0
+            button.layer.masksToBounds = false
+            button.layer.cornerRadius = 20
+        }
+    }
+    
     private func resetOptionBtnColor() {
         optionButtons.forEach { $0.backgroundColor = UIColor.buttonBackgroundColor() }
         
     }
     
     private func setQuestions(model: Model){
-        oprand1Label.text = String(model.num1)
-        oprand2Label.text = String(model.num2)
-        operatorLabel.text = String(model.operation)
+        oprand1Label.text = String(model.num1) + " " + String(model.operation) + " " + String(model.num2) + " = " + " ?? "
+        
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
             button.titleLabel?.font = UIFont.myAppBodyFonts()
+            button.titleLabel?.tintColor = UIColor.bodyFontColor()
         }
         resetOptionBtnColor()
     }
     
     var player: AVAudioPlayer?
     
-    func playSound(soundString: String) {
+    private func playSound(soundString: String) {
         guard let path = Bundle.main.path(forResource: soundString, ofType:"wav") else {
             return }
         let url = URL(fileURLWithPath: path)
-        
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
@@ -198,8 +205,8 @@ class QuestionViewController: UIViewController {
 }
 
 extension UIButton {
-    func btnCorner() {
-        layer.cornerRadius = 10
+    func btnCorner(cornerRadius: CGFloat = 20) {
+        layer.cornerRadius = cornerRadius
         clipsToBounds = true
         backgroundColor = UIColor.buttonBackgroundColor()
     }

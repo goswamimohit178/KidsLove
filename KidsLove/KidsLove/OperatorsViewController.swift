@@ -8,12 +8,11 @@
 import UIKit
 
 class OperatorsViewController: UIViewController {
-    
-    
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var plusButton: UIButton!
+    
     @IBAction func plusBtnTapped(_ sender: Any) {
-    self.navigationController?.pushViewController(QuestionViewController(), animated: true)
+        self.navigationController?.pushViewController(QuestionViewController(), animated: true)
     }
     
     @IBAction func minusBtnTapped(_ sender: Any) {
@@ -25,15 +24,14 @@ class OperatorsViewController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonOperators()
-        
+        setButtonStyle()
         buttonAnimation(button: plusButton)
         buttonAnimation(button: divideButton)
         buttonAnimation(button: productButton)
         buttonAnimation(button: minusButton)
     }
     
-    private func setButtonOperators() {
+    private func setButtonStyle() {
         plusButton.layer.cornerRadius = 0.5 * plusButton.bounds.size.width
         divideButton.layer.cornerRadius = 0.5 * divideButton.bounds.size.width
         productButton.layer.cornerRadius = 0.5 * productButton.bounds.size.width

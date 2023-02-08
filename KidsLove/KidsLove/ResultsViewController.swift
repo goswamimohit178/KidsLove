@@ -13,13 +13,23 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var yourMarks: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var totalMarksOfAll: UILabel!
+    @IBOutlet weak var yourScoreLabel: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
+    
+    @IBAction func goToHomeButton(_ sender: Any) {
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+    }
     
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
     
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fontAndColorResults()
         self.yourMarks.text = String(correctAnswer)
         self.totalMarksOfAll.text = String(totalMarks)
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
@@ -28,7 +38,15 @@ class ResultsViewController: UIViewController {
         
         self.view.addSubview(vc.view)
         vc.view.center = CGPoint(x: view.frame.size.width  / 2,
-                                     y: view.frame.size.height / 2)
+                                 y: view.frame.size.height / 2)
+    }
+    
+    
+    private func fontAndColorResults() {
+        yourMarks.font = UIFont.myAppBodyFonts()
+        totalMarksOfAll.font = UIFont.myAppBodyFonts()
+        yourScoreLabel.font = UIFont.myAppBodyFonts()
+        continueButton.titleLabel?.font = UIFont.myAppBodyFonts()
     }
 }
 struct ContentView: View {
@@ -45,7 +63,7 @@ struct ContentView: View {
                 .frame(width: 60, height: 50)
                 .modifier(ParticlesModifier())
                 .offset(x: 50, y : 60)
-                
+            
         }
     }
 }
@@ -55,18 +73,18 @@ struct ParticlesModifier: ViewModifier {
     let duration = 5.0
     @State private var radius = 2
     //private var opacity = 0.25
-
+    
     
     func body(content: Content) -> some View {
         ZStack {
-           
+            
             ForEach(0..<80, id: \.self) { index in
                 content
                     .hueRotation(Angle(degrees: time * 80))
                     .scaleEffect(scale)
                     .modifier(FireworkParticlesGeometryEffect(time: time))
                     .opacity(((duration-time) / duration))
-                    Circle().fill(Color.yellow)
+                Circle().fill(Color.yellow)
                     .hueRotation(Angle(degrees: time * 200))
                     .scaleEffect(scale)
                     .modifier(FireworkParticlesGeometryEffect(time: time))
@@ -78,13 +96,13 @@ struct ParticlesModifier: ViewModifier {
                 self.time = duration
                 self.scale = 1.0
                 self.radius += 1
-
+                
             }
         }
     }
     func calculateRandom() -> CGFloat {
-            return CGFloat(Int.random(in: 30..<150))
-        }
+        return CGFloat(Int.random(in: 30..<150))
+    }
 }
 
 struct FireworkParticlesGeometryEffect : GeometryEffect {
@@ -102,4 +120,9 @@ struct FireworkParticlesGeometryEffect : GeometryEffect {
         let affineTranslation =  CGAffineTransform(translationX: xTranslation, y: yTranslation)
         return ProjectionTransform(affineTranslation)
     }
+    
+    
+    
 }
+
+
