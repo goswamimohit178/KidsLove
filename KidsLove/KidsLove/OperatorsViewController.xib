@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,11 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OperatorsViewController" customModule="KidsLove" customModuleProvider="target">
             <connections>
-                <outlet property="divideButton" destination="REc-pO-AhH" id="2V1-Cx-6TE"/>
-                <outlet property="minusButton" destination="8pb-9F-tSs" id="iFB-hI-Mlu"/>
                 <outlet property="myView" destination="9HZ-3T-im6" id="Inx-YV-APS"/>
-                <outlet property="plusButton" destination="dj3-xY-CKp" id="hX3-iM-6yV"/>
-                <outlet property="productButton" destination="ZNB-Hk-O5c" id="gJ4-O0-MOc"/>
+                <outlet property="operatorTableView" destination="Fac-ea-9Ls" id="5kJ-0w-Smn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="mUB-fL-g0z"/>
             </connections>
         </placeholder>
@@ -30,62 +26,17 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HZ-3T-im6">
                             <rect key="frame" x="20" y="20" width="353" height="619"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pb-9F-tSs">
-                                    <rect key="frame" x="224.33333333333334" y="270.33333333333331" width="78.666666666666657" height="78.333333333333314"/>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title=" " image="minus" catalog="system"/>
-                                    <connections>
-                                        <action selector="minusBtnTapped:" destination="-1" eventType="touchUpInside" id="b8N-J0-udc"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNB-Hk-O5c">
-                                    <rect key="frame" x="50.000000000000007" y="270.33333333333331" width="78.666666666666686" height="78.333333333333314"/>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title=" ">
-                                        <imageReference key="image" image="multiply" catalog="system" symbolScale="large"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-pO-AhH">
-                                    <rect key="frame" x="137.33333333333334" y="423.66666666666663" width="78.333333333333343" height="78.666666666666686"/>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title=" " image="divide" catalog="system"/>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dj3-xY-CKp">
-                                    <rect key="frame" x="137.33333333333334" y="109.66666666666669" width="78.333333333333343" height="78.666666666666686"/>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="dj3-xY-CKp" secondAttribute="height" id="Hae-L2-e0F"/>
-                                    </constraints>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title=" " image="plus" catalog="system"/>
-                                    <connections>
-                                        <action selector="plusBtnTapped:" destination="-1" eventType="touchUpInside" id="02z-bf-hF8"/>
-                                    </connections>
-                                </button>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fac-ea-9Ls">
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="619"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="ZNB-Hk-O5c" firstAttribute="top" secondItem="dj3-xY-CKp" secondAttribute="bottom" constant="82" id="29g-2E-B7w"/>
-                                <constraint firstItem="REc-pO-AhH" firstAttribute="width" secondItem="dj3-xY-CKp" secondAttribute="width" id="60V-dk-eAb"/>
-                                <constraint firstItem="ZNB-Hk-O5c" firstAttribute="leading" secondItem="9HZ-3T-im6" secondAttribute="leading" constant="50" id="CKz-HJ-KUv"/>
-                                <constraint firstItem="REc-pO-AhH" firstAttribute="centerX" secondItem="9HZ-3T-im6" secondAttribute="centerX" id="H00-Xh-VIl"/>
-                                <constraint firstItem="8pb-9F-tSs" firstAttribute="height" secondItem="dj3-xY-CKp" secondAttribute="height" id="NDg-4d-XqE"/>
-                                <constraint firstItem="dj3-xY-CKp" firstAttribute="centerX" secondItem="9HZ-3T-im6" secondAttribute="centerX" id="NaL-IQ-gif"/>
-                                <constraint firstItem="ZNB-Hk-O5c" firstAttribute="width" secondItem="dj3-xY-CKp" secondAttribute="width" id="T22-9o-MWX"/>
-                                <constraint firstItem="8pb-9F-tSs" firstAttribute="width" secondItem="dj3-xY-CKp" secondAttribute="width" id="XOj-SB-BrC"/>
-                                <constraint firstItem="ZNB-Hk-O5c" firstAttribute="centerY" secondItem="9HZ-3T-im6" secondAttribute="centerY" id="YON-tU-mFH"/>
-                                <constraint firstItem="ZNB-Hk-O5c" firstAttribute="height" secondItem="dj3-xY-CKp" secondAttribute="height" id="gdr-Z4-TFN"/>
-                                <constraint firstAttribute="trailing" secondItem="8pb-9F-tSs" secondAttribute="trailing" constant="50" id="jXx-ZM-AiO"/>
-                                <constraint firstItem="REc-pO-AhH" firstAttribute="height" secondItem="dj3-xY-CKp" secondAttribute="height" id="mn5-IV-h0e"/>
-                                <constraint firstItem="REc-pO-AhH" firstAttribute="top" secondItem="8pb-9F-tSs" secondAttribute="bottom" constant="75" id="sdA-Wc-gjX"/>
-                                <constraint firstItem="8pb-9F-tSs" firstAttribute="centerY" secondItem="9HZ-3T-im6" secondAttribute="centerY" id="yEB-XA-d7C"/>
+                                <constraint firstItem="Fac-ea-9Ls" firstAttribute="leading" secondItem="9HZ-3T-im6" secondAttribute="leading" id="Feb-2D-IyF"/>
+                                <constraint firstItem="Fac-ea-9Ls" firstAttribute="top" secondItem="9HZ-3T-im6" secondAttribute="top" id="Fmt-Cd-bfG"/>
+                                <constraint firstAttribute="bottom" secondItem="Fac-ea-9Ls" secondAttribute="bottom" id="t5f-Zw-CyQ"/>
+                                <constraint firstAttribute="trailing" secondItem="Fac-ea-9Ls" secondAttribute="trailing" id="zG6-Hy-84i"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -113,7 +64,6 @@
             <constraints>
                 <constraint firstItem="dlG-yW-gKk" firstAttribute="top" secondItem="7nf-Nh-fsN" secondAttribute="bottom" id="ABi-IS-L9f"/>
                 <constraint firstItem="7nf-Nh-fsN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="GLk-T1-6EY"/>
-                <constraint firstItem="dj3-xY-CKp" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.2" id="J1w-VG-ZYw"/>
                 <constraint firstItem="7nf-Nh-fsN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RFm-el-QIY"/>
                 <constraint firstItem="dlG-yW-gKk" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="SnD-fh-j8O"/>
                 <constraint firstItem="dlG-yW-gKk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fhT-cA-tfE"/>
@@ -124,18 +74,11 @@
         </view>
     </objects>
     <resources>
-        <image name="divide" catalog="system" width="128" height="101"/>
-        <image name="minus" catalog="system" width="128" height="26"/>
-        <image name="multiply" catalog="system" width="128" height="111"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
