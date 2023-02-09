@@ -15,9 +15,12 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var totalMarksOfAll: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var goToHomeLabel: UIButton!
+    @IBOutlet weak var fractionViewDivision: UIView!
     
     @IBAction func goToHomeButton(_ sender: Any) {
-        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     var correctAnswer: Int = 0
@@ -32,8 +35,12 @@ class ResultsViewController: UIViewController {
         fontAndColorResults()
         self.yourMarks.text = String(correctAnswer)
         self.totalMarksOfAll.text = String(totalMarks)
-        footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
-        headerView.layer.cornerRadius = 0.05 * headerView.bounds.size.width
+        
+        if var viewControllers = navigationController?.viewControllers {
+            viewControllers.remove(at: viewControllers.count-2)
+            navigationController?.viewControllers = viewControllers
+        }
+        
         let vc = UIHostingController(rootView: ContentView())
         
         self.view.addSubview(vc.view)
@@ -43,10 +50,20 @@ class ResultsViewController: UIViewController {
     
     
     private func fontAndColorResults() {
+        footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
+        headerView.layer.cornerRadius = 0.05 * headerView.bounds.size.width
         yourMarks.font = UIFont.myAppBodyFonts()
         totalMarksOfAll.font = UIFont.myAppBodyFonts()
         yourScoreLabel.font = UIFont.myAppBodyFonts()
         continueButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        headerView.backgroundColor = UIColor.homeButtonColor()
+        footerView.backgroundColor = UIColor.homeButtonColor()
+        headerLabel.font = UIFont.myAppBodyFonts()
+        goToHomeLabel.titleLabel?.font = UIFont.myAppBodyFonts()
+        headerLabel.tintColor = UIColor.bodyFontColor()
+        goToHomeLabel.tintColor = UIColor.bodyFontColor()
+        fractionViewDivision.backgroundColor = UIColor.bodyFontColor()
+        
     }
 }
 struct ContentView: View {
