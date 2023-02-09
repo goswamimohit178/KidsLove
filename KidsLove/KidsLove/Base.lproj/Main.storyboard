@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myb-KU-dtD">
-                                <rect key="frame" x="159" y="408.66666666666669" width="75" height="35"/>
+                                <rect key="frame" x="157.33333333333334" y="418" width="78.333333333333343" height="85"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
@@ -44,8 +44,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
-                            <constraint firstItem="myb-KU-dtD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uow-Uh-fPZ"/>
-                            <constraint firstItem="myb-KU-dtD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YOr-ey-agw"/>
+                            <constraint firstItem="myb-KU-dtD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="8Mq-Je-J1m"/>
+                            <constraint firstItem="myb-KU-dtD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fg3-lD-Oc9"/>
+                            <constraint firstItem="myb-KU-dtD" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="N5c-qT-yrk"/>
+                            <constraint firstItem="myb-KU-dtD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ntY-li-3Rw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="y8h-cZ-ZPO"/>

@@ -9,32 +9,42 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var mathButton: UIButton!
+    @IBOutlet var mathButton: UIButton!
+    @IBOutlet var engButton: UIButton!
     
+    @IBOutlet weak var mathTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mathLeadingConstraint: NSLayoutConstraint!
+   
     
-    @IBOutlet weak var engButton: UIButton!
-    
-    
+    @IBOutlet weak var engLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var engTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var engWidthConstraint: NSLayoutConstraint!
+    var buttonHeight = 100.0
     @IBAction func mathButtonTapped(_ sender: Any) {
         
         self.navigationController?.pushViewController(OperatorsViewController(), animated: true)
     }
-    
+   
     @IBAction func engButtubTapped(_ sender: Any) {
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonHeight = view.frame.width * 0.4
+        engWidthConstraint.constant = buttonHeight
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setButtonsHome()
-        mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
-        engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
         buttonAnimation(button: mathButton)
-        buttonAnimation(button: engButton)
-        
-        
     }
     private func setButtonsHome() {
+        //mathButton = UIButton(frame: CGRect(x: 10, y: 50, width: 100, height: 30))
+
+        
+        
         mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
         engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
         mathButton.titleLabel?.font = UIFont.myAppBodyFonts()
@@ -42,21 +52,17 @@ class HomeViewController: UIViewController {
         mathButton.backgroundColor = UIColor.homeButtonColor()
         
     }
-    
-    
-    
-
     private func buttonAnimation(button: UIButton) {
-        UIView.animate(withDuration: 0.5, animations: {
-            button.transform = button.transform.scaledBy(x: 0.8, y: 0.8)
-        }); if button == self.mathButton {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.mathButton.transform = self.mathButton.transform.translatedBy(x: 150, y: 50)
-                })
-            } else {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.engButton.transform = self.engButton.transform.translatedBy(x: -150, y: -250)
-                })
-        }
-    }
+        self.mathTopConstraint.constant = (self.view.frame.height / 2.0)  - (self.buttonHeight / 2)
+        let halfXPoint = self.view.frame.width/2
+        let leadingSpace = (halfXPoint - self.buttonHeight) / 2
+        self.mathLeadingConstraint.constant = halfXPoint + leadingSpace
+        
+        self.engTopConstraint.constant = self.mathTopConstraint.constant
+        self.engLeadingConstraint.constant = (halfXPoint - buttonHeight)/2
+        UIView.animate(withDuration: 0.8, animations: {
+            self.view.layoutIfNeeded()
+        });
+
+   }
 }

@@ -17,7 +17,7 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     
     @IBAction func goToHomeButton(_ sender: Any) {
-        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        self.navigationController?.pushViewController(OperatorsViewController(), animated: true)
     }
     
     var correctAnswer: Int = 0
