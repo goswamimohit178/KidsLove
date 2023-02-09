@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OperatorsViewController" customModule="KidsLove" customModuleProvider="target">
             <connections>
+                <outlet property="headerLabel" destination="7nf-Nh-fsN" id="wYk-jp-F8Q"/>
                 <outlet property="myView" destination="9HZ-3T-im6" id="Inx-YV-APS"/>
                 <outlet property="operatorTableView" destination="Fac-ea-9Ls" id="5kJ-0w-Smn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="mUB-fL-g0z"/>

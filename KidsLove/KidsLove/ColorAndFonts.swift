@@ -49,6 +49,9 @@ extension UIColor {
         return UIColor(red: 0.7, green: 0.8, blue: 1.0, alpha: 1.0)
 //        return UIColor(red: 0.455, green: 0.927, blue: 0.259, alpha: 1.0)
     }
+    static func operatorProgressBar() -> UIColor {
+        return UIColor(red: 0.9993169904, green: 0.6469120383, blue: 0, alpha: 1)
+    }
     
 }
 
@@ -59,6 +62,10 @@ extension UIFont {
     static func myAppBodyFonts() -> UIFont {
         return UIFont.systemFont(ofSize: 30)
     }
+    static func operatorViewCellFont() -> UIFont {
+        return UIFont.systemFont(ofSize: 17)
+    }
+    
 }
 
 
