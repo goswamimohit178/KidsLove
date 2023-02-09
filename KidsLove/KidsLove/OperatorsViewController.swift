@@ -10,12 +10,17 @@ import UIKit
 
 final class OperatorsViewController: UIViewController {
     private var unitNameList = [UnitModel]()
+    
+    @IBOutlet weak var headerLabel: UILabel!
+    
     @IBOutlet weak var operatorTableView: UITableView!
     @IBOutlet weak var myView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonStyle()
+        headerLabel.font = UIFont.myAppBodyFonts()
+        headerLabel.backgroundColor = UIColor.homeButtonColor()
        
     }
     

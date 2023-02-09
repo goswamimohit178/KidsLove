@@ -11,9 +11,7 @@ class OperatorTableViewCell: UITableViewCell {
     
     var buttonTappedAction: (() -> Void)?
     @IBOutlet weak var unitNumberLabel: UILabel!
-    
     @IBOutlet weak var chapterNameLabel: UILabel!
-    
     @IBOutlet weak var easyButton: UIButton!
     @IBOutlet weak var mediumButton: UIButton!
     @IBOutlet weak var roundingButton: UIButton!
@@ -29,11 +27,9 @@ class OperatorTableViewCell: UITableViewCell {
     
     private var circularViewDuration: TimeInterval = 2
     
-    
     @IBAction func mediumButtonTapped(_ sender: Any) {
         
     }
-
     @IBAction func easyButtonTapped(_ sender: Any) {
         buttonTappedAction!()
         
@@ -41,10 +37,10 @@ class OperatorTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setFontsAndColor()
         makeButtonRound()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -56,7 +52,6 @@ class OperatorTableViewCell: UITableViewCell {
         chainsButton.layer.cornerRadius = chainsButton.bounds.size.width / 2
         hardButton.layer.cornerRadius = hardButton.bounds.size.width / 2
         reviewButton.layer.cornerRadius = reviewButton.bounds.size.width / 2
-
     }
     
     func setProgressAnimation() {
@@ -65,6 +60,24 @@ class OperatorTableViewCell: UITableViewCell {
     
     func setUpCircularProgressBarView(button: UIButton) {
         button.createCircularPath(duration: circularViewDuration, progress: .complete)
+    }
+    
+    private func setFontsAndColor() {
+        unitNumberLabel.font = UIFont.myAppBodyFonts()
+        chapterNameLabel.font = UIFont.operatorViewCellFont()
+        easyLabel.font = UIFont.operatorViewCellFont()
+        mediumlabel.font = UIFont.operatorViewCellFont()
+        hardLabel.font = UIFont.operatorViewCellFont()
+        chainsLabel.font = UIFont.operatorViewCellFont()
+        roundingLabel.font = UIFont.operatorViewCellFont()
+        reviewLabel.font = UIFont.operatorViewCellFont()
+        easyButton.backgroundColor = UIColor.homeButtonColor()
+        mediumButton.backgroundColor = UIColor.homeButtonColor()
+        hardButton.backgroundColor = UIColor.homeButtonColor()
+        chainsButton.backgroundColor = UIColor.homeButtonColor()
+        roundingButton.backgroundColor = UIColor.homeButtonColor()
+        reviewButton.backgroundColor = UIColor.homeButtonColor()
+        
     }
     
 }
@@ -83,11 +96,10 @@ extension UIButton {
             progressLayer.lineCap = .round
             progressLayer.lineWidth = 16.0
             progressLayer.strokeEnd = 0
-            progressLayer.strokeColor = UIColor.green.cgColor
-            // added progressLayer to layer
+        progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor            // added progressLayer to layer
             layer.addSublayer(progressLayer)
+
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        // set the end time
         circularProgressAnimation.duration = duration
         circularProgressAnimation.toValue = progress.progress
         circularProgressAnimation.fillMode = .forwards
@@ -97,4 +109,4 @@ extension UIButton {
     
 }
 
-  
+

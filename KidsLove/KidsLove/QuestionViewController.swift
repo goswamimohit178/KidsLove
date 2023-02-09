@@ -52,6 +52,9 @@ class QuestionViewController: UIViewController {
         continueBtn.titleLabel?.tintColor = UIColor.bodyFontColor()
         progressBar.transform = CGAffineTransformMakeScale(1.0, 3.0)
         progressBar.layer.cornerRadius = 50
+        let value:Float = Float(1)/Float(questions.count)
+        progressBar.setProgress(value, animated: true)
+        progressBar.tintColor = UIColor.progressBarColor()
         
         
     }
@@ -78,7 +81,7 @@ class QuestionViewController: UIViewController {
     
     @IBAction private func continueButton(_ sender: UIButton) {
         let correctAnswerIndex = correctAnsIndex()
-        if sender.titleLabel?.text == "Continue" {
+        if sender.titleLabel?.text == "Continue" || sender.titleLabel?.text == "View Result" {
             selectedIndex = nil
             goToNextQuestion()
             continueBtn.setTitle("Check", for: .normal)
@@ -87,13 +90,19 @@ class QuestionViewController: UIViewController {
         } else {
             checkAnswerBtn()
             if selectedIndex == correctAnswerIndex  {
-                continueBtn.setTitle("Continue", for: .normal)
-                continueBtn.backgroundColor = UIColor.continueBtnColor()
+                if currentQuestionNumber+1 == questions.count {
+                    continueBtn.setTitle("View Result", for: .normal)
+                } else {
+                    continueBtn.setTitle("Continue", for: .normal)
+                }
+                continueBtn.backgroundColor = UIColor.selectBtnColor()
                 continueBtn.setNeedsLayout()
                 continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
             }
         }
     }
+    
+
     private func setQuestionFonts() {
         oprand1Label.font = UIFont.myAppBodyFonts()
     }
@@ -120,10 +129,12 @@ class QuestionViewController: UIViewController {
     }
     
     private func goToNextQuestion() {
+        enableAll()
         currentQuestionNumber += 1
-        let value:Float = Float(currentQuestionNumber)/Float(questions.count)
+        let value:Float = Float(currentQuestionNumber+1)/Float(questions.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
+        
         if currentQuestionNumber == questions.count {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
@@ -147,22 +158,35 @@ class QuestionViewController: UIViewController {
     
     private func setTappedbtnFalse() {
         selectedIndex = nil
+       
     }
+    private func setAllDisableBtn() {
+        optionButtons.forEach { $0.isEnabled = false }
+    }
+    private func enableAll() {
+        optionButtons.forEach { $0.isEnabled = true }
+    }
+    
+    
     
     private func disabledAll() {
         if optionButtons.isEmpty {
             optionButtons.forEach { $0.isEnabled = true }
         } else {
             setTappedbtnFalse()
+            
         }
     }
     
     private func checkAnswer(idx: Int) -> Bool {
         let currentModel = questions[currentQuestionNumber]
         if currentModel.correctAnswer == idx {
+            
             if isFirstTimeTapped{
                 noCorrect += 1
             }
+            setAllDisableBtn()
+          
             return true
         }
         return false
@@ -182,6 +206,7 @@ class QuestionViewController: UIViewController {
     
     private func resetOptionBtnColor() {
         optionButtons.forEach { $0.backgroundColor = UIColor.buttonBackgroundColor() }
+       
         
     }
     
