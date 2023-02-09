@@ -27,10 +27,18 @@ class QuestionViewController: UIViewController {
     private var optionButtons = [UIButton]()
     
     private var questions: [Model] = [
-        Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3)
-//        Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
-//        Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
-//        Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
+        Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
+        Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
+        Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
+        Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
+        
+    ]
+    
+    private var questions2: [Model2] = [
+        Model2(num1: 69, num2: 13, operation: "+", answer: [81,83,82,87], correctAnswer: 2),
+        Model2(num1: 89, num2: 41, operation: "-", answer: [43,45,48,49], correctAnswer: 2),
+        Model2(num1: 8769, num2: 3, operation: "×", answer: [26307,25807,26302,26308], correctAnswer: 0),
+        Model2(num1: 5918, num2: 2, operation: "÷", answer: [2995,2969,3969,2959], correctAnswer: 3)
     ]
     
     override func viewDidLoad() {
@@ -59,7 +67,9 @@ class QuestionViewController: UIViewController {
     
     fileprivate func setupModel() {
         let model = questions[0]
+        let model2 = questions2[0]
         setQuestions(model: model)
+        
     }
     
     fileprivate func addOptionButtons() {
@@ -244,6 +254,15 @@ struct Model {
     let answer: [Int]
     let correctAnswer: Int
 }
+//
+struct Model2 {
+    let num1:Int
+    let num2:Int
+    let operation: String
+    let answer: [Int]
+    let correctAnswer: Int
+}
+//
 extension UIView {
     func shake(){
         let animation = CABasicAnimation(keyPath: "position")

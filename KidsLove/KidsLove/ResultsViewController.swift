@@ -25,11 +25,7 @@ class ResultsViewController: UIViewController {
     
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()

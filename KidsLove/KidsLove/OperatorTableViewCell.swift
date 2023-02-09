@@ -46,13 +46,12 @@ class OperatorTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     private func makeButtonRound() {
-        easyButton.layer.cornerRadius = easyButton.bounds.size.width / 2
-        mediumButton.layer.cornerRadius = 0.475 * mediumButton.bounds.size.width
-        roundingButton.layer.cornerRadius = 0.475 * roundingButton.bounds.size.width
-        chainsButton.layer.cornerRadius = 0.475 * chainsButton.bounds.size.width
-        hardButton.layer.cornerRadius = 0.475 * hardButton.bounds.size.width
-        reviewButton.layer.cornerRadius = 0.475 * reviewButton.bounds.size.width
-        
+        easyButton.layer.cornerRadius = easyButton.bounds.width / 2
+        mediumButton.layer.cornerRadius = mediumButton.bounds.size.width / 2 
+        roundingButton.layer.cornerRadius = roundingButton.bounds.size.width / 2
+        chainsButton.layer.cornerRadius = chainsButton.bounds.size.width / 2
+        hardButton.layer.cornerRadius = hardButton.bounds.size.width / 2
+        reviewButton.layer.cornerRadius = reviewButton.bounds.size.width / 2
     }
     
     func setProgressAnimation() {
@@ -60,7 +59,7 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func setUpCircularProgressBarView(button: UIButton) {
-        button.createCircularPath(duration: circularViewDuration, progress: .oneThird)
+        button.createCircularPath(duration: circularViewDuration, progress: .complete)
     }
     
     private func setFontsAndColor() {
@@ -88,18 +87,21 @@ extension UIButton {
         let progressLayer = CAShapeLayer()
         let startPoint = CGFloat(-Double.pi / 2)
         let endPoint = CGFloat(3 * Double.pi / 2)
-        let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: 55, startAngle: startPoint, endAngle: endPoint, clockwise: true)
-        
-        progressLayer.path = circularPath.cgPath
-        progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.lineCap = .round
-        progressLayer.lineWidth = 16.0
-        progressLayer.strokeEnd = 0
-        progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor
-        layer.addSublayer(progressLayer)
+            // created circularPath for circleLayer and progressLayer
+            let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: 52, startAngle: startPoint, endAngle: endPoint, clockwise: true)
+           
+            progressLayer.path = circularPath.cgPath
+            // ui edits
+            progressLayer.fillColor = UIColor.clear.cgColor
+            progressLayer.lineCap = .round
+            progressLayer.lineWidth = 16.0
+            progressLayer.strokeEnd = 0
+        progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor            // added progressLayer to layer
+            layer.addSublayer(progressLayer)
+
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.duration = duration
-        circularProgressAnimation.toValue = 1
+        circularProgressAnimation.toValue = progress.progress
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")

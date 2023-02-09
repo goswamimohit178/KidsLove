@@ -13,15 +13,6 @@ class ViewController: UIViewController {
            self.navigationController?.pushViewController(HomeViewController(), animated: true)
        
     }
-    
-    @IBOutlet weak var showButtonTapped: UIButton!
-    
-    @IBAction func showButtonTappped(_ sender: Any) {
-       
-        
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        // self.navigationController?.pushViewController(HomeViewController(), animated: true)

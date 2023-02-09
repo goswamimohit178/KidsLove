@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="landscape" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -35,6 +35,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-Ox-5yk">
                                 <rect key="frame" x="297" y="8.3333333333333321" width="107" height="55.333333333333343"/>
+
                                 <color key="tintColor" red="0.50196081400000003" green="0.64705884459999996" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-vd-KVu">
@@ -67,6 +68,7 @@
                         <rect key="frame" x="151.66666666666666" y="122" width="101" height="101"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
+
                             <constraint firstAttribute="width" secondItem="hcm-Hq-4jR" secondAttribute="height" id="gqn-Io-5cW"/>
                             <constraint firstAttribute="width" constant="101" id="z6d-UV-BGP"/>
                         </constraints>
@@ -84,7 +86,7 @@
                         <rect key="frame" x="40" y="303" width="101" height="101"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="101" id="VQS-co-vbx"/>
+                            <constraint firstAttribute="width" secondItem="GRi-tB-hrQ" secondAttribute="height" id="eYB-VN-GD8"/>
                         </constraints>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -107,7 +109,7 @@
                         <rect key="frame" x="151.66666666666666" y="484" width="101" height="101"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="101" id="4ht-W6-8gU"/>
+                            <constraint firstAttribute="width" secondItem="MhT-Nz-tb8" secondAttribute="height" id="XaT-8M-Obf"/>
                         </constraints>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -117,7 +119,7 @@
                         <rect key="frame" x="40" y="665" width="101" height="101"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="101" id="yNV-87-RuJ"/>
+                            <constraint firstAttribute="width" secondItem="Sod-ke-cIz" secondAttribute="height" id="evY-jp-ZnT"/>
                         </constraints>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
