@@ -79,6 +79,7 @@ struct UnitModel {
     let roundingLabel: String
     let reviewLabel: String
 }
+
 class CircularProgressBarView: UIView {
     
        private var circleLayer = CAShapeLayer()
@@ -100,7 +101,7 @@ class CircularProgressBarView: UIView {
             let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
             // set the end time
             circularProgressAnimation.duration = duration
-            circularProgressAnimation.toValue = 1
+            circularProgressAnimation.toValue = 2
             circularProgressAnimation.fillMode = .forwards
             circularProgressAnimation.isRemovedOnCompletion = false
             progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
@@ -111,4 +112,15 @@ enum Progress {
     case oneThird
     case twoThird
     case complete
+    var progress: Float {
+        switch self {
+            
+        case .oneThird:
+            return 0.33
+        case .twoThird:
+            return 0.66
+        case .complete:
+            return 0.99
+        }
+    }
 }

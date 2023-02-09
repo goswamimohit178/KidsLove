@@ -60,11 +60,11 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func setProgressAnimation() {
-//        setUpCircularProgressBarView(button: easyButton)
+        setUpCircularProgressBarView(button: easyButton)
     }
     
     func setUpCircularProgressBarView(button: UIButton) {
-        button.createCircularPath(duration: circularViewDuration, progress: .oneThird)
+        button.createCircularPath(duration: circularViewDuration, progress: .complete)
     }
     
 }
@@ -89,7 +89,7 @@ extension UIButton {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         // set the end time
         circularProgressAnimation.duration = duration
-        circularProgressAnimation.toValue = 0.33
+        circularProgressAnimation.toValue = progress.progress
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
