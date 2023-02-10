@@ -25,21 +25,9 @@ class QuestionViewController: UIViewController {
     private var isFirstTimeTapped: Bool = true
     
     private var optionButtons = [UIButton]()
+     
     
-    private var questions: [Model] = [
-        Model(num1: 12, num2: 13, operation: "+", answer: [21,41,51,25], correctAnswer: 3),
-        Model(num1: 97, num2: 41, operation: "-", answer: [43,33,56,54], correctAnswer: 2),
-        Model(num1: 66, num2: 3, operation: "×", answer: [198,345,43,222], correctAnswer: 0),
-        Model(num1: 18, num2: 6, operation: "÷", answer: [2,33,4,3], correctAnswer: 3)
-        
-    ]
-    
-    private var questions2: [Model2] = [
-        Model2(num1: 69, num2: 13, operation: "+", answer: [81,83,82,87], correctAnswer: 2),
-        Model2(num1: 89, num2: 41, operation: "-", answer: [43,45,48,49], correctAnswer: 2),
-        Model2(num1: 8769, num2: 3, operation: "×", answer: [26307,25807,26302,26308], correctAnswer: 0),
-        Model2(num1: 5918, num2: 2, operation: "÷", answer: [2995,2969,3969,2959], correctAnswer: 3)
-    ]
+    var questionList: [Question]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +40,7 @@ class QuestionViewController: UIViewController {
         continueBtn.titleLabel?.tintColor = UIColor.bodyFontColor()
         progressBar.transform = CGAffineTransformMakeScale(1.0, 3.0)
         progressBar.layer.cornerRadius = 50
-        let value:Float = Float(1)/Float(questions.count)
+        let value:Float = Float(1)/Float(questionList.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
         
@@ -66,8 +54,7 @@ class QuestionViewController: UIViewController {
     }
     
     fileprivate func setupModel() {
-        let model = questions[0]
-        let model2 = questions2[0]
+        let model = questionList[0]
         setQuestions(model: model)
         
     }
@@ -90,7 +77,7 @@ class QuestionViewController: UIViewController {
         } else {
             checkAnswerBtn()
             if selectedIndex == correctAnswerIndex  {
-                if currentQuestionNumber+1 == questions.count {
+                if currentQuestionNumber+1 == questionList.count {
                     continueBtn.setTitle("View Result", for: .normal)
                 } else {
                     continueBtn.setTitle("Continue", for: .normal)
@@ -108,7 +95,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func correctAnsIndex() -> Int {
-        let currentQuestion = questions[currentQuestionNumber]
+        let currentQuestion = questionList[currentQuestionNumber]
         let correctAnswerIndex = currentQuestion.correctAnswer
         return correctAnswerIndex
     }
@@ -131,17 +118,17 @@ class QuestionViewController: UIViewController {
     private func goToNextQuestion() {
         enableAll()
         currentQuestionNumber += 1
-        let value:Float = Float(currentQuestionNumber+1)/Float(questions.count)
+        let value:Float = Float(currentQuestionNumber+1)/Float(questionList.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
         
-        if currentQuestionNumber == questions.count {
+        if currentQuestionNumber == questionList.count {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
-            resultVC.totalMarks = questions.count
+            resultVC.totalMarks = questionList.count
             navigationController?.pushViewController(resultVC, animated: true)
         } else {
-            let model = questions[currentQuestionNumber]
+            let model = questionList[currentQuestionNumber]
             setQuestions(model: model)
         }
         isFirstTimeTapped = true
@@ -179,7 +166,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func checkAnswer(idx: Int) -> Bool {
-        let currentModel = questions[currentQuestionNumber]
+        let currentModel = questionList[currentQuestionNumber]
         if currentModel.correctAnswer == idx {
             
             if isFirstTimeTapped{
@@ -210,7 +197,7 @@ class QuestionViewController: UIViewController {
         
     }
     
-    private func setQuestions(model: Model){
+    private func setQuestions(model: Question){
         oprand1Label.text = String(model.num1) + " " + String(model.operation) + " " + String(model.num2) + " = " + " ?? "
         
         for (index, button) in optionButtons.enumerated() {
@@ -247,22 +234,13 @@ extension UIButton {
     }
 }
 
-struct Model {
-    let num1:Int
-    let num2:Int
-    let operation: String
-    let answer: [Int]
-    let correctAnswer: Int
-}
-//
-struct Model2 {
-    let num1:Int
-    let num2:Int
-    let operation: String
-    let answer: [Int]
-    let correctAnswer: Int
-}
-//
+//struct Model {
+//    let num1:Int
+//    let num2:Int
+//    let operation: String
+//    let answer: [Int]
+//    let correctAnswer: Int
+//}
 extension UIView {
     func shake(){
         let animation = CABasicAnimation(keyPath: "position")

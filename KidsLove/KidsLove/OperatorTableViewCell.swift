@@ -9,7 +9,7 @@ import UIKit
 
 class OperatorTableViewCell: UITableViewCell {
     
-    var buttonTappedAction: (() -> Void)?
+    var buttonTappedAction: (([Question]) -> Void)?
     @IBOutlet weak var unitNumberLabel: UILabel!
     @IBOutlet weak var chapterNameLabel: UILabel!
     @IBOutlet weak var easyButton: UIButton!
@@ -27,14 +27,16 @@ class OperatorTableViewCell: UITableViewCell {
     @IBOutlet weak var tittleView: UIView!
     @IBOutlet weak var buttonHeightConstarint: NSLayoutConstraint!
     private var circularViewDuration: TimeInterval = 2
-    
+    var unit:Unit!
     private var buttonWidth: CGFloat = 150
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
+        buttonTappedAction!(unit.levels.mediumLevel.questions)
         
     }
     @IBAction func easyButtonTapped(_ sender: Any) {
-        buttonTappedAction!()
+        
+        buttonTappedAction!(unit.levels.easyLevel.questions)
     }
     
     override func awakeFromNib() {
@@ -42,6 +44,10 @@ class OperatorTableViewCell: UITableViewCell {
         setFontsAndColor()
         makeButtonRound()
         buttonHeightConstarint.constant = buttonWidth
+    }
+    
+    private func setDataCell() {
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
