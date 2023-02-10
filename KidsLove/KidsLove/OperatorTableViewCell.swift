@@ -24,21 +24,24 @@ class OperatorTableViewCell: UITableViewCell {
     @IBOutlet weak var chainsLabel: UILabel!
     @IBOutlet weak var roundingLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
-    
+    @IBOutlet weak var tittleView: UIView!
+    @IBOutlet weak var buttonHeightConstarint: NSLayoutConstraint!
     private var circularViewDuration: TimeInterval = 2
+    
+    private var buttonWidth: CGFloat = 150
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
         
     }
     @IBAction func easyButtonTapped(_ sender: Any) {
         buttonTappedAction!()
-        
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setFontsAndColor()
         makeButtonRound()
+        buttonHeightConstarint.constant = buttonWidth
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,12 +49,12 @@ class OperatorTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     private func makeButtonRound() {
-        easyButton.layer.cornerRadius = easyButton.bounds.width / 2
-        mediumButton.layer.cornerRadius = mediumButton.bounds.size.width / 2 
-        roundingButton.layer.cornerRadius = roundingButton.bounds.size.width / 2
-        chainsButton.layer.cornerRadius = chainsButton.bounds.size.width / 2
-        hardButton.layer.cornerRadius = hardButton.bounds.size.width / 2
-        reviewButton.layer.cornerRadius = reviewButton.bounds.size.width / 2
+        easyButton.layer.cornerRadius = buttonWidth / 2.0
+        mediumButton.layer.cornerRadius = buttonWidth / 2.0
+        roundingButton.layer.cornerRadius = buttonWidth / 2.0
+        chainsButton.layer.cornerRadius = buttonWidth / 2.0
+        hardButton.layer.cornerRadius = buttonWidth / 2.0
+        reviewButton.layer.cornerRadius = buttonWidth / 2.0
     }
     
     func setProgressAnimation() {
@@ -59,7 +62,7 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func setUpCircularProgressBarView(button: UIButton) {
-        button.createCircularPath(duration: circularViewDuration, progress: .complete)
+        button.createCircularPath(duration: circularViewDuration, progress: .complete, buttonWidth: buttonWidth)
     }
     
     private func setFontsAndColor() {
@@ -77,18 +80,18 @@ class OperatorTableViewCell: UITableViewCell {
         chainsButton.backgroundColor = UIColor.homeButtonColor()
         roundingButton.backgroundColor = UIColor.homeButtonColor()
         reviewButton.backgroundColor = UIColor.homeButtonColor()
-        
+        tittleView.backgroundColor = UIColor.homeButtonColor()
     }
     
 }
 
 extension UIButton {
-    func createCircularPath(duration: TimeInterval, progress: Progress) {
+    func createCircularPath(duration: TimeInterval, progress: Progress, buttonWidth: CGFloat) {
         let progressLayer = CAShapeLayer()
         let startPoint = CGFloat(-Double.pi / 2)
         let endPoint = CGFloat(3 * Double.pi / 2)
             // created circularPath for circleLayer and progressLayer
-            let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: 52, startAngle: startPoint, endAngle: endPoint, clockwise: true)
+            let circularPath = UIBezierPath(arcCenter: CGPoint(x: (buttonWidth / 2.0), y: (buttonWidth / 2.0)), radius: buttonWidth / 2.0, startAngle: startPoint, endAngle: endPoint, clockwise: true)
            
             progressLayer.path = circularPath.cgPath
             // ui edits
@@ -97,8 +100,7 @@ extension UIButton {
             progressLayer.lineWidth = 16.0
             progressLayer.strokeEnd = 0
         progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor            // added progressLayer to layer
-            layer.addSublayer(progressLayer)
-
+        layer.addSublayer(progressLayer)
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.duration = duration
         circularProgressAnimation.toValue = progress.progress
@@ -106,7 +108,6 @@ extension UIButton {
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
     }
-    
 }
 
 
