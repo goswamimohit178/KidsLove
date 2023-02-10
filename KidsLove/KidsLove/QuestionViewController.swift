@@ -29,6 +29,7 @@ class QuestionViewController: UIViewController {
     
     var questionList: [Question]!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addOptionButtons()
@@ -198,7 +199,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func setQuestions(model: Question){
-        oprand1Label.text = String(model.num1) + " " + String(model.operation) + " " + String(model.num2) + " = " + " ?? "
+        oprand1Label.text = model.questionText
         
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
