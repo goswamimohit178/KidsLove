@@ -3,28 +3,35 @@
 //  KidsLove
 //
 //  Created by Vikash on 08/02/23.
-//
-//
-//import Foundation
-//
-//struct ModelOne {
-//    var math: [unit]
-//}
-//struct unit {
-//    var unitNumber: String
-//    var chapterName: String
-//    let easyLabel: String
-//    let mediumlabel: String
-//    let hardLabel: String
-//    let chainsLabel: String
-//    let roundingLabel: String
-//    let reviewLabel: String
-//}
-//
-//struct questions {
-//    let num1:Int
-//    let num2:Int
-//    let operation: String
-//    let answer: [Int]
-//    let correctAnswer: Int
-//}
+
+
+import Foundation
+
+struct SubjectModel {
+    var math: [Unit]
+}
+
+struct Unit {
+    var unitNumber: String
+    var chapterName: String
+    var levels: Level
+}
+struct Level {
+    var easyLevel: LevelCellModel
+    var hardLevel: LevelCellModel
+    var mediumLevel: LevelCellModel
+    var chainsLevel: LevelCellModel
+    var roundingLevel: LevelCellModel
+    var reviewLevel: LevelCellModel
+}
+struct LevelCellModel {
+    let title: String
+    var questions:[Question]
+}
+struct Question {
+    let num1:Int
+    let num2:Int
+    let operation: String
+    let answer: [Int]
+    let correctAnswer: Int
+}
