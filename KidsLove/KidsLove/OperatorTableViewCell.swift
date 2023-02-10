@@ -39,6 +39,11 @@ class OperatorTableViewCell: UITableViewCell {
         buttonTappedAction!(unit.levels.easyLevel.questions)
     }
     
+    @IBAction func hardButtonTapped(_ sender: Any) {
+        buttonTappedAction!(unit.levels.hardLevel.questions)
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setFontsAndColor()

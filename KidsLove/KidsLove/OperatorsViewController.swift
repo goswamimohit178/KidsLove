@@ -29,33 +29,30 @@ final class OperatorsViewController: UIViewController {
     private func setLevelWise() {
         
         let questionList: [Question] = [
-         Question(num1: 12, num2: 3, operation: "×", answer: [26,33,36,31], correctAnswer: 2),
-         Question(num1: 9, num2: 4, operation: "×", answer: [43,36,56,54], correctAnswer: 1),
-         Question(num1: 6, num2: 3, operation: "×", answer: [18,34,23,22], correctAnswer: 0),
-         Question(num1: 8, num2: 6, operation: "×", answer: [28,37,48,38], correctAnswer: 2)
+            Question(questionText: "12 × 3 = ?", answer: [26,33,36,31], correctAnswer: 2),
+         Question(questionText: "9 × 4 = ?", answer: [43,36,56,54], correctAnswer: 1),
+         Question(questionText: "6 × 3 = ?", answer: [18,34,23,22], correctAnswer: 0),
+         Question(questionText: "8 × 6 = ?", answer: [28,37,48,38], correctAnswer: 2)
 
      ]
         let mediumQuestionList: [Question] = [
-            Question(num1: 60, num2: 7, operation: "×", answer: [400,420,520,720], correctAnswer: 1),
-            Question(num1: 33, num2: 7, operation: "×", answer: [400,420,231,731], correctAnswer: 2),
-            Question(num1: 40, num2: 7, operation: "×", answer: [400,420,280,720], correctAnswer: 2),
-            Question(num1: 5, num2: 55, operation: "×", answer: [275,285,239,710], correctAnswer: 0)
-        
-        
+            Question(questionText: "60 × 7 = ?", answer: [400,420,520,720], correctAnswer: 1),
+            Question(questionText: "33 × 7 = ?", answer: [400,420,231,731], correctAnswer: 2),
+            Question(questionText: "40 × 7 = ?", answer: [400,420,280,720], correctAnswer: 2),
+            Question(questionText: "5 × 55 = ?", answer: [275,285,239,710], correctAnswer: 0)
         ]
         
-        let hardQuestionList: [Question] = [
-            Question(num1: 666, num2: 7, operation: "×", answer: [400,420,520,720], correctAnswer: 1),
-            Question(num1: 33, num2: 7, operation: "×", answer: [400,420,231,731], correctAnswer: 2),
-            Question(num1: 40, num2: 7, operation: "×", answer: [400,420,280,720], correctAnswer: 2),
-            Question(num1: 5, num2: 55, operation: "×", answer: [275,285,239,710], correctAnswer: 0)
-        
-        
+        let hardQuestionList: [Question] =  [
+            Question(questionText: "88 × 2 × 5 = ??", answer: [882,880,870,881], correctAnswer: 1),
+            Question(questionText: "90 × 3 × 7 = ??", answer: [1882,1880,1890,1881], correctAnswer: 2),
+            Question(questionText: "69 × 6 × 4 = ??", answer: [1682,1656,1670,1881], correctAnswer: 1),
+            Question(questionText: "89 × 7 × 9 = ??", answer: [5601,5602,5607,5606], correctAnswer: 2)
+            
         ]
         
         let easyLevelCellModel = LevelCellModel(title: "Easy", questions: questionList)
         let mediumLevelCellModel = LevelCellModel(title: "Medium", questions: mediumQuestionList)
-        let hardLevelCellModel = LevelCellModel(title: "Hard", questions: [Question]())
+        let hardLevelCellModel = LevelCellModel(title: "Hard", questions: hardQuestionList)
         let chainsLevelCellModel = LevelCellModel(title: "Chain", questions: [Question]())
         let roundingLevelCellModel = LevelCellModel(title: "Rounding", questions: [Question]())
         let reviewLevelCellModel = LevelCellModel(title: "Review", questions: [Question]())

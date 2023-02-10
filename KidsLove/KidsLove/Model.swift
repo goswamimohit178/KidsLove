@@ -29,9 +29,7 @@ struct LevelCellModel {
     var questions:[Question]
 }
 struct Question {
-    let num1:Int
-    let num2:Int
-    let operation: String
+    let questionText: String
     let answer: [Int]
     let correctAnswer: Int
 }
