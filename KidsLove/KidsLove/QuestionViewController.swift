@@ -17,7 +17,10 @@ class QuestionViewController: UIViewController {
     @IBOutlet private weak var option4Btn: UIButton!
     @IBOutlet private weak var continueBtn: UIButton!
     @IBOutlet private weak var oprand1Label: UILabel!
-    
+    var opratorVC: OperatorsViewController!
+    var currentUnitNumber: Int!
+    var currentLevelType: LevelType!
+
     
     private var currentQuestionNumber = 0
     private var noCorrect: Int = 0
@@ -127,6 +130,9 @@ class QuestionViewController: UIViewController {
             let resultVC = ResultsViewController()
             resultVC.correctAnswer = noCorrect
             resultVC.totalMarks = questionList.count
+            resultVC.opratorVC = opratorVC
+            resultVC.currentUnitNumber = currentUnitNumber
+            resultVC.currentLevelType = currentLevelType
             navigationController?.pushViewController(resultVC, animated: true)
         } else {
             let model = questionList[currentQuestionNumber]
