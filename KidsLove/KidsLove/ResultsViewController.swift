@@ -18,13 +18,23 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var goToHomeLabel: UIButton!
     @IBOutlet weak var fractionViewDivision: UIView!
-    
-    @IBAction func goToHomeButton(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
+    var progress: Progress = .twoThird
+    var opratorVC: OperatorsViewController!
+    var currentUnitNumber: Int!
+    var currentLevelType: LevelType!
+    @IBAction func goToHomeButton(_ sender: Any) {
+        
+        self.navigationController?.popToViewController(opratorVC, animated: true)
+        
+        if correctAnswer > 2 {
+            opratorVC.setProgess(progress: .complete, unitNumber: currentUnitNumber, levelType: currentLevelType)
+        }
+ 
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
