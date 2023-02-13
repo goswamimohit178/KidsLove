@@ -16,6 +16,7 @@ final class OperatorsViewController: UIViewController {
     @IBOutlet weak var myView: UIView!
     
     private var model: SubjectModel!
+    var currentUnit = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,7 @@ extension OperatorsViewController: UITableViewDataSource{
         questionVC.questionList = questions
         questionVC.opratorVC = self
         
-        questionVC.currentUnitNumber = 0
+        questionVC.currentUnitNumber = currentUnit
         questionVC.currentLevelType = levelType
         navigationController?.pushViewController(questionVC, animated: true)
         

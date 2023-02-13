@@ -51,6 +51,7 @@ class OperatorTableViewCell: UITableViewCell {
         setFontsAndColor()
         makeButtonRound()
         buttonHeightConstarint.constant = buttonWidth
+     
     }
     
      func setDataCell() {
@@ -78,6 +79,11 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func setProgressAnimation() {
+        easyButton.layer.sublayers?.forEach({ layer in
+            if layer is CAShapeLayer {
+                layer.removeFromSuperlayer()
+            }
+        })
         setUpCircularProgressBarView(button: easyButton, progress: unit.levels.easyLevel.progress)
         setUpCircularProgressBarView(button: mediumButton, progress: unit.levels.mediumLevel.progress)
         setUpCircularProgressBarView(button: hardButton, progress: unit.levels.hardLevel.progress)
