@@ -17,6 +17,9 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var goToHomeLabel: UIButton!
+    
+    @IBOutlet weak var percentageSignLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var fractionViewDivision: UIView!
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
@@ -24,6 +27,11 @@ class ResultsViewController: UIViewController {
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelType: LevelType!
+    var percentage: Float!
+    
+    @IBOutlet weak var percentageLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var percentageSignLableTrailingConstraint: NSLayoutConstraint!
     @IBAction func goToHomeButton(_ sender: Any) {
         
         self.navigationController?.popToViewController(opratorVC, animated: true)
@@ -39,9 +47,9 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
-        self.yourMarks.text = String(correctAnswer)
-        self.totalMarksOfAll.text = String(totalMarks)
-        
+        self.yourMarks.text = String((correctAnswer / totalMarks) * 100)
+        self.percentageLabel.text = "%"
+        labelAnimation()
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
@@ -52,15 +60,14 @@ class ResultsViewController: UIViewController {
         self.view.addSubview(vc.view)
         vc.view.center = CGPoint(x: view.frame.size.width  / 2,
                                  y: view.frame.size.height / 2)
+        
     }
-    
-    
     private func fontAndColorResults() {
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
         headerView.layer.cornerRadius = 0.05 * headerView.bounds.size.width
         yourMarks.font = UIFont.myAppBodyFonts()
-        totalMarksOfAll.font = UIFont.myAppBodyFonts()
         yourScoreLabel.font = UIFont.myAppBodyFonts()
+        percentageLabel.font = UIFont.myAppBodyFonts()
         continueButton.titleLabel?.font = UIFont.myAppBodyFonts()
         headerView.backgroundColor = UIColor.homeButtonColor()
         footerView.backgroundColor = UIColor.homeButtonColor()
@@ -68,22 +75,28 @@ class ResultsViewController: UIViewController {
         goToHomeLabel.titleLabel?.font = UIFont.myAppBodyFonts()
         headerLabel.tintColor = UIColor.bodyFontColor()
         goToHomeLabel.tintColor = UIColor.bodyFontColor()
-        fractionViewDivision.backgroundColor = UIColor.bodyFontColor()
         
     }
+    private func labelAnimation() {
+        self.percentageLeadingConstraint.constant = (view.frame.width / 2.0) - (yourMarks.bounds.width)
+        self.percentageSignLableTrailingConstraint.constant = (view.frame.width / 2.0) - (percentageSignLabel.bounds.width)
+        UIView.animate(withDuration: 0.8, animations: {
+            self.view.layoutIfNeeded()
+        });
+   }
 }
 struct ContentView: View {
     var body: some View {
         ZStack {
             Circle()
                 .fill(Color.pink)
-                .frame(width: 20, height: 20)
+                .frame(width: 10, height: 10)
                 .modifier(ParticlesModifier())
                 .offset(x: -100, y : -50)
             
             Circle()
                 .fill(Color.orange)
-                .frame(width: 60, height: 50)
+                .frame(width: 10, height: 10)
                 .modifier(ParticlesModifier())
                 .offset(x: 50, y : 60)
             
@@ -93,7 +106,7 @@ struct ContentView: View {
 struct ParticlesModifier: ViewModifier {
     @State var time = 0.0
     @State var scale = 0.1
-    let duration = 5.0
+    let duration = 3.0
     @State private var radius = 2
     //private var opacity = 0.25
     
