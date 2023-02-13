@@ -40,10 +40,11 @@ class QuestionViewController: UIViewController {
         setupModel()
         setCornerRadius()
         setOptionButtonsShadow()
+        //r̥overrideUserInterfaceStyle = .dark
         continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
         continueBtn.titleLabel?.tintColor = UIColor.bodyFontColor()
         progressBar.transform = CGAffineTransformMakeScale(1.0, 3.0)
-        progressBar.layer.cornerRadius = 50
+        progressBar.layer.cornerRadius = 30
         let value:Float = Float(1)/Float(questionList.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
