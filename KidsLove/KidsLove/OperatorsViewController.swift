@@ -16,10 +16,11 @@ final class OperatorsViewController: UIViewController {
     @IBOutlet weak var myView: UIView!
     
     private var model: SubjectModel!
+    var currunit = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var unitNameList = NetworkService().setLevelWise()
+        let unitNameList = NetworkService().setLevelWise()
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
         headerLabel.font = UIFont.myAppBodyFonts()
@@ -55,18 +56,20 @@ extension OperatorsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
         let unitModel = model.math[indexPath.row]
+        cell.currUnit = indexPath.row
         cell.unit = unitModel
         cell.setDataCell()
+        cell.disableBtnForProgress(unit: unitModel)
         cell.setProgressAnimation()
         cell.buttonTappedAction = presentQuestionController
         return cell
     }
-    func presentQuestionController(questions: [Question], levelType: LevelType) {
+    func presentQuestionController(questions: [Question], levelType: LevelType , unitNumber: Int) {
         let questionVC = QuestionViewController()
         questionVC.questionList = questions
         questionVC.opratorVC = self
         
-        questionVC.currentUnitNumber = 0
+        questionVC.currentUnitNumber = unitNumber
         questionVC.currentLevelType = levelType
         navigationController?.pushViewController(questionVC, animated: true)
         

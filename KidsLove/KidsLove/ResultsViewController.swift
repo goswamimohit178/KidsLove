@@ -29,9 +29,9 @@ class ResultsViewController: UIViewController {
     var currentLevelType: LevelType!
     var percentage: Float!
     
-    @IBOutlet weak var percentageLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var percentageTrailingConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var percentageSignLableTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var percentageSignLableLeadingConstraint: NSLayoutConstraint!
     @IBAction func goToHomeButton(_ sender: Any) {
         
         self.navigationController?.popToViewController(opratorVC, animated: true)
@@ -75,11 +75,15 @@ class ResultsViewController: UIViewController {
         goToHomeLabel.titleLabel?.font = UIFont.myAppBodyFonts()
         headerLabel.tintColor = UIColor.bodyFontColor()
         goToHomeLabel.tintColor = UIColor.bodyFontColor()
+        percentageLabel.font = UIFont.myAppBodyFonts()
+        percentageLabel.tintColor  = UIColor.bodyFontColor()
+        yourScoreLabel.font = UIFont.myAppBodyFonts()
+        yourScoreLabel.tintColor = UIColor.bodyFontColor()
         
     }
     private func labelAnimation() {
-        self.percentageLeadingConstraint.constant = (view.frame.width / 2.0) - (yourMarks.bounds.width)
-        self.percentageSignLableTrailingConstraint.constant = (view.frame.width / 2.0) - (percentageSignLabel.bounds.width)
+        self.percentageTrailingConstraint.constant = (view.frame.width / 2.0)
+        self.percentageSignLableLeadingConstraint.constant = (view.frame.width / 2.0)
         UIView.animate(withDuration: 0.8, animations: {
             self.view.layoutIfNeeded()
         });

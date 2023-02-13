@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -17,9 +17,9 @@
                 <outlet property="headerLabel" destination="dFX-Pl-pA2" id="FRQ-Yq-mtY"/>
                 <outlet property="headerView" destination="z97-tO-hyd" id="abc-wI-XIN"/>
                 <outlet property="percentageLabel" destination="D9l-mb-UPy" id="50o-nH-bmW"/>
-                <outlet property="percentageLeadingConstraint" destination="hfp-UL-ZMy" id="mZm-D2-yhE"/>
                 <outlet property="percentageSignLabel" destination="D9l-mb-UPy" id="El8-eW-YO7"/>
-                <outlet property="percentageSignLableTrailingConstraint" destination="z35-Ui-nzq" id="rzz-Ci-lr4"/>
+                <outlet property="percentageSignLableLeadingConstraint" destination="9eu-0X-ciW" id="0lT-jD-iIh"/>
+                <outlet property="percentageTrailingConstraint" destination="YyX-wB-FIZ" id="dxg-pm-blb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yourMarks" destination="Yc9-W7-ZJC" id="SKI-hA-tjH"/>
                 <outlet property="yourScoreLabel" destination="dFX-Pl-pA2" id="F7m-Rp-lJb"/>
@@ -49,7 +49,7 @@
                         <constraint firstItem="dFX-Pl-pA2" firstAttribute="leading" secondItem="z97-tO-hyd" secondAttribute="leading" id="m4L-Z8-zvJ"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-W7-ZJC">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-W7-ZJC">
                     <rect key="frame" x="0.0" y="437.33333333333331" width="64.333333333333329" height="64.333333333333314"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Yc9-W7-ZJC" secondAttribute="height" id="sGm-ce-bD5"/>
@@ -64,7 +64,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAg-WL-xWR">
                             <rect key="frame" x="0.0" y="0.0" width="398.66666666666669" height="70"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Go To Home"/>
+                            <state key="normal" title="Go To Home">
+                                <color key="titleColor" name="textColor"/>
+                            </state>
                             <connections>
                                 <action selector="goToHomeButton:" destination="-1" eventType="touchUpInside" id="eKo-XJ-gbq"/>
                             </connections>
@@ -80,35 +82,39 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9l-mb-UPy">
-                    <rect key="frame" x="363.66666666666669" y="437.33333333333331" width="64.333333333333314" height="64.333333333333314"/>
+                    <rect key="frame" x="311" y="437.33333333333331" width="64.333333333333314" height="64.333333333333314"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="z97-tO-hyd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0xT-gU-GH9"/>
                 <constraint firstItem="D9l-mb-UPy" firstAttribute="height" secondItem="Yc9-W7-ZJC" secondAttribute="height" id="5u0-dl-2fe"/>
                 <constraint firstItem="z97-tO-hyd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="73q-nB-7Ci"/>
+                <constraint firstItem="D9l-mb-UPy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="311" id="9eu-0X-ciW"/>
                 <constraint firstItem="Yc9-W7-ZJC" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.15" id="Ouu-RO-PbV"/>
                 <constraint firstItem="z97-tO-hyd" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="RZh-Ef-5qS"/>
                 <constraint firstItem="D9l-mb-UPy" firstAttribute="width" secondItem="Yc9-W7-ZJC" secondAttribute="width" id="Ra0-Sy-lgl"/>
                 <constraint firstItem="mmd-9J-X3C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14.666666666666657" id="T3X-ip-rMd"/>
                 <constraint firstItem="D9l-mb-UPy" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Ulz-Ac-KnO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yc9-W7-ZJC" secondAttribute="trailing" constant="363.67000000000002" id="YyX-wB-FIZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mmd-9J-X3C" secondAttribute="bottom" constant="60" id="agd-3B-3BT"/>
                 <constraint firstItem="Yc9-W7-ZJC" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="gbw-tk-ceJ"/>
-                <constraint firstItem="Yc9-W7-ZJC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hfp-UL-ZMy"/>
-                <constraint firstAttribute="trailing" secondItem="D9l-mb-UPy" secondAttribute="trailing" id="z35-Ui-nzq"/>
                 <constraint firstItem="mmd-9J-X3C" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zsK-aU-mmc"/>
             </constraints>
-            <point key="canvasLocation" x="136.5234375" y="19.326500732064421"/>
+            <point key="canvasLocation" x="245" y="189"/>
         </view>
     </objects>
     <resources>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
