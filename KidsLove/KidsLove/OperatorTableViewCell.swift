@@ -9,7 +9,7 @@ import UIKit
 
 class OperatorTableViewCell: UITableViewCell {
     
-    var buttonTappedAction: (([Question], _ levelType: LevelType) -> Void)?
+    var buttonTappedAction: (([Question], _ levelType: LevelType, Int) -> Void)?
     @IBOutlet weak var unitNumberLabel: UILabel!
     @IBOutlet weak var chapterNameLabel: UILabel!
     @IBOutlet weak var easyButton: UIButton!
@@ -28,22 +28,20 @@ class OperatorTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonHeightConstarint: NSLayoutConstraint!
     private var circularViewDuration: TimeInterval = 2
     var unit:Unit!
+    var currUnit: Int?
     private var buttonWidth: CGFloat = 150
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
-        
-        buttonTappedAction!(unit.levels.mediumLevel.questions, .medium)
+        buttonTappedAction!(unit.levels.mediumLevel.questions, .medium, currUnit!)
         
     }
     @IBAction func easyButtonTapped(_ sender: Any) {
-        
-        buttonTappedAction!(unit.levels.easyLevel.questions, .easy)
+        buttonTappedAction!(unit.levels.easyLevel.questions, .easy , currUnit!)
     }
     
     @IBAction func hardButtonTapped(_ sender: Any) {
-        buttonTappedAction!(unit.levels.hardLevel.questions, .hard)
+        buttonTappedAction!(unit.levels.hardLevel.questions, .hard, currUnit!)
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,7 +49,12 @@ class OperatorTableViewCell: UITableViewCell {
         setFontsAndColor()
         makeButtonRound()
         buttonHeightConstarint.constant = buttonWidth
-     
+    }
+    
+    func disableBtnForProgress(unit: Unit) {
+        let isMediumBtnEnabled = unit.levels.easyLevel.progress == .complete
+        mediumButton.isEnabled = isMediumBtnEnabled
+        hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
     }
     
      func setDataCell() {
@@ -67,7 +70,6 @@ class OperatorTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
     private func makeButtonRound() {
         easyButton.layer.cornerRadius = buttonWidth / 2.0
@@ -79,11 +81,10 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func setProgressAnimation() {
-        easyButton.layer.sublayers?.forEach({ layer in
-            if layer is CAShapeLayer {
-                layer.removeFromSuperlayer()
-            }
-        })
+       removeProgressLayer(button: easyButton)
+        removeProgressLayer(button: mediumButton)
+        removeProgressLayer(button: hardButton)
+         
         setUpCircularProgressBarView(button: easyButton, progress: unit.levels.easyLevel.progress)
         setUpCircularProgressBarView(button: mediumButton, progress: unit.levels.mediumLevel.progress)
         setUpCircularProgressBarView(button: hardButton, progress: unit.levels.hardLevel.progress)
@@ -92,6 +93,15 @@ class OperatorTableViewCell: UITableViewCell {
     func setUpCircularProgressBarView(button: UIButton, progress: Progress) {
         button.createCircularPath(duration: circularViewDuration, progress: progress, buttonWidth: buttonWidth)
     }
+    
+    private func removeProgressLayer(button: UIButton) {
+        button.layer.sublayers?.forEach({ layer in
+            if layer is CAShapeLayer {
+                layer.removeFromSuperlayer()
+            }
+        })
+    }
+    
     
     private func setFontsAndColor() {
         unitNumberLabel.font = UIFont.myAppBodyFonts()

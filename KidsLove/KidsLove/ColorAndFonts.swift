@@ -61,6 +61,7 @@ extension UIFont {
     }
     static func myAppBodyFonts() -> UIFont {
         return UIFont.systemFont(ofSize: 30)
+//       return  UIFont.preferredFont(forTextStyle: .body)
     }
     static func operatorViewCellFont() -> UIFont {
         return UIFont.systemFont(ofSize: 17)

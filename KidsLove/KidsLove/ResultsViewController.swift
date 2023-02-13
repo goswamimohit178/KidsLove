@@ -75,6 +75,10 @@ class ResultsViewController: UIViewController {
         goToHomeLabel.titleLabel?.font = UIFont.myAppBodyFonts()
         headerLabel.tintColor = UIColor.bodyFontColor()
         goToHomeLabel.tintColor = UIColor.bodyFontColor()
+        percentageLabel.font = UIFont.myAppBodyFonts()
+        percentageLabel.tintColor  = UIColor.bodyFontColor()
+        yourScoreLabel.font = UIFont.myAppBodyFonts()
+        yourScoreLabel.tintColor = UIColor.bodyFontColor()
         
     }
     private func labelAnimation() {
