@@ -40,6 +40,7 @@ class QuestionViewController: UIViewController {
         setupModel()
         setCornerRadius()
         setOptionButtonsShadow()
+        //r̥overrideUserInterfaceStyle = .dark
         continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
         continueBtn.titleLabel?.tintColor = UIColor.bodyFontColor()
         progressBar.transform = CGAffineTransformMakeScale(1.0, 3.0)

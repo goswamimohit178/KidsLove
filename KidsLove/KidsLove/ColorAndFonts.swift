@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static var textColor: UIColor {
-        return .black
-    }
+//    static var textColor: UIColor {
+//        return .black
+//    }
     
     static func wrongAnswerColor() -> UIColor {
         return UIColor(red: 1.0, green: 0.25, blue: 0.0, alpha: 1.0)
@@ -38,7 +38,7 @@ extension UIColor {
     }
     
     static func bodyFontColor() -> UIColor {
-        return .black
+        return UIColor(named: "textColor")!
     }
     
     static func btnShadowColor() -> UIColor {
