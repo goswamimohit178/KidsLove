@@ -41,10 +41,6 @@ class HomeViewController: UIViewController {
         buttonAnimation(button: mathButton)
     }
     private func setButtonsHome() {
-        //mathButton = UIButton(frame: CGRect(x: 10, y: 50, width: 100, height: 30))
-
-        
-        
         mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
         engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
         mathButton.titleLabel?.font = UIFont.myAppBodyFonts()
