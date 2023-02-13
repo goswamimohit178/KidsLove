@@ -210,6 +210,7 @@ class QuestionViewController: UIViewController {
         
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
+           
             button.titleLabel?.font = UIFont.myAppBodyFonts()
             button.titleLabel?.tintColor = UIColor.bodyFontColor()
         }
