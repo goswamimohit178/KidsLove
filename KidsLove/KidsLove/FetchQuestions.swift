@@ -7,44 +7,93 @@
 
 import Foundation
 class NetworkService{
+    fileprivate func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: String, noOfOprands: Int) -> [Question] {
+        var easyQuestionList = [Question]()
+        for _ in 0...numberOfQuestions {
+            var optionArray: [Int] = []
+            var oprandsArray = [Int]()
+            var answer: Int = 1
+            var questionString: String = ""
+            for index in 1...noOfOprands {
+                let num = generateRandomNumber(range: range)
+                oprandsArray.append(num)
+                if index == noOfOprands {
+                    questionString += String(num)
+                } else {
+                    questionString += String(num) + " " + oprator + " "
+                }
+                switch oprator {
+                   case "×" :
+                    answer *= num
+                   case "÷" :
+                    answer /= num
+                   case "+" :
+                    answer += num
+                   default:
+                    answer *= num
+                }
+            }
+            optionArray.append(answer)
+            
+            while optionArray.count < numberOfOptions {
+                let option = random(digits: answer.size())
+                if !optionArray.contains(option) {
+                    optionArray.append(option)
+                }
+            }
+                let shuffledArray = optionArray.shuffled()
+                easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
+                }
+            
+            
+        return easyQuestionList
+    }
+    
     func setLevelWise() -> [Unit] {
-        let questionList: [Question] = [
-            Question(questionText: "12 × 3 = ?", answer: [26,33,36,31], correctAnswer: 2),
-         Question(questionText: "9 × 4 = ?", answer: [43,36,56,54], correctAnswer: 1),
-         Question(questionText: "6 × 3 = ?", answer: [18,34,23,22], correctAnswer: 0),
-         Question(questionText: "8 × 6 = ?", answer: [28,37,48,38], correctAnswer: 2)
-     ]
-        let mediumQuestionList: [Question] = [
-            Question(questionText: "60 × 7 = ?", answer: [400,420,520,720], correctAnswer: 1),
-            Question(questionText: "33 × 7 = ?", answer: [400,420,231,731], correctAnswer: 2),
-            Question(questionText: "40 × 7 = ?", answer: [400,420,280,720], correctAnswer: 2),
-            Question(questionText: "5 × 55 = ?", answer: [275,285,239,710], correctAnswer: 0)
-        ]
+        let easyQuestionList = getQuestions(range: 1...9, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
+        let mediumQuestionList = getQuestions(range: 10...20, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
         
-        let hardQuestionList: [Question] =  [
-            Question(questionText: "88 × 2 × 5 = ??", answer: [882,880,870,881], correctAnswer: 1),
-            Question(questionText: "90 × 3 × 7 = ??", answer: [1882,1880,1890,1881], correctAnswer: 2),
-            Question(questionText: "69 × 6 × 4 = ??", answer: [1682,1656,1670,1881], correctAnswer: 1),
-            Question(questionText: "89 × 7 × 9 = ??", answer: [5601,5602,5607,5606], correctAnswer: 2)
-        ]
+        let hardQuestionList  = getQuestions(range: 2...10, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 3)
         
-        let easyLevelCellModel = LevelCellModel(progress: .zero, title: "Easy", questions: questionList)
+        let easyLevelCellModel = LevelCellModel(progress: .zero, title: "Easy", questions: easyQuestionList)
         let mediumLevelCellModel = LevelCellModel(progress: .zero, title: "Medium", questions: mediumQuestionList)
         let hardLevelCellModel = LevelCellModel(progress: .zero, title: "Hard", questions: hardQuestionList)
         let chainsLevelCellModel = LevelCellModel(progress: .zero, title: "Chain", questions: [Question]())
         let roundingLevelCellModel = LevelCellModel(progress: .zero, title: "Rounding", questions: [Question]())
         let reviewLevelCellModel = LevelCellModel(progress: .zero, title: "Review", questions: [Question]())
-        let level = Level(easyLevel: easyLevelCellModel,  hardLevel: hardLevelCellModel, mediumLevel: mediumLevelCellModel, chainsLevel: chainsLevelCellModel, roundingLevel: roundingLevelCellModel, reviewLevel: reviewLevelCellModel)
+        let unitOneQues = Level(easyLevel: easyLevelCellModel,  hardLevel: hardLevelCellModel, mediumLevel: mediumLevelCellModel, chainsLevel: chainsLevelCellModel, roundingLevel: roundingLevelCellModel, reviewLevel: reviewLevelCellModel)
         
        return  [
-            Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels: level),
-            Unit(unitNumber: "Unit 2", chapterName: "Shapes", levels: level),
-            Unit(unitNumber: "Unit 3", chapterName: "Division", levels: level),
-            Unit(unitNumber: "Unit 4", chapterName: "Fractions", levels: level),
-            Unit(unitNumber: "Unit 5", chapterName: "Measurement", levels: level),
-            Unit(unitNumber: "Unit 6", chapterName: "Decimals", levels: level),
-            Unit(unitNumber: "Unit 7", chapterName: "Review", levels: level)
+            Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels: unitOneQues),
+            Unit(unitNumber: "Unit 2", chapterName: "Shapes", levels: unitOneQues),
+            Unit(unitNumber: "Unit 3", chapterName: "Division", levels: unitOneQues),
+            Unit(unitNumber: "Unit 4", chapterName: "Fractions", levels: unitOneQues),
+            Unit(unitNumber: "Unit 5", chapterName: "Measurement", levels: unitOneQues),
+            Unit(unitNumber: "Unit 6", chapterName: "Decimals", levels: unitOneQues),
+            Unit(unitNumber: "Unit 7", chapterName: "Review", levels: unitOneQues)
         ]
         
     }
+    private func generateRandomNumber(range: ClosedRange<Int>) -> Int{
+        return Int.random(in: range)
+    }
+    
+    func random(digits:Int) -> Int {
+        let min = Int(pow(Double(10), Double(digits-1))) - 1
+        let max = Int(pow(Double(10), Double(digits))) - 1
+        return generateRandomNumber(range: min...max)
+    }
 }
+extension Int {
+      func size() -> Int {
+        var size = 1
+        var modifyingNumber = self
+        while modifyingNumber > 10 {
+          modifyingNumber = modifyingNumber / 10
+          size = size + 1
+        }
+        return size
+      }
+    }
+
+

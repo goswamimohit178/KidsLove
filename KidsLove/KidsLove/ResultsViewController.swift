@@ -47,7 +47,7 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
-        self.yourMarks.text = String((correctAnswer / totalMarks) * 100)
+        self.yourMarks.text = String((Float(correctAnswer) / Float(totalMarks)) * 100.0)
         self.percentageLabel.text = "%"
         labelAnimation()
         if var viewControllers = navigationController?.viewControllers {
