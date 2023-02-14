@@ -14,16 +14,12 @@ class OperatorTableViewCell: UITableViewCell {
     @IBOutlet weak var chapterNameLabel: UILabel!
     @IBOutlet weak var easyButton: UIButton!
     @IBOutlet weak var mediumButton: UIButton!
-    @IBOutlet weak var roundingButton: UIButton!
     @IBOutlet weak var chainsButton: UIButton!
     @IBOutlet weak var hardButton: UIButton!
-    @IBOutlet weak var reviewButton: UIButton!
     @IBOutlet weak var easyLabel: UILabel!
     @IBOutlet weak var mediumlabel: UILabel!
     @IBOutlet weak var hardLabel: UILabel!
     @IBOutlet weak var chainsLabel: UILabel!
-    @IBOutlet weak var roundingLabel: UILabel!
-    @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var tittleView: UIView!
     @IBOutlet weak var buttonHeightConstarint: NSLayoutConstraint!
     private var circularViewDuration: TimeInterval = 2
@@ -64,9 +60,7 @@ class OperatorTableViewCell: UITableViewCell {
         self.mediumlabel.text = unit.levels.mediumLevel.title
         self.hardLabel.text = unit.levels.hardLevel.title
         self.chainsLabel.text = unit.levels.chainsLevel.title
-        self.roundingLabel.text = unit.levels.roundingLevel.title
-        self.reviewLabel.text = unit.levels.reviewLevel.title
-        
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -75,17 +69,14 @@ class OperatorTableViewCell: UITableViewCell {
     private func makeButtonRound() {
         easyButton.layer.cornerRadius = buttonWidth / 2.0
         mediumButton.layer.cornerRadius = buttonWidth / 2.0
-        roundingButton.layer.cornerRadius = buttonWidth / 2.0
         chainsButton.layer.cornerRadius = buttonWidth / 2.0
         hardButton.layer.cornerRadius = buttonWidth / 2.0
-        reviewButton.layer.cornerRadius = buttonWidth / 2.0
     }
     
     func setProgressAnimation() {
         removeProgressLayer(button: easyButton)
         removeProgressLayer(button: mediumButton)
         removeProgressLayer(button: hardButton)
-        
         setUpCircularProgressBarView(button: easyButton, progress: unit.levels.easyLevel.progress)
         setUpCircularProgressBarView(button: mediumButton, progress: unit.levels.mediumLevel.progress)
         setUpCircularProgressBarView(button: hardButton, progress: unit.levels.hardLevel.progress)
@@ -111,14 +102,10 @@ class OperatorTableViewCell: UITableViewCell {
         mediumlabel.font = UIFont.operatorViewCellFont()
         hardLabel.font = UIFont.operatorViewCellFont()
         chainsLabel.font = UIFont.operatorViewCellFont()
-        roundingLabel.font = UIFont.operatorViewCellFont()
-        reviewLabel.font = UIFont.operatorViewCellFont()
         easyButton.backgroundColor = UIColor.homeButtonColor()
         mediumButton.backgroundColor = UIColor.homeButtonColor()
         hardButton.backgroundColor = UIColor.homeButtonColor()
         chainsButton.backgroundColor = UIColor.homeButtonColor()
-        roundingButton.backgroundColor = UIColor.homeButtonColor()
-        reviewButton.backgroundColor = UIColor.homeButtonColor()
         tittleView.backgroundColor = UIColor.homeButtonColor()
         easyButton.titleLabel?.font = UIFont.myAppBodyFonts()
         
@@ -139,7 +126,8 @@ extension UIButton {
         progressLayer.lineCap = .round
         progressLayer.lineWidth = buttonWidth * 0.15
         progressLayer.strokeEnd = 0
-        progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor            // added progressLayer to layer
+        progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor
+        // added progressLayer to layer
         layer.addSublayer(progressLayer)
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.duration = duration

@@ -34,7 +34,7 @@ struct Question {
     let answer: [Int]
     let correctAnswer: Int
 }
-enum Progress {
+enum Progress: Int {
     case zero
     case oneThird
     case twoThird
