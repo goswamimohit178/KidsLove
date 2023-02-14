@@ -13,11 +13,15 @@ class NetworkService{
             var optionArray: [Int] = []
             var oprandsArray = [Int]()
             var answer: Int = 1
-            
-            for _ in 1...noOfOprands {
+            var questionString: String = ""
+            for index in 1...noOfOprands {
                 let num = generateRandomNumber(range: range)
                 oprandsArray.append(num)
-                
+                if index == noOfOprands {
+                    questionString += String(num)
+                } else {
+                    questionString += String(num) + " " + oprator + " "
+                }
                 switch oprator {
                    case "×" :
                     answer *= num
@@ -38,7 +42,7 @@ class NetworkService{
                 }
             }
                 let shuffledArray = optionArray.shuffled()
-                easyQuestionList.append(Question(questionText: "\(oprandsArray[0]) \(oprator) \(oprandsArray[1]) \(oprator) \(oprandsArray[2])= ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
+                easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
                 }
             
             
@@ -46,10 +50,10 @@ class NetworkService{
     }
     
     func setLevelWise() -> [Unit] {
-        let easyQuestionList = getQuestions(range: 1...9, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 3)
-        let mediumQuestionList = getQuestions(range: 10...20, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 3)
+        let easyQuestionList = getQuestions(range: 1...9, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
+        let mediumQuestionList = getQuestions(range: 10...20, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
         
-        let hardQuestionList  = getQuestions(range: 20...100, numberOfOptions: 4, numberOfQuestions: 5, oprator: "÷", noOfOprands: 3)
+        let hardQuestionList  = getQuestions(range: 2...10, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 3)
         
         let easyLevelCellModel = LevelCellModel(progress: .zero, title: "Easy", questions: easyQuestionList)
         let mediumLevelCellModel = LevelCellModel(progress: .zero, title: "Medium", questions: mediumQuestionList)
