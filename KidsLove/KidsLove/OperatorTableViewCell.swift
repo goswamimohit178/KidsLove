@@ -106,7 +106,7 @@ class OperatorTableViewCell: UITableViewCell {
     
     private func setFontsAndColor() {
         unitNumberLabel.font = UIFont.headingFonts()
-        chapterNameLabel.font = UIFont.headingFonts()
+        chapterNameLabel.font = UIFont.operatorViewCellFont()
         easyLabel.font = UIFont.operatorViewCellFont()
         mediumlabel.font = UIFont.operatorViewCellFont()
         hardLabel.font = UIFont.operatorViewCellFont()
