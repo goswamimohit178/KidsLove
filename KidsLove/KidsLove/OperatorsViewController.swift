@@ -17,7 +17,7 @@ final class OperatorsViewController: UIViewController {
     
     private var model: SubjectModel!
     var currunit = 0
-    
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         let unitNameList = NetworkService().setLevelWise()
@@ -44,7 +44,6 @@ final class OperatorsViewController: UIViewController {
             model.math[unitNumber].levels.hardLevel.progress = progress
         }
         operatorTableView.reloadData()
-        
     }
     
 }
@@ -68,7 +67,6 @@ extension OperatorsViewController: UITableViewDataSource{
         let questionVC = QuestionViewController()
         questionVC.questionList = questions
         questionVC.opratorVC = self
-        
         questionVC.currentUnitNumber = unitNumber
         questionVC.currentLevelType = levelType
         navigationController?.pushViewController(questionVC, animated: true)

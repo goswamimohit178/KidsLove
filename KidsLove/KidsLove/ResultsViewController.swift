@@ -28,7 +28,7 @@ class ResultsViewController: UIViewController {
     var currentUnitNumber: Int!
     var currentLevelType: LevelType!
     var percentage: Float!
-    
+    let defaults = UserDefaults.standard
     @IBOutlet weak var percentageTrailingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var percentageSignLableLeadingConstraint: NSLayoutConstraint!
@@ -36,8 +36,23 @@ class ResultsViewController: UIViewController {
         
         self.navigationController?.popToViewController(opratorVC, animated: true)
         
-        if correctAnswer > 2 {
+        if percentage >= 80.0 {
             opratorVC.setProgess(progress: .complete, unitNumber: currentUnitNumber, levelType: currentLevelType)
+            progress = .complete
+            let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
+            print(keyForProgrss)
+            defaults.set(progress.rawValue, forKey: keyForProgrss)
+//            let progrssNum = defaults.value(forKey: "easylevel") as! Int
+//            let progressObj = Progress(rawValue: progrssNum)
+//            print(progressObj)
+        }
+        else if percentage >= 50 && percentage < 80  {
+            opratorVC.setProgess(progress: .twoThird, unitNumber: currentUnitNumber, levelType: currentLevelType)
+        }
+        else if percentage < 50 && percentage > 30 {
+            opratorVC.setProgess(progress: .oneThird, unitNumber: currentUnitNumber, levelType: currentLevelType)
+        } else {
+            opratorVC.setProgess(progress: .zero, unitNumber: currentUnitNumber, levelType: currentLevelType)
         }
  
     }
@@ -47,7 +62,8 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
-        self.yourMarks.text = String((Float(correctAnswer) / Float(totalMarks)) * 100.0)
+        percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
+        self.yourMarks.text = String(percentage)
         self.percentageLabel.text = "%"
         labelAnimation()
         if var viewControllers = navigationController?.viewControllers {
@@ -88,6 +104,7 @@ class ResultsViewController: UIViewController {
             self.view.layoutIfNeeded()
         });
    }
+    
 }
 struct ContentView: View {
     var body: some View {
@@ -160,9 +177,7 @@ struct FireworkParticlesGeometryEffect : GeometryEffect {
         let affineTranslation =  CGAffineTransform(translationX: xTranslation, y: yTranslation)
         return ProjectionTransform(affineTranslation)
     }
-    
-    
-    
+ 
 }
 
 
