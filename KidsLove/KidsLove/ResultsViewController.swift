@@ -29,9 +29,7 @@ class ResultsViewController: UIViewController {
     var currentLevelType: LevelType!
     var percentage: Float!
     
-    @IBOutlet weak var percentageTrailingConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var percentageSignLableLeadingConstraint: NSLayoutConstraint!
     @IBAction func goToHomeButton(_ sender: Any) {
         
         self.navigationController?.popToViewController(opratorVC, animated: true)
@@ -39,17 +37,17 @@ class ResultsViewController: UIViewController {
         if correctAnswer > 2 {
             opratorVC.setProgess(progress: .complete, unitNumber: currentUnitNumber, levelType: currentLevelType)
         }
- 
+        
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
         self.yourMarks.text = String((Float(correctAnswer) / Float(totalMarks)) * 100.0)
         self.percentageLabel.text = "%"
-        labelAnimation()
+        //labelAnimation()
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
@@ -82,12 +80,12 @@ class ResultsViewController: UIViewController {
         
     }
     private func labelAnimation() {
-        self.percentageTrailingConstraint.constant = (view.frame.width / 2.0)
-        self.percentageSignLableLeadingConstraint.constant = (view.frame.width / 2.0)
+        //        self.percentageTrailingConstraint.constant = (view.frame.width / 2.0)
+        //        self.percentageSignLableLeadingConstraint.constant = (view.frame.width / 2.0)
         UIView.animate(withDuration: 0.8, animations: {
             self.view.layoutIfNeeded()
         });
-   }
+    }
 }
 struct ContentView: View {
     var body: some View {

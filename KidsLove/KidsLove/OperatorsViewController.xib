@@ -22,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlG-yW-gKk">
-                    <rect key="frame" x="0.0" y="159" width="393" height="659"/>
+                    <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HZ-3T-im6">
-                            <rect key="frame" x="20" y="20" width="353" height="619"/>
+                            <rect key="frame" x="20" y="20" width="353" height="712"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fac-ea-9Ls">
-                                    <rect key="frame" x="0.0" y="0.0" width="353" height="619"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="712"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
                             </subviews>
@@ -50,7 +50,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧜‍♂️Wanna Learn, Choose One!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nf-Nh-fsN">
-                    <rect key="frame" x="0.0" y="59" width="393" height="100"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                     <color key="backgroundColor" systemColor="systemPurpleColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="Jeo-Tf-drY"/>
@@ -58,6 +58,9 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    </variation>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

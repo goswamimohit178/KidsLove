@@ -18,8 +18,6 @@
                 <outlet property="headerView" destination="z97-tO-hyd" id="abc-wI-XIN"/>
                 <outlet property="percentageLabel" destination="D9l-mb-UPy" id="50o-nH-bmW"/>
                 <outlet property="percentageSignLabel" destination="D9l-mb-UPy" id="El8-eW-YO7"/>
-                <outlet property="percentageSignLableLeadingConstraint" destination="9eu-0X-ciW" id="0lT-jD-iIh"/>
-                <outlet property="percentageTrailingConstraint" destination="YyX-wB-FIZ" id="dxg-pm-blb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yourMarks" destination="Yc9-W7-ZJC" id="SKI-hA-tjH"/>
                 <outlet property="yourScoreLabel" destination="dFX-Pl-pA2" id="F7m-Rp-lJb"/>
@@ -50,7 +48,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-W7-ZJC">
-                    <rect key="frame" x="0.0" y="437.33333333333331" width="64.333333333333329" height="64.333333333333314"/>
+                    <rect key="frame" x="182" y="437.33333333333331" width="64" height="64.333333333333314"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Yc9-W7-ZJC" secondAttribute="height" id="sGm-ce-bD5"/>
                     </constraints>
@@ -82,7 +80,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9l-mb-UPy">
-                    <rect key="frame" x="311" y="437.33333333333331" width="64.333333333333314" height="64.333333333333314"/>
+                    <rect key="frame" x="247.00000000000003" y="437.33333333333331" width="64.333333333333343" height="64.333333333333314"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
@@ -92,20 +90,20 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="z97-tO-hyd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0xT-gU-GH9"/>
+                <constraint firstItem="Yc9-W7-ZJC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3Xm-fy-aUE"/>
                 <constraint firstItem="D9l-mb-UPy" firstAttribute="height" secondItem="Yc9-W7-ZJC" secondAttribute="height" id="5u0-dl-2fe"/>
                 <constraint firstItem="z97-tO-hyd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="73q-nB-7Ci"/>
-                <constraint firstItem="D9l-mb-UPy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="311" id="9eu-0X-ciW"/>
+                <constraint firstItem="D9l-mb-UPy" firstAttribute="leading" secondItem="Yc9-W7-ZJC" secondAttribute="trailing" constant="1" id="AaB-9w-HV7"/>
                 <constraint firstItem="Yc9-W7-ZJC" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.15" id="Ouu-RO-PbV"/>
                 <constraint firstItem="z97-tO-hyd" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="RZh-Ef-5qS"/>
                 <constraint firstItem="D9l-mb-UPy" firstAttribute="width" secondItem="Yc9-W7-ZJC" secondAttribute="width" id="Ra0-Sy-lgl"/>
                 <constraint firstItem="mmd-9J-X3C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14.666666666666657" id="T3X-ip-rMd"/>
                 <constraint firstItem="D9l-mb-UPy" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Ulz-Ac-KnO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yc9-W7-ZJC" secondAttribute="trailing" constant="363.67000000000002" id="YyX-wB-FIZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mmd-9J-X3C" secondAttribute="bottom" constant="60" id="agd-3B-3BT"/>
                 <constraint firstItem="Yc9-W7-ZJC" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="gbw-tk-ceJ"/>
                 <constraint firstItem="mmd-9J-X3C" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zsK-aU-mmc"/>
             </constraints>
-            <point key="canvasLocation" x="245" y="189"/>
+            <point key="canvasLocation" x="243.92523364485979" y="188.55291576673866"/>
         </view>
     </objects>
     <resources>

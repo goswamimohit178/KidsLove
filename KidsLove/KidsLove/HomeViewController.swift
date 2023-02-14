@@ -8,13 +8,13 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet var mathButton: UIButton!
     @IBOutlet var engButton: UIButton!
     
     @IBOutlet weak var mathTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mathLeadingConstraint: NSLayoutConstraint!
-   
+    
     
     @IBOutlet weak var engLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var engTopConstraint: NSLayoutConstraint!
@@ -24,9 +24,9 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.pushViewController(OperatorsViewController(), animated: true)
     }
-   
+    
     @IBAction func engButtubTapped(_ sender: Any) {
-
+        
     }
     
     override func viewDidLoad() {
@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     private func setButtonsHome() {
         mathButton.layer.cornerRadius = 0.5 * mathButton.bounds.size.width
         engButton.layer.cornerRadius = 0.5 * engButton.bounds.size.width
+        //
         mathButton.titleLabel?.font = UIFont.myAppBodyFonts()
         engButton.titleLabel?.font =  UIFont.myAppBodyFonts()
         mathButton.backgroundColor = UIColor.homeButtonColor()
@@ -59,6 +60,6 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 0.8, animations: {
             self.view.layoutIfNeeded()
         });
-
-   }
+        
+    }
 }

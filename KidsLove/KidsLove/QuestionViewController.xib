@@ -26,17 +26,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="CDw-id-BpB">
-                    <rect key="frame" x="20" y="104" width="353" height="6.6666666666666714"/>
+                    <rect key="frame" x="20" y="45" width="353" height="6.6666666666666643"/>
                     <color key="tintColor" red="0.50196078430000002" green="0.64705882349999999" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </progressView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose One Option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBl-iv-TbL">
-                    <rect key="frame" x="10" y="130.66666666666666" width="373" height="68.333333333333343"/>
+                    <rect key="frame" x="10" y="71.666666666666686" width="373" height="68.333333333333314"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="29"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Q9Y-lp-Afi">
-                    <rect key="frame" x="20" y="173" width="353" height="85.333333333333314"/>
+                    <rect key="frame" x="20" y="114" width="353" height="85.333333333333314"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="66 + 10 = ??" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zm3-Gi-NFM">
                             <rect key="frame" x="0.0" y="21.666666666666657" width="353" height="42"/>
@@ -50,7 +50,7 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MDv-6t-iFl">
-                    <rect key="frame" x="19.666666666666657" y="317.33333333333326" width="353.66666666666674" height="340.66666666666674"/>
+                    <rect key="frame" x="19.666666666666657" y="258.33333333333326" width="353.66666666666674" height="340.66666666666674"/>
                     <subviews>
                         <button opaque="NO" contentMode="top" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOp-Z8-42s">
                             <rect key="frame" x="0.0" y="0.0" width="353.66666666666669" height="70"/>
@@ -93,7 +93,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpQ-1w-zjm">
-                    <rect key="frame" x="19.666666666666657" y="702.66666666666663" width="353.66666666666674" height="85.333333333333371"/>
+                    <rect key="frame" x="19.666666666666657" y="736.66666666666663" width="353.66666666666674" height="85.333333333333371"/>
                     <color key="backgroundColor" red="0.4224389603" green="0.83603657149999999" blue="0.43083776820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
