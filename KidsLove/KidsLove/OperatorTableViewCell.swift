@@ -57,7 +57,7 @@ class OperatorTableViewCell: UITableViewCell {
         hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
     }
     
-     func setDataCell() {
+    func setDataCell() {
         self.unitNumberLabel.text = unit.unitNumber
         self.chapterNameLabel.text = unit.chapterName
         self.easyLabel.text = unit.levels.easyLevel.title
@@ -66,6 +66,7 @@ class OperatorTableViewCell: UITableViewCell {
         self.chainsLabel.text = unit.levels.chainsLevel.title
         self.roundingLabel.text = unit.levels.roundingLevel.title
         self.reviewLabel.text = unit.levels.reviewLevel.title
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -81,10 +82,10 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func setProgressAnimation() {
-       removeProgressLayer(button: easyButton)
+        removeProgressLayer(button: easyButton)
         removeProgressLayer(button: mediumButton)
         removeProgressLayer(button: hardButton)
-         
+        
         setUpCircularProgressBarView(button: easyButton, progress: unit.levels.easyLevel.progress)
         setUpCircularProgressBarView(button: mediumButton, progress: unit.levels.mediumLevel.progress)
         setUpCircularProgressBarView(button: hardButton, progress: unit.levels.hardLevel.progress)
@@ -104,8 +105,8 @@ class OperatorTableViewCell: UITableViewCell {
     
     
     private func setFontsAndColor() {
-        unitNumberLabel.font = UIFont.myAppBodyFonts()
-        chapterNameLabel.font = UIFont.operatorViewCellFont()
+        unitNumberLabel.font = UIFont.headingFonts()
+        chapterNameLabel.font = UIFont.headingFonts()
         easyLabel.font = UIFont.operatorViewCellFont()
         mediumlabel.font = UIFont.operatorViewCellFont()
         hardLabel.font = UIFont.operatorViewCellFont()
@@ -119,8 +120,9 @@ class OperatorTableViewCell: UITableViewCell {
         roundingButton.backgroundColor = UIColor.homeButtonColor()
         reviewButton.backgroundColor = UIColor.homeButtonColor()
         tittleView.backgroundColor = UIColor.homeButtonColor()
+        easyButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        
     }
-    
 }
 
 extension UIButton {
@@ -128,11 +130,11 @@ extension UIButton {
         let progressLayer = CAShapeLayer()
         let startPoint = CGFloat(-Double.pi / 2)
         let endPoint = CGFloat(3 * Double.pi / 2)
-            // created circularPath for circleLayer and progressLayer
+        // created circularPath for circleLayer and progressLayer
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: (buttonWidth / 2.0), y: (buttonWidth / 2.0)), radius: buttonWidth / 2.0, startAngle: startPoint, endAngle: endPoint, clockwise: true)
-           
+        
         progressLayer.path = circularPath.cgPath
-            // ui edits
+        // ui edits
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
         progressLayer.lineWidth = buttonWidth * 0.15
@@ -147,5 +149,3 @@ extension UIButton {
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
     }
 }
-
-
