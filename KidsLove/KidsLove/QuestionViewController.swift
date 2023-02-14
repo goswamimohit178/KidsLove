@@ -20,7 +20,7 @@ class QuestionViewController: UIViewController {
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelType: LevelType!
-    
+
     
     private var currentQuestionNumber = 0
     private var noCorrect: Int = 0
@@ -28,7 +28,7 @@ class QuestionViewController: UIViewController {
     private var isFirstTimeTapped: Bool = true
     
     private var optionButtons = [UIButton]()
-    
+     
     
     var questionList: [Question]!
     
@@ -94,7 +94,7 @@ class QuestionViewController: UIViewController {
         }
     }
     
-    
+
     private func setQuestionFonts() {
         oprand1Label.font = UIFont.myAppBodyFonts()
     }
@@ -153,7 +153,7 @@ class QuestionViewController: UIViewController {
     
     private func setTappedbtnFalse() {
         selectedIndex = nil
-        
+       
     }
     private func setAllDisableBtn() {
         optionButtons.forEach { $0.isEnabled = false }
@@ -181,7 +181,7 @@ class QuestionViewController: UIViewController {
                 noCorrect += 1
             }
             setAllDisableBtn()
-            
+          
             return true
         }
         return false
@@ -201,7 +201,7 @@ class QuestionViewController: UIViewController {
     
     private func resetOptionBtnColor() {
         optionButtons.forEach { $0.backgroundColor = UIColor.buttonBackgroundColor() }
-        
+       
         
     }
     
@@ -210,7 +210,7 @@ class QuestionViewController: UIViewController {
         
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
-            
+           
             button.titleLabel?.font = UIFont.myAppBodyFonts()
             button.titleLabel?.tintColor = UIColor.bodyFontColor()
         }

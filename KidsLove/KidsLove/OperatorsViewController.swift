@@ -23,7 +23,7 @@ final class OperatorsViewController: UIViewController {
         let unitNameList = NetworkService().setLevelWise()
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
-        headerLabel.font = UIFont.headingFonts()
+        headerLabel.font = UIFont.myAppBodyFonts()
         headerLabel.backgroundColor = UIColor.homeButtonColor()
     }
     
@@ -72,17 +72,17 @@ extension OperatorsViewController: UITableViewDataSource{
         navigationController?.pushViewController(questionVC, animated: true)
         
     }
-    
+   
 }
 extension OperatorsViewController: UITableViewDelegate {
     
 }
 class CircularProgressBarView: UIView {
     
-    private var circleLayer = CAShapeLayer()
-    private var progressLayer = CAShapeLayer()
-    private var startPoint = CGFloat(-Double.pi / 2)
-    private var endPoint = CGFloat(3 * Double.pi / 2)
+       private var circleLayer = CAShapeLayer()
+       private var progressLayer = CAShapeLayer()
+       private var startPoint = CGFloat(-Double.pi / 2)
+       private var endPoint = CGFloat(3 * Double.pi / 2)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,14 +94,14 @@ class CircularProgressBarView: UIView {
     
     
     func progressAnimation(duration: TimeInterval, progress: Progress) {
-        // created circularProgressAnimation with keyPath
-        let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        // set the end time
-        circularProgressAnimation.duration = duration
-        circularProgressAnimation.toValue = 2
-        circularProgressAnimation.fillMode = .forwards
-        circularProgressAnimation.isRemovedOnCompletion = false
-        progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
+            // created circularProgressAnimation with keyPath
+            let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            // set the end time
+            circularProgressAnimation.duration = duration
+            circularProgressAnimation.toValue = 2
+            circularProgressAnimation.fillMode = .forwards
+            circularProgressAnimation.isRemovedOnCompletion = false
+            progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
     }
 }
 

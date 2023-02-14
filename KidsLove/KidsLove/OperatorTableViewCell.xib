@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_72" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -23,17 +23,13 @@
                         <rect key="frame" x="0.0" y="10" width="404" height="240"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-eQ-ZxN">
-
                                 <rect key="frame" x="121.33333333333333" y="0.0" width="161.33333333333337" height="208"/>
-
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="ChapterName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLp-5Q-FYQ">
-
                                 <rect key="frame" x="121.33333333333333" y="219" width="161.33333333333337" height="21"/>
-
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -91,7 +87,6 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="GRi-tB-hrQ" secondAttribute="height" id="eYB-VN-GD8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="tintColor" name="textColor"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal">
@@ -106,7 +101,6 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Ib-3O8">
                         <rect key="frame" x="243.33333333333334" y="490.66666666666669" width="120.66666666666666" height="120.66666666666669"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="tintColor" name="textColor"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="multiply" catalog="system">
@@ -118,19 +112,16 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhT-Nz-tb8">
                         <rect key="frame" x="141.66666666666666" y="691.33333333333337" width="120.66666666666666" height="120.66666666666663"/>
-
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="MhT-Nz-tb8" secondAttribute="height" id="XaT-8M-Obf"/>
                         </constraints>
-                        <color key="tintColor" name="textColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="multiply" catalog="system">
+                        <state key="normal" title="Button">
                             <color key="titleColor" name="textColor"/>
                         </state>
                     </button>
-
-
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aii-07-fNZ">
                         <rect key="frame" x="151.66666666666666" y="415.66666666666669" width="101" height="30"/>
                         <constraints>
@@ -154,17 +145,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chains" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qk-nj-0Be">
                         <rect key="frame" x="151.66666666666666" y="817" width="101" height="30"/>
-
-                   
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="textColor"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                        </variation>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW6-f6-Q5H">
-                        <rect key="frame" x="257" y="403" width="101" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
@@ -220,7 +200,6 @@
                 <outlet property="tittleView" destination="MQn-Ew-O9K" id="uO1-dX-y97"/>
                 <outlet property="unitNumberLabel" destination="p3B-eQ-ZxN" id="FDe-C6-T3S"/>
             </connections>
-
             <point key="canvasLocation" x="155.72519083969465" y="258.45070422535213"/>
         </tableViewCell>
     </objects>
