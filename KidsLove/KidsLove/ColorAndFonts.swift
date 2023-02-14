@@ -64,7 +64,7 @@ extension UIFont {
         return UIFont.preferredFont(forTextStyle: .title1)
     }
     static func operatorViewCellFont() -> UIFont {
-        return UIFont.preferredFont(forTextStyle: .title1)
+        return UIFont.preferredFont(forTextStyle: .headline)
     }
     
 }
