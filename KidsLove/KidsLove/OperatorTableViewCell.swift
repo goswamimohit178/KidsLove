@@ -53,13 +53,14 @@ class OperatorTableViewCell: UITableViewCell {
         hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
     }
     
-     func setDataCell() {
+    func setDataCell() {
         self.unitNumberLabel.text = unit.unitNumber
         self.chapterNameLabel.text = unit.chapterName
         self.easyLabel.text = unit.levels.easyLevel.title
         self.mediumlabel.text = unit.levels.mediumLevel.title
         self.hardLabel.text = unit.levels.hardLevel.title
         self.chainsLabel.text = unit.levels.chainsLevel.title
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -95,7 +96,7 @@ class OperatorTableViewCell: UITableViewCell {
     
     
     private func setFontsAndColor() {
-        unitNumberLabel.font = UIFont.myAppBodyFonts()
+        unitNumberLabel.font = UIFont.headingFonts()
         chapterNameLabel.font = UIFont.operatorViewCellFont()
         easyLabel.font = UIFont.operatorViewCellFont()
         mediumlabel.font = UIFont.operatorViewCellFont()
@@ -106,8 +107,9 @@ class OperatorTableViewCell: UITableViewCell {
         hardButton.backgroundColor = UIColor.homeButtonColor()
         chainsButton.backgroundColor = UIColor.homeButtonColor()
         tittleView.backgroundColor = UIColor.homeButtonColor()
+        easyButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        
     }
-    
 }
 
 extension UIButton {
@@ -115,11 +117,11 @@ extension UIButton {
         let progressLayer = CAShapeLayer()
         let startPoint = CGFloat(-Double.pi / 2)
         let endPoint = CGFloat(3 * Double.pi / 2)
-            // created circularPath for circleLayer and progressLayer
+        // created circularPath for circleLayer and progressLayer
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: (buttonWidth / 2.0), y: (buttonWidth / 2.0)), radius: buttonWidth / 2.0, startAngle: startPoint, endAngle: endPoint, clockwise: true)
-           
+        
         progressLayer.path = circularPath.cgPath
-            // ui edits
+        // ui edits
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
         progressLayer.lineWidth = buttonWidth * 0.15
@@ -135,5 +137,3 @@ extension UIButton {
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
     }
 }
-
-

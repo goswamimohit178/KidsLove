@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 extension UIColor {
-//    static var textColor: UIColor {
-//        return .black
-//    }
+    //    static var textColor: UIColor {
+    //        return .black
+    //    }
     
     static func wrongAnswerColor() -> UIColor {
         return UIColor(red: 1.0, green: 0.25, blue: 0.0, alpha: 1.0)
@@ -47,7 +47,7 @@ extension UIColor {
     
     static func progressBarColor() -> UIColor {
         return UIColor(red: 0.7, green: 0.8, blue: 1.0, alpha: 1.0)
-//        return UIColor(red: 0.455, green: 0.927, blue: 0.259, alpha: 1.0)
+        //        return UIColor(red: 0.455, green: 0.927, blue: 0.259, alpha: 1.0)
     }
     static func operatorProgressBar() -> UIColor {
         return UIColor(red: 0.9993169904, green: 0.6469120383, blue: 0, alpha: 1)
@@ -56,17 +56,18 @@ extension UIColor {
 }
 
 extension UIFont {
-    static func myAppTitle() -> UIFont {
-        return UIFont.systemFont(ofSize: 17)
+    static func headingFonts() -> UIFont {
+        return UIFont.preferredFont(forTextStyle: .largeTitle)
     }
+    
     static func myAppBodyFonts() -> UIFont {
-        return UIFont.systemFont(ofSize: 30)
-//       return  UIFont.preferredFont(forTextStyle: .body)
+        return UIFont.preferredFont(forTextStyle: .title1)
     }
     static func operatorViewCellFont() -> UIFont {
-        return UIFont.systemFont(ofSize: 17)
+        return UIFont.preferredFont(forTextStyle: .headline)
     }
     
 }
+
 
 
