@@ -11,16 +11,15 @@
 		1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1331E232298D39DD00AFD1E0 /* HomeViewController.xib */; };
 		1331E237298D3CE700AFD1E0 /* OperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */; };
 		1331E238298D3CE700AFD1E0 /* OperatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */; };
-		139D2B9E298FA1F7006CAEF9 /* rightButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2B9D298FA1F7006CAEF9 /* rightButton.wav */; };
 		139D2BA0298FA206006CAEF9 /* wrongButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2B9F298FA206006CAEF9 /* wrongButton.wav */; };
 		139D2BA329921C31006CAEF9 /* OperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */; };
 		139D2BA429921C31006CAEF9 /* OperatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */; };
 		139D2BA62993A349006CAEF9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BA52993A349006CAEF9 /* Model.swift */; };
 		139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */; };
+		139D2BE9299CBA66006CAEF9 /* rightButton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BE8299CBA65006CAEF9 /* rightButton.mp3 */; };
 		36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D08298CFB5F00927B1E /* AppDelegate.swift */; };
 		36939D0B298CFB5F00927B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D0A298CFB5F00927B1E /* SceneDelegate.swift */; };
 		36939D0D298CFB5F00927B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D0C298CFB5F00927B1E /* ViewController.swift */; };
-		36939D10298CFB5F00927B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36939D0E298CFB5F00927B1E /* Main.storyboard */; };
 		36939D12298CFB6000927B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36939D11298CFB6000927B1E /* Assets.xcassets */; };
 		36939D15298CFB6000927B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36939D13298CFB6000927B1E /* LaunchScreen.storyboard */; };
 		36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6080298D0BAC00F059FB /* QuestionViewController.swift */; };
@@ -35,17 +34,16 @@
 		1331E232298D39DD00AFD1E0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
 		1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatorsViewController.xib; sourceTree = "<group>"; };
-		139D2B9D298FA1F7006CAEF9 /* rightButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rightButton.wav; sourceTree = "<group>"; };
 		139D2B9F298FA206006CAEF9 /* wrongButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrongButton.wav; sourceTree = "<group>"; };
 		139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewCell.swift; sourceTree = "<group>"; };
 		139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatorTableViewCell.xib; sourceTree = "<group>"; };
 		139D2BA52993A349006CAEF9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQuestions.swift; sourceTree = "<group>"; };
+		139D2BE8299CBA65006CAEF9 /* rightButton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rightButton.mp3; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36939D08298CFB5F00927B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36939D0A298CFB5F00927B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		36939D0C298CFB5F00927B1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		36939D0F298CFB5F00927B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36939D11298CFB6000927B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36939D14298CFB6000927B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36939D16298CFB6000927B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				139D2B9F298FA206006CAEF9 /* wrongButton.wav */,
-				139D2B9D298FA1F7006CAEF9 /* rightButton.wav */,
+				139D2BE8299CBA65006CAEF9 /* rightButton.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -98,6 +96,7 @@
 				139D2B9C298FA1DE006CAEF9 /* Audio */,
 				36939D08298CFB5F00927B1E /* AppDelegate.swift */,
 				36939D0A298CFB5F00927B1E /* SceneDelegate.swift */,
+				139D2BA52993A349006CAEF9 /* Model.swift */,
 				36939D0C298CFB5F00927B1E /* ViewController.swift */,
 				1331E231298D39DD00AFD1E0 /* HomeViewController.swift */,
 				1331E232298D39DD00AFD1E0 /* HomeViewController.xib */,
@@ -106,9 +105,7 @@
 				139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */,
 				139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */,
 				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
-				36939D0E298CFB5F00927B1E /* Main.storyboard */,
 				36DD6080298D0BAC00F059FB /* QuestionViewController.swift */,
-				139D2BA52993A349006CAEF9 /* Model.swift */,
 				36DD6081298D0BAC00F059FB /* QuestionViewController.xib */,
 				36DD6084298E12E000F059FB /* ResultsViewController.swift */,
 				36DD6085298E12E000F059FB /* ResultsViewController.xib */,
@@ -185,8 +182,7 @@
 				36939D12298CFB6000927B1E /* Assets.xcassets in Resources */,
 				36DD6087298E12E000F059FB /* ResultsViewController.xib in Resources */,
 				36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */,
-				139D2B9E298FA1F7006CAEF9 /* rightButton.wav in Resources */,
-				36939D10298CFB5F00927B1E /* Main.storyboard in Resources */,
+				139D2BE9299CBA66006CAEF9 /* rightButton.mp3 in Resources */,
 				1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,14 +211,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		36939D0E298CFB5F00927B1E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				36939D0F298CFB5F00927B1E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		36939D13298CFB6000927B1E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -360,7 +348,6 @@
 				INFOPLIST_FILE = KidsLove/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,7 +375,6 @@
 				INFOPLIST_FILE = KidsLove/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -10,6 +10,7 @@ class NetworkService{
     let defaults = UserDefaults.standard
     fileprivate func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: String, noOfOprands: Int) -> [Question] {
         var easyQuestionList = [Question]()
+        
         for _ in 0...numberOfQuestions {
             var optionArray: [Int] = []
             var oprandsArray = [Int]()
@@ -48,30 +49,34 @@ class NetworkService{
     }
     
     private func getUnit(unitNumber: Int) -> Level {
-        let easyQuestionList = getQuestions(range: 1...9, numberOfOptions: 4, numberOfQuestions: 1, oprator: "×", noOfOprands: 2)
-        let mediumQuestionList = getQuestions(range: 10...20, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
-        
-        let hardQuestionList  = getQuestions(range: 2...10, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 3)
-        
-        let easyLevelCellModel = LevelCellModel(progress: getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy), title: "Easy", questions: easyQuestionList)
-        let mediumLevelCellModel = LevelCellModel(progress: getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .medium), title: "Medium", questions: mediumQuestionList)
-        let hardLevelCellModel = LevelCellModel(progress: getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .hard), title: "Hard", questions: hardQuestionList)
-        
-        let chainsLevelCellModel = LevelCellModel(progress: .zero, title: "Chain", questions: [Question]())
-        let roundingLevelCellModel = LevelCellModel(progress: .zero, title: "Rounding", questions: [Question]())
-        let reviewLevelCellModel = LevelCellModel(progress: .zero, title: "Review", questions: [Question]())
-        return Level(easyLevel: easyLevelCellModel,  hardLevel: hardLevelCellModel, mediumLevel: mediumLevelCellModel, chainsLevel: chainsLevelCellModel, roundingLevel: roundingLevelCellModel, reviewLevel: reviewLevelCellModel)
-    }
+    
+            let easyQuestionList = getQuestions(range: 1...9, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
+            let mediumQuestionList = getQuestions(range: 10...20, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 2)
+            
+            let hardQuestionList  = getQuestions(range: 2...10, numberOfOptions: 4, numberOfQuestions: 5, oprator: "×", noOfOprands: 3)
+            let easyLevelCellModel = LevelCellModel(progress: getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy), title: "Easy", questions: easyQuestionList)
+            let mediumLevelCellModel = LevelCellModel(progress: getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .medium), title: "Medium", questions: mediumQuestionList)
+            let hardLevelCellModel = LevelCellModel(progress: getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .hard), title: "Hard", questions: hardQuestionList)
+            
+            let chainsLevelCellModel = LevelCellModel(progress: .zero, title: "Chain", questions: [Question]())
+            
+            //        let roundingLevelCellModel = LevelCellModel(progress: .zero, title: "Rounding", questions: [Question]())
+            //        let reviewLevelCellModel = LevelCellModel(progress: .zero, title: "Review", questions: [Question]())
+            return Level(easyLevel: easyLevelCellModel,  hardLevel: hardLevelCellModel, mediumLevel: mediumLevelCellModel, chainsLevel: chainsLevelCellModel)
+        }
+       
+    
     
     func setLevelWise() -> [Unit] {
              return  [
-                Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels: getUnit(unitNumber: 0)),
-                Unit(unitNumber: "Unit 2", chapterName: "Shapes", levels: getUnit(unitNumber: 1)),
-                Unit(unitNumber: "Unit 3", chapterName: "Division", levels: getUnit(unitNumber: 2)),
-                Unit(unitNumber: "Unit 4", chapterName: "Fractions", levels: getUnit(unitNumber: 3)),
-                Unit(unitNumber: "Unit 5", chapterName: "Measurement", levels: getUnit(unitNumber: 4)),
-                Unit(unitNumber: "Unit 6", chapterName: "Decimals", levels: getUnit(unitNumber: 5)),
-                Unit(unitNumber: "Unit 7", chapterName: "Review", levels: getUnit(unitNumber: 6))
+                    Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels:  getUnit(unitNumber: 0)
+                        ),
+                Unit(unitNumber: "Unit 2", chapterName: "Division", levels: getUnit(unitNumber: 1)),
+                Unit(unitNumber: "Unit 3", chapterName: "Addition", levels: getUnit(unitNumber: 2)),
+                Unit(unitNumber: "Unit 4", chapterName: "Subtraction", levels: getUnit(unitNumber: 3)),
+//                Unit(unitNumber: "Unit 5", chapterName: "Measurement", levels: getUnit(unitNumber: 4)),
+//                Unit(unitNumber: "Unit 6", chapterName: "Decimals", levels: getUnit(unitNumber: 5)),
+//                Unit(unitNumber: "Unit 7", chapterName: "Review", levels: getUnit(unitNumber: 6))
         ]
     }
     private func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelType: LevelType) -> Progress {
@@ -103,6 +108,3 @@ extension Int {
     }
 
 
-//fileprivate func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: String, noOfOprands: Int) -> [Question] {
-//    
-//}

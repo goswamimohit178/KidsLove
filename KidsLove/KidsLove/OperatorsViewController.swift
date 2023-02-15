@@ -26,7 +26,7 @@ final class OperatorsViewController: UIViewController {
         headerLabel.font = UIFont.headingFonts()
         headerLabel.backgroundColor = UIColor.homeButtonColor()
     }
-    
+  
     private func setButtonStyle() {
         operatorTableView.dataSource = self
         operatorTableView.delegate = self
