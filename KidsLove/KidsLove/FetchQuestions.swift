@@ -8,44 +8,60 @@
 import Foundation
 class NetworkService {
     let defaults = UserDefaults.standard
+
      func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: String, noOfOprands: Int) -> [Question] {
+
         var easyQuestionList = [Question]()
+        
         for _ in 0...numberOfQuestions {
             var optionArray: [Int] = []
             var oprandsArray = [Int]()
-            var answer: Int = 1
+            var answer: Int = oprator.getInitialValueOfAnswer()
             var questionString: String = ""
-            for index in 1...noOfOprands {
-                let num = generateRandomNumber(range: range)
-                oprandsArray.append(num)
-                if index == noOfOprands {
-                    questionString += String(num)
-                } else {
-                    questionString += String(num) + " " + oprator + " "
+            
+            if oprator == .division {
+                
+                var num1: Int = 0
+                let num2 = generateRandomNumber(range: range)
+        
+                while optionArray.count < numberOfOptions {
+                    let option = generateRandomNumber(range: 2...10)
+                    if !optionArray.contains(option) {
+                        optionArray.append(option)
+                    }
                 }
-                switch oprator {
-                   case "×" :
-                    answer *= num
-                   case "÷" :
-                    answer /= num
-                   case "+" :
-                    answer += num
-                   default:
-                    answer *= num
-                }
-            }
-            optionArray.append(answer)
-            while optionArray.count < numberOfOptions {
-                let option = random(digits: answer.size())
-                if !optionArray.contains(option) {
-                    optionArray.append(option)
+                answer = optionArray[2]
+                num1 = answer * num2
+                questionString += String(num1) + " " + "÷" + " " + String(num2)
+            } else {
+                for index in 1...noOfOprands {
+                    let num = generateRandomNumber(range: range)
+                    oprandsArray.append(num)
+                    if index == noOfOprands {
+                        questionString += String(num)
+                    } else {
+                        questionString += String(num) + " " + oprator.getOperator() + " "
+                    }
+                    
+                    answer = oprator.calculateAnswer(answer: answer, num: num)
+                    
+                    optionArray.append(answer)
+                    while optionArray.count < numberOfOptions {
+                        let option = random(digits: answer.size())
+                        if !optionArray.contains(option) {
+                            optionArray.append(option)
+                        }
+                    }
                 }
             }
                 let shuffledArray = optionArray.shuffled()
                 easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
-                }
+            
+            
+        }
         return easyQuestionList
     }
+
     
     private func getUnit(unitNumber: Int) -> Level {
         let easyMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy)
@@ -56,26 +72,27 @@ class NetworkService {
         let hardMultiplyCellModel = LevelCellModel(progress: hardMultiplyprogress, title: "Hard", oprator: "×", noOfOprands: 2, levelType: .hard)
         
         return Level(easyLevel: easyMultiplyCellModel,  hardLevel: hardMultiplyCellModel, mediumLevel: mediumMultiplyCellModel, chainsLevel: easyMultiplyCellModel)
+
     }
     
     func setLevelWise() -> [Unit] {
-             return  [
-                Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels: getUnit(unitNumber: 0)),
-                Unit(unitNumber: "Unit 2", chapterName: "Shapes", levels: getUnit(unitNumber: 1)),
-                Unit(unitNumber: "Unit 3", chapterName: "Division", levels: getUnit(unitNumber: 2)),
-                Unit(unitNumber: "Unit 4", chapterName: "Fractions", levels: getUnit(unitNumber: 3)),
-                Unit(unitNumber: "Unit 5", chapterName: "Measurement", levels: getUnit(unitNumber: 4)),
-                Unit(unitNumber: "Unit 6", chapterName: "Decimals", levels: getUnit(unitNumber: 5)),
-                Unit(unitNumber: "Unit 7", chapterName: "Review", levels: getUnit(unitNumber: 6))
+        return  [
+            Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels:  getUnit(unitNumber: 0,oprator: .multiplication)
+                ),
+            
+            Unit(unitNumber: "Unit 2", chapterName: "Division", levels: getUnit(unitNumber: 1, oprator: .division)),
+            Unit(unitNumber: "Unit 3", chapterName: "Addition", levels: getUnit(unitNumber: 2, oprator: .addition)),
+            Unit(unitNumber: "Unit 4", chapterName: "Subtraction", levels: getUnit(unitNumber: 3, oprator: .subtraction))
         ]
     }
-    private func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelType: LevelType) -> Progress {
+    func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelType: LevelType) -> Progress {
         let keyForProgrss: String = "\(currentUnitNumber)-\(currentLevelType)"
         let progress = defaults.value(forKey: keyForProgrss) as? Int ?? 0
-    
+        
         return Progress(rawValue: progress) ?? .zero
     }
-    private func generateRandomNumber(range: ClosedRange<Int>) -> Int{
+    
+    func generateRandomNumber(range: ClosedRange<Int>) -> Int{
         return Int.random(in: range)
     }
     
@@ -85,14 +102,60 @@ class NetworkService {
         return generateRandomNumber(range: min...max)
     }
 }
+
 extension Int {
-      func size() -> Int {
+    func size() -> Int {
         var size = 1
         var modifyingNumber = self
         while modifyingNumber > 10 {
-          modifyingNumber = modifyingNumber / 10
-          size = size + 1
+            modifyingNumber = modifyingNumber / 10
+            size = size + 1
         }
         return size
-      }
     }
+
+}
+
+
+enum Oprator {
+    case multiplication
+    case division
+    case addition
+    case subtraction
+    
+    func getInitialValueOfAnswer() -> Int {
+        switch self {
+        case .division, .multiplication :
+            return 1
+        default:
+            return 0
+        }
+    }
+    func calculateAnswer(answer: Int,num: Int) -> Int {
+        switch self {
+        case .multiplication :
+            return answer * num
+        case .division:
+            return answer / num
+        case .addition:
+            return answer + num
+        case .subtraction:
+            return answer - num
+        }
+    }
+    func getOperator() -> String {
+        switch self {
+            
+        case .multiplication:
+            return "×"
+        case .division:
+            return "÷"
+        case .addition:
+            return "+"
+        case .subtraction:
+            return "-"
+        }
+    }
+}
+
+

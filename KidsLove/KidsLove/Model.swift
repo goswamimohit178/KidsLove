@@ -21,6 +21,7 @@ struct Level {
     var hardLevel: LevelCellModel
     var mediumLevel: LevelCellModel
     var chainsLevel: LevelCellModel
+
 }
 struct LevelCellModel {
     var progress: Progress
