@@ -214,7 +214,7 @@ class QuestionViewController: UIViewController {
     var player: AVAudioPlayer?
     
     private func playSound(soundString: String) {
-        guard let path = Bundle.main.url(forResource: soundString, withExtension: "mp3")
+        guard let path = Bundle.main.url(forResource: soundString, withExtension: "wav")
             else {
             return }
 //        let url = URL(fileURLWithPath: path)

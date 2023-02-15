@@ -16,7 +16,7 @@
 		139D2BA429921C31006CAEF9 /* OperatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */; };
 		139D2BA62993A349006CAEF9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BA52993A349006CAEF9 /* Model.swift */; };
 		139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */; };
-		139D2BE9299CBA66006CAEF9 /* rightButton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BE8299CBA65006CAEF9 /* rightButton.mp3 */; };
+		139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BEA299CCABA006CAEF9 /* rightButton.wav */; };
 		36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D08298CFB5F00927B1E /* AppDelegate.swift */; };
 		36939D0B298CFB5F00927B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D0A298CFB5F00927B1E /* SceneDelegate.swift */; };
 		36939D0D298CFB5F00927B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36939D0C298CFB5F00927B1E /* ViewController.swift */; };
@@ -39,7 +39,7 @@
 		139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatorTableViewCell.xib; sourceTree = "<group>"; };
 		139D2BA52993A349006CAEF9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQuestions.swift; sourceTree = "<group>"; };
-		139D2BE8299CBA65006CAEF9 /* rightButton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rightButton.mp3; sourceTree = "<group>"; };
+		139D2BEA299CCABA006CAEF9 /* rightButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rightButton.wav; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36939D08298CFB5F00927B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36939D0A298CFB5F00927B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				139D2B9F298FA206006CAEF9 /* wrongButton.wav */,
-				139D2BE8299CBA65006CAEF9 /* rightButton.mp3 */,
+				139D2BEA299CCABA006CAEF9 /* rightButton.wav */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -182,8 +182,8 @@
 				36939D12298CFB6000927B1E /* Assets.xcassets in Resources */,
 				36DD6087298E12E000F059FB /* ResultsViewController.xib in Resources */,
 				36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */,
-				139D2BE9299CBA66006CAEF9 /* rightButton.mp3 in Resources */,
 				1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */,
+				139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
