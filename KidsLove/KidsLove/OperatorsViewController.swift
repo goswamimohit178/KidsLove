@@ -55,9 +55,11 @@ extension OperatorsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
         let unitModel = model.math[indexPath.row]
+        let chapterName = unitModel.chapterName
         cell.currUnit = indexPath.row
         cell.unit = unitModel
         cell.setDataCell()
+        cell.setTittleOperatorBtn(chapterName: chapterName)
         cell.disableBtnForProgress(unit: unitModel)
         cell.setProgressAnimation()
         cell.buttonTappedAction = presentQuestionController

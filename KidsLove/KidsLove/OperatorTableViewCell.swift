@@ -26,6 +26,7 @@ class OperatorTableViewCell: UITableViewCell {
     var unit:Unit!
     var currUnit: Int?
     private var buttonWidth: CGFloat = 150
+    var buttons: [UIButton] = []
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
         buttonTappedAction!(unit.levels.mediumLevel.questions(), .medium, currUnit!)
@@ -44,7 +45,32 @@ class OperatorTableViewCell: UITableViewCell {
         self.buttonWidth = UIScreen.main.bounds.width * 0.2
         setFontsAndColor()
         makeButtonRound()
+        appendBtnsInArray()
         buttonHeightConstarint.constant = buttonWidth
+    }
+    
+    func setTittleOperatorBtn(chapterName: String) {
+        
+        for btn in buttons {
+            if chapterName == "Multiplication" {
+                btn.setTitle("X", for: .normal)
+            } else if chapterName == "Division" {
+                btn.setTitle("÷", for: .normal)
+            } else if chapterName == "Addition" {
+                btn.setTitle("+", for: .normal)
+            }  else {
+                btn.setTitle("-", for: .normal)
+            }
+            
+        }
+        
+    }
+    
+    func appendBtnsInArray() {
+        buttons.append(easyButton)
+        buttons.append(mediumButton)
+        buttons.append(hardButton)
+        buttons.append(chainsButton)
     }
     
     func disableBtnForProgress(unit: Unit) {
@@ -60,6 +86,7 @@ class OperatorTableViewCell: UITableViewCell {
         self.mediumlabel.text = unit.levels.mediumLevel.title
         self.hardLabel.text = unit.levels.hardLevel.title
         self.chainsLabel.text = unit.levels.chainsLevel.title
+        
 
     }
     
@@ -108,6 +135,9 @@ class OperatorTableViewCell: UITableViewCell {
         chainsButton.backgroundColor = UIColor.homeButtonColor()
         tittleView.backgroundColor = UIColor.homeButtonColor()
         easyButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        mediumButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        hardButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        chainsButton.titleLabel?.font = UIFont.myAppBodyFonts()
         
     }
 }
