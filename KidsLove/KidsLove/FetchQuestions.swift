@@ -40,9 +40,16 @@ class NetworkService{
                     } else {
                         questionString += String(num) + " " + oprator.getOperator() + " "
                     }
-                    
-                    answer = oprator.calculateAnswer(answer: answer, num: num)
-                    
+                    if oprator == .subtraction {
+                        if index == 1{
+                            answer = num
+                        } else {
+                            answer -= num
+                        }
+                    } else {
+                        answer = oprator.calculateAnswer(answer: answer, num: num)
+                    }
+                }
                     optionArray.append(answer)
                     while optionArray.count < numberOfOptions {
                         let option = random(digits: answer.size())
@@ -50,7 +57,7 @@ class NetworkService{
                             optionArray.append(option)
                         }
                     }
-                }
+                
             }
                 let shuffledArray = optionArray.shuffled()
                 easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
@@ -143,7 +150,6 @@ enum Oprator {
     }
     func getOperator() -> String {
         switch self {
-            
         case .multiplication:
             return "×"
         case .division:
