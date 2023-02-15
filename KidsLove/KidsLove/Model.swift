@@ -26,7 +26,7 @@ struct Level {
 struct LevelCellModel {
     var progress: Progress
     let title: String
-    let oprator: String
+    let oprator: Oprator
     let noOfOprands: Int
     let levelType: LevelType
     
