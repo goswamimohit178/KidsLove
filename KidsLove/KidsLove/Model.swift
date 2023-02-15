@@ -21,13 +21,18 @@ struct Level {
     var hardLevel: LevelCellModel
     var mediumLevel: LevelCellModel
     var chainsLevel: LevelCellModel
-//    var roundingLevel: LevelCellModel
-//    var reviewLevel: LevelCellModel
+
 }
 struct LevelCellModel {
     var progress: Progress
     let title: String
-    var questions:[Question]
+    let oprator: String
+    let noOfOprands: Int
+    let levelType: LevelType
+    
+    func questions() -> [Question] {
+        return NetworkService().getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: 5, oprator: oprator, noOfOprands: noOfOprands)
+    }
 }
 struct Question {
     let questionText: String
@@ -56,4 +61,15 @@ enum LevelType {
     case easy
     case medium
     case hard
+    
+    var range: ClosedRange<Int> {
+        switch self {
+        case .easy:
+            return 1...9
+        case .medium:
+            return 9...20
+        case .hard:
+            return 20...50
+        }
+    }
 }

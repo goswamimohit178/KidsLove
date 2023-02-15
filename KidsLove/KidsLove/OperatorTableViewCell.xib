@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,26 +19,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQn-Ew-O9K">
-                        <rect key="frame" x="0.0" y="10" width="404" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="404" height="250"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-eQ-ZxN">
-                                <rect key="frame" x="121.33333333333333" y="0.0" width="161.33333333333337" height="208"/>
+                                <rect key="frame" x="121.33333333333333" y="0.0" width="161.33333333333337" height="218"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="ChapterName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLp-5Q-FYQ">
-                                <rect key="frame" x="121.33333333333333" y="219" width="161.33333333333337" height="21"/>
+                                <rect key="frame" x="121.33333333333333" y="229" width="161.33333333333337" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-Ox-5yk">
-                                <rect key="frame" x="297" y="8.3333333333333286" width="107" height="223.33333333333334"/>
+                                <rect key="frame" x="297" y="8.3333333333333286" width="107" height="233.33333333333337"/>
                                 <color key="tintColor" red="0.50196081400000003" green="0.64705884459999996" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-vd-KVu">
-                                <rect key="frame" x="0.0" y="8.3333333333333286" width="107" height="223.33333333333334"/>
+                                <rect key="frame" x="0.0" y="8.3333333333333286" width="107" height="233.33333333333337"/>
                                 <color key="tintColor" red="0.50196081400000003" green="0.64705884459999996" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                         </subviews>
@@ -75,7 +74,6 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal">
                             <color key="titleColor" name="textColor"/>
-                            <imageReference key="image" image="multiply" catalog="system"/>
                         </state>
                         <connections>
                             <action selector="easyButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IbM-Y0-gjK"/>
@@ -91,19 +89,17 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal">
                             <color key="titleColor" name="textColor"/>
-                            <imageReference key="image" image="multiply" catalog="system" symbolScale="default"/>
-                            <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
                         </state>
                         <connections>
                             <action selector="mediumButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AdH-VN-BNw"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Ib-3O8">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Ib-3O8">
                         <rect key="frame" x="243.33333333333334" y="490.66666666666669" width="120.66666666666666" height="120.66666666666669"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <color key="tintColor" name="textColor"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="multiply" catalog="system">
+                        <state key="normal">
                             <color key="titleColor" name="textColor"/>
                         </state>
                         <connections>
@@ -118,7 +114,7 @@
                         </constraints>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="Button">
+                        <state key="normal">
                             <color key="titleColor" name="textColor"/>
                         </state>
                     </button>
@@ -154,7 +150,7 @@
                     <constraint firstItem="MhT-Nz-tb8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="25O-xT-Lds"/>
                     <constraint firstItem="IW6-f6-Q5H" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.25" id="4ob-YL-RdD"/>
                     <constraint firstItem="FuV-hj-kE3" firstAttribute="centerX" secondItem="GRi-tB-hrQ" secondAttribute="centerX" id="5ts-j7-QeO"/>
-                    <constraint firstItem="MQn-Ew-O9K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="6gZ-m6-RIM"/>
+                    <constraint firstItem="MQn-Ew-O9K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6gZ-m6-RIM"/>
                     <constraint firstAttribute="trailing" secondItem="MQn-Ew-O9K" secondAttribute="trailing" id="87V-sl-LaH"/>
                     <constraint firstItem="7Qk-nj-0Be" firstAttribute="centerX" secondItem="MhT-Nz-tb8" secondAttribute="centerX" id="DlH-75-2zx"/>
                     <constraint firstItem="FuV-hj-kE3" firstAttribute="height" secondItem="Aii-07-fNZ" secondAttribute="height" id="ENm-mc-cD7"/>
@@ -205,7 +201,6 @@
     </objects>
     <resources>
         <image name="minus" catalog="system" width="128" height="26"/>
-        <image name="multiply" catalog="system" width="128" height="111"/>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
