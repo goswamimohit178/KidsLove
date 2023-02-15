@@ -28,15 +28,15 @@ class OperatorTableViewCell: UITableViewCell {
     private var buttonWidth: CGFloat = 150
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
-        buttonTappedAction!(unit.levels.mediumLevel.questions, .medium, currUnit!)
+        buttonTappedAction!(unit.levels.mediumLevel.questions(), .medium, currUnit!)
         
     }
     @IBAction func easyButtonTapped(_ sender: Any) {
-        buttonTappedAction!(unit.levels.easyLevel.questions, .easy , currUnit!)
+        buttonTappedAction!(unit.levels.easyLevel.questions(), .easy , currUnit!)
     }
     
     @IBAction func hardButtonTapped(_ sender: Any) {
-        buttonTappedAction!(unit.levels.hardLevel.questions, .hard, currUnit!)
+        buttonTappedAction!(unit.levels.hardLevel.questions(), .hard, currUnit!)
     }
     
     override func awakeFromNib() {

@@ -23,7 +23,7 @@ final class OperatorsViewController: UIViewController {
         let unitNameList = NetworkService().setLevelWise()
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
-        headerLabel.font = UIFont.headingFonts()
+        headerLabel.font = UIFont.operatorViewCellFont()
         headerLabel.backgroundColor = UIColor.homeButtonColor()
     }
     

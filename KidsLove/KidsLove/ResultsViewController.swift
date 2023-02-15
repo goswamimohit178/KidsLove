@@ -12,15 +12,11 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var yourMarks: UILabel!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var totalMarksOfAll: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var goToHomeLabel: UIButton!
     
-    @IBOutlet weak var percentageSignLabel: UILabel!
-    @IBOutlet weak var percentageLabel: UILabel!
-    @IBOutlet weak var fractionViewDivision: UIView!
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
     var progress: Progress = .twoThird
@@ -29,9 +25,7 @@ class ResultsViewController: UIViewController {
     var currentLevelType: LevelType!
     var percentage: Float!
     let defaults = UserDefaults.standard
-    @IBOutlet weak var percentageTrailingConstraint: NSLayoutConstraint!
 
-    
     @IBAction func goToHomeButton(_ sender: Any) {
         
         self.navigationController?.popToViewController(opratorVC, animated: true)
@@ -42,9 +36,6 @@ class ResultsViewController: UIViewController {
             let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
             print(keyForProgrss)
             defaults.set(progress.rawValue, forKey: keyForProgrss)
-//            let progrssNum = defaults.value(forKey: "easylevel") as! Int
-//            let progressObj = Progress(rawValue: progrssNum)
-//            print(progressObj)
         }
         else if percentage >= 50 && percentage < 80  {
             opratorVC.setProgess(progress: .twoThird, unitNumber: currentUnitNumber, levelType: currentLevelType)
@@ -57,15 +48,11 @@ class ResultsViewController: UIViewController {
         
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
         percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-        self.yourMarks.text = String(percentage)
-        self.percentageLabel.text = "%"
-        //labelAnimation()
+        self.yourMarks.text = String(percentage) + "%"
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
@@ -83,7 +70,6 @@ class ResultsViewController: UIViewController {
         headerView.layer.cornerRadius = 0.05 * headerView.bounds.size.width
         yourMarks.font = UIFont.myAppBodyFonts()
         yourScoreLabel.font = UIFont.myAppBodyFonts()
-        percentageLabel.font = UIFont.myAppBodyFonts()
         continueButton.titleLabel?.font = UIFont.myAppBodyFonts()
         headerView.backgroundColor = UIColor.homeButtonColor()
         footerView.backgroundColor = UIColor.homeButtonColor()
@@ -91,19 +77,10 @@ class ResultsViewController: UIViewController {
         goToHomeLabel.titleLabel?.font = UIFont.myAppBodyFonts()
         headerLabel.tintColor = UIColor.bodyFontColor()
         goToHomeLabel.tintColor = UIColor.bodyFontColor()
-        percentageLabel.font = UIFont.myAppBodyFonts()
-        percentageLabel.tintColor  = UIColor.bodyFontColor()
         yourScoreLabel.font = UIFont.myAppBodyFonts()
         yourScoreLabel.tintColor = UIColor.bodyFontColor()
         
     }
-    private func labelAnimation() {
-        //        self.percentageTrailingConstraint.constant = (view.frame.width / 2.0)
-        //        self.percentageSignLableLeadingConstraint.constant = (view.frame.width / 2.0)
-        UIView.animate(withDuration: 0.8, animations: {
-            self.view.layoutIfNeeded()
-        });
-   }
 }
 struct ContentView: View {
     var body: some View {
@@ -128,8 +105,6 @@ struct ParticlesModifier: ViewModifier {
     @State var scale = 0.1
     let duration = 3.0
     @State private var radius = 2
-    //private var opacity = 0.25
-    
     
     func body(content: Content) -> some View {
         ZStack {
