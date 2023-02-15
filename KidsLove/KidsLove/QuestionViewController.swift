@@ -162,30 +162,24 @@ class QuestionViewController: UIViewController {
         optionButtons.forEach { $0.isEnabled = true }
     }
     
-    
-    
     private func disabledAll() {
         if optionButtons.isEmpty {
             optionButtons.forEach { $0.isEnabled = true }
         } else {
             setTappedbtnFalse()
-            
         }
     }
     
     private func checkAnswer(idx: Int) -> Bool {
         let currentModel = questionList[currentQuestionNumber]
         if currentModel.correctAnswer == idx {
-            
             if isFirstTimeTapped{
                 noCorrect += 1
             }
             setAllDisableBtn()
-            
             return true
         }
         return false
-        
     }
     
     private func setOptionButtonsShadow() {
@@ -220,12 +214,12 @@ class QuestionViewController: UIViewController {
     var player: AVAudioPlayer?
     
     private func playSound(soundString: String) {
-        guard let path = Bundle.main.path(forResource: soundString, ofType:"wav") else {
+        guard let path = Bundle.main.url(forResource: soundString, withExtension: "wav")
+            else {
             return }
-        let url = URL(fileURLWithPath: path)
-        
+//        let url = URL(fileURLWithPath: path)
         do {
-            player = try AVAudioPlayer(contentsOf: url)
+            player = try AVAudioPlayer(contentsOf: path)
             player?.play()
             
         } catch let error {
@@ -242,14 +236,6 @@ extension UIButton {
         backgroundColor = UIColor.buttonBackgroundColor()
     }
 }
-
-//struct Model {
-//    let num1:Int
-//    let num2:Int
-//    let operation: String
-//    let answer: [Int]
-//    let correctAnswer: Int
-//}
 extension UIView {
     func shake(){
         let animation = CABasicAnimation(keyPath: "position")

@@ -21,8 +21,8 @@ struct Level {
     var hardLevel: LevelCellModel
     var mediumLevel: LevelCellModel
     var chainsLevel: LevelCellModel
-    var roundingLevel: LevelCellModel
-    var reviewLevel: LevelCellModel
+//    var roundingLevel: LevelCellModel
+//    var reviewLevel: LevelCellModel
 }
 struct LevelCellModel {
     var progress: Progress
