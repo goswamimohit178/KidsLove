@@ -64,7 +64,6 @@ class OperatorTableViewCell: UITableViewCell {
             }  else {
                 btn.setTitle("-", for: .normal)
             }
-            
         }
         
     }
