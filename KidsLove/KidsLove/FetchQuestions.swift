@@ -38,6 +38,7 @@ class NetworkService {
                     } else {
                         questionString += String(num) + " " + oprator.getOperator() + " "
                     }
+                    
                     if oprator == .subtraction {
                         if index == 1{
                             answer = num
@@ -54,13 +55,13 @@ class NetworkService {
                     if !optionArray.contains(option) {
                         optionArray.append(option)
                     }
+
                 }
                 
             }
             let shuffledArray = optionArray.shuffled()
             easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
-            
-            
+        
         }
         return easyQuestionList
     }
@@ -117,9 +118,8 @@ extension Int {
         }
         return size
     }
-    
-}
 
+}
 
 enum Oprator {
     case multiplication
