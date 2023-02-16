@@ -23,7 +23,7 @@ final class OperatorsViewController: UIViewController {
         let unitNameList = NetworkService().setLevelWise()
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
-        headerLabel.font = UIFont.operatorViewCellFont()
+        headerLabel.font = UIFont.myAppBodyFonts()
         headerLabel.backgroundColor = UIColor.homeButtonColor()
     }
   
@@ -42,6 +42,8 @@ final class OperatorsViewController: UIViewController {
             model.math[unitNumber].levels.mediumLevel.progress = progress
         case .hard:
             model.math[unitNumber].levels.hardLevel.progress = progress
+        case .practice:
+            model.math[unitNumber].levels.chainsLevel.progress = progress
         }
         operatorTableView.reloadData()
     }
@@ -61,6 +63,7 @@ extension OperatorsViewController: UITableViewDataSource{
         cell.setDataCell()
         cell.setTittleOperatorBtn(chapterName: chapterName)
         cell.disableBtnForProgress(unit: unitModel)
+        cell.setColorForDisableBtn()
         cell.setProgressAnimation()
         cell.buttonTappedAction = presentQuestionController
         return cell
