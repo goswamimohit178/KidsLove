@@ -42,21 +42,10 @@ class ResultsViewController: UIViewController {
         self.navigationController?.popToViewController(opratorVC, animated: true)
         
         if percentage >= 80.0 {
-            opratorVC.setProgess(progress: .complete, unitNumber: currentUnitNumber, levelType: currentLevelType)
-            progress = .complete
-            let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
-            print(keyForProgrss)
-            defaults.set(progress.rawValue, forKey: keyForProgrss)
-        }
-        else if percentage >= 50 && percentage < 80  {
-            opratorVC.setProgess(progress: .twoThird, unitNumber: currentUnitNumber, levelType: currentLevelType)
-        }
-        else if percentage < 50 && percentage > 30 {
-            opratorVC.setProgess(progress: .oneThird, unitNumber: currentUnitNumber, levelType: currentLevelType)
-        } else {
-            opratorVC.setProgess(progress: .zero, unitNumber: currentUnitNumber, levelType: currentLevelType)
-        }
-        
+            let previousProgress = getPreviousProgress()
+            let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
+            setNewProgress(currentProgress: currentProgress)
+        }    
     }
     
     override func viewDidLoad() {
@@ -68,13 +57,13 @@ class ResultsViewController: UIViewController {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
         }
-        
+       
+    
         let vc = UIHostingController(rootView: ContentView())
         
         self.view.addSubview(vc.view)
         vc.view.center = CGPoint(x: view.frame.size.width  / 2,
                                  y: view.frame.size.height / 2)
-        
     }
     private func fontAndColorResults() {
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
@@ -96,6 +85,30 @@ class ResultsViewController: UIViewController {
         tryAgainButton.titleLabel?.font = UIFont.myAppBodyFonts()
         goToNextLevelButton.titleLabel?.font = UIFont.myAppBodyFonts()
         
+    }
+    private func getPreviousProgress() -> Progress{
+        let key = "\(currentUnitNumber!)-\(currentLevelType!)"
+        let rawValue = defaults.value(forKey: key) as? Int ?? 0
+        return Progress(rawValue: rawValue) ?? .zero
+    }
+    private func calculateCurrentProgress(previousProgress: Progress) -> Progress{
+        switch previousProgress {
+        case .zero:
+           return .oneThird
+        case .oneThird:
+           return .twoThird
+        case .twoThird:
+            return .complete
+        case .complete:
+            return .complete
+        }
+    }
+    private func setNewProgress(currentProgress: Progress) {
+        opratorVC.setProgess(progress: currentProgress, unitNumber: currentUnitNumber, levelType: currentLevelType)
+        
+        let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
+        print(keyForProgrss)
+        defaults.set(currentProgress.rawValue, forKey: keyForProgrss)
     }
 }
 struct ContentView: View {

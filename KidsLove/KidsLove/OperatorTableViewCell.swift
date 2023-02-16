@@ -39,13 +39,17 @@ class OperatorTableViewCell: UITableViewCell {
     @IBAction func hardButtonTapped(_ sender: Any) {
         buttonTappedAction!(unit.levels.hardLevel.questions(), .hard, currUnit!)
     }
-    
+   
+    @IBAction func practiceButtonTapped(_ sender: Any) {
+        buttonTappedAction!(unit.levels.chainsLevel.questions(), .practice, currUnit!)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.buttonWidth = UIScreen.main.bounds.width * 0.2
         setFontsAndColor()
         makeButtonRound()
         appendBtnsInArray()
+        //setColorForDisableBtn()
         buttonHeightConstarint.constant = buttonWidth
     }
     
@@ -61,7 +65,6 @@ class OperatorTableViewCell: UITableViewCell {
             }  else {
                 btn.setTitle("-", for: .normal)
             }
-            
         }
         
     }
@@ -73,10 +76,21 @@ class OperatorTableViewCell: UITableViewCell {
         buttons.append(chainsButton)
     }
     
+    
     func disableBtnForProgress(unit: Unit) {
-        let isMediumBtnEnabled = unit.levels.easyLevel.progress == .complete
-        mediumButton.isEnabled = isMediumBtnEnabled
+        mediumButton.isEnabled =  (unit.levels.easyLevel.progress == .complete)
         hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
+        chainsButton.isEnabled = ( unit.levels.hardLevel.progress == .complete )
+    }
+    func setColorForDisableBtn() {
+        
+        for idx in buttons {
+            if !idx.isEnabled {
+                idx.alpha = 0.5
+                idx.backgroundColor = UIColor.disableButtonColor()
+            }
+        }
+        
     }
     
     func setDataCell() {
@@ -86,8 +100,6 @@ class OperatorTableViewCell: UITableViewCell {
         self.mediumlabel.text = unit.levels.mediumLevel.title
         self.hardLabel.text = unit.levels.hardLevel.title
         self.chainsLabel.text = unit.levels.chainsLevel.title
-        
-
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -104,9 +116,11 @@ class OperatorTableViewCell: UITableViewCell {
         removeProgressLayer(button: easyButton)
         removeProgressLayer(button: mediumButton)
         removeProgressLayer(button: hardButton)
+        removeProgressLayer(button: chainsButton)
         setUpCircularProgressBarView(button: easyButton, progress: unit.levels.easyLevel.progress)
         setUpCircularProgressBarView(button: mediumButton, progress: unit.levels.mediumLevel.progress)
         setUpCircularProgressBarView(button: hardButton, progress: unit.levels.hardLevel.progress)
+        setUpCircularProgressBarView(button: chainsButton, progress: unit.levels.chainsLevel.progress)
     }
     
     func setUpCircularProgressBarView(button: UIButton, progress: Progress) {
