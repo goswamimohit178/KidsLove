@@ -75,6 +75,22 @@ extension OperatorsViewController: UITableViewDataSource{
         
     }
     
+    
+    func showCurrentLevelQuestions(unitNumber: Int , leveltype: LevelType) {
+        var newQue: [Question] = []
+        switch leveltype {
+            
+        case .easy:
+            newQue = model.math[unitNumber].levels.easyLevel.questions()
+        case .medium:
+            newQue = model.math[unitNumber].levels.mediumLevel.questions()
+        case .hard:
+            newQue = model.math[unitNumber].levels.hardLevel.questions()
+        }
+        
+        presentQuestionController(questions: newQue, levelType: leveltype, unitNumber: unitNumber)
+    }
+    
 }
 extension OperatorsViewController: UITableViewDelegate {
     

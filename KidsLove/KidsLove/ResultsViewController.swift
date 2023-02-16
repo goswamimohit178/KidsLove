@@ -10,12 +10,14 @@ import SwiftUI
 class ResultsViewController: UIViewController {
     
     @IBOutlet weak var footerView: UIView!
-    @IBOutlet weak var yourMarks: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var yourScoreLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var goToHomeLabel: UIButton!
+    @IBOutlet weak var goToNextLevelButton: UIButton!
+    @IBOutlet weak var tryAgainButton: UIButton!
+    @IBOutlet weak var resultProgressBar: UIProgressView!
     
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
@@ -25,7 +27,16 @@ class ResultsViewController: UIViewController {
     var currentLevelType: LevelType!
     var percentage: Float!
     let defaults = UserDefaults.standard
-
+    
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func tryAgainBtnTapped(_ sender: Any) {
+        opratorVC.showCurrentLevelQuestions(unitNumber: currentUnitNumber, leveltype: currentLevelType)
+    }
+    
     @IBAction func goToHomeButton(_ sender: Any) {
         
         self.navigationController?.popToViewController(opratorVC, animated: true)
@@ -52,7 +63,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         fontAndColorResults()
         percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-        self.yourMarks.text = String(percentage) + "%"
+//        self.yourMarks.text = String(percentage) + "%"
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
@@ -68,7 +79,8 @@ class ResultsViewController: UIViewController {
     private func fontAndColorResults() {
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
         headerView.layer.cornerRadius = 0.05 * headerView.bounds.size.width
-        yourMarks.font = UIFont.myAppBodyFonts()
+        tryAgainButton.layer.cornerRadius = 0.08 * tryAgainButton.bounds.size.width
+        goToNextLevelButton.layer.cornerRadius = 0.08 * goToNextLevelButton.bounds.size.width
         yourScoreLabel.font = UIFont.myAppBodyFonts()
         continueButton.titleLabel?.font = UIFont.myAppBodyFonts()
         headerView.backgroundColor = UIColor.homeButtonColor()
@@ -79,6 +91,10 @@ class ResultsViewController: UIViewController {
         goToHomeLabel.tintColor = UIColor.bodyFontColor()
         yourScoreLabel.font = UIFont.myAppBodyFonts()
         yourScoreLabel.tintColor = UIColor.bodyFontColor()
+        tryAgainButton.backgroundColor = UIColor.homeButtonColor()
+        goToNextLevelButton.backgroundColor = UIColor.homeButtonColor()
+        tryAgainButton.titleLabel?.font = UIFont.myAppBodyFonts()
+        goToNextLevelButton.titleLabel?.font = UIFont.myAppBodyFonts()
         
     }
 }

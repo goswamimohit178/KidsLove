@@ -44,7 +44,7 @@ class NetworkService {
                     }
                     
                     answer = oprator.calculateAnswer(answer: answer, num: num)
-                    
+                }
                     optionArray.append(answer)
                     while optionArray.count < numberOfOptions {
                         let option = random(digits: answer.size())
@@ -52,12 +52,10 @@ class NetworkService {
                             optionArray.append(option)
                         }
                     }
-                }
+                
             }
                 let shuffledArray = optionArray.shuffled()
                 easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
-            
-            
         }
         return easyQuestionList
     }
@@ -112,9 +110,7 @@ extension Int {
         }
         return size
     }
-
 }
-
 
 enum Oprator {
     case multiplication
