@@ -39,7 +39,10 @@ class OperatorTableViewCell: UITableViewCell {
     @IBAction func hardButtonTapped(_ sender: Any) {
         buttonTappedAction!(unit.levels.hardLevel.questions(), .hard, currUnit!)
     }
-    
+   
+    @IBAction func practiceButtonTapped(_ sender: Any) {
+        buttonTappedAction!(unit.levels.chainsLevel.questions(), .practice, currUnit!)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.buttonWidth = UIScreen.main.bounds.width * 0.2
@@ -77,6 +80,8 @@ class OperatorTableViewCell: UITableViewCell {
         let isMediumBtnEnabled = unit.levels.easyLevel.progress == .complete
         mediumButton.isEnabled = isMediumBtnEnabled
         hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
+        chainsButton.isEnabled = ( unit.levels.hardLevel.progress == .complete )
+       
     }
     
     func setDataCell() {
@@ -104,9 +109,11 @@ class OperatorTableViewCell: UITableViewCell {
         removeProgressLayer(button: easyButton)
         removeProgressLayer(button: mediumButton)
         removeProgressLayer(button: hardButton)
+        removeProgressLayer(button: chainsButton)
         setUpCircularProgressBarView(button: easyButton, progress: unit.levels.easyLevel.progress)
         setUpCircularProgressBarView(button: mediumButton, progress: unit.levels.mediumLevel.progress)
         setUpCircularProgressBarView(button: hardButton, progress: unit.levels.hardLevel.progress)
+        setUpCircularProgressBarView(button: chainsButton, progress: unit.levels.chainsLevel.progress)
     }
     
     func setUpCircularProgressBarView(button: UIButton, progress: Progress) {

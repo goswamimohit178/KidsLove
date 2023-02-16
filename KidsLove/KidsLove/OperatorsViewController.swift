@@ -42,6 +42,8 @@ final class OperatorsViewController: UIViewController {
             model.math[unitNumber].levels.mediumLevel.progress = progress
         case .hard:
             model.math[unitNumber].levels.hardLevel.progress = progress
+        case .practice:
+            model.math[unitNumber].levels.chainsLevel.progress = progress
         }
         operatorTableView.reloadData()
     }
