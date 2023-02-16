@@ -23,7 +23,7 @@ final class OperatorsViewController: UIViewController {
         let unitNameList = NetworkService().setLevelWise()
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
-        headerLabel.font = UIFont.operatorViewCellFont()
+        headerLabel.font = UIFont.myAppBodyFonts()
         headerLabel.backgroundColor = UIColor.homeButtonColor()
     }
   
@@ -63,6 +63,7 @@ extension OperatorsViewController: UITableViewDataSource{
         cell.setDataCell()
         cell.setTittleOperatorBtn(chapterName: chapterName)
         cell.disableBtnForProgress(unit: unitModel)
+        cell.setColorForDisableBtn()
         cell.setProgressAnimation()
         cell.buttonTappedAction = presentQuestionController
         return cell

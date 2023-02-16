@@ -65,7 +65,7 @@
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcm-Hq-4jR">
                         <rect key="frame" x="141.66666666666666" y="265" width="120.66666666666666" height="120.66666666666669"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" red="0.83137255909999996" green="0.89803922179999995" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="hcm-Hq-4jR" secondAttribute="height" id="gqn-Io-5cW"/>
                             <constraint firstAttribute="height" constant="120.67" id="kUp-U8-Kuv"/>
@@ -81,7 +81,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRi-tB-hrQ">
                         <rect key="frame" x="40.000000000000007" y="465.66666666666669" width="120.66666666666669" height="120.66666666666669"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" name="textColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="GRi-tB-hrQ" secondAttribute="height" id="eYB-VN-GD8"/>
                         </constraints>
@@ -96,7 +96,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Ib-3O8">
                         <rect key="frame" x="243.33333333333334" y="465.66666666666669" width="120.66666666666666" height="120.66666666666669"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" name="textColor"/>
                         <color key="tintColor" name="textColor"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal">
@@ -108,7 +108,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhT-Nz-tb8">
                         <rect key="frame" x="141.66666666666666" y="666.33333333333337" width="120.66666666666666" height="120.66666666666663"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" name="textColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="MhT-Nz-tb8" secondAttribute="height" id="XaT-8M-Obf"/>
                         </constraints>
@@ -207,9 +207,6 @@
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

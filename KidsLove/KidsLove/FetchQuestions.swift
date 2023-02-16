@@ -8,11 +8,9 @@
 import Foundation
 class NetworkService {
     let defaults = UserDefaults.standard
-
-     func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: Oprator, noOfOprands: Int) -> [Question] {
-
+    
+    func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: Oprator, noOfOprands: Int) -> [Question] {
         var easyQuestionList = [Question]()
-        
         for _ in 0...numberOfQuestions {
             var optionArray: [Int] = []
             var oprandsArray = [Int]()
@@ -20,10 +18,8 @@ class NetworkService {
             var questionString: String = ""
             
             if oprator == .division {
-                
                 var num1: Int = 0
                 let num2 = generateRandomNumber(range: range)
-        
                 while optionArray.count < numberOfOptions {
                     let option = generateRandomNumber(range: 2...10)
                     if !optionArray.contains(option) {
@@ -52,23 +48,23 @@ class NetworkService {
                         answer = oprator.calculateAnswer(answer: answer, num: num)
                     }
                 }
-                    optionArray.append(answer)
-                    while optionArray.count < numberOfOptions {
-                        let option = random(digits: answer.size())
-                        if !optionArray.contains(option) {
-                            optionArray.append(option)
-                        }
+                optionArray.append(answer)
+                while optionArray.count < numberOfOptions {
+                    let option = random(digits: answer.size())
+                    if !optionArray.contains(option) {
+                        optionArray.append(option)
                     }
+                }
                 
             }
-                let shuffledArray = optionArray.shuffled()
-                easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
+            let shuffledArray = optionArray.shuffled()
+            easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
             
             
         }
         return easyQuestionList
     }
-
+    
     
     private func getUnit(unitNumber: Int, oprator: Oprator) -> Level {
         let easyMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy)
@@ -82,9 +78,8 @@ class NetworkService {
         let chainLevelCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 4, levelType: .practice)
         
         return Level(easyLevel: easyMultiplyCellModel,  hardLevel: hardMultiplyCellModel, mediumLevel: mediumMultiplyCellModel, chainsLevel: chainLevelCellModel)
-
+        
     }
-    
     func setLevelWise() -> [Unit] {
         return  [
             Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels:  getUnit(unitNumber: 0, oprator: .multiplication)),
@@ -122,7 +117,7 @@ extension Int {
         }
         return size
     }
-
+    
 }
 
 

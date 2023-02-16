@@ -22,7 +22,7 @@ extension UIColor {
     }
     
     static func rightAnswerColor() -> UIColor {
-        return UIColor(red: 0.739, green: 1.000, blue: 0.290, alpha: 1.0)
+       return UIColor(red: 0.739, green: 1.000, blue: 0.290, alpha: 1.0)
     }
     
     static func continueBtnColor() -> UIColor {
@@ -32,7 +32,9 @@ extension UIColor {
     static func homeButtonColor() -> UIColor {
         return UIColor(red: 0.502, green: 0.647, blue: 0.914, alpha: 1.0)
     }
-    
+    static func disableButtonColor() -> UIColor {
+        return .systemGray3
+    }
     static func buttonBackgroundColor() -> UIColor {
         return .systemGray6
     }

@@ -31,7 +31,7 @@ struct LevelCellModel {
     let levelType: LevelType
     
     func questions() -> [Question] {
-        return NetworkService().getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: 5, oprator: oprator, noOfOprands: noOfOprands)
+        return NetworkService().getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: 2, oprator: oprator, noOfOprands: noOfOprands)
     }
 }
 struct Question {

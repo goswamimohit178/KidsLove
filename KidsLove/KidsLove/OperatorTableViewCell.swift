@@ -49,6 +49,7 @@ class OperatorTableViewCell: UITableViewCell {
         setFontsAndColor()
         makeButtonRound()
         appendBtnsInArray()
+        //setColorForDisableBtn()
         buttonHeightConstarint.constant = buttonWidth
     }
     
@@ -75,12 +76,21 @@ class OperatorTableViewCell: UITableViewCell {
         buttons.append(chainsButton)
     }
     
+    
     func disableBtnForProgress(unit: Unit) {
-        let isMediumBtnEnabled = unit.levels.easyLevel.progress == .complete
-        mediumButton.isEnabled = isMediumBtnEnabled
+        mediumButton.isEnabled =  (unit.levels.easyLevel.progress == .complete)
         hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
         chainsButton.isEnabled = ( unit.levels.hardLevel.progress == .complete )
-       
+    }
+    func setColorForDisableBtn() {
+        
+        for idx in buttons {
+            if !idx.isEnabled {
+                idx.alpha = 0.5
+                idx.backgroundColor = UIColor.disableButtonColor()
+            }
+        }
+        
     }
     
     func setDataCell() {
@@ -90,8 +100,6 @@ class OperatorTableViewCell: UITableViewCell {
         self.mediumlabel.text = unit.levels.mediumLevel.title
         self.hardLabel.text = unit.levels.hardLevel.title
         self.chainsLabel.text = unit.levels.chainsLevel.title
-        
-
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
