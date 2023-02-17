@@ -23,9 +23,10 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var starImageView1: UIImageView!
     @IBOutlet weak var starImageView2: UIImageView!
     @IBOutlet weak var starImageView3: UIImageView!
+
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
-    var progress: Progress = .twoThird
+    var progress: Progress = .zero
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelType: LevelType!
@@ -64,6 +65,11 @@ class ResultsViewController: UIViewController {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
         }
+
+        let resultprogress = calculateResultProgress()
+        resultProgressBar.setProgress(resultprogress, animated: true)
+        resultProgressBar.tintColor = UIColor.progressBarColor()
+    
         let vc = UIHostingController(rootView: ContentView())
         self.view.addSubview(vc.view)
         vc.view.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
@@ -95,18 +101,7 @@ class ResultsViewController: UIViewController {
             
             
         }
-        
-        
-     //   if let imageView = starStackView.viewWithTag(0) as? UIImageView {
-    //            UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-    //                imageView.image = UIImage(named: "filled-star")
-    //            }, completion: nil)
-    //        }
-        
-        
-     
-        
-        
+       
     }
     private func fontAndColorResults() {
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width
@@ -148,10 +143,23 @@ class ResultsViewController: UIViewController {
     }
     private func setNewProgress(currentProgress: Progress) {
         opratorVC.setProgess(progress: currentProgress, unitNumber: currentUnitNumber, levelType: currentLevelType)
-        
         let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
         print(keyForProgrss)
         defaults.set(currentProgress.rawValue, forKey: keyForProgrss)
+    }
+    private func calculateResultProgress() -> Float{
+        let previousProgress = getPreviousProgress()
+        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
+        switch currentProgress {
+        case .zero:
+            return  0.0
+        case .oneThird:
+            return 0.3
+        case .twoThird:
+            return 0.66
+        case .complete:
+            return 1
+        }
     }
 }
 struct ContentView: View {

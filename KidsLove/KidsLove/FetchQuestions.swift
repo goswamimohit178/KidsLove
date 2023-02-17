@@ -12,60 +12,63 @@ class NetworkService {
     func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: Oprator, noOfOprands: Int) -> [Question] {
         var easyQuestionList = [Question]()
         for _ in 0...numberOfQuestions {
-            var optionArray: [Int] = []
-            var oprandsArray = [Int]()
-            var answer: Int = oprator.getInitialValueOfAnswer()
-            var questionString: String = ""
-            
-            if oprator == .division {
-                var num1: Int = 0
-                let num2 = generateRandomNumber(range: range)
-                while optionArray.count < numberOfOptions {
-                    let option = generateRandomNumber(range: 2...10)
-                    if !optionArray.contains(option) {
-                        optionArray.append(option)
-                    }
-                }
-                answer = optionArray[2]
-                num1 = answer * num2
-                questionString += String(num1) + " " + "÷" + " " + String(num2)
-            } else {
-                for index in 1...noOfOprands {
-                    let num = generateRandomNumber(range: range)
-                    oprandsArray.append(num)
-                    if index == noOfOprands {
-                        questionString += String(num)
-                    } else {
-                        questionString += String(num) + " " + oprator.getOperator() + " "
-                    }
-                    
-                    if oprator == .subtraction {
-                        if index == 1{
-                            answer = num
-                        } else {
-                            answer -= num
-                        }
-                    } else {
-                        answer = oprator.calculateAnswer(answer: answer, num: num)
-                    }
-                }
-                optionArray.append(answer)
-                while optionArray.count < numberOfOptions {
-                    let option = random(digits: answer.size())
-                    if !optionArray.contains(option) {
-                        optionArray.append(option)
-                    }
-
-                }
-                
-            }
-            let shuffledArray = optionArray.shuffled()
-            easyQuestionList.append(Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!))
-        
+            let question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
+            easyQuestionList.append(question)
         }
         return easyQuestionList
     }
+    func getQuestion(range: ClosedRange<Int>, numberOfOptions: Int, oprator: Oprator, noOfOprands: Int) -> Question {
+        let (questionString, answer, optionArray) = getQuestionAnswerOptions(range, oprator: oprator, noOfOprands: noOfOprands, numberOfOptions: numberOfOptions)
+        
+        let shuffledArray = optionArray.shuffled()
+        return Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!)
+    }
     
+    fileprivate func getOptions(_ numberOfOptions: Int, _ answer: Int) -> [Int] {
+        var optionArray: [Int] = []
+        optionArray.append(answer)
+        while optionArray.count < numberOfOptions {
+            let option = random(digits: answer.size())
+            if !optionArray.contains(option) {
+                optionArray.append(option)
+            }
+        }
+        return optionArray
+    }
+    
+    fileprivate func getQuestionAnswerOptions( _ range: ClosedRange<Int>, oprator: Oprator, noOfOprands: Int, numberOfOptions: Int)  -> (String, Int, [Int]) {
+        let (questionString, answer) = getQuestionAnswer(range, oprator: oprator, noOfOprands: noOfOprands)
+       
+        let optionArray = getOptions(numberOfOptions, answer)
+        return (questionString, answer, optionArray)
+    }
+    
+    private func getQuestionAnswer( _ range: ClosedRange<Int>, oprator: Oprator, noOfOprands: Int) -> (String, Int){
+        var questionString = ""
+        var answer: Int = oprator.getInitialValueOfAnswer()
+        var oprandsArray = [Int]()
+
+        for _ in 1...noOfOprands {
+            if oprator == .division , !questionString.isEmpty {
+                let option = generateRandomNumber(range: range)
+                let num = answer * option
+                questionString = String(num) + " " + oprator.getOperator() + " " + questionString
+                answer = option
+            } else {
+                let range = answer...oprator.upperBound(upperBound: range.upperBound)
+                let num = generateRandomNumber(range: range)
+                if questionString.isEmpty {
+                    questionString += String(num)
+                    answer = num
+                } else {
+                    questionString = String(num) + " " + oprator.getOperator() + " " + questionString
+                    answer = oprator.calculateAnswer(num1: num, num2: answer)
+                }
+                oprandsArray.append(num)
+            }
+        }
+        return (questionString, answer)
+    }
     
     private func getUnit(unitNumber: Int, oprator: Oprator) -> Level {
         let easyMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy)
@@ -106,6 +109,15 @@ class NetworkService {
         let max = Int(pow(Double(10), Double(digits))) - 1
         return generateRandomNumber(range: min...max)
     }
+    private func generateOptionArray(optionArray: inout [Int], numberOfOptions: Int,range: ClosedRange<Int>) -> [Int]{
+        while optionArray.count < numberOfOptions {
+            let option = generateRandomNumber(range: range)
+            if !optionArray.contains(option) {
+                optionArray.append(option)
+            }
+        }
+        return optionArray
+    }
 }
 
 extension Int {
@@ -135,16 +147,16 @@ enum Oprator {
             return 0
         }
     }
-    func calculateAnswer(answer: Int,num: Int) -> Int {
+    func calculateAnswer(num1: Int,num2: Int) -> Int {
         switch self {
         case .multiplication :
-            return answer * num
+            return num1 * num2
         case .division:
-            return answer / num
+            return num1 / num2
         case .addition:
-            return answer + num
+            return num1 + num2
         case .subtraction:
-            return answer - num
+            return num1 - num2
         }
     }
     func getOperator() -> String {
@@ -159,6 +171,17 @@ enum Oprator {
             return "-"
         }
     }
+    func upperBound(upperBound: Int) -> Int{
+        switch self {
+        case .multiplication, .division:
+            return 10
+        case .addition:
+            return upperBound
+        case .subtraction:
+            return upperBound
+        }
+    }
 }
+
 
 
