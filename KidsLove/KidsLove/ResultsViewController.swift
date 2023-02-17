@@ -231,7 +231,6 @@ struct FireworkParticlesGeometryEffect : GeometryEffect {
         let affineTranslation =  CGAffineTransform(translationX: xTranslation, y: yTranslation)
         return ProjectionTransform(affineTranslation)
     }
- 
 }
 
 

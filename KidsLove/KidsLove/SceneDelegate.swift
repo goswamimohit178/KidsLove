@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navigationVC = UINavigationController(rootViewController: OperatorsViewController())
                 window.rootViewController = navigationVC
                 self.window = window
+            UINavigationBar.appearance().tintColor = .homeButtonColor()
                 window.makeKeyAndVisible()
             }
     }

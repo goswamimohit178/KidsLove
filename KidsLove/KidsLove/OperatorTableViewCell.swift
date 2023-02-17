@@ -87,6 +87,7 @@ class OperatorTableViewCell: UITableViewCell {
             if !button.isEnabled {
                 button.alpha = 0.5
                 button.backgroundColor = UIColor.disableButtonColor()
+              
             } else {
                 button.backgroundColor = UIColor.homeButtonColor()
             }
