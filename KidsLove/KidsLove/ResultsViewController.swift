@@ -8,7 +8,6 @@
 import UIKit
 import SwiftUI
 class ResultsViewController: UIViewController {
-    
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var yourScoreLabel: UILabel!
