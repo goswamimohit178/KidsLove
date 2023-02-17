@@ -18,7 +18,11 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var goToNextLevelButton: UIButton!
     @IBOutlet weak var tryAgainButton: UIButton!
     @IBOutlet weak var resultProgressBar: UIProgressView!
+    @IBOutlet weak var starStackView: UIStackView!
     
+    @IBOutlet weak var starImageView1: UIImageView!
+    @IBOutlet weak var starImageView2: UIImageView!
+    @IBOutlet weak var starImageView3: UIImageView!
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
     var progress: Progress = .twoThird
@@ -30,11 +34,14 @@ class ResultsViewController: UIViewController {
     
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        
+        opratorVC.showNextLevelQuestions(unitNumber: currentUnitNumber, leveltype: currentLevelType)
     }
     
     @IBAction func tryAgainBtnTapped(_ sender: Any) {
         opratorVC.showCurrentLevelQuestions(unitNumber: currentUnitNumber, leveltype: currentLevelType)
+        let previousProgress = getPreviousProgress()
+        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
+        setNewProgress(currentProgress: currentProgress)
     }
     
     @IBAction func goToHomeButton(_ sender: Any) {
@@ -52,18 +59,54 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         fontAndColorResults()
         percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-//        self.yourMarks.text = String(percentage) + "%"
+        replaceStarsImages(percentage: percentage)
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
         }
-       
-    
         let vc = UIHostingController(rootView: ContentView())
-        
         self.view.addSubview(vc.view)
-        vc.view.center = CGPoint(x: view.frame.size.width  / 2,
-                                 y: view.frame.size.height / 2)
+        vc.view.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
+        let previousProgress = getPreviousProgress()
+        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
+        if currentProgress == .complete {
+            goToNextLevelButton.isEnabled = true
+        } else {
+            goToNextLevelButton.isEnabled = false
+            goToNextLevelButton.backgroundColor = UIColor.buttonBackgroundColor()
+        }
+    }
+    
+    
+    private func replaceStarsImages(percentage: Float) {
+        if percentage >= 80 {
+            starImageView1.image = UIImage(named: "filled-star")
+            starImageView2.image = UIImage(named: "filled-star")
+            starImageView3.image = UIImage(named: "filled-star")
+        } else if percentage >= 45 && percentage <= 80 {
+            starImageView1.image = UIImage(named: "filled-star")
+            starImageView2.image = UIImage(named: "filled-star 1")
+            starImageView3.image = UIImage(named: "filled-star (1)")?.withTintColor(UIColor.starsTintColor())
+        } else {
+            starImageView1.image = UIImage(named: "filled-star")
+            starImageView2.image = UIImage(named: "filled-star (1)")?.withTintColor(UIColor.starsTintColor())
+            starImageView3.image = UIImage(named: "filled-star (1)")?.withTintColor(UIColor.starsTintColor())
+            
+            
+            
+        }
+        
+        
+     //   if let imageView = starStackView.viewWithTag(0) as? UIImageView {
+    //            UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+    //                imageView.image = UIImage(named: "filled-star")
+    //            }, completion: nil)
+    //        }
+        
+        
+     
+        
+        
     }
     private func fontAndColorResults() {
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width

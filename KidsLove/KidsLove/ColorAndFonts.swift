@@ -54,6 +54,9 @@ extension UIColor {
     static func defaultTextColor() -> UIColor {
         return UIColor(named: "textColor")!
     }
+    static func starsTintColor() -> UIColor {
+        return UIColor(red: 0.983, green: 0.636, blue: 0.003, alpha: 1.0)
+    }
     
 }
 
