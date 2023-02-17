@@ -15,6 +15,7 @@
                 <outlet property="headerLabel" destination="7nf-Nh-fsN" id="wYk-jp-F8Q"/>
                 <outlet property="myView" destination="9HZ-3T-im6" id="Inx-YV-APS"/>
                 <outlet property="operatorTableView" destination="Fac-ea-9Ls" id="5kJ-0w-Smn"/>
+                <outlet property="settingButton" destination="71b-0Y-QyC" id="Kw9-ly-E8T"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="mUB-fL-g0z"/>
             </connections>
         </placeholder>
@@ -65,14 +66,17 @@
                             <color key="textColor" name="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71b-0Y-QyC">
+                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71b-0Y-QyC" userLabel="Settings">
                             <rect key="frame" x="173.66666666666663" y="27.666666666666671" width="179.33333333333337" height="45"/>
+                            <color key="backgroundColor" name="backgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="EcV-pu-gkG"/>
                             </constraints>
+                            <color key="tintColor" name="textColor"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Settings " titleAlignment="trailing">
                                 <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                <color key="baseForegroundColor" name="textColor"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="settingsButtonTapped:" destination="-1" eventType="touchUpInside" id="p79-eU-1jG"/>

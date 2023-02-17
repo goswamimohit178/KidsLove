@@ -11,11 +11,13 @@ final class AppRouter {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
+        UINavigationBar.appearance().tintColor = .homeButtonColor()
         self.navigationController = navigationController
     }
 
     func themeUpdated() {
         navigationController.viewControllers[0] = OperatorsViewController()
+   
     }
     
     func showSettingsScreen() {

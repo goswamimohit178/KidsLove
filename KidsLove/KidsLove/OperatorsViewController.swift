@@ -17,6 +17,7 @@ final class OperatorsViewController: UIViewController {
     @IBOutlet weak var myView: UIView!
     private var router: AppRouter!
     
+    @IBOutlet weak var settingButton: UIButton!
     @IBAction func settingsButtonTapped(_ sender: Any) {
         router.showSettingsScreen()
     }
@@ -41,6 +42,7 @@ final class OperatorsViewController: UIViewController {
         operatorTableView.delegate = self
         operatorTableView.register(UINib(nibName: "OperatorTableViewCell", bundle: nil), forCellReuseIdentifier: "OperatorTableViewCell")
         myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
+        settingButton.titleLabel?.textColor = UIColor.bodyFontColor()
     }
     func setProgess(progress: Progress, unitNumber: Int,levelType: LevelType) {
         switch levelType {
