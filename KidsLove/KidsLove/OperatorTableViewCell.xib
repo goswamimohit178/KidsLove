@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -199,7 +199,7 @@
                 <outlet property="tittleView" destination="MQn-Ew-O9K" id="uO1-dX-y97"/>
                 <outlet property="unitNumberLabel" destination="p3B-eQ-ZxN" id="FDe-C6-T3S"/>
             </connections>
-            <point key="canvasLocation" x="155.72519083969465" y="258.45070422535213"/>
+            <point key="canvasLocation" x="148" y="80"/>
         </tableViewCell>
     </objects>
     <resources>
