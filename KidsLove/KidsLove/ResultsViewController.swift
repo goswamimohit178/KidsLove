@@ -52,13 +52,10 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         fontAndColorResults()
         percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-//        self.yourMarks.text = String(percentage) + "%"
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
         }
-       
-    
         let vc = UIHostingController(rootView: ContentView())
         
         self.view.addSubview(vc.view)
