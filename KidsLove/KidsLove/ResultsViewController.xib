@@ -156,7 +156,7 @@
                 <constraint firstItem="gn3-CM-NHE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="y7Z-A2-oMM"/>
                 <constraint firstItem="mmd-9J-X3C" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zsK-aU-mmc"/>
             </constraints>
-            <point key="canvasLocation" x="316309" y="-14"/>
+            <point key="canvasLocation" x="316305" y="-382"/>
         </view>
     </objects>
     <resources>

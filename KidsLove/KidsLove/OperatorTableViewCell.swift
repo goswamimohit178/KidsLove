@@ -49,7 +49,6 @@ class OperatorTableViewCell: UITableViewCell {
         setFontsAndColor()
         makeButtonRound()
         appendBtnsInArray()
-        //setColorForDisableBtn()
         buttonHeightConstarint.constant = buttonWidth
     }
     
@@ -82,12 +81,14 @@ class OperatorTableViewCell: UITableViewCell {
         hardButton.isEnabled = ( unit.levels.mediumLevel.progress == .complete )
         chainsButton.isEnabled = ( unit.levels.hardLevel.progress == .complete )
     }
+    
     func setColorForDisableBtn() {
-        
-        for idx in buttons {
-            if !idx.isEnabled {
-                idx.alpha = 0.5
-                idx.backgroundColor = UIColor.disableButtonColor()
+        for button in buttons {
+            if !button.isEnabled {
+                button.alpha = 0.5
+                button.backgroundColor = UIColor.disableButtonColor()
+            } else {
+                button.backgroundColor = UIColor.homeButtonColor()
             }
         }
         
