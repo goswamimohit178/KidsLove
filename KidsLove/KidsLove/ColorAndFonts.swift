@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static var defaultThemeColor = UIColor(red: 0.443, green: 0.424, blue: 0.875, alpha: 1.0)
+    static var defaultThemeColor = ThemeManager.themeColor
     
     static func wrongAnswerColor() -> UIColor {
         return UIColor(red: 1.0, green: 0.25, blue: 0.0, alpha: 1.0)

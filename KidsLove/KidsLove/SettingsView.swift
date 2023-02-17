@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var selectedTheme = "light"
+    @State private var selectedTheme = ThemeManager.theme
     @State private var isMute = SoundPlayer.isMute
-    @State private var selectedThemeColor = Color.blue
+    @State private var selectedThemeColor = Color(ThemeManager.themeColor)
     private var themeUpdated: (() -> Void)
     let themes = ["default", "light", "dark"]
     
@@ -61,6 +61,7 @@ struct SettingsView: View {
     }
     
     private func updateTheme(_ theme: String) {
+        ThemeManager.theme = theme
         var themeStyle: UIUserInterfaceStyle = .unspecified
         switch theme {
         case "dark":
@@ -79,14 +80,13 @@ struct SettingsView: View {
     }
     
     private func updateThemeColor(_ color: Color) {
+
         UINavigationBar.appearance().tintColor = UIColor(color)
+        ThemeManager.themeColor = UIColor(color)
         UIColor.defaultThemeColor = UIColor(color)
         themeUpdated()
     }
 }
-
-
-
 
 struct AccountView: View {
     var body: some View {
