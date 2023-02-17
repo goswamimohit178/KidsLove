@@ -25,6 +25,9 @@ final class OperatorsViewController: UIViewController {
         setButtonStyle()
         headerLabel.font = UIFont.myAppBodyFonts()
         headerLabel.backgroundColor = UIColor.homeButtonColor()
+        operatorTableView.setShadow()
+        operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
+        
     }
   
     private func setButtonStyle() {
@@ -32,7 +35,6 @@ final class OperatorsViewController: UIViewController {
         operatorTableView.delegate = self
         operatorTableView.register(UINib(nibName: "OperatorTableViewCell", bundle: nil), forCellReuseIdentifier: "OperatorTableViewCell")
         myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
-        operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
     }
     func setProgess(progress: Progress, unitNumber: Int,levelType: LevelType) {
         switch levelType {
@@ -110,4 +112,44 @@ class CircularProgressBarView: UIView {
     }
 }
 
+extension UIView {
+    
+    func setShadow() {
+        self.layer.shadowColor = UIColor.btnShadowColor().cgColor
+        self.layer.shadowOffset = CGSize(width: 5.0, height: 10)
+        self.layer.shadowOpacity = 3.0
+        self.layer.shadowRadius = 5.0
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = 20
+        
+    }
+}
 
+extension UIView {
+
+  // OUTPUT 1
+  func dropShadow(scale: Bool = true) {
+    layer.masksToBounds = false
+    layer.shadowColor = UIColor.black.cgColor
+    layer.shadowOpacity = 0.5
+    layer.shadowOffset = CGSize(width: -1, height: 1)
+    layer.shadowRadius = 1
+
+    layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+    layer.shouldRasterize = true
+    layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+  }
+
+  // OUTPUT 2
+  func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
+    layer.masksToBounds = false
+    layer.shadowColor = color.cgColor
+    layer.shadowOpacity = opacity
+    layer.shadowOffset = offSet
+    layer.shadowRadius = radius
+
+    layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+    layer.shouldRasterize = true
+    layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+  }
+}
