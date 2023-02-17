@@ -53,7 +53,7 @@ class NetworkService {
             if oprator == .division , !questionString.isEmpty {
                 let option = generateRandomNumber(range: range)
                 let num = answer * option
-                questionString = String(num) + oprator.getOperator() + questionString
+                questionString = String(num) + " " + oprator.getOperator() + " " + questionString
                 answer = option
             } else {
                 let range = answer...oprator.upperBound(upperBound: range.upperBound)
@@ -62,7 +62,7 @@ class NetworkService {
                     questionString += String(num)
                     answer = num
                 } else {
-                    questionString = String(num) + oprator.getOperator() + questionString
+                    questionString = String(num) + " " + oprator.getOperator() + " " + questionString
                     answer = oprator.calculateAnswer(num1: num, num2: answer)
                 }
                 oprandsArray.append(num)
