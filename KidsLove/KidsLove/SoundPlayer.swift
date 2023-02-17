@@ -7,9 +7,31 @@
 
 import Foundation
 import AVFoundation
-import UIKit
+import SwiftUI
 
 class ThemeManager {
+    static func updateTheme(theme: String) {
+        ThemeManager.theme = theme
+        setTheme()
+    }
+    
+    static func setTheme() {
+        var themeStyle: UIUserInterfaceStyle = .unspecified
+        switch theme {
+        case "dark":
+            themeStyle = .dark
+        case "light":
+            themeStyle = .light
+        default:
+            break
+        }
+        UIApplication
+            .shared
+            .connectedScenes
+            .flatMap { ($0 as?UIWindowScene)?.windows ?? [] }
+            .forEach { $0.overrideUserInterfaceStyle = themeStyle }
+    }
+    
     static var themeColor: UIColor {
         get {
             let hex = UserDefaults.standard.value(forKey: "themeColor") as? NSString
@@ -22,9 +44,9 @@ class ThemeManager {
         }
     }
     
-    static var theme: String? {
+    static var theme: String {
         get {
-            return (UserDefaults.standard.value(forKey: "theme") as? String)
+            return (UserDefaults.standard.value(forKey: "theme") as? String) ?? "default"
         }
         set {
             return UserDefaults.standard.set(newValue, forKey: "theme")
