@@ -56,13 +56,14 @@ class NetworkService {
                 questionString = String(num) + oprator.getOperator() + questionString
                 answer = option
             } else {
+                let range = answer...oprator.upperBound(upperBound: range.upperBound)
                 let num = generateRandomNumber(range: range)
                 if questionString.isEmpty {
                     questionString += String(num)
                     answer = num
                 } else {
-                    questionString = questionString + oprator.getOperator() + String(num)
-                    answer = oprator.calculateAnswer(answer: answer, num: num)
+                    questionString = String(num) + oprator.getOperator() + questionString
+                    answer = oprator.calculateAnswer(num1: num, num2: answer)
                 }
                 oprandsArray.append(num)
             }
@@ -138,16 +139,16 @@ enum Oprator {
             return 0
         }
     }
-    func calculateAnswer(answer: Int,num: Int) -> Int {
+    func calculateAnswer(num1: Int,num2: Int) -> Int {
         switch self {
         case .multiplication :
-            return answer * num
+            return num1 * num2
         case .division:
-            return answer / num
+            return num1 / num2
         case .addition:
-            return answer + num
+            return num1 + num2
         case .subtraction:
-            return answer - num
+            return num1 - num2
         }
     }
     func getOperator() -> String {
@@ -160,6 +161,16 @@ enum Oprator {
             return "+"
         case .subtraction:
             return "-"
+        }
+    }
+    func upperBound(upperBound: Int) -> Int{
+        switch self {
+        case .multiplication, .division:
+            return 10
+        case .addition:
+            return upperBound
+        case .subtraction:
+            return upperBound
         }
     }
 }
