@@ -20,12 +20,8 @@ class NetworkService {
             if oprator == .division {
                 var num1: Int = 0
                 let num2 = generateRandomNumber(range: range)
-                while optionArray.count < numberOfOptions {
-                    let option = generateRandomNumber(range: 2...10)
-                    if !optionArray.contains(option) {
-                        optionArray.append(option)
-                    }
-                }
+                optionArray = generateOptionArray(optionArray: &optionArray, numberOfOptions: numberOfOptions,range: range)
+                
                 answer = optionArray[2]
                 num1 = answer * num2
                 questionString += String(num1) + " " + "÷" + " " + String(num2)
@@ -55,7 +51,6 @@ class NetworkService {
                     if !optionArray.contains(option) {
                         optionArray.append(option)
                     }
-
                 }
                 
             }
@@ -105,6 +100,15 @@ class NetworkService {
         let min = Int(pow(Double(10), Double(digits-1))) - 1
         let max = Int(pow(Double(10), Double(digits))) - 1
         return generateRandomNumber(range: min...max)
+    }
+    private func generateOptionArray(optionArray: inout [Int], numberOfOptions: Int,range: ClosedRange<Int>) -> [Int]{
+        while optionArray.count < numberOfOptions {
+            let option = generateRandomNumber(range: range)
+            if !optionArray.contains(option) {
+                optionArray.append(option)
+            }
+        }
+        return optionArray
     }
 }
 

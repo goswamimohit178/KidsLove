@@ -18,10 +18,10 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var goToNextLevelButton: UIButton!
     @IBOutlet weak var tryAgainButton: UIButton!
     @IBOutlet weak var resultProgressBar: UIProgressView!
-    
+    //var currentprogress:
     var correctAnswer: Int = 0
     var totalMarks: Int = 0
-    var progress: Progress = .twoThird
+    var progress: Progress = .zero
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelType: LevelType!
@@ -52,12 +52,13 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         fontAndColorResults()
         percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-//        self.yourMarks.text = String(percentage) + "%"
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
         }
-       
+        let resultprogress = calculateResultProgress()
+        resultProgressBar.setProgress(resultprogress, animated: true)
+        resultProgressBar.tintColor = UIColor.progressBarColor()
     
         let vc = UIHostingController(rootView: ContentView())
         
@@ -105,10 +106,23 @@ class ResultsViewController: UIViewController {
     }
     private func setNewProgress(currentProgress: Progress) {
         opratorVC.setProgess(progress: currentProgress, unitNumber: currentUnitNumber, levelType: currentLevelType)
-        
         let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
         print(keyForProgrss)
         defaults.set(currentProgress.rawValue, forKey: keyForProgrss)
+    }
+    private func calculateResultProgress() -> Float{
+        let previousProgress = getPreviousProgress()
+        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
+        switch currentProgress {
+        case .zero:
+            return  0.0
+        case .oneThird:
+            return 0.3
+        case .twoThird:
+            return 0.66
+        case .complete:
+            return 1
+        }
     }
 }
 struct ContentView: View {
