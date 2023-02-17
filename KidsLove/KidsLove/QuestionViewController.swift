@@ -9,7 +9,6 @@ import UIKit
 import AVFAudio
 
 class QuestionViewController: UIViewController {
-    
     @IBOutlet private weak var progressBar: UIProgressView!
     @IBOutlet private weak var option1Btn: UIButton!
     @IBOutlet private weak var option2Btn: UIButton!
@@ -20,18 +19,13 @@ class QuestionViewController: UIViewController {
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelType: LevelType!
-    
-    
     private var currentQuestionNumber = 0
     private var noCorrect: Int = 0
     private var selectedIndex: Int? = nil
     private var isFirstTimeTapped: Bool = true
     
     private var optionButtons = [UIButton]()
-    
-    
     var questionList: [Question]!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +42,6 @@ class QuestionViewController: UIViewController {
         let value:Float = Float(1)/Float(questionList.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
-        
-        
     }
     
     fileprivate func setCornerRadius() {
@@ -61,7 +53,6 @@ class QuestionViewController: UIViewController {
     fileprivate func setupModel() {
         let model = questionList[0]
         setQuestions(model: model)
-        
     }
     
     fileprivate func addOptionButtons() {
@@ -89,15 +80,14 @@ class QuestionViewController: UIViewController {
                 } else {
                     continueBtn.setTitle("Continue", for: .normal)
                 }
-               
+                
                 continueBtn.backgroundColor = UIColor.selectBtnColor()
-               
+                
                 continueBtn.setNeedsLayout()
                 continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
             }
         }
     }
-    
     
     private func setQuestionFonts() {
         oprand1Label.font = UIFont.myAppBodyFonts()
@@ -117,10 +107,10 @@ class QuestionViewController: UIViewController {
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = UIColor.rightAnswerColor()
             button.setTitleColor(.black, for: .normal)
-            playSound(soundString: "rightButton")
+            SoundPlayer().playSound(soundString: "rightButton")
         } else {
             button.backgroundColor = UIColor.wrongAnswerColor()
-            playSound(soundString: "wrongButton")
+            SoundPlayer().playSound(soundString: "wrongButton")
             button.shake()
         }
         isFirstTimeTapped = false
@@ -155,7 +145,7 @@ class QuestionViewController: UIViewController {
         resetOptionBtnColor()
         optionButtons[selectedIndex!].backgroundColor = UIColor.selectBtnColor()
         
-      
+        
         continueBtn.isEnabled = true
     }
     
@@ -213,22 +203,6 @@ class QuestionViewController: UIViewController {
             button.titleLabel?.tintColor = UIColor.bodyFontColor()
         }
         resetOptionBtnColor()
-    }
-    
-    var player: AVAudioPlayer?
-    
-    private func playSound(soundString: String) {
-        guard let path = Bundle.main.url(forResource: soundString, withExtension: "wav")
-            else {
-            return }
-//        let url = URL(fileURLWithPath: path)
-        do {
-            player = try AVAudioPlayer(contentsOf: path)
-            player?.play()
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
     }
     
 }
