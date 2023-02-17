@@ -17,7 +17,6 @@ class NetworkService {
         }
         return easyQuestionList
     }
-    
     func getQuestion(range: ClosedRange<Int>, numberOfOptions: Int, oprator: Oprator, noOfOprands: Int) -> Question {
         let (questionString, answer, optionArray) = getQuestionAnswerOptions(range, oprator: oprator, noOfOprands: noOfOprands, numberOfOptions: numberOfOptions)
         
@@ -109,6 +108,15 @@ class NetworkService {
         let min = Int(pow(Double(10), Double(digits-1))) - 1
         let max = Int(pow(Double(10), Double(digits))) - 1
         return generateRandomNumber(range: min...max)
+    }
+    private func generateOptionArray(optionArray: inout [Int], numberOfOptions: Int,range: ClosedRange<Int>) -> [Int]{
+        while optionArray.count < numberOfOptions {
+            let option = generateRandomNumber(range: range)
+            if !optionArray.contains(option) {
+                optionArray.append(option)
+            }
+        }
+        return optionArray
     }
 }
 
