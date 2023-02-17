@@ -69,7 +69,6 @@ class ResultsViewController: UIViewController {
         let resultprogress = calculateResultProgress()
         resultProgressBar.setProgress(resultprogress, animated: true)
         resultProgressBar.tintColor = UIColor.progressBarColor()
-    
         let vc = UIHostingController(rootView: ContentView())
         self.view.addSubview(vc.view)
         vc.view.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)

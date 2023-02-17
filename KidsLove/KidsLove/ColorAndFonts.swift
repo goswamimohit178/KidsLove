@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    static var defaultThemeColor = UIColor(red: 0.443, green: 0.424, blue: 0.875, alpha: 1.0)
+    
     static func wrongAnswerColor() -> UIColor {
         return UIColor(red: 1.0, green: 0.25, blue: 0.0, alpha: 1.0)
     }
@@ -26,7 +28,9 @@ extension UIColor {
     }
     
     static func homeButtonColor() -> UIColor {
-        return .red
+//        return UIColor(red: 0.922, green: 0.275, blue: 0.400, alpha: 1.0)
+        return defaultThemeColor
+        
     }
     static func disableButtonColor() -> UIColor {
         return .systemGray3

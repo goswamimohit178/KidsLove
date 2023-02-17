@@ -6,6 +6,7 @@
 //
 //self.navigationController?.pushViewController(QuestionViewController(), animated: true)
 import UIKit
+import SwiftUI
 
 
 final class OperatorsViewController: UIViewController {
@@ -14,12 +15,18 @@ final class OperatorsViewController: UIViewController {
     
     @IBOutlet weak var operatorTableView: UITableView!
     @IBOutlet weak var myView: UIView!
+    private var router: AppRouter!
+    
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        router.showSettingsScreen()
+    }
     
     private var model: SubjectModel!
     var currunit = 0
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
+        router = AppRouter(navigationController: navigationController!)
         let unitNameList = NetworkService().setLevelWise()
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
@@ -27,7 +34,6 @@ final class OperatorsViewController: UIViewController {
         headerLabel.backgroundColor = UIColor.homeButtonColor()
         operatorTableView.setShadow()
         operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
-        
     }
   
     private func setButtonStyle() {
