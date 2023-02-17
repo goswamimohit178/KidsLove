@@ -75,9 +75,11 @@ class QuestionViewController: UIViewController {
         let correctAnswerIndex = correctAnsIndex()
         if sender.titleLabel?.text == "Continue" || sender.titleLabel?.text == "View Result" {
             selectedIndex = nil
+            resetOptionBtnColor()
             goToNextQuestion()
             continueBtn.setTitle("Check", for: .normal)
             continueBtn.backgroundColor = UIColor.buttonBackgroundColor()
+            
             continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
         } else {
             checkAnswerBtn()
@@ -87,7 +89,9 @@ class QuestionViewController: UIViewController {
                 } else {
                     continueBtn.setTitle("Continue", for: .normal)
                 }
+               
                 continueBtn.backgroundColor = UIColor.selectBtnColor()
+               
                 continueBtn.setNeedsLayout()
                 continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
             }
@@ -109,8 +113,10 @@ class QuestionViewController: UIViewController {
         guard let selectedIndex = selectedIndex else { return }
         
         let button = optionButtons[selectedIndex]
+        
         if checkAnswer(idx: selectedIndex) {
             button.backgroundColor = UIColor.rightAnswerColor()
+            button.setTitleColor(.black, for: .normal)
             playSound(soundString: "rightButton")
         } else {
             button.backgroundColor = UIColor.wrongAnswerColor()
@@ -148,6 +154,8 @@ class QuestionViewController: UIViewController {
         selectedIndex = sender.tag
         resetOptionBtnColor()
         optionButtons[selectedIndex!].backgroundColor = UIColor.selectBtnColor()
+        
+      
         continueBtn.isEnabled = true
     }
     
@@ -184,19 +192,15 @@ class QuestionViewController: UIViewController {
     
     private func setOptionButtonsShadow() {
         optionButtons.forEach { button in
-            button.layer.shadowColor = UIColor.btnShadowColor().cgColor
-            button.layer.shadowOffset = CGSize(width: 5.0, height: 10)
-            button.layer.shadowOpacity = 3.0
-            button.layer.shadowRadius = 5.0
-            button.layer.masksToBounds = false
-            button.layer.cornerRadius = 20
+            button.setShadow()
         }
     }
     
     private func resetOptionBtnColor() {
-        optionButtons.forEach { $0.backgroundColor = UIColor.buttonBackgroundColor() }
-        
-        
+        optionButtons.forEach { button in
+            button.backgroundColor = UIColor.buttonBackgroundColor()
+            button.setTitleColor(UIColor.defaultTextColor(), for: .normal)
+        }
     }
     
     private func setQuestions(model: Question){

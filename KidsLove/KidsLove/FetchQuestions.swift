@@ -74,9 +74,9 @@ class NetworkService {
         let practiceProgress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .practice)
         
         let easyMultiplyCellModel = LevelCellModel(progress: easyMultiplyprogress, title: "Easy", oprator: oprator , noOfOprands: 2, levelType: .easy)
-        let mediumMultiplyCellModel = LevelCellModel(progress: mediumMultiplyprogress, title: "Medium", oprator: oprator, noOfOprands: 3, levelType: .medium)
+        let mediumMultiplyCellModel = LevelCellModel(progress: mediumMultiplyprogress, title: "Medium", oprator: oprator, noOfOprands: 2, levelType: .medium)
         let hardMultiplyCellModel = LevelCellModel(progress: hardMultiplyprogress, title: "Hard", oprator: oprator, noOfOprands: 2, levelType: .hard)
-        let chainLevelCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 4, levelType: .practice)
+        let chainLevelCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 3, levelType: .practice)
         
         return Level(easyLevel: easyMultiplyCellModel,  hardLevel: hardMultiplyCellModel, mediumLevel: mediumMultiplyCellModel, chainsLevel: chainLevelCellModel)
         
