@@ -10,7 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @State private var selectedTheme = "light"
     @State private var isMute = SoundPlayer.isMute
-    @State private var selectedThemeColor = Color.blue
+    @State private var selectedThemeColor = Color(ThemeManager.themeColor)
+//    private var selectedThemeUIColor = ThemeManager.themeColor
     private var themeUpdated: (() -> Void)
     let themes = ["default", "light", "dark"]
     
@@ -79,6 +80,7 @@ struct SettingsView: View {
     }
     
     private func updateThemeColor(_ color: Color) {
+        ThemeManager.themeColor = UIColor(color)
         UIColor.defaultThemeColor = UIColor(color)
         themeUpdated()
     }
