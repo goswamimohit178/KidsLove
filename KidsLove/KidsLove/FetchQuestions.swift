@@ -70,27 +70,27 @@ class NetworkService {
         return (questionString, answer)
     }
     
-    private func getUnit(unitNumber: Int, oprator: Oprator) -> Level {
+    private func getLevels(unitNumber: Int, oprator: Oprator) -> [LevelCellModel] {
         let easyMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy)
         let mediumMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .medium)
         let hardMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .hard)
         let practiceProgress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .practice)
         
-        let easyMultiplyCellModel = LevelCellModel(progress: easyMultiplyprogress, title: "Easy", oprator: oprator , noOfOprands: 2, levelType: .easy)
-        let mediumMultiplyCellModel = LevelCellModel(progress: mediumMultiplyprogress, title: "Medium", oprator: oprator, noOfOprands: 2, levelType: .medium)
-        let hardMultiplyCellModel = LevelCellModel(progress: hardMultiplyprogress, title: "Hard", oprator: oprator, noOfOprands: 2, levelType: .hard)
-        let chainLevelCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 3, levelType: .practice)
+        let easyCellModel = LevelCellModel(progress: easyMultiplyprogress, title: "Easy", oprator: oprator , noOfOprands: 2, levelType: .easy)
+        let mediumCellModel = LevelCellModel(progress: mediumMultiplyprogress, title: "Medium", oprator: oprator, noOfOprands: 2, levelType: .medium)
+        let hardCellModel = LevelCellModel(progress: hardMultiplyprogress, title: "Hard", oprator: oprator, noOfOprands: 2, levelType: .hard)
+        let praticeCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 3, levelType: .practice)
         
-        return Level(easyLevel: easyMultiplyCellModel,  hardLevel: hardMultiplyCellModel, mediumLevel: mediumMultiplyCellModel, chainsLevel: chainLevelCellModel)
+        return [easyCellModel, mediumCellModel, hardCellModel, praticeCellModel, easyCellModel, mediumCellModel, hardCellModel]
         
     }
     func setLevelWise() -> [Unit] {
         return  [
-            Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels:  getUnit(unitNumber: 0, oprator: .multiplication)),
+            Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels:  getLevels(unitNumber: 0, oprator: .multiplication)),
             
-            Unit(unitNumber: "Unit 2", chapterName: "Division", levels: getUnit(unitNumber: 1, oprator: .division)),
-            Unit(unitNumber: "Unit 3", chapterName: "Addition", levels: getUnit(unitNumber: 2, oprator: .addition)),
-            Unit(unitNumber: "Unit 4", chapterName: "Subtraction", levels: getUnit(unitNumber: 3, oprator: .subtraction))
+            Unit(unitNumber: "Unit 2", chapterName: "Division", levels: getLevels(unitNumber: 1, oprator: .division)),
+            Unit(unitNumber: "Unit 3", chapterName: "Addition", levels: getLevels(unitNumber: 2, oprator: .addition)),
+            Unit(unitNumber: "Unit 4", chapterName: "Subtraction", levels: getLevels(unitNumber: 3, oprator: .subtraction))
         ]
     }
     func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelType: LevelType) -> Progress {
@@ -182,6 +182,3 @@ enum Oprator {
         }
     }
 }
-
-
-
