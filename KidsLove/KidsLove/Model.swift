@@ -60,6 +60,7 @@ enum LevelType: Int {
     case medium
     case hard
     case practice
+
     var range: ClosedRange<Int> {
         switch self {
         case .easy:

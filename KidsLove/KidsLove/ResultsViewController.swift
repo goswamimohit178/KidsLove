@@ -28,17 +28,17 @@ class ResultsViewController: UIViewController {
     var progress: Progress = .zero
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
-    var currentLevelType: LevelType!
+    var currentLevelNumber: Int!
     var percentage: Float!
     let defaults = UserDefaults.standard
     
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        opratorVC.showNextLevelQuestions(unitNumber: currentUnitNumber, leveltype: currentLevelType)
+        opratorVC.showQuestionsFor(unitNumber: currentUnitNumber, levelNumber: currentLevelNumber+1)
     }
     
     @IBAction func tryAgainBtnTapped(_ sender: Any) {
-        opratorVC.showCurrentLevelQuestions(unitNumber: currentUnitNumber, leveltype: currentLevelType)
+        opratorVC.showQuestionsFor(unitNumber: currentUnitNumber, levelNumber: currentLevelNumber)
         let previousProgress = getPreviousProgress()
         let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
         setNewProgress(currentProgress: currentProgress)
@@ -123,7 +123,7 @@ class ResultsViewController: UIViewController {
         
     }
     private func getPreviousProgress() -> Progress{
-        let key = "\(currentUnitNumber!)-\(currentLevelType!)"
+        let key = "\(currentUnitNumber!)-\(currentLevelNumber!)"
         let rawValue = defaults.value(forKey: key) as? Int ?? 0
         return Progress(rawValue: rawValue) ?? .zero
     }
@@ -140,8 +140,8 @@ class ResultsViewController: UIViewController {
         }
     }
     private func setNewProgress(currentProgress: Progress) {
-        opratorVC.setProgess(progress: currentProgress, unitNumber: currentUnitNumber, levelType: currentLevelType)
-        let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelType!)"
+        opratorVC.setProgess(progress: currentProgress, unitNumber: currentUnitNumber, levelNumber: currentLevelNumber)
+        let keyForProgrss: String = "\(currentUnitNumber!)-\(currentLevelNumber!)"
         print(keyForProgrss)
         defaults.set(currentProgress.rawValue, forKey: keyForProgrss)
     }

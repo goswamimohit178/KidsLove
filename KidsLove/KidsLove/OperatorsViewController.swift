@@ -35,7 +35,7 @@ final class OperatorsViewController: UIViewController {
         operatorTableView.setShadow()
         operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
     }
-  
+    
     private func setButtonStyle() {
         operatorTableView.dataSource = self
         operatorTableView.delegate = self
@@ -43,21 +43,13 @@ final class OperatorsViewController: UIViewController {
         myView.layer.cornerRadius = 0.05 * myView.bounds.size.width
         settingButton.titleLabel?.textColor = UIColor.bodyFontColor()
     }
-    func setProgess(progress: Progress, unitNumber: Int,levelType: LevelType) {
-//        switch levelType {
-//        case .easy:
-//            model.math[unitNumber].levels.easyLevel.progress = progress
-//        case .medium:
-//            model.math[unitNumber].levels.mediumLevel.progress = progress
-//        case .hard:
-//            model.math[unitNumber].levels.hardLevel.progress = progress
-//        case .practice:
-//            model.math[unitNumber].levels.chainsLevel.progress = progress
-//        }
+    
+    func setProgess(progress: Progress, unitNumber: Int, levelNumber: Int) {
+        model.math[unitNumber].levels[levelNumber].progress = progress
         operatorTableView.reloadData()
     }
-    
 }
+
 extension OperatorsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.math.count
@@ -66,36 +58,28 @@ extension OperatorsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
         let unitModel = model.math[indexPath.row]
-//        let chapterName = unitModel.chapterName
         cell.currUnit = indexPath.row
-//        cell.unit = unitModel
-//        cell.setDataCell()
-//        cell.setTittleOperatorBtn(chapterName: chapterName)
-//        cell.disableBtnForProgress(unit: unitModel)
-//        cell.setColorForDisableBtn()
-//        cell.setProgressAnimation()
+        //        cell.disableBtnForProgress(unit: unitModel)
+        //        cell.setColorForDisableBtn()
         cell.buttonTappedAction = presentQuestionController
         cell.setDataCell(unit: unitModel)
         return cell
     }
-    func presentQuestionController(unitNumber: Int, levelType: LevelType) {
+    func presentQuestionController(unitNumber: Int, levelNumber: Int) {
+        guard unitNumber <= model.math.count, levelNumber <= model.math[unitNumber].levels.count else {
+            return
+        }
         let questionVC = QuestionViewController()
-        let cellModel = model.math[unitNumber].levels.first(where: { $0.levelType ==  levelType})
-        questionVC.questionList = cellModel?.questions()
+        let cellModel = model.math[unitNumber].levels[levelNumber]
+        questionVC.questionList = cellModel.questions()
         questionVC.opratorVC = self
         questionVC.currentUnitNumber = unitNumber
-        questionVC.currentLevelType = levelType
+        questionVC.currentLevelNumber = levelNumber
         navigationController?.pushViewController(questionVC, animated: true)
-        
     }
     
-    
-    func showCurrentLevelQuestions(unitNumber: Int , leveltype: LevelType) {
-        presentQuestionController(unitNumber: unitNumber, levelType: leveltype)
-    }
-    
-    func showNextLevelQuestions(unitNumber: Int , leveltype: LevelType) {
-        presentQuestionController(unitNumber: unitNumber, levelType: leveltype)
+    func showQuestionsFor(unitNumber: Int, levelNumber: Int) {
+        presentQuestionController(unitNumber: unitNumber, levelNumber: levelNumber)
     }
     
 }
@@ -144,30 +128,30 @@ extension UIView {
 }
 
 extension UIView {
-
-  // OUTPUT 1
-  func dropShadow(scale: Bool = true) {
-    layer.masksToBounds = false
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOpacity = 0.5
-    layer.shadowOffset = CGSize(width: -1, height: 1)
-    layer.shadowRadius = 1
-
-    layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-    layer.shouldRasterize = true
-    layer.rasterizationScale = scale ? UIScreen.main.scale : 1
-  }
-
-  // OUTPUT 2
-  func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
-    layer.masksToBounds = false
-    layer.shadowColor = color.cgColor
-    layer.shadowOpacity = opacity
-    layer.shadowOffset = offSet
-    layer.shadowRadius = radius
-
-    layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-    layer.shouldRasterize = true
-    layer.rasterizationScale = scale ? UIScreen.main.scale : 1
-  }
+    
+    // OUTPUT 1
+    func dropShadow(scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: -1, height: 1)
+        layer.shadowRadius = 1
+        
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+    
+    // OUTPUT 2
+    func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offSet
+        layer.shadowRadius = radius
+        
+        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
 }
