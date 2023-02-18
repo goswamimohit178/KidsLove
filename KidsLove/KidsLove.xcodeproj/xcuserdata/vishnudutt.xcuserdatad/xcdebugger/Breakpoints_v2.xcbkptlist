@@ -119,49 +119,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A9BF3B00-96AE-497C-9981-8A76459E0B51"
+            uuid = "4E60DA1D-FA7E-4DF7-AA17-921536B218D9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KidsLove/SceneDelegate.swift"
+            filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "scene(_:willConnectTo:options:)"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "setDataCell(unit:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A858D74B-F573-4DA9-9DB9-BF9E3A7F7874"
+            uuid = "0AB0261D-9CB3-46B5-B487-D9206DD6CA1A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KidsLove/SceneDelegate.swift"
+            filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "scene(_:willConnectTo:options:)"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "setDataCell(unit:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0E2FB66E-FBA9-43AF-ACCB-292F74F4021D"
+            uuid = "6C4B183C-76D1-457E-A8C8-7A1E4120967A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KidsLove/SoundPlayer.swift"
+            filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "setTheme()"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "setDataCell(unit:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10D21AD5-80D5-47B0-B2BF-E59E738D677E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/OperatorTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
+            landmarkName = "buttonTaped(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A02EF8F-1356-4800-A492-A723EFD0AC21"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/OperatorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "presentQuestionController(unitNumber:levelType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2A02EF8F-1356-4800-A492-A723EFD0AC21 - 36dd0dd4cbd510c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KidsLove.OperatorsViewController.presentQuestionController(unitNumber: Swift.Int, levelType: KidsLove.LevelType) -&gt; ()"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vishnudutt/KidsLove/KidsLove/KidsLove/OperatorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "2A02EF8F-1356-4800-A492-A723EFD0AC21 - 405fdcacb99dce01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (KidsLove.LevelCellModel) -&gt; Swift.Bool in KidsLove.OperatorsViewController.presentQuestionController(unitNumber: Swift.Int, levelType: KidsLove.LevelType) -&gt; ()"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vishnudutt/KidsLove/KidsLove/KidsLove/OperatorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

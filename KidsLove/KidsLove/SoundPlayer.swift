@@ -64,7 +64,7 @@ class SoundPlayer {
         }
     }
     
-    var player: AVAudioPlayer?
+    static var player: AVAudioPlayer!
     
     func playSound(soundString: String) {
         guard !SoundPlayer.isMute else { return }
@@ -73,10 +73,10 @@ class SoundPlayer {
         let audioData = try! Data.init(contentsOf: path)
         do
         {
-            let audioPlayer = try AVAudioPlayer.init(data: audioData) //Throwing error sometimes
-            audioPlayer.delegate = self as? AVAudioPlayerDelegate
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
+            SoundPlayer.player = try AVAudioPlayer.init(data: audioData) //Throwing error sometimes
+            SoundPlayer.player.delegate = self as? AVAudioPlayerDelegate
+            SoundPlayer.player.prepareToPlay()
+            SoundPlayer.player.play()
             
         } catch {
             print("An error occurred while trying to extract audio file")

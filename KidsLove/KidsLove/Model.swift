@@ -15,15 +15,9 @@ struct SubjectModel {
 struct Unit {
     var unitNumber: String
     var chapterName: String
-    var levels: Level
+    var levels: [LevelCellModel]
 }
-struct Level {
-    var easyLevel: LevelCellModel
-    var hardLevel: LevelCellModel
-    var mediumLevel: LevelCellModel
-    var chainsLevel: LevelCellModel
 
-}
 struct LevelCellModel {
     var progress: Progress
     let title: String
@@ -61,7 +55,7 @@ enum Progress: Int {
         }
     }
 }
-enum LevelType {
+enum LevelType: Int {
     case easy
     case medium
     case hard

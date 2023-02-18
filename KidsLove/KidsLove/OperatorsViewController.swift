@@ -44,16 +44,16 @@ final class OperatorsViewController: UIViewController {
         settingButton.titleLabel?.textColor = UIColor.bodyFontColor()
     }
     func setProgess(progress: Progress, unitNumber: Int,levelType: LevelType) {
-        switch levelType {
-        case .easy:
-            model.math[unitNumber].levels.easyLevel.progress = progress
-        case .medium:
-            model.math[unitNumber].levels.mediumLevel.progress = progress
-        case .hard:
-            model.math[unitNumber].levels.hardLevel.progress = progress
-        case .practice:
-            model.math[unitNumber].levels.chainsLevel.progress = progress
-        }
+//        switch levelType {
+//        case .easy:
+//            model.math[unitNumber].levels.easyLevel.progress = progress
+//        case .medium:
+//            model.math[unitNumber].levels.mediumLevel.progress = progress
+//        case .hard:
+//            model.math[unitNumber].levels.hardLevel.progress = progress
+//        case .practice:
+//            model.math[unitNumber].levels.chainsLevel.progress = progress
+//        }
         operatorTableView.reloadData()
     }
     
@@ -66,20 +66,22 @@ extension OperatorsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
         let unitModel = model.math[indexPath.row]
-        let chapterName = unitModel.chapterName
+//        let chapterName = unitModel.chapterName
         cell.currUnit = indexPath.row
-        cell.unit = unitModel
-        cell.setDataCell()
-        cell.setTittleOperatorBtn(chapterName: chapterName)
-        cell.disableBtnForProgress(unit: unitModel)
-        cell.setColorForDisableBtn()
-        cell.setProgressAnimation()
+//        cell.unit = unitModel
+//        cell.setDataCell()
+//        cell.setTittleOperatorBtn(chapterName: chapterName)
+//        cell.disableBtnForProgress(unit: unitModel)
+//        cell.setColorForDisableBtn()
+//        cell.setProgressAnimation()
         cell.buttonTappedAction = presentQuestionController
+        cell.setDataCell(unit: unitModel)
         return cell
     }
-    func presentQuestionController(questions: [Question], levelType: LevelType , unitNumber: Int) {
+    func presentQuestionController(unitNumber: Int, levelType: LevelType) {
         let questionVC = QuestionViewController()
-        questionVC.questionList = questions
+        let cellModel = model.math[unitNumber].levels.first(where: { $0.levelType ==  levelType})
+        questionVC.questionList = cellModel?.questions()
         questionVC.opratorVC = self
         questionVC.currentUnitNumber = unitNumber
         questionVC.currentLevelType = levelType
@@ -89,20 +91,7 @@ extension OperatorsViewController: UITableViewDataSource{
     
     
     func showCurrentLevelQuestions(unitNumber: Int , leveltype: LevelType) {
-        var newQue: [Question] = []
-        switch leveltype {
-            
-        case .easy:
-            newQue = model.math[unitNumber].levels.easyLevel.questions()
-        case .medium:
-            newQue = model.math[unitNumber].levels.mediumLevel.questions()
-        case .hard:
-            newQue = model.math[unitNumber].levels.hardLevel.questions()
-        case .practice:
-            newQue = model.math[unitNumber].levels.chainsLevel.questions()
-        }
-        
-        presentQuestionController(questions: newQue, levelType: leveltype, unitNumber: unitNumber)
+        presentQuestionController(unitNumber: unitNumber, levelType: leveltype)
     }
     
     func showNextLevelQuestions(unitNumber: Int , leveltype: LevelType) {
