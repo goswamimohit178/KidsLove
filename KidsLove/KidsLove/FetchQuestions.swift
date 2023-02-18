@@ -14,7 +14,7 @@ class NetworkService {
         for _ in 1...numberOfQuestions {
             var question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
 
-            while easyQuestionList.map({ $0.answer }).contains(question.answer) && easyQuestionList.map({ $0.questionText }).contains(question.questionText) {
+            while easyQuestionList.map({ $0.answer }).contains(question.answer) || easyQuestionList.map({ $0.questionText }).contains(question.questionText) {
                 question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
             }
             easyQuestionList.append(question)

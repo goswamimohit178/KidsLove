@@ -266,8 +266,9 @@ extension UIButton {
         progressLayer.path = circularPath.cgPath
         // ui edits
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.lineCap = .round
-        progressLayer.lineWidth = buttonWidth * 0.15
+        progressLayer.lineCap = .butt
+        progressLayer.fillRule = .evenOdd
+        progressLayer.lineWidth = buttonWidth * 0.40
         progressLayer.strokeEnd = 0
         progressLayer.strokeColor = UIColor.operatorProgressBar().cgColor
         // added progressLayer to layer

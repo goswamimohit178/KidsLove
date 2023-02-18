@@ -60,7 +60,7 @@
                     <rect key="frame" x="20" y="59" width="353" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧜‍♂️ Wanna Learn, Choose One!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nf-Nh-fsN">
-                            <rect key="frame" x="20" y="44" width="145.66666666666666" height="12"/>
+                            <rect key="frame" x="0.0" y="44" width="145.66666666666666" height="12"/>
                             <color key="backgroundColor" name="backgroundColor"/>
                             <color key="tintColor" name="textColor"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
@@ -68,7 +68,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71b-0Y-QyC" userLabel="Settings">
-                            <rect key="frame" x="173.66666666666663" y="27.666666666666671" width="179.33333333333337" height="45"/>
+                            <rect key="frame" x="234.66666666666666" y="27.666666666666671" width="118.33333333333334" height="45"/>
                             <color key="backgroundColor" name="backgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="EcV-pu-gkG"/>
@@ -86,12 +86,11 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="71b-0Y-QyC" firstAttribute="leading" secondItem="7nf-Nh-fsN" secondAttribute="trailing" constant="8" id="DrT-dp-HpX"/>
                         <constraint firstAttribute="trailing" secondItem="71b-0Y-QyC" secondAttribute="trailing" id="JtY-ny-jY3"/>
                         <constraint firstAttribute="height" constant="100" id="Ko5-1r-rye"/>
                         <constraint firstItem="71b-0Y-QyC" firstAttribute="centerY" secondItem="2En-nH-mb5" secondAttribute="centerY" id="bmk-ow-Uca"/>
                         <constraint firstItem="7nf-Nh-fsN" firstAttribute="centerY" secondItem="2En-nH-mb5" secondAttribute="centerY" id="ekb-wu-vHn"/>
-                        <constraint firstItem="7nf-Nh-fsN" firstAttribute="leading" secondItem="2En-nH-mb5" secondAttribute="leading" constant="20" symbolic="YES" id="lrI-tP-8Qo"/>
+                        <constraint firstItem="7nf-Nh-fsN" firstAttribute="leading" secondItem="2En-nH-mb5" secondAttribute="leading" id="of9-lA-QWX"/>
                     </constraints>
                 </view>
             </subviews>

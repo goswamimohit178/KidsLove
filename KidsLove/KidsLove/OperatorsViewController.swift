@@ -32,6 +32,8 @@ final class OperatorsViewController: UIViewController {
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
         headerLabel.font = UIFont.myAppBodyFonts()
+        let appName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
+        headerLabel.text = appName
         operatorTableView.setShadow()
         operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
     }
@@ -59,10 +61,8 @@ extension OperatorsViewController: UITableViewDataSource{
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
         let unitModel = model.math[indexPath.row]
         cell.currUnit = indexPath.row
-        //        cell.disableBtnForProgress(unit: unitModel)
-        //        cell.setColorForDisableBtn()
         cell.buttonTappedAction = presentQuestionController
-        cell.setDataCell(unit: unitModel)
+        cell.setDataCell(unit: model.math[indexPath.row])
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
