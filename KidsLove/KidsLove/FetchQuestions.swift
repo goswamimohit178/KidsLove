@@ -59,8 +59,12 @@ class NetworkService {
                 questionString = String(num) + " " + oprator.getOperator() + " " + questionString
                 answer = option
             } else {
-                let range = answer...oprator.upperBound(upperBound: range.upperBound)
-                let num = generateRandomNumber(range: range)
+                let upperBound = oprator.upperBound(upperBound: range.upperBound)
+                var tempRange = range
+                if answer <= upperBound {
+                    tempRange = answer...upperBound
+                }
+                let num = generateRandomNumber(range: tempRange)
                 if questionString.isEmpty {
                     questionString += String(num)
                     answer = num
