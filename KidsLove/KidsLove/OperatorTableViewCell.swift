@@ -316,7 +316,6 @@ class OperatorTableViewCell: UITableViewCell {
        }
     
     func addLevelViewFor(model: LevelCellModel) -> LevelView {
-        
         let levelView = levelView()
         levelView.button.tag = model.levelType.rawValue
         levelView.button.createCircularPath(duration: circularViewDuration, progress: model.progress, buttonWidth: buttonWidth)
@@ -327,8 +326,9 @@ class OperatorTableViewCell: UITableViewCell {
     }
     
     func levelView() -> LevelView {
-        let levelView = LevelView(frame: CGRect(x: 0, y: 0, width: deviceWidth*25, height: deviceWidth*25+50))
-        //levelView.backgroundColor = .yellow
+        let levelView = LevelView(frame: .zero)
+        levelView.heightAnchor.constraint(equalToConstant: CGFloat(buttonWidth+50)).isActive = true
+        levelView.widthAnchor.constraint(equalToConstant: CGFloat(buttonWidth)).isActive = true
         levelView.button.addTarget(self, action:  #selector(buttonTaped), for: .touchUpInside)
         levelView.button.backgroundColor = UIColor.homeButtonColor()
         levelView.titleLabel.font = UIFont.operatorViewCellFont()
@@ -344,7 +344,7 @@ class OperatorTableViewCell: UITableViewCell {
         let containerStackView = UIStackView()
         containerStackView.axis = .horizontal
         containerStackView.alignment = .center
-        containerStackView.spacing = deviceWidth * 0.25
+        containerStackView.spacing = buttonWidth
         containerStackView.distribution = .equalCentering
         return containerStackView
     }
@@ -353,11 +353,10 @@ class OperatorTableViewCell: UITableViewCell {
         let containerStackView = UIStackView()
         containerStackView.axis = .horizontal
         containerStackView.alignment = .center
-        containerStackView.spacing = deviceWidth * 0.25
+        containerStackView.spacing = buttonWidth
         containerStackView.distribution = .equalSpacing
         return containerStackView
     }
-    
 }
 
 enum StackModelType {
@@ -383,8 +382,8 @@ class LevelView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         let leading = NSLayoutConstraint(item: button, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
         let trailing = NSLayoutConstraint(item: button, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
-        let top = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: titleLabel, attribute: .top, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: titleLabel, attribute: .top, multiplier: 1, constant: -20)
         
         //        titleLabel
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -402,11 +401,9 @@ class LevelView: UIView {
     
     static var levelButton: UIButton {
         let button = UIButton()
-        let constant = deviceWidth * 0.25
-        button.heightAnchor.constraint(equalToConstant: CGFloat(constant)).isActive = true
-        button.widthAnchor.constraint(equalToConstant: CGFloat(constant)).isActive = true
-        //        button.setupShapes()
-        //        button.pulse()
+        let constant = buttonWidth
+        button.heightAnchor.constraint(equalToConstant: buttonWidth).isActive = true
+        button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         button.btnCorner(cornerRadius: constant/2)
         return button
     }
@@ -417,5 +414,5 @@ var deviceWidth: CGFloat {
 }
 
 var buttonWidth: CGFloat {
-    return deviceWidth*0.25
+    return min(max(deviceWidth*0.25, 100), 200)
 }
