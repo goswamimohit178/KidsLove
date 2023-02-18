@@ -32,7 +32,6 @@ final class OperatorsViewController: UIViewController {
         self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
         headerLabel.font = UIFont.myAppBodyFonts()
-        headerLabel.backgroundColor = UIColor.homeButtonColor()
         operatorTableView.setShadow()
         operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
     }

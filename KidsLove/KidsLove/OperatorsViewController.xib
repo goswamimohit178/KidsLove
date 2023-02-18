@@ -61,6 +61,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧜‍♂️ Wanna Learn, Choose One!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nf-Nh-fsN">
                             <rect key="frame" x="20" y="44" width="145.66666666666666" height="12"/>
+                            <color key="backgroundColor" name="backgroundColor"/>
                             <color key="tintColor" name="textColor"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
                             <color key="textColor" name="textColor"/>

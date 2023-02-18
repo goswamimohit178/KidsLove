@@ -33,6 +33,8 @@ class OperatorTableViewCell: UITableViewCell {
         
     }
     @IBAction func easyButtonTapped(_ sender: Any) {
+//        var test: Int?
+//        print(test!)
         buttonTappedAction!(unit.levels.easyLevel.questions(), .easy , currUnit!)
     }
     

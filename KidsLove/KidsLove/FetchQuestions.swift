@@ -11,7 +11,7 @@ class NetworkService {
     
     func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: Oprator, noOfOprands: Int) -> [Question] {
         var easyQuestionList = [Question]()
-        for _ in 0...numberOfQuestions {
+        for _ in 1...numberOfQuestions {
             let question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
             easyQuestionList.append(question)
         }
