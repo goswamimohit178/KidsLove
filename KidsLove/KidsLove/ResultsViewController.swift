@@ -8,7 +8,6 @@
 import UIKit
 import SwiftUI
 class ResultsViewController: UIViewController {
-    
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var yourScoreLabel: UILabel!
@@ -59,7 +58,6 @@ class ResultsViewController: UIViewController {
         let resultprogress = calculateResultProgress()
         resultProgressBar.setProgress(resultprogress, animated: true)
         resultProgressBar.tintColor = UIColor.progressBarColor()
-    
         let vc = UIHostingController(rootView: ContentView())
         
         self.view.addSubview(vc.view)
