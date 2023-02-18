@@ -73,7 +73,6 @@
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-ca-nMF">
                         <rect key="frame" x="20" y="150" width="690" height="525"/>
-                        <color key="backgroundColor" red="0.9550378544" green="0.092058969330000004" blue="0.096169536129999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -90,6 +89,7 @@
             <connections>
                 <outlet property="chapterNameLabel" destination="mLp-5Q-FYQ" id="4Ur-I2-h2N"/>
                 <outlet property="stackView" destination="Gaw-ca-nMF" id="Whv-Fw-Vtt"/>
+                <outlet property="tittleView" destination="MQn-Ew-O9K" id="dUE-Kp-XU8"/>
                 <outlet property="unitNumberLabel" destination="p3B-eQ-ZxN" id="n95-0g-GOH"/>
             </connections>
             <point key="canvasLocation" x="303.81679389312978" y="-19.014084507042256"/>

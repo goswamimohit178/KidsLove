@@ -238,7 +238,7 @@ extension UIButton {
 
 class OperatorTableViewCell: UITableViewCell {
     var buttonTappedAction: ((Int,LevelType) -> Void)?
-
+    @IBOutlet weak var tittleView: UIView!
     @IBOutlet weak var unitNumberLabel: UILabel!
     @IBOutlet weak var chapterNameLabel: UILabel!
     
@@ -263,9 +263,8 @@ class OperatorTableViewCell: UITableViewCell {
        
     
     func setDataCell(unit: Unit) {
-        
-        
-        
+        setFontsAndColor()
+        removeProgressLayer()
         self.unitNumberLabel.text = unit.unitNumber
         self.chapterNameLabel.text = unit.chapterName
         
@@ -291,39 +290,49 @@ class OperatorTableViewCell: UITableViewCell {
                     }
                 }
             }
-            .forEach { stackModelType in
+            .forEach { stackModelType -> Void in
                 switch stackModelType {
                 case .single(let model):
                     let singleButtonStackView = singleButtonStackView()
-                    let levelView = levelView()
-                    levelView.button.tag = model.levelType.rawValue
-                    levelView.button.createCircularPath(duration: circularViewDuration, progress: model.progress, buttonWidth: buttonWidth)
-
-                    levelView.titleLabel.text = model.title
+                    let levelView = addLevelViewFor(model: model)
                     singleButtonStackView.addArrangedSubview(levelView)
                     stackView.addArrangedSubview(singleButtonStackView)
-                    singleButtonStackView.backgroundColor = .systemPink
                 case .two(let model1, let model2):
                     let twoButtonStackView = twoButtonStackView()
-                    let levelView1 = levelView()
-                    levelView1.button.tag = model1.levelType.rawValue
-                    levelView1.titleLabel.text = model1.title
-                    
-                    let levelView2 = levelView()
-                    levelView2.titleLabel.text = model2.title
-                    levelView2.button.tag = model2.levelType.rawValue
-                    twoButtonStackView.addArrangedSubview(levelView1)
+                    let levelView = addLevelViewFor(model: model1)
+                    twoButtonStackView.addArrangedSubview(levelView)
+                    let levelView2 = addLevelViewFor(model: model2)
                     twoButtonStackView.addArrangedSubview(levelView2)
                     stackView.addArrangedSubview(twoButtonStackView)
-                    twoButtonStackView.backgroundColor = .systemPink
                 }
             }
     }
     
+    private func setFontsAndColor() {
+            unitNumberLabel.font = UIFont.headingFonts()
+            chapterNameLabel.font = UIFont.operatorViewCellFont()
+            tittleView.backgroundColor = UIColor.homeButtonColor()
+    
+       }
+    
+    func addLevelViewFor(model: LevelCellModel) -> LevelView {
+        
+        let levelView = levelView()
+        levelView.button.tag = model.levelType.rawValue
+        levelView.button.createCircularPath(duration: circularViewDuration, progress: model.progress, buttonWidth: buttonWidth)
+        levelView.titleLabel.text = model.title
+        levelView.button.setTitle(model.oprator.getOperator(), for: .normal)
+        levelView.titleLabel.textColor = UIColor.bodyFontColor()
+        return levelView
+    }
+    
     func levelView() -> LevelView {
         let levelView = LevelView(frame: CGRect(x: 0, y: 0, width: deviceWidth*25, height: deviceWidth*25+50))
-        levelView.backgroundColor = .yellow
+        //levelView.backgroundColor = .yellow
         levelView.button.addTarget(self, action:  #selector(buttonTaped), for: .touchUpInside)
+        levelView.button.backgroundColor = UIColor.homeButtonColor()
+        levelView.titleLabel.font = UIFont.operatorViewCellFont()
+        levelView.button.titleLabel?.font = UIFont.myAppBodyFonts()
         return levelView
     }
     
@@ -393,7 +402,6 @@ class LevelView: UIView {
     
     static var levelButton: UIButton {
         let button = UIButton()
-        button.backgroundColor = .blue
         let constant = deviceWidth * 0.25
         button.heightAnchor.constraint(equalToConstant: CGFloat(constant)).isActive = true
         button.widthAnchor.constraint(equalToConstant: CGFloat(constant)).isActive = true
