@@ -17,12 +17,11 @@ class OperatorTableViewCell: UITableViewCell {
     var currUnit: Int?
     private var buttons = [UIButton]()
     private var circularViewDuration: TimeInterval = 2
-
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-   
+    
     private func removeProgressLayer() {
         buttons.forEach{ $0.layer.sublayers?.forEach({ layer in
             if layer is CAShapeLayer {
@@ -31,11 +30,24 @@ class OperatorTableViewCell: UITableViewCell {
         })
         }
     }
-       
+    
+    func disableBtnForProgress(unit: Unit) {
+        for (index, level) in unit.levels.enumerated() {
+            let isEnabled = (level.levelType == .easy) || (unit.levels[index-1].progress == .complete)
+            buttons[index].isEnabled = isEnabled
+            if isEnabled {
+                buttons[index].backgroundColor = UIColor.homeButtonColor()
+                buttons[index].alpha = 1.0
+            } else {
+                buttons[index].alpha = 0.5
+                buttons[index].backgroundColor = UIColor.disableButtonColor()
+            }
+        }
+    }
     
     func setDataCell(unit: Unit) {
+        buttons = [UIButton]()
         setFontsAndColor()
-        removeProgressLayer()
         self.unitNumberLabel.text = unit.unitNumber
         self.chapterNameLabel.text = unit.chapterName
         
@@ -77,14 +89,14 @@ class OperatorTableViewCell: UITableViewCell {
                     stackView.addArrangedSubview(twoButtonStackView)
                 }
             }
+        disableBtnForProgress(unit: unit)
     }
     
     private func setFontsAndColor() {
-            unitNumberLabel.font = UIFont.headingFonts()
-            chapterNameLabel.font = UIFont.operatorViewCellFont()
-            tittleView.backgroundColor = UIColor.homeButtonColor()
-    
-       }
+        unitNumberLabel.font = UIFont.headingFonts()
+        chapterNameLabel.font = UIFont.operatorViewCellFont()
+        tittleView.backgroundColor = UIColor.homeButtonColor()
+    }
     
     func addLevelViewFor(model: LevelCellModel) -> LevelView {
         let levelView = levelView()
@@ -104,6 +116,7 @@ class OperatorTableViewCell: UITableViewCell {
         levelView.button.backgroundColor = UIColor.homeButtonColor()
         levelView.titleLabel.font = UIFont.operatorViewCellFont()
         levelView.button.titleLabel?.font = UIFont.myAppBodyFonts()
+        buttons.append(levelView.button)
         return levelView
     }
     

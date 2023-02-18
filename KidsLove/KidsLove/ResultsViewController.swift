@@ -39,27 +39,26 @@ class ResultsViewController: UIViewController {
     
     @IBAction func tryAgainBtnTapped(_ sender: Any) {
         opratorVC.showQuestionsFor(unitNumber: currentUnitNumber, levelNumber: currentLevelNumber)
-        let previousProgress = getPreviousProgress()
-        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
-        setNewProgress(currentProgress: currentProgress)
     }
     
     @IBAction func goToHomeButton(_ sender: Any) {
-        
         self.navigationController?.popToViewController(opratorVC, animated: true)
-        
+    }
+    
+    fileprivate func updateResult() {
+        percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
+        replaceStarsImages(percentage: percentage)
         if percentage >= 80.0 {
             let previousProgress = getPreviousProgress()
             let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
             setNewProgress(currentProgress: currentProgress)
-        }    
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
-        percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-        replaceStarsImages(percentage: percentage)
+        updateResult()
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
@@ -81,7 +80,6 @@ class ResultsViewController: UIViewController {
         }
     }
     
-    
     private func replaceStarsImages(percentage: Float) {
         if percentage >= 80 {
             starImageView1.image = UIImage(named: "filled-star")
@@ -95,11 +93,7 @@ class ResultsViewController: UIViewController {
             starImageView1.image = UIImage(named: "filled-star")
             starImageView2.image = UIImage(named: "filled-star (1)")?.withTintColor(UIColor.starsTintColor())
             starImageView3.image = UIImage(named: "filled-star (1)")?.withTintColor(UIColor.starsTintColor())
-            
-            
-            
         }
-       
     }
     private func fontAndColorResults() {
         footerView.layer.cornerRadius = 0.05 * footerView.bounds.size.width

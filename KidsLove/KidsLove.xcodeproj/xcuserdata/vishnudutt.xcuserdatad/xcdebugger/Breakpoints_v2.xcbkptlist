@@ -39,38 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE1F1AAE-D9DC-405B-91AC-C797D53C0809"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KidsLove/SoundPlayer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "playSound(soundString:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1D0612E2-8781-44EC-B312-4618293FB6DC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KidsLove/SoundPlayer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "playSound(soundString:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B38CA883-2E2F-4403-B68E-626E4AAC6124"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -126,8 +94,8 @@
             filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "setDataCell(unit:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,10 +110,42 @@
             filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "setDataCell(unit:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0AB0261D-9CB3-46B5-B487-D9206DD6CA1A - 959946f98c2d8a1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KidsLove.OperatorTableViewCell.setDataCell(unit: KidsLove.Unit) -&gt; ()"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vishnudutt/KidsLove/KidsLove/KidsLove/OperatorTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "1208">
+               </Location>
+               <Location
+                  uuid = "0AB0261D-9CB3-46B5-B487-D9206DD6CA1A - 3c54ba3ee85e6a04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (KidsLove.LevelCellModel) -&gt; Swift.Optional&lt;KidsLove.StackModelType&gt; in KidsLove.OperatorTableViewCell.setDataCell(unit: KidsLove.Unit) -&gt; ()"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vishnudutt/KidsLove/KidsLove/KidsLove/OperatorTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "192">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,8 +158,8 @@
             filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "setDataCell(unit:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "KidsLove/OperatorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "levelView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -194,38 +194,70 @@
             endingLineNumber = "72"
             landmarkName = "presentQuestionController(unitNumber:levelNumber:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2A02EF8F-1356-4800-A492-A723EFD0AC21 - 36dd0dd4cbd510c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.OperatorsViewController.presentQuestionController(unitNumber: Swift.Int, levelType: KidsLove.LevelType) -&gt; ()"
-                  moduleName = "KidsLove"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vishnudutt/KidsLove/KidsLove/KidsLove/OperatorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "240">
-               </Location>
-               <Location
-                  uuid = "2A02EF8F-1356-4800-A492-A723EFD0AC21 - 405fdcacb99dce01"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (KidsLove.LevelCellModel) -&gt; Swift.Bool in KidsLove.OperatorsViewController.presentQuestionController(unitNumber: Swift.Int, levelType: KidsLove.LevelType) -&gt; ()"
-                  moduleName = "KidsLove"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vishnudutt/KidsLove/KidsLove/KidsLove/OperatorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BD835DB-F10B-4DAA-92FC-6E28DB804DF0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/ResultsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "replaceStarsImages(percentage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59D907D0-D6B9-4606-87CD-27CE7A15D8A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/ResultsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "calculateCurrentProgress(previousProgress:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9312EEB2-BFC5-4B3B-A622-86D3888ABBFE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/ResultsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "setNewProgress(currentProgress:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94C7E3B7-82DC-421B-901B-72C640BF7E1F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/ResultsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "setNewProgress(currentProgress:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

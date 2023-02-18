@@ -12,7 +12,11 @@ class NetworkService {
     func getQuestions(range: ClosedRange<Int>, numberOfOptions: Int, numberOfQuestions: Int, oprator: Oprator, noOfOprands: Int) -> [Question] {
         var easyQuestionList = [Question]()
         for _ in 1...numberOfQuestions {
-            let question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
+            var question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
+
+            while easyQuestionList.map({ $0.answer }).contains(question.answer) && easyQuestionList.map({ $0.questionText }).contains(question.questionText) {
+                question = getQuestion(range: range, numberOfOptions: numberOfOptions, oprator: oprator, noOfOprands: noOfOprands)
+            }
             easyQuestionList.append(question)
         }
         return easyQuestionList
@@ -71,30 +75,29 @@ class NetworkService {
     }
     
     private func getLevels(unitNumber: Int, oprator: Oprator) -> [LevelCellModel] {
-        let easyMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .easy)
-        let mediumMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .medium)
-        let hardMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .hard)
-        let practiceProgress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelType: .practice)
+        let easyMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 0)
+        let mediumMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 1)
+        let hardMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 2)
+        let practiceProgress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 3)
         
         let easyCellModel = LevelCellModel(progress: easyMultiplyprogress, title: "Easy", oprator: oprator , noOfOprands: 2, levelType: .easy)
         let mediumCellModel = LevelCellModel(progress: mediumMultiplyprogress, title: "Medium", oprator: oprator, noOfOprands: 2, levelType: .medium)
         let hardCellModel = LevelCellModel(progress: hardMultiplyprogress, title: "Hard", oprator: oprator, noOfOprands: 2, levelType: .hard)
         let praticeCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 3, levelType: .practice)
-        return [easyCellModel, mediumCellModel, hardCellModel, praticeCellModel, easyCellModel, mediumCellModel, hardCellModel]
+        return [easyCellModel, mediumCellModel, hardCellModel, praticeCellModel]
         
     }
     
     func setLevelWise() -> [Unit] {
         return  [
-            Unit(unitNumber: "Unit 1", chapterName: "Multiplication", levels:  getLevels(unitNumber: 0, oprator: .multiplication)),
-            
-            Unit(unitNumber: "Unit 2", chapterName: "Division", levels: getLevels(unitNumber: 1, oprator: .division)),
-            Unit(unitNumber: "Unit 3", chapterName: "Addition", levels: getLevels(unitNumber: 2, oprator: .addition)),
-            Unit(unitNumber: "Unit 4", chapterName: "Subtraction", levels: getLevels(unitNumber: 3, oprator: .subtraction))
+            Unit(unitNumber: "Unit 1", chapterName: "Addition", levels: getLevels(unitNumber: 0, oprator: .addition)),
+            Unit(unitNumber: "Unit 2", chapterName: "Subtraction", levels: getLevels(unitNumber: 1, oprator: .subtraction)),
+            Unit(unitNumber: "Unit 3", chapterName: "Multiplication", levels:  getLevels(unitNumber: 2, oprator: .multiplication)),
+            Unit(unitNumber: "Unit 4", chapterName: "Division", levels: getLevels(unitNumber: 3, oprator: .division)),
         ]
     }
-    func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelType: LevelType) -> Progress {
-        let keyForProgrss: String = "\(currentUnitNumber)-\(currentLevelType)"
+    func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelNumber: Int) -> Progress {
+        let keyForProgrss: String = "\(currentUnitNumber)-\(currentLevelNumber)"
         let progress = defaults.value(forKey: keyForProgrss) as? Int ?? 0
         
         return Progress(rawValue: progress) ?? .zero
