@@ -9,29 +9,23 @@ import Foundation
 import FirebaseRemoteConfig
 import Firebase
 
-class Configdefaults  {
+class AppConfig  {
     var remoteConfig = RemoteConfig.remoteConfig()
     let settings = RemoteConfigSettings()
-    func fireBaseConfig() -> Int {
-        
+    
+    var numberOfQuestions: Int {
         settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
-       let noOfQue = remoteConfig.configValue(forKey: "numberOfQuestions")
-        print(noOfQue.numberValue)
+        let noOfQue = remoteConfig.configValue(forKey: "numberOfQuestions")
         remoteConfig.setDefaults(fromPlist: "RemoteConfigDefaults")
         remoteConfig.fetch { (status, error) -> Void in
-          if status == .success {
-            print("Config fetched!")
-              self.remoteConfig.activate { changed, error in
+            if status == .success {
+                self.remoteConfig.activate { changed, error in
+                }
+            } else {
+                print("Error: \(error?.localizedDescription ?? "No error available.")")
             }
-          } else {
-            print("Config not fetched")
-            print("Error: \(error?.localizedDescription ?? "No error available.")")
-          }
-         
         }
-        return Int(noOfQue.numberValue)
+        return noOfQue.numberValue.intValue
     }
-    
-   
 }

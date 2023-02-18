@@ -6,8 +6,7 @@
 
 
 import Foundation
-let fireBaseObj = Configdefaults()
-var numberOfQue = fireBaseObj.fireBaseConfig()
+
 struct SubjectModel {
     var math: [Unit]
 }
@@ -27,7 +26,7 @@ struct LevelCellModel {
   
     func questions() -> [Question] {
         return NetworkService()
-            .getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: numberOfQue , oprator: oprator, noOfOprands: noOfOprands)
+            .getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: AppConfig().numberOfQuestions , oprator: oprator, noOfOprands: noOfOprands)
     }
 }
 struct Question {
