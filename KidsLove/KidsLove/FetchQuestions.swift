@@ -84,15 +84,23 @@ class NetworkService {
         let hardMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 2)
         let practiceProgress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 3)
         
-        let easyCellModel = LevelCellModel(progress: easyMultiplyprogress, title: "Easy", oprator: oprator , noOfOprands: 2, levelType: .easy)
-        let mediumCellModel = LevelCellModel(progress: mediumMultiplyprogress, title: "Medium", oprator: oprator, noOfOprands: 2, levelType: .medium)
-        let hardCellModel = LevelCellModel(progress: hardMultiplyprogress, title: "Hard", oprator: oprator, noOfOprands: 2, levelType: .hard)
-        let praticeCellModel = LevelCellModel(progress: practiceProgress, title: "Practice", oprator: oprator, noOfOprands: 3, levelType: .practice)
+        let easyCellModel =  LevelCellModel(type: .math(progress: easyMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .easy), title: "Easy")
+       
+        let mediumCellModel = LevelCellModel(type: .math(progress: mediumMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .medium), title: "Medium")
+        
+        let hardCellModel = LevelCellModel(type: .math(progress: hardMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .practice), title: "Hard")
+        let praticeCellModel = LevelCellModel(type: .math(progress: practiceProgress, oprator: oprator, noOfOprands: 3, levelType: .practice), title: "Practice")
+
         return [easyCellModel, mediumCellModel, hardCellModel, praticeCellModel]
         
     }
     
-    func setLevelWise() -> [Unit] {
+    private func games() -> [LevelCellModel] {
+        let easyCellModel = LevelCellModel(type: .game(game: .TwoZeroFourEight), title: "2048")
+        return [easyCellModel]
+    }
+    
+    func mathUnites() -> [Unit] {
         return  [
             Unit(unitNumber: "Unit 1", chapterName: "Addition", levels: getLevels(unitNumber: 0, oprator: .addition)),
             Unit(unitNumber: "Unit 2", chapterName: "Subtraction", levels: getLevels(unitNumber: 1, oprator: .subtraction)),
@@ -100,6 +108,13 @@ class NetworkService {
             Unit(unitNumber: "Unit 4", chapterName: "Division", levels: getLevels(unitNumber: 3, oprator: .division)),
         ]
     }
+    
+    func gameUnites() -> [Unit] {
+        return  [
+            Unit(unitNumber: "Games", chapterName: "Number Games", levels: games())
+        ]
+    }
+    
     func getProgressFromUserDefault(currentUnitNumber: Int, currentLevelNumber: Int) -> Progress {
         let keyForProgrss: String = "\(currentUnitNumber)-\(currentLevelNumber)"
         let progress = defaults.value(forKey: keyForProgrss) as? Int ?? 0
@@ -137,7 +152,6 @@ extension Int {
         }
         return size
     }
-
 }
 
 enum Oprator {

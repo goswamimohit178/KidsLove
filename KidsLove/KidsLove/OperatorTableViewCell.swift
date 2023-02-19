@@ -33,14 +33,19 @@ class OperatorTableViewCell: UITableViewCell {
     
     func disableBtnForProgress(unit: Unit) {
         for (index, level) in unit.levels.enumerated() {
-            let isEnabled = (level.levelType == .easy) || (unit.levels[index-1].progress == .complete)
-            buttons[index].isEnabled = isEnabled
-            if isEnabled {
-                buttons[index].backgroundColor = UIColor.homeButtonColor()
-                buttons[index].alpha = 1.0
-            } else {
-                buttons[index].alpha = 0.5
-                buttons[index].backgroundColor = UIColor.disableButtonColor()
+            switch level.type {
+            case .game(_):
+                return
+            case .math(progress: _, oprator: _, noOfOprands: _, levelType: let levelType):
+                let isEnabled = (levelType == .easy) || (unit.levels[index-1].type.mathProgress == .complete)
+                buttons[index].isEnabled = isEnabled
+                if isEnabled {
+                    buttons[index].backgroundColor = UIColor.homeButtonColor()
+                    buttons[index].alpha = 1.0
+                } else {
+                    buttons[index].alpha = 0.5
+                    buttons[index].backgroundColor = UIColor.disableButtonColor()
+                }
             }
         }
     }
@@ -100,11 +105,18 @@ class OperatorTableViewCell: UITableViewCell {
     
     func addLevelViewFor(model: LevelCellModel) -> LevelView {
         let levelView = levelView()
-        levelView.button.tag = model.levelType.rawValue
-        levelView.button.createCircularPath(duration: circularViewDuration, progress: model.progress, buttonWidth: buttonWidth)
         levelView.titleLabel.text = model.title
-        levelView.button.setTitle(model.oprator.getOperator(), for: .normal)
         levelView.titleLabel.textColor = UIColor.bodyFontColor()
+        guard case .math(let progress, let oprator, _, let levelType) = model.type else {
+            if case .game(let gameType) = model.type{
+                levelView.button.tag =  gameType.rawValue
+                levelView.button.setTitle(gameType.title, for: .normal)
+            }
+            return levelView
+        }
+        levelView.button.setTitle(oprator.getOperator(), for: .normal)
+        levelView.button.createCircularPath(duration: circularViewDuration, progress: progress, buttonWidth: buttonWidth)
+        levelView.button.tag = levelType.rawValue
         return levelView
     }
     

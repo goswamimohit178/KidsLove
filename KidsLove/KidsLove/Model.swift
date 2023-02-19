@@ -7,6 +7,29 @@
 
 import Foundation
 
+enum Game: Int {
+    case TwoZeroFourEight
+    
+    var title: String {
+        return "2048"
+    }
+    
+}
+
+enum CellType {
+    case game(game: Game)
+    case math(progress: Progress, oprator: Oprator, noOfOprands: Int, levelType: LevelType)
+    
+    var mathProgress: Progress {
+        switch self {
+        case .game(game: _):
+            fatalError("Invalid state")
+        case .math(progress: let progress, oprator: _, noOfOprands: _, levelType: _):
+            return progress
+        }
+    }
+}
+
 struct SubjectModel {
     var math: [Unit]
 }
@@ -18,13 +41,13 @@ struct Unit {
 }
 
 struct LevelCellModel {
-    var progress: Progress
+    var type: CellType
     let title: String
-    let oprator: Oprator
-    let noOfOprands: Int
-    let levelType: LevelType
-  
+    
     func questions() -> [Question] {
+        guard case .math(_, let oprator, let noOfOprands, let levelType) = type else {
+            fatalError("Invalid state")
+        }
         return NetworkService()
             .getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: AppConfig().numberOfQuestions , oprator: oprator, noOfOprands: noOfOprands)
     }
@@ -57,6 +80,7 @@ enum LevelType: Int {
     case medium
     case hard
     case practice
+    case game
 
     var range: ClosedRange<Int> {
         switch self {
@@ -67,6 +91,8 @@ enum LevelType: Int {
         case .hard:
             return 20...50
         case .practice:
+            return 10...40
+        case .game:
             return 10...40
         }
     }

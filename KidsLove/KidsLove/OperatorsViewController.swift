@@ -7,10 +7,9 @@
 //self.navigationController?.pushViewController(QuestionViewController(), animated: true)
 import UIKit
 import SwiftUI
-
+import twofortyeight
 
 final class OperatorsViewController: UIViewController {
-    private var unitNameList = [Unit]()
     @IBOutlet weak var headerLabel: UILabel!
     
     @IBOutlet weak var operatorTableView: UITableView!
@@ -22,14 +21,12 @@ final class OperatorsViewController: UIViewController {
         router.showSettingsScreen()
     }
     
-    private var model: SubjectModel!
+    var model: SubjectModel!
     var currunit = 0
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         router = AppRouter(navigationController: navigationController!)
-        let unitNameList = NetworkService().setLevelWise()
-        self.model = SubjectModel(math: unitNameList)
         setButtonStyle()
         headerLabel.font = UIFont.myAppBodyFonts()
         let appName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
@@ -47,7 +44,12 @@ final class OperatorsViewController: UIViewController {
     }
     
     func setProgess(progress: Progress, unitNumber: Int, levelNumber: Int) {
-        model.math[unitNumber].levels[levelNumber].progress = progress
+        switch model.math[unitNumber].levels[levelNumber].type {
+        case .game(game: let game):
+            fatalError("Invalid state")
+        case .math(progress: _, oprator: let oprator, noOfOprands: let noOfOprands, levelType: let levelType):
+            model.math[unitNumber].levels[levelNumber].type = .math(progress: progress, oprator: oprator, noOfOprands: noOfOprands, levelType: levelType)
+        }
         operatorTableView.reloadData()
     }
 }
@@ -59,13 +61,21 @@ extension OperatorsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
-        let unitModel = model.math[indexPath.row]
         cell.currUnit = indexPath.row
         cell.buttonTappedAction = presentQuestionController
         cell.setDataCell(unit: model.math[indexPath.row])
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
+        guard case .math(_, _, _, _) = model.math[unitNumber].levels[levelNumber].type else {
+            let engine = GameEngine()
+            let storage = LocalStorage()
+            let stateTracker = GameStateTracker(initialState: (storage.board ?? engine.blankBoard, storage.score))
+            let vc = GameViewController(viewModel: GameViewModel(engine, storage: storage, stateTracker: stateTracker))
+            navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        
         guard unitNumber <= model.math.count, levelNumber <= model.math[unitNumber].levels.count else {
             return
         }
