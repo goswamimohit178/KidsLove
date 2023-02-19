@@ -26,6 +26,6 @@ class AppConfig  {
                 print("Error: \(error?.localizedDescription ?? "No error available.")")
             }
         }
-        return noOfQue.numberValue.intValue
+        return (noOfQue.numberValue.intValue == 0) ? 10: noOfQue.numberValue.intValue
     }
 }
