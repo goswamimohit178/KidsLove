@@ -283,34 +283,10 @@
 		36939D07298CFB5F00927B1E /* KidsLove */ = {
 			isa = PBXGroup;
 			children = (
-				36B3B79929A28084000707C9 /* Mills */,
-				36B3B76029A275E9000707C9 /* twofortyeight */,
-				0492993B29A1019900331306 /* remote_config_defaults.plist */,
-				0492993D29A101BD00331306 /* GoogleService-Info.plist */,
-				139D2B9C298FA1DE006CAEF9 /* Audio */,
-				36939D08298CFB5F00927B1E /* AppDelegate.swift */,
-				36939D0A298CFB5F00927B1E /* SceneDelegate.swift */,
-				139D2BA52993A349006CAEF9 /* Model.swift */,
-				36B3B72329A27271000707C9 /* TabBarController.swift */,
-				364D781C299F940800FF42D7 /* AppRouter.swift */,
-				364D781E299F994A00FF42D7 /* SoundPlayer.swift */,
-				1331E231298D39DD00AFD1E0 /* HomeViewController.swift */,
-				364D781A299F7C7700FF42D7 /* SettingsView.swift */,
-				1331E232298D39DD00AFD1E0 /* HomeViewController.xib */,
-				1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */,
-				139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */,
-				139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */,
-				139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */,
-				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
-				36DD6080298D0BAC00F059FB /* QuestionViewController.swift */,
-				36DD6081298D0BAC00F059FB /* QuestionViewController.xib */,
-				36DD6084298E12E000F059FB /* ResultsViewController.swift */,
-				36DD6085298E12E000F059FB /* ResultsViewController.xib */,
-				36DD608A29911CD000F059FB /* ColorAndFonts.swift */,
-				04DA93C529A0C8C7008F70FB /* FireBaseConfig.swift */,
-				36939D11298CFB6000927B1E /* Assets.xcassets */,
-				36939D13298CFB6000927B1E /* LaunchScreen.storyboard */,
 				36939D16298CFB6000927B1E /* Info.plist */,
+				36B3B79929A28084000707C9 /* Mills */,
+				36B3B76029A275E9000707C9 /* Twofortyeight */,
+				36B3B81729A2AB0C000707C9 /* MathIQ */,
 			);
 			path = KidsLove;
 			sourceTree = "<group>";
@@ -442,7 +418,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		36B3B76029A275E9000707C9 /* twofortyeight */ = {
+		36B3B76029A275E9000707C9 /* Twofortyeight */ = {
 			isa = PBXGroup;
 			children = (
 				36B3B75029A275E9000707C9 /* Game */,
@@ -456,7 +432,7 @@
 				36B3B75D29A275E9000707C9 /* Info.plist */,
 				36B3B75F29A275E9000707C9 /* Preview Content */,
 			);
-			path = twofortyeight;
+			path = Twofortyeight;
 			sourceTree = "<group>";
 		};
 		36B3B79929A28084000707C9 /* Mills */ = {
@@ -523,6 +499,38 @@
 				36B3B7AC29A28084000707C9 /* Mills.ipa */,
 			);
 			path = "Mills 2021-03-31 16-59-30";
+			sourceTree = "<group>";
+		};
+		36B3B81729A2AB0C000707C9 /* MathIQ */ = {
+			isa = PBXGroup;
+			children = (
+				0492993B29A1019900331306 /* remote_config_defaults.plist */,
+				0492993D29A101BD00331306 /* GoogleService-Info.plist */,
+				139D2B9C298FA1DE006CAEF9 /* Audio */,
+				36939D08298CFB5F00927B1E /* AppDelegate.swift */,
+				36939D0A298CFB5F00927B1E /* SceneDelegate.swift */,
+				139D2BA52993A349006CAEF9 /* Model.swift */,
+				36B3B72329A27271000707C9 /* TabBarController.swift */,
+				364D781C299F940800FF42D7 /* AppRouter.swift */,
+				364D781E299F994A00FF42D7 /* SoundPlayer.swift */,
+				1331E231298D39DD00AFD1E0 /* HomeViewController.swift */,
+				364D781A299F7C7700FF42D7 /* SettingsView.swift */,
+				1331E232298D39DD00AFD1E0 /* HomeViewController.xib */,
+				1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */,
+				139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */,
+				139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */,
+				139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */,
+				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
+				36DD6080298D0BAC00F059FB /* QuestionViewController.swift */,
+				36DD6081298D0BAC00F059FB /* QuestionViewController.xib */,
+				36DD6084298E12E000F059FB /* ResultsViewController.swift */,
+				36DD6085298E12E000F059FB /* ResultsViewController.xib */,
+				36DD608A29911CD000F059FB /* ColorAndFonts.swift */,
+				04DA93C529A0C8C7008F70FB /* FireBaseConfig.swift */,
+				36939D11298CFB6000927B1E /* Assets.xcassets */,
+				36939D13298CFB6000927B1E /* LaunchScreen.storyboard */,
+			);
+			path = MathIQ;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
