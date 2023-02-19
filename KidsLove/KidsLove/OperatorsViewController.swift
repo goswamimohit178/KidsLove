@@ -32,6 +32,7 @@ final class OperatorsViewController: UIViewController {
         headerLabel.text = appName
         operatorTableView.setShadow()
         operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setButtonStyle() {
@@ -44,7 +45,7 @@ final class OperatorsViewController: UIViewController {
     
     func setProgess(progress: Progress, unitNumber: Int, levelNumber: Int) {
         switch model.math[unitNumber].levels[levelNumber].type {
-        case .game(game: let game):
+        case .game(game: _):
             fatalError("Invalid state")
         case .math(progress: _, oprator: let oprator, noOfOprands: let noOfOprands, levelType: let levelType):
             model.math[unitNumber].levels[levelNumber].type = .math(progress: progress, oprator: oprator, noOfOprands: noOfOprands, levelType: levelType)

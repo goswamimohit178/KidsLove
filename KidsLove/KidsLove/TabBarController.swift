@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
@@ -15,26 +16,35 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Create Tab one
-        let tabOne = OperatorsViewController()
+        self.viewControllers = [mathVC, gameVC, settingsVC]
+    }
+    
+    func themeUpdated() {
+        self.viewControllers = [mathVC, gameVC, settingsVC]
+    }
+    
+    var settingsVC: UIViewController {
+        let settingsVC = UIHostingController(rootView: SettingsView(themeUpdated: themeUpdated))
+        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape"))
+        return settingsVC
+    }
+    
+    var mathVC: UIViewController {
+        let mathVC = OperatorsViewController()
+        let navigationVC = UINavigationController(rootViewController: mathVC)
         let mathUnites = NetworkService().mathUnites()
-        tabOne.model = SubjectModel(math: mathUnites)
-        let tabOneBarItem = UITabBarItem(title: "Math", image: UIImage(named: "math"), selectedImage: UIImage(named: "math"))
-        
-        tabOne.tabBarItem = tabOneBarItem
-        
-        
-        // Create Tab two
-        let tabTwo = OperatorsViewController()
+        mathVC.model = SubjectModel(math: mathUnites)
+        mathVC.tabBarItem = UITabBarItem(title: "Math", image: UIImage(named: "math"), selectedImage: UIImage(named: "math"))
+        return navigationVC
+    }
+    
+    var gameVC: UIViewController {
+        let gameVC = OperatorsViewController()
+        let navigationVC = UINavigationController(rootViewController: gameVC)
         let gameUnites = NetworkService().gameUnites()
-        tabTwo.model = SubjectModel(math: gameUnites)
-        let tabTwoBarItem2 = UITabBarItem(title: "Game", image: UIImage(named: "gamecontroller"), selectedImage: UIImage(named: "gamecontroller"))
-        
-        tabTwo.tabBarItem = tabTwoBarItem2
-        
-        
-        self.viewControllers = [tabOne, tabTwo]
+        gameVC.model = SubjectModel(math: gameUnites)
+        gameVC.tabBarItem = UITabBarItem(title: "Game", image: UIImage(systemName: "gamecontroller"), selectedImage: UIImage(systemName: "gamecontroller"))
+        return navigationVC
     }
     
     // UITabBarControllerDelegate method

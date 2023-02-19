@@ -22,14 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ThemeManager.setTheme()
         guard let _ = (scene as? UIWindowScene) else { return }
         if let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(windowScene: windowScene)
+            let window = UIWindow(windowScene: windowScene)
             let tababar = TabBarController()
-            let navigationVC = UINavigationController(rootViewController: tababar)
-                window.rootViewController = navigationVC
-                self.window = window
+            window.rootViewController = tababar
+            self.window = window
             UINavigationBar.appearance().tintColor = UIColor.bodyFontColor()
-                window.makeKeyAndVisible()
-            }
+            window.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

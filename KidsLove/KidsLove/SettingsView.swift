@@ -80,7 +80,6 @@ struct SettingsView: View {
     }
     
     private func updateThemeColor(_ color: Color) {
-
         UINavigationBar.appearance().tintColor = UIColor(color)
         ThemeManager.themeColor = UIColor(color)
         UIColor.defaultThemeColor = UIColor(color)
