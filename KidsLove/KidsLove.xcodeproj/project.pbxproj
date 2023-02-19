@@ -63,6 +63,57 @@
 		36B3B77929A27662000707C9 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B75429A275E9000707C9 /* IntExtensions.swift */; };
 		36B3B77A29A27662000707C9 /* CustomOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B75729A275E9000707C9 /* CustomOperators.swift */; };
 		36B3B77D29A27662000707C9 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B75529A275E9000707C9 /* ColorExtensions.swift */; };
+		36B3B7DB29A28084000707C9 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CE29A28084000707C9 /* lose.mp3 */; };
+		36B3B7DC29A28084000707C9 /* char.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B79A29A28084000707C9 /* char.mp3 */; };
+		36B3B7DE29A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BE29A28084000707C9 /* InitialVC.swift */; };
+		36B3B7DF29A28084000707C9 /* ViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B79B29A28084000707C9 /* ViewDataModel.swift */; };
+		36B3B7E029A28084000707C9 /* notAllowed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D029A28084000707C9 /* notAllowed.mp3 */; };
+		36B3B7E129A28084000707C9 /* place-player-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7BD29A28084000707C9 /* place-player-2.mp3 */; };
+		36B3B7E229A28084000707C9 /* select.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B79C29A28084000707C9 /* select.mp3 */; };
+		36B3B7E329A28084000707C9 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D629A28084000707C9 /* PlayerView.xib */; };
+		36B3B7E429A28084000707C9 /* MillsGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B79D29A28084000707C9 /* MillsGameView.swift */; };
+		36B3B7E529A28084000707C9 /* PlayerGuideMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7C929A28084000707C9 /* PlayerGuideMessages.swift */; };
+		36B3B7E629A28084000707C9 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B79E29A28084000707C9 /* CoinCollectionViewCell.swift */; };
+		36B3B7E729A28084000707C9 /* ViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7D729A28084000707C9 /* ViewDataModel.swift */; };
+		36B3B7E829A28084000707C9 /* SoundEfectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B79F29A28084000707C9 /* SoundEfectManager.swift */; };
+		36B3B7E929A28084000707C9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7C329A28084000707C9 /* CircleView.swift */; };
+		36B3B7EA29A28084000707C9 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7A029A28084000707C9 /* GameVC.swift */; };
+		36B3B7EB29A28084000707C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7A129A28084000707C9 /* Assets.xcassets */; };
+		36B3B7EC29A28084000707C9 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7CB29A28084000707C9 /* GameVC.swift */; };
+		36B3B7ED29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7A229A28084000707C9 /* PlayerCollectionViewController.swift */; };
+		36B3B7F029A28084000707C9 /* select.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CD29A28084000707C9 /* select.mp3 */; };
+		36B3B7F329A28084000707C9 /* MillsGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7C529A28084000707C9 /* MillsGameViewModel.swift */; };
+		36B3B7F429A28084000707C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7A629A28084000707C9 /* Main.storyboard */; };
+		36B3B7F529A28084000707C9 /* char.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7C129A28084000707C9 /* char.mp3 */; };
+		36B3B7F629A28084000707C9 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7A829A28084000707C9 /* win.mp3 */; };
+		36B3B7F729A28084000707C9 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CA29A28084000707C9 /* win.mp3 */; };
+		36B3B7F829A28084000707C9 /* bhar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7A929A28084000707C9 /* bhar.mp3 */; };
+		36B3B7F929A28084000707C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D829A28084000707C9 /* Assets.xcassets */; };
+		36B3B7FA29A28084000707C9 /* place-player-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D429A28084000707C9 /* place-player-1.mp3 */; };
+		36B3B7FB29A28084000707C9 /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7AA29A28084000707C9 /* move.mp3 */; };
+		36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7AC29A28084000707C9 /* Mills.ipa */; };
+		36B3B7FD29A28084000707C9 /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7C229A28084000707C9 /* move.mp3 */; };
+		36B3B7FE29A28084000707C9 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7AD29A28084000707C9 /* lose.mp3 */; };
+		36B3B7FF29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7D229A28084000707C9 /* PlayerCollectionViewController.swift */; };
+		36B3B80029A28084000707C9 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7AE29A28084000707C9 /* PlayerView.swift */; };
+		36B3B80129A28084000707C9 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7D929A28084000707C9 /* CoinCollectionViewCell.swift */; };
+		36B3B80229A28084000707C9 /* CoinCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D529A28084000707C9 /* CoinCollectionViewCell.xib */; };
+		36B3B80329A28084000707C9 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7AF29A28084000707C9 /* PlayerView.xib */; };
+		36B3B80429A28084000707C9 /* SoundEfectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7D329A28084000707C9 /* SoundEfectManager.swift */; };
+		36B3B80529A28084000707C9 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7C029A28084000707C9 /* GameModels.swift */; };
+		36B3B80629A28084000707C9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7B029A28084000707C9 /* CircleView.swift */; };
+		36B3B80729A28084000707C9 /* place-player-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7B129A28084000707C9 /* place-player-2.mp3 */; };
+		36B3B80929A28084000707C9 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7C429A28084000707C9 /* PlayerView.swift */; };
+		36B3B80A29A28084000707C9 /* PlayerGuideMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7B329A28084000707C9 /* PlayerGuideMessages.swift */; };
+		36B3B80B29A28084000707C9 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7B429A28084000707C9 /* GameModels.swift */; };
+		36B3B80C29A28084000707C9 /* CoinCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7B529A28084000707C9 /* CoinCollectionViewCell.xib */; };
+		36B3B80D29A28084000707C9 /* place-player-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7B629A28084000707C9 /* place-player-1.mp3 */; };
+		36B3B80F29A28084000707C9 /* bhar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7BF29A28084000707C9 /* bhar.mp3 */; };
+		36B3B81029A28084000707C9 /* notAllowed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7B829A28084000707C9 /* notAllowed.mp3 */; };
+		36B3B81329A28084000707C9 /* Mills.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7C729A28084000707C9 /* Mills.xcdatamodeld */; };
+		36B3B81429A28084000707C9 /* Mills.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */; };
+		36B3B81529A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BC29A28084000707C9 /* InitialVC.swift */; };
+		36B3B81629A28084000707C9 /* Mills.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */; };
 		36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6080298D0BAC00F059FB /* QuestionViewController.swift */; };
 		36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6081298D0BAC00F059FB /* QuestionViewController.xib */; };
 		36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6084298E12E000F059FB /* ResultsViewController.swift */; };
@@ -127,6 +178,57 @@
 		36B3B75B29A275E9000707C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36B3B75D29A275E9000707C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B3B75E29A275E9000707C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		36B3B79A29A28084000707C9 /* char.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = char.mp3; sourceTree = "<group>"; };
+		36B3B79B29A28084000707C9 /* ViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataModel.swift; sourceTree = "<group>"; };
+		36B3B79C29A28084000707C9 /* select.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = select.mp3; sourceTree = "<group>"; };
+		36B3B79D29A28084000707C9 /* MillsGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MillsGameView.swift; sourceTree = "<group>"; };
+		36B3B79E29A28084000707C9 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
+		36B3B79F29A28084000707C9 /* SoundEfectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEfectManager.swift; sourceTree = "<group>"; };
+		36B3B7A029A28084000707C9 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		36B3B7A129A28084000707C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36B3B7A229A28084000707C9 /* PlayerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewController.swift; sourceTree = "<group>"; };
+		36B3B7A729A28084000707C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36B3B7A829A28084000707C9 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
+		36B3B7A929A28084000707C9 /* bhar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bhar.mp3; sourceTree = "<group>"; };
+		36B3B7AA29A28084000707C9 /* move.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move.mp3; sourceTree = "<group>"; };
+		36B3B7AC29A28084000707C9 /* Mills.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mills.ipa; sourceTree = "<group>"; };
+		36B3B7AD29A28084000707C9 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		36B3B7AE29A28084000707C9 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		36B3B7AF29A28084000707C9 /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		36B3B7B029A28084000707C9 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		36B3B7B129A28084000707C9 /* place-player-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "place-player-2.mp3"; sourceTree = "<group>"; };
+		36B3B7B329A28084000707C9 /* PlayerGuideMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerGuideMessages.swift; sourceTree = "<group>"; };
+		36B3B7B429A28084000707C9 /* GameModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
+		36B3B7B529A28084000707C9 /* CoinCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinCollectionViewCell.xib; sourceTree = "<group>"; };
+		36B3B7B629A28084000707C9 /* place-player-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "place-player-1.mp3"; sourceTree = "<group>"; };
+		36B3B7B829A28084000707C9 /* notAllowed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notAllowed.mp3; sourceTree = "<group>"; };
+		36B3B7BB29A28084000707C9 /* Mills.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mills.xcdatamodel; sourceTree = "<group>"; };
+		36B3B7BC29A28084000707C9 /* InitialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		36B3B7BD29A28084000707C9 /* place-player-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "place-player-2.mp3"; sourceTree = "<group>"; };
+		36B3B7BE29A28084000707C9 /* InitialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		36B3B7BF29A28084000707C9 /* bhar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bhar.mp3; sourceTree = "<group>"; };
+		36B3B7C029A28084000707C9 /* GameModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
+		36B3B7C129A28084000707C9 /* char.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = char.mp3; sourceTree = "<group>"; };
+		36B3B7C229A28084000707C9 /* move.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move.mp3; sourceTree = "<group>"; };
+		36B3B7C329A28084000707C9 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		36B3B7C429A28084000707C9 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		36B3B7C529A28084000707C9 /* MillsGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MillsGameViewModel.swift; sourceTree = "<group>"; };
+		36B3B7C829A28084000707C9 /* Mills.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mills.xcdatamodel; sourceTree = "<group>"; };
+		36B3B7C929A28084000707C9 /* PlayerGuideMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerGuideMessages.swift; sourceTree = "<group>"; };
+		36B3B7CA29A28084000707C9 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
+		36B3B7CB29A28084000707C9 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		36B3B7CD29A28084000707C9 /* select.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = select.mp3; sourceTree = "<group>"; };
+		36B3B7CE29A28084000707C9 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		36B3B7D029A28084000707C9 /* notAllowed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notAllowed.mp3; sourceTree = "<group>"; };
+		36B3B7D229A28084000707C9 /* PlayerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewController.swift; sourceTree = "<group>"; };
+		36B3B7D329A28084000707C9 /* SoundEfectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEfectManager.swift; sourceTree = "<group>"; };
+		36B3B7D429A28084000707C9 /* place-player-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "place-player-1.mp3"; sourceTree = "<group>"; };
+		36B3B7D529A28084000707C9 /* CoinCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinCollectionViewCell.xib; sourceTree = "<group>"; };
+		36B3B7D629A28084000707C9 /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		36B3B7D729A28084000707C9 /* ViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataModel.swift; sourceTree = "<group>"; };
+		36B3B7D829A28084000707C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36B3B7D929A28084000707C9 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
+		36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mills.xcdatamodel; sourceTree = "<group>"; };
 		36DD6080298D0BAC00F059FB /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		36DD6081298D0BAC00F059FB /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		36DD6084298E12E000F059FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +283,7 @@
 		36939D07298CFB5F00927B1E /* KidsLove */ = {
 			isa = PBXGroup;
 			children = (
+				36B3B79929A28084000707C9 /* Mills */,
 				36B3B76029A275E9000707C9 /* twofortyeight */,
 				0492993B29A1019900331306 /* remote_config_defaults.plist */,
 				0492993D29A101BD00331306 /* GoogleService-Info.plist */,
@@ -356,6 +459,72 @@
 			path = twofortyeight;
 			sourceTree = "<group>";
 		};
+		36B3B79929A28084000707C9 /* Mills */ = {
+			isa = PBXGroup;
+			children = (
+				36B3B7CE29A28084000707C9 /* lose.mp3 */,
+				36B3B79A29A28084000707C9 /* char.mp3 */,
+				36B3B7BE29A28084000707C9 /* InitialVC.swift */,
+				36B3B79B29A28084000707C9 /* ViewDataModel.swift */,
+				36B3B7D029A28084000707C9 /* notAllowed.mp3 */,
+				36B3B7BD29A28084000707C9 /* place-player-2.mp3 */,
+				36B3B79C29A28084000707C9 /* select.mp3 */,
+				36B3B7D629A28084000707C9 /* PlayerView.xib */,
+				36B3B79D29A28084000707C9 /* MillsGameView.swift */,
+				36B3B7C929A28084000707C9 /* PlayerGuideMessages.swift */,
+				36B3B79E29A28084000707C9 /* CoinCollectionViewCell.swift */,
+				36B3B7D729A28084000707C9 /* ViewDataModel.swift */,
+				36B3B79F29A28084000707C9 /* SoundEfectManager.swift */,
+				36B3B7C329A28084000707C9 /* CircleView.swift */,
+				36B3B7A029A28084000707C9 /* GameVC.swift */,
+				36B3B7A129A28084000707C9 /* Assets.xcassets */,
+				36B3B7CB29A28084000707C9 /* GameVC.swift */,
+				36B3B7A229A28084000707C9 /* PlayerCollectionViewController.swift */,
+				36B3B7CD29A28084000707C9 /* select.mp3 */,
+				36B3B7C529A28084000707C9 /* MillsGameViewModel.swift */,
+				36B3B7A629A28084000707C9 /* Main.storyboard */,
+				36B3B7C129A28084000707C9 /* char.mp3 */,
+				36B3B7A829A28084000707C9 /* win.mp3 */,
+				36B3B7CA29A28084000707C9 /* win.mp3 */,
+				36B3B7A929A28084000707C9 /* bhar.mp3 */,
+				36B3B7D829A28084000707C9 /* Assets.xcassets */,
+				36B3B7D429A28084000707C9 /* place-player-1.mp3 */,
+				36B3B7AA29A28084000707C9 /* move.mp3 */,
+				36B3B7AB29A28084000707C9 /* Mills 2021-03-31 16-59-30 */,
+				36B3B7C229A28084000707C9 /* move.mp3 */,
+				36B3B7AD29A28084000707C9 /* lose.mp3 */,
+				36B3B7D229A28084000707C9 /* PlayerCollectionViewController.swift */,
+				36B3B7AE29A28084000707C9 /* PlayerView.swift */,
+				36B3B7D929A28084000707C9 /* CoinCollectionViewCell.swift */,
+				36B3B7D529A28084000707C9 /* CoinCollectionViewCell.xib */,
+				36B3B7AF29A28084000707C9 /* PlayerView.xib */,
+				36B3B7D329A28084000707C9 /* SoundEfectManager.swift */,
+				36B3B7C029A28084000707C9 /* GameModels.swift */,
+				36B3B7B029A28084000707C9 /* CircleView.swift */,
+				36B3B7B129A28084000707C9 /* place-player-2.mp3 */,
+				36B3B7C429A28084000707C9 /* PlayerView.swift */,
+				36B3B7B329A28084000707C9 /* PlayerGuideMessages.swift */,
+				36B3B7B429A28084000707C9 /* GameModels.swift */,
+				36B3B7B529A28084000707C9 /* CoinCollectionViewCell.xib */,
+				36B3B7B629A28084000707C9 /* place-player-1.mp3 */,
+				36B3B7BF29A28084000707C9 /* bhar.mp3 */,
+				36B3B7B829A28084000707C9 /* notAllowed.mp3 */,
+				36B3B7C729A28084000707C9 /* Mills.xcdatamodeld */,
+				36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */,
+				36B3B7BC29A28084000707C9 /* InitialVC.swift */,
+			);
+			name = Mills;
+			path = Mills/Mills;
+			sourceTree = SOURCE_ROOT;
+		};
+		36B3B7AB29A28084000707C9 /* Mills 2021-03-31 16-59-30 */ = {
+			isa = PBXGroup;
+			children = (
+				36B3B7AC29A28084000707C9 /* Mills.ipa */,
+			);
+			path = "Mills 2021-03-31 16-59-30";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -430,14 +599,40 @@
 				36939D15298CFB6000927B1E /* LaunchScreen.storyboard in Resources */,
 				1331E238298D3CE700AFD1E0 /* OperatorsViewController.xib in Resources */,
 				139D2BA0298FA206006CAEF9 /* wrongButton.wav in Resources */,
+				36B3B7E129A28084000707C9 /* place-player-2.mp3 in Resources */,
+				36B3B7F029A28084000707C9 /* select.mp3 in Resources */,
+				36B3B7E029A28084000707C9 /* notAllowed.mp3 in Resources */,
 				139D2BA429921C31006CAEF9 /* OperatorTableViewCell.xib in Resources */,
+				36B3B80C29A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
+				36B3B7E329A28084000707C9 /* PlayerView.xib in Resources */,
 				36939D12298CFB6000927B1E /* Assets.xcassets in Resources */,
+				36B3B7DB29A28084000707C9 /* lose.mp3 in Resources */,
+				36B3B7E229A28084000707C9 /* select.mp3 in Resources */,
+				36B3B7FB29A28084000707C9 /* move.mp3 in Resources */,
 				36DD6087298E12E000F059FB /* ResultsViewController.xib in Resources */,
+				36B3B7F429A28084000707C9 /* Main.storyboard in Resources */,
+				36B3B80329A28084000707C9 /* PlayerView.xib in Resources */,
+				36B3B80F29A28084000707C9 /* bhar.mp3 in Resources */,
 				36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */,
+				36B3B7F629A28084000707C9 /* win.mp3 in Resources */,
+				36B3B80729A28084000707C9 /* place-player-2.mp3 in Resources */,
+				36B3B81029A28084000707C9 /* notAllowed.mp3 in Resources */,
 				0492993C29A1019900331306 /* remote_config_defaults.plist in Resources */,
 				0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */,
+				36B3B7F929A28084000707C9 /* Assets.xcassets in Resources */,
 				1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */,
 				139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */,
+				36B3B7FA29A28084000707C9 /* place-player-1.mp3 in Resources */,
+				36B3B7F829A28084000707C9 /* bhar.mp3 in Resources */,
+				36B3B7F529A28084000707C9 /* char.mp3 in Resources */,
+				36B3B80229A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
+				36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */,
+				36B3B7EB29A28084000707C9 /* Assets.xcassets in Resources */,
+				36B3B80D29A28084000707C9 /* place-player-1.mp3 in Resources */,
+				36B3B7FD29A28084000707C9 /* move.mp3 in Resources */,
+				36B3B7DC29A28084000707C9 /* char.mp3 in Resources */,
+				36B3B7F729A28084000707C9 /* win.mp3 in Resources */,
+				36B3B7FE29A28084000707C9 /* lose.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,25 +644,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				36B3B76329A27624000707C9 /* GameViewModel.swift in Sources */,
+				36B3B80429A28084000707C9 /* SoundEfectManager.swift in Sources */,
 				36B3B77029A27644000707C9 /* ScoreBox.swift in Sources */,
 				04DA93C629A0C8C7008F70FB /* FireBaseConfig.swift in Sources */,
+				36B3B7DF29A28084000707C9 /* ViewDataModel.swift in Sources */,
 				139D2BA329921C31006CAEF9 /* OperatorTableViewCell.swift in Sources */,
 				36B3B76929A2763C000707C9 /* Tile.swift in Sources */,
+				36B3B81629A28084000707C9 /* Mills.xcdatamodel in Sources */,
+				36B3B81429A28084000707C9 /* Mills.xcdatamodeld in Sources */,
 				36B3B77529A27655000707C9 /* Storage.swift in Sources */,
+				36B3B80129A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
 				36B3B76829A27638000707C9 /* Board.swift in Sources */,
+				36B3B7E729A28084000707C9 /* ViewDataModel.swift in Sources */,
+				36B3B80029A28084000707C9 /* PlayerView.swift in Sources */,
 				364D781B299F7C7700FF42D7 /* SettingsView.swift in Sources */,
 				36B3B77A29A27662000707C9 /* CustomOperators.swift in Sources */,
 				36B3B72429A27271000707C9 /* TabBarController.swift in Sources */,
 				36B3B77D29A27662000707C9 /* ColorExtensions.swift in Sources */,
+				36B3B7E429A28084000707C9 /* MillsGameView.swift in Sources */,
 				36B3B77429A2764F000707C9 /* StateTracker.swift in Sources */,
 				36B3B76A29A2763E000707C9 /* TileStyle.swift in Sources */,
 				36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */,
 				36DD608B29911CD100F059FB /* ColorAndFonts.swift in Sources */,
+				36B3B7EA29A28084000707C9 /* GameVC.swift in Sources */,
+				36B3B7E529A28084000707C9 /* PlayerGuideMessages.swift in Sources */,
+				36B3B81329A28084000707C9 /* Mills.xcdatamodeld in Sources */,
+				36B3B81529A28084000707C9 /* InitialVC.swift in Sources */,
+				36B3B7F329A28084000707C9 /* MillsGameViewModel.swift in Sources */,
 				36B3B77829A27662000707C9 /* ArrayExtensions.swift in Sources */,
 				36B3B76729A27635000707C9 /* MenuView.swift in Sources */,
 				36B3B77729A2765C000707C9 /* Swipe.swift in Sources */,
+				36B3B80529A28084000707C9 /* GameModels.swift in Sources */,
 				36B3B76629A27632000707C9 /* GameOverView.swift in Sources */,
 				36B3B76C29A27644000707C9 /* HeaderBarTitle.swift in Sources */,
+				36B3B7E629A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
 				36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */,
 				36B3B77629A27655000707C9 /* LocalStorage.swift in Sources */,
 				36B3B76429A27628000707C9 /* GameViewController.swift in Sources */,
@@ -476,15 +686,25 @@
 				139D2BA62993A349006CAEF9 /* Model.swift in Sources */,
 				36B3B77129A27644000707C9 /* YellowBlock.swift in Sources */,
 				36B3B77929A27662000707C9 /* IntExtensions.swift in Sources */,
+				36B3B80A29A28084000707C9 /* PlayerGuideMessages.swift in Sources */,
 				36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */,
+				36B3B7DE29A28084000707C9 /* InitialVC.swift in Sources */,
 				36939D0B298CFB5F00927B1E /* SceneDelegate.swift in Sources */,
 				1331E233298D39DD00AFD1E0 /* HomeViewController.swift in Sources */,
+				36B3B80629A28084000707C9 /* CircleView.swift in Sources */,
 				36B3B76529A2762E000707C9 /* GameView.swift in Sources */,
 				36B3B76129A275FC000707C9 /* GameEngine.swift in Sources */,
+				36B3B7EC29A28084000707C9 /* GameVC.swift in Sources */,
 				364D781D299F940800FF42D7 /* AppRouter.swift in Sources */,
+				36B3B7E829A28084000707C9 /* SoundEfectManager.swift in Sources */,
+				36B3B80929A28084000707C9 /* PlayerView.swift in Sources */,
 				36B3B77329A2764F000707C9 /* GameStateTracker.swift in Sources */,
 				36B3B76D29A27644000707C9 /* Header.swift in Sources */,
+				36B3B80B29A28084000707C9 /* GameModels.swift in Sources */,
+				36B3B7FF29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */,
 				364D781F299F994A00FF42D7 /* SoundPlayer.swift in Sources */,
+				36B3B7ED29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */,
+				36B3B7E929A28084000707C9 /* CircleView.swift in Sources */,
 				36B3B76E29A27644000707C9 /* SmallActionButton.swift in Sources */,
 				1331E237298D3CE700AFD1E0 /* OperatorsViewController.swift in Sources */,
 				139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */,
@@ -510,6 +730,14 @@
 				36B3B75B29A275E9000707C9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		36B3B7A629A28084000707C9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36B3B7A729A28084000707C9 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -761,6 +989,30 @@
 			productName = FirebaseRemoteConfigSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				36B3B7BB29A28084000707C9 /* Mills.xcdatamodel */,
+			);
+			currentVersion = 36B3B7BB29A28084000707C9 /* Mills.xcdatamodel */;
+			path = Mills.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		36B3B7C729A28084000707C9 /* Mills.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */,
+				36B3B7C829A28084000707C9 /* Mills.xcdatamodel */,
+			);
+			currentVersion = 36B3B7C829A28084000707C9 /* Mills.xcdatamodel */;
+			path = Mills.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 36939CFD298CFB5F00927B1E /* Project object */;
 }

@@ -9,16 +9,30 @@ import Foundation
 
 enum Game: Int {
     case TwoZeroFourEight
-    
+    case Mills
+        
     var title: String {
-        return "2048"
+        switch self {
+        case .TwoZeroFourEight:
+            return "2048"
+        case .Mills:
+            return "Mills"
+        }
     }
-    
 }
 
 enum CellType {
     case game(game: Game)
     case math(progress: Progress, oprator: Oprator, noOfOprands: Int, levelType: LevelType)
+    
+    var index: Int {
+        switch self {
+        case .game(game: _):
+            return 0
+        case .math(progress: _, oprator: _, noOfOprands: _, levelType: let levelType):
+            return levelType.rawValue
+        }
+    }
     
     var mathProgress: Progress {
         switch self {

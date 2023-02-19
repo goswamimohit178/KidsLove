@@ -7,7 +7,6 @@
 //self.navigationController?.pushViewController(QuestionViewController(), animated: true)
 import UIKit
 import SwiftUI
-import twofortyeight
 
 final class OperatorsViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
@@ -67,12 +66,22 @@ extension OperatorsViewController: UITableViewDataSource{
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
-        guard case .math(_, _, _, _) = model.math[unitNumber].levels[levelNumber].type else {
-            let engine = GameEngine()
-            let storage = LocalStorage()
-            let stateTracker = GameStateTracker(initialState: (storage.board ?? engine.blankBoard, storage.score))
-            let vc = GameViewController(viewModel: GameViewModel(engine, storage: storage, stateTracker: stateTracker))
-            navigationController?.pushViewController(vc, animated: true)
+        let cellType = model.math[unitNumber].levels[levelNumber].type
+        guard case .math(_, _, _, _) = cellType else {
+            if case .game(let gameType) = cellType {
+                switch gameType {
+                case .TwoZeroFourEight:
+                    let engine = GameEngine()
+                    let storage = LocalStorage()
+                    let stateTracker = GameStateTracker(initialState: (storage.board ?? engine.blankBoard, storage.score))
+                    let vc = GameViewController(viewModel: GameViewModel(engine, storage: storage, stateTracker: stateTracker))
+                    navigationController?.pushViewController(vc, animated: true)
+                case .Mills:
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "GameVC")
+                    navigationController?.pushViewController(rootViewController, animated: true)
+                }
+            }
             return
         }
         
@@ -110,7 +119,6 @@ class CircularProgressBarView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
     
     func progressAnimation(duration: TimeInterval, progress: Progress) {
         // created circularProgressAnimation with keyPath

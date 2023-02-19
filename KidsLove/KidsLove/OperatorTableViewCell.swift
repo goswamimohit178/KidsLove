@@ -109,7 +109,7 @@ class OperatorTableViewCell: UITableViewCell {
         levelView.titleLabel.textColor = UIColor.bodyFontColor()
         guard case .math(let progress, let oprator, _, let levelType) = model.type else {
             if case .game(let gameType) = model.type{
-                levelView.button.tag =  gameType.rawValue
+                levelView.button.tag =  model.type.index
                 levelView.button.setTitle(gameType.title, for: .normal)
             }
             return levelView
