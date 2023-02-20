@@ -16,6 +16,9 @@ class QuestionViewController: UIViewController {
     @IBOutlet private weak var option4Btn: UIButton!
     @IBOutlet private weak var continueBtn: UIButton!
     @IBOutlet private weak var oprand1Label: UILabel!
+    @IBOutlet private weak var questionStackView: UIStackView!
+    @IBOutlet private weak var questionImageView: UIImageView!
+
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelNumber: Int!
@@ -42,6 +45,17 @@ class QuestionViewController: UIViewController {
         let value:Float = Float(1)/Float(questionList.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
+//        questionStackView.layer.borderWidth = 10
+        questionImageView.setShadowAndCornerRadius(cornerRadius: 20)
+        questionStackView.setShadowAndCornerRadius(cornerRadius: 20)
+//        questionImageView.layer.cornerRadius = 20
+//        questionStackView.layer.cornerRadius = 20
+//        questionStackView.clipsToBounds = true
+//        questionStackView.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     fileprivate func setCornerRadius() {
@@ -90,7 +104,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func setQuestionFonts() {
-        oprand1Label.font = UIFont.myAppBodyFonts()
+        oprand1Label.font = UIFont.headingFonts()
     }
     
     private func correctAnsIndex() -> Int {
@@ -194,8 +208,15 @@ class QuestionViewController: UIViewController {
     }
     
     private func setQuestions(model: Question){
-        oprand1Label.text = model.questionText
-        
+//        self.oprand1Label.text = nil
+        oprand1Label.shakeView(duration: 1)
+        let animation2: CATransition = CATransition()
+        animation2.duration = 0.3
+        animation2.type = .push
+        animation2.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        oprand1Label.layer.add(animation2, forKey: "changeTextTransition")
+        self.oprand1Label.text = model.questionText
+
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
             

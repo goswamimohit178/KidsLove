@@ -17,10 +17,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewControllers = [mathVC, gameVC, settingsVC]
+        tabBar.tintColor = UIColor.defaultThemeColor
     }
     
     func themeUpdated() {
         self.viewControllers = [mathVC, gameVC, settingsVC]
+        tabBar.tintColor = UIColor.defaultThemeColor
     }
     
     var settingsVC: UIViewController {

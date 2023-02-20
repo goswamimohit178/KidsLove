@@ -29,12 +29,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HZ-3T-im6">
                             <rect key="frame" x="20" y="20" width="353" height="711"/>
                             <subviews>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fac-ea-9Ls">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fac-ea-9Ls">
                                     <rect key="frame" x="0.0" y="0.0" width="353" height="711"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <inset key="scrollIndicatorInsets" minX="0.0" minY="100" maxX="0.0" maxY="200"/>
                                     <viewLayoutGuide key="contentLayoutGuide" id="DW9-Rn-a9D"/>
                                     <viewLayoutGuide key="frameLayoutGuide" id="5XV-Zh-IIw"/>
+                                    <color key="separatorColor" name="backgroundColor"/>
                                     <color key="sectionIndexBackgroundColor" systemColor="linkColor"/>
                                 </tableView>
                             </subviews>

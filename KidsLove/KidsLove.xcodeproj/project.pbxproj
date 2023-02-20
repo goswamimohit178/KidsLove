@@ -88,7 +88,6 @@
 		36B3B7F629A28084000707C9 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7A829A28084000707C9 /* win.mp3 */; };
 		36B3B7F729A28084000707C9 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CA29A28084000707C9 /* win.mp3 */; };
 		36B3B7F829A28084000707C9 /* bhar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7A929A28084000707C9 /* bhar.mp3 */; };
-		36B3B7F929A28084000707C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D829A28084000707C9 /* Assets.xcassets */; };
 		36B3B7FA29A28084000707C9 /* place-player-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7D429A28084000707C9 /* place-player-1.mp3 */; };
 		36B3B7FB29A28084000707C9 /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7AA29A28084000707C9 /* move.mp3 */; };
 		36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7AC29A28084000707C9 /* Mills.ipa */; };
@@ -114,6 +113,8 @@
 		36B3B81429A28084000707C9 /* Mills.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */; };
 		36B3B81529A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BC29A28084000707C9 /* InitialVC.swift */; };
 		36B3B81629A28084000707C9 /* Mills.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */; };
+		36B3B81A29A34930000707C9 /* White Milk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B81929A34930000707C9 /* White Milk.ttf */; };
+		36B3B81C29A3498F000707C9 /* MathQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B81B29A3498F000707C9 /* MathQuestionView.swift */; };
 		36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6080298D0BAC00F059FB /* QuestionViewController.swift */; };
 		36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6081298D0BAC00F059FB /* QuestionViewController.xib */; };
 		36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6084298E12E000F059FB /* ResultsViewController.swift */; };
@@ -229,6 +230,8 @@
 		36B3B7D829A28084000707C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36B3B7D929A28084000707C9 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
 		36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mills.xcdatamodel; sourceTree = "<group>"; };
+		36B3B81929A34930000707C9 /* White Milk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "White Milk.ttf"; sourceTree = "<group>"; };
+		36B3B81B29A3498F000707C9 /* MathQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestionView.swift; sourceTree = "<group>"; };
 		36DD6080298D0BAC00F059FB /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		36DD6081298D0BAC00F059FB /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		36DD6084298E12E000F059FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 		36939CFC298CFB5F00927B1E = {
 			isa = PBXGroup;
 			children = (
+				36B3B81B29A3498F000707C9 /* MathQuestionView.swift */,
 				36939D07298CFB5F00927B1E /* KidsLove */,
 				36939D06298CFB5F00927B1E /* Products */,
 			);
@@ -283,6 +287,7 @@
 		36939D07298CFB5F00927B1E /* KidsLove */ = {
 			isa = PBXGroup;
 			children = (
+				36B3B81929A34930000707C9 /* White Milk.ttf */,
 				36939D16298CFB6000927B1E /* Info.plist */,
 				36B3B79929A28084000707C9 /* Mills */,
 				36B3B76029A275E9000707C9 /* Twofortyeight */,
@@ -627,13 +632,13 @@
 				36B3B81029A28084000707C9 /* notAllowed.mp3 in Resources */,
 				0492993C29A1019900331306 /* remote_config_defaults.plist in Resources */,
 				0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */,
-				36B3B7F929A28084000707C9 /* Assets.xcassets in Resources */,
 				1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */,
 				139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */,
 				36B3B7FA29A28084000707C9 /* place-player-1.mp3 in Resources */,
 				36B3B7F829A28084000707C9 /* bhar.mp3 in Resources */,
 				36B3B7F529A28084000707C9 /* char.mp3 in Resources */,
 				36B3B80229A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
+				36B3B81A29A34930000707C9 /* White Milk.ttf in Resources */,
 				36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */,
 				36B3B7EB29A28084000707C9 /* Assets.xcassets in Resources */,
 				36B3B80D29A28084000707C9 /* place-player-1.mp3 in Resources */,
@@ -685,6 +690,7 @@
 				36B3B80529A28084000707C9 /* GameModels.swift in Sources */,
 				36B3B76629A27632000707C9 /* GameOverView.swift in Sources */,
 				36B3B76C29A27644000707C9 /* HeaderBarTitle.swift in Sources */,
+				36B3B81C29A3498F000707C9 /* MathQuestionView.swift in Sources */,
 				36B3B7E629A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
 				36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */,
 				36B3B77629A27655000707C9 /* LocalStorage.swift in Sources */,

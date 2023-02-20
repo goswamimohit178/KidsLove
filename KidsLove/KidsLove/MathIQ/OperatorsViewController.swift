@@ -30,9 +30,17 @@ final class OperatorsViewController: UIViewController {
         headerLabel.font = UIFont.myAppBodyFonts()
         let appName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
         headerLabel.text = appName
-        operatorTableView.setShadow()
+        operatorTableView.setShadowAndCornerRadius(cornerRadius: 40)
         operatorTableView.layer.cornerRadius = 0.05 * operatorTableView.bounds.size.width
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+           return 10
+       }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        UIView(frame: .zero)
     }
     
     private func setButtonStyle() {
@@ -56,14 +64,19 @@ final class OperatorsViewController: UIViewController {
 
 extension OperatorsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return model.math.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = operatorTableView.dequeueReusableCell(withIdentifier: "OperatorTableViewCell") as! OperatorTableViewCell
-        cell.currUnit = indexPath.row
+        cell.currUnit = indexPath.section
         cell.buttonTappedAction = presentQuestionController
-        cell.setDataCell(unit: model.math[indexPath.row])
+        cell.setDataCell(unit: model.math[indexPath.section])
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
@@ -142,7 +155,16 @@ extension UIView {
         self.layer.shadowRadius = 5.0
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 20
-        
+    }
+    
+    func setShadowAndCornerRadius(cornerRadius: CGFloat) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = cornerRadius
+        self.layer.shadowColor = UIColor.btnShadowColor().cgColor
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 10.0
     }
 }
 
