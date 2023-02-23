@@ -82,38 +82,6 @@
             endingLineNumber = "75"
             landmarkName = "getPreviousProgress()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FA187AA9-DB00-4950-865E-97A23021274F - 711df33bb694b693"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.ResultsViewController.getPreviousProgress() -&gt; KidsLove.Progress"
-                  moduleName = "KidsLove"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikash/Documents/GitHub/KidsLove/KidsLove/KidsLove/ResultsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "692">
-               </Location>
-               <Location
-                  uuid = "FA187AA9-DB00-4950-865E-97A23021274F - 711df33bb694b693"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.ResultsViewController.getPreviousProgress() -&gt; KidsLove.Progress"
-                  moduleName = "KidsLove"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikash/Documents/GitHub/KidsLove/KidsLove/KidsLove/ResultsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "944">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

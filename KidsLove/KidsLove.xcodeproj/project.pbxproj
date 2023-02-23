@@ -494,8 +494,7 @@
 				36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */,
 				36B3B7BC29A28084000707C9 /* InitialVC.swift */,
 			);
-			name = Mills;
-			path = Mills/Mills;
+			path = Mills;
 			sourceTree = SOURCE_ROOT;
 		};
 		36B3B7AB29A28084000707C9 /* Mills 2021-03-31 16-59-30 */ = {
