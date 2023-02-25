@@ -9,14 +9,16 @@ struct Header: View {
     let undoAction: () -> Void
     var undoEnabled: Bool
     
+    @State var showingAlert = false
     var body: some View {
         HStack(alignment: .top) {
             YellowBlock()
             HStack(alignment: .top) {
                 VStack(alignment: .center, spacing: 10) {
                     ScoreBox(title: scoreLabel, score:score)
-                    SmallActionButton(title: "MENU", action: self.menuAction, enabled: true)
+                    SmallActionButton(title: "NEW GAME", action: self.menuAction, enabled: true)
                         .accessibility(identifier: "menuButton")
+                    
                 }
                 VStack(alignment: .center, spacing: 10) {
                     ScoreBox(title: bestScoreLabel, score: bestScore)

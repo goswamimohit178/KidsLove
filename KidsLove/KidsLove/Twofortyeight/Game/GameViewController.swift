@@ -7,9 +7,7 @@ class GameViewController: UIHostingController<GameView> {
     init(viewModel: GameViewModel) {
         self.viewModel = viewModel
         super.init(rootView: GameView(viewModel: viewModel))
-        
         setupGestures()
-
         viewModel.start()
     }
         

@@ -17,8 +17,8 @@ struct ScoreBox: View {
                 .foregroundColor(.white)
                 .accessibility(identifier: "\(title.lowercased())Value")
         }
-        .padding(.horizontal, 18)
-        .padding(.vertical, 8)
+        .padding(.horizontal, 25)
+        .padding(.vertical, 9)
         .background(Color.boardBackground)
         .cornerRadius(6)
     }

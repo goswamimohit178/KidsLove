@@ -65,6 +65,8 @@ class GameViewModel: ObservableObject {
         addNumber()
     }
     
+   
+    
     func eraseBestScore() {
         bestScore = .zero
     }

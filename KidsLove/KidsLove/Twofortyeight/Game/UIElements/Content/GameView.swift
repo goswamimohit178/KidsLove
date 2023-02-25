@@ -3,17 +3,25 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var showMenu = false
+    @State private var showingAlert = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
             Header(score: viewModel.state.score, bestScore: viewModel.bestScore, menuAction: {
-                self.showMenu.toggle()
+                showingAlert = true
+               // self.viewModel.reset()
             }, undoAction: {
                 self.viewModel.undo()
             }, undoEnabled: self.viewModel.isUndoable)
+            
             GoalText()
             Board(board: viewModel.state.board, addedTile: viewModel.addedTile)
             Moves(viewModel.numberOfMoves)
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Are You Sure?"),message: Text("Are You Sure to start a new game?"), primaryButton: .destructive(Text("Yeah Sure")){
+                self.viewModel.reset()
+            }, secondaryButton: .cancel())
         }
         .frame(minWidth: .zero,
                maxWidth: .infinity,
@@ -24,6 +32,7 @@ struct GameView: View {
             .background(Menu())
             .background(GameOver())
             .edgesIgnoringSafeArea(.all)
+            
     }
 }
 
@@ -47,6 +56,7 @@ extension GameView {
             }
         }
     }
+    
 }
 
 struct GameView_Previews: PreviewProvider {
