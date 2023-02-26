@@ -7,7 +7,7 @@ struct GoalText: View {
             Text("Join the numbers and get to the")
             Text("\(goal) tile!") .bold()
         }
-        .font(.system(size: 16, weight: .regular, design: .rounded))
+        .font(.myBodyFont)
         .foregroundColor(.white40)
     }
 }

@@ -18,7 +18,6 @@ struct Header: View {
                     ScoreBox(title: scoreLabel, score:score)
                     SmallActionButton(title: "NEW GAME", action: self.menuAction, enabled: true)
                         .accessibility(identifier: "menuButton")
-                    
                 }
                 VStack(alignment: .center, spacing: 10) {
                     ScoreBox(title: bestScoreLabel, score: bestScore)

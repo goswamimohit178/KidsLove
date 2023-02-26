@@ -11,9 +11,7 @@ struct ActionButton: View {
                 .padding(12)
                 .background(Color.boardBackground)
                 .cornerRadius(6)
-            
         }
-        
     }
 }
 

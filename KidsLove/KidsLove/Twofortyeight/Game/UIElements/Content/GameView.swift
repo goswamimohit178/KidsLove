@@ -6,10 +6,9 @@ struct GameView: View {
     @State private var showingAlert = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 16) {
+        VStack(alignment: .center) {
             Header(score: viewModel.state.score, bestScore: viewModel.bestScore, menuAction: {
                 showingAlert = true
-               // self.viewModel.reset()
             }, undoAction: {
                 self.viewModel.undo()
             }, undoEnabled: self.viewModel.isUndoable)

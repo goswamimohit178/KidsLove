@@ -67,7 +67,6 @@ extension UIColor {
 extension UIFont {
     static func headingFonts() -> UIFont {
         return UIFont(name: "White Milk", size: 25)!
-
 //        return UIFont.preferredFont(forTextStyle: .largeTitle)
     }
     

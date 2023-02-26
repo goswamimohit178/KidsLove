@@ -61,3 +61,8 @@ extension Color {
         Color(ThemeManager.themeColor)
     }
 }
+extension Font {
+    static var myBodyFont: Font {
+        return .title
+    }
+}

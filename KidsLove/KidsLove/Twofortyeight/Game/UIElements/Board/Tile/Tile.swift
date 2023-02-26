@@ -5,7 +5,9 @@ struct Tile: View {
     let wasAdded: Bool
     private let style: TileStyle
     private let title: String
-    private let size: CGFloat = 70
+    private var size: CGFloat {
+        return UIScreen.screenWidth*0.20
+    }
     
     init(_ value: Int, wasAdded: Bool = false) {
         self.wasAdded = wasAdded
@@ -39,6 +41,7 @@ struct Tile: View {
             .shadow(color: shadowColor, radius: 4, x: 0, y: 0)
             .animation(wasAdded ? .easeIn : .none)
     }
+
 }
 
 #if DEBUG
@@ -59,3 +62,9 @@ struct Tile_Previews: PreviewProvider {
     }
 }
 #endif
+
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
