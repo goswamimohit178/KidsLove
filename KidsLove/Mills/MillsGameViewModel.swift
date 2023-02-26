@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import SwiftUI
+import Combine
 
 let allPossibleBhrs = [
       [1,2,3],
@@ -60,8 +62,10 @@ struct Bhar {
   var possibleCharPositions: [Int]
 }
 
-
 class MillsGameViewModel {
+   
+    @State var currentPlayerCoinModel = CoinModel(imageName: "coin1")
+    
   var coinPositions: [CoinPosition]!
 	var player1Playing = true {
 		didSet {
@@ -73,6 +77,7 @@ class MillsGameViewModel {
 				player2.isPlaying = true
 			}
 			setMessage()
+            playerChangeSubject.send(currentPlayer.coinIcon)
 		}
   }
 	
@@ -89,19 +94,28 @@ class MillsGameViewModel {
 		return player1.isPlaying ? player2: player1
 	}
 	
-  private let player1: Player
-  private let player2: Player
+  let player1: Player
+  let player2: Player
   private var lastSelectedposition: Int?
   private var lastBhar: Bhar?
-  
+  var playerChangeSubject: PassthroughSubject<String, Never>
+
+
   private var currentIntent: Intent = .place
   weak var delegate: GameViewDelegate?
+    private let coinPositionsProvider: CoinProvider
 
-  init(CoinPositionsProvider: CoinProvider, player1: Player, player2: Player) {
-    self.player1 = player1
-    self.player2 = player2
-    self.coinPositions = CoinPositionsProvider.provideCoinPositions(with: self.select(coin:))
+  init(coinPositionsProvider: CoinProvider) {
+    self.player1 = Player(isPlaying: true, coinIcon: "coin1")
+    self.player2 = Player(isPlaying: false, coinIcon: "coin2")
+    self.playerChangeSubject = PassthroughSubject()
+    self.coinPositionsProvider = coinPositionsProvider
+    setCoinPositions()
   }
+    
+    func setCoinPositions() {
+        self.coinPositions = coinPositionsProvider.provideCoinPositions(with: self.select(coin:))
+    }
   
 	func checkBhar() -> Bhar? {
 		if let bharPositions = currentPlayer.checkBhar() {
@@ -332,7 +346,7 @@ extension MillsGameViewModel {
 
 
 
-protocol GameViewDelegate: class {
+protocol GameViewDelegate: AnyObject {
   func stateChanged(newState: PlayerAction, for coinPosition: CoinPosition)
 }
 

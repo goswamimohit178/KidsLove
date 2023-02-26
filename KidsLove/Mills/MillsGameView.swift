@@ -9,7 +9,6 @@
 import UIKit
 import AudioToolbox
 
-fileprivate let defaultColor = UIColor.white
 
 class MillsGameView: UIView {
   private let ratio: CGFloat
@@ -30,22 +29,26 @@ class MillsGameView: UIView {
 	var circleWidth: CGFloat {
 		35*ratio
 	}
-	
+    
+    var defaultColor: UIColor {
+        UIColor.defaultThemeColor
+    }
+
   private let soundEffects = SoundEfectManager()
   private var selectionAnimatingView: UIView?
   private var bahrAnimatingViews = [UIView]()
   private var bahrAnimatingLayer: CALayer?
 
-    init(frame: CGRect, viewDataModel: ViewDataModel,  viewModel: MillsGameViewModel, ratio: CGFloat) {
+    init(viewDataModel: ViewDataModel,  viewModel: MillsGameViewModel, ratio: CGFloat) {
         self.ratio = ratio
-        super.init(frame: frame)
+        super.init(frame: .zero)
         self.viewModel = viewModel
         self.viewDataModel = viewDataModel
-				drawCircles(for: viewModel.coinPositions, colour: UIColor.white)
-        setup(rect: frame)
+        setup()
     }
     
-    private func setup(rect: CGRect) {
+    func setup() {
+        drawCircles(for: viewModel!.coinPositions, colour: defaultColor)
         buttons = Array(0...24).map {_ in return UIButton() }
         addButtons(for: viewModel!.coinPositions)
     }
@@ -319,15 +322,15 @@ extension MillsGameView {
   }
   
   func setBackground() {
-    let image = UIImageView(image: UIImage(named: "background"))
-    image.frame = self.bounds
-    self.addSubview(image)
+//    let image = UIImageView(image: UIImage(named: "background"))
+//    image.frame = self.bounds
+//    self.addSubview(image)
   }
   
   override func draw(_ rect: CGRect) {
-    let image = UIImageView(image: UIImage(named: "background"))
-    image.frame = self.bounds
-    image.draw(rect)
+//    let image = UIImageView(image: UIImage(named: "background"))
+//    image.frame = self.bounds
+//    image.draw(rect)
     drawRects()
     drawLines()
   }

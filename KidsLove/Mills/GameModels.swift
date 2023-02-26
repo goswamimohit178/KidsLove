@@ -12,6 +12,8 @@ fileprivate let player2Color = UIColor.orange
 
 import Foundation
 import UIKit
+import SwiftUI
+import Combine
 
 
 class CoinPosition {
@@ -70,12 +72,37 @@ enum OccupiedBy {
 }
 private let DEFAULT_COIN_COUNT = 9
 
+struct MillsAndAvailableCoin {
+    let mills: Int
+    let availableCoins: Int
+    
+    var increasingMills: MillsAndAvailableCoin {
+        MillsAndAvailableCoin(mills: mills+1, availableCoins: availableCoins)
+    }
+    
+    var reducingavailableCoins: MillsAndAvailableCoin {
+        MillsAndAvailableCoin(mills: mills, availableCoins: availableCoins-1)
+    }
+}
+
 class Player: NSObject {
+    var playerScoreModel: MillsAndAvailableCoin {
+        didSet {
+            passthroughSubject.send(playerScoreModel)
+        }
+    }
+ var passthroughSubject: PassthroughSubject<MillsAndAvailableCoin, Never>
+
+
+  var playerPositions =  [Int]()
+
   @objc dynamic var isPlaying: Bool
-  @objc dynamic var playerPositions =  [Int]()
-  @objc dynamic var playerRemainingPositions = DEFAULT_COIN_COUNT
-  @objc dynamic var playerChars =  0
-	@objc dynamic var messageForUser: String
+  var playerRemainingPositions = DEFAULT_COIN_COUNT {
+        didSet {
+            self.playerScoreModel = MillsAndAvailableCoin(mills: playerScoreModel.mills, availableCoins: playerRemainingPositions)
+        }
+    }
+  @objc dynamic var messageForUser: String
   @objc dynamic private var currentBhars = [[Int]]()
   @objc dynamic var animateMessage: Bool = true
   var coinIcon: String
@@ -84,6 +111,8 @@ class Player: NSObject {
     self.coinIcon = coinIcon
     self.isPlaying = isPlaying
 		messageForUser = PlayerGuideMessages.getMessage(for: .place)
+    self.passthroughSubject = PassthroughSubject()
+    self.playerScoreModel = MillsAndAvailableCoin(mills: 0, availableCoins: 10)
   }
   
   var isLost: Bool {
@@ -102,7 +131,7 @@ class Player: NSObject {
   }
   
   func char(at position: Int) {
-    playerChars = playerChars + 1
+    playerScoreModel = playerScoreModel.increasingMills
     playerPositions = playerPositions.filter { $0 != position }
     updateCurrentBhar()
   }

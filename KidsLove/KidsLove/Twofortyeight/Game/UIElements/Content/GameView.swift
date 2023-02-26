@@ -3,37 +3,36 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var showMenu = false
-    @State private var showingAlert = false
+    @State var showAlert = false
+    
     
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
             Header(score: viewModel.state.score, bestScore: viewModel.bestScore, menuAction: {
-                showingAlert = true
-               // self.viewModel.reset()
+                showAlert = true
             }, undoAction: {
                 self.viewModel.undo()
             }, undoEnabled: self.viewModel.isUndoable)
-            
             GoalText()
             Board(board: viewModel.state.board, addedTile: viewModel.addedTile)
             Moves(viewModel.numberOfMoves)
         }
-        .alert(isPresented: $showingAlert) {
-            Alert(title: Text("Are You Sure?"),message: Text("Are You Sure to start a new game?"), primaryButton: .destructive(Text("Yeah Sure")){
-                self.viewModel.reset()
-            }, secondaryButton: .cancel())
+        //        self.showMenu.toggle()
+        
+        .alert("Important message", isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
         }
         .frame(minWidth: .zero,
                maxWidth: .infinity,
                minHeight: .zero,
                maxHeight: .infinity,
                alignment: .center)
-            .background(Color.gameBackground)
-            .background(Menu())
-            .background(GameOver())
-            .edgesIgnoringSafeArea(.all)
-            
+        .background(Color.gameBackground)
+        .background(Menu())
+        .background(GameOver())
+        .edgesIgnoringSafeArea(.all)
     }
+    
 }
 
 extension GameView {
@@ -56,7 +55,6 @@ extension GameView {
             }
         }
     }
-    
 }
 
 struct GameView_Previews: PreviewProvider {

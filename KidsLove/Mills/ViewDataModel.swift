@@ -144,14 +144,15 @@ extension ViewDataModel: CoinProvider {
 
 
 class ViewDataModel {
-	var h: CGFloat { frame.height }
-	var w: CGFloat { frame.width }
-	var mid: CGFloat { frame.width/2 }
+    var width: CGFloat
+    var h: CGFloat { width }
+    var w: CGFloat { width }
+    var mid: CGFloat { width/2 }
 	var rect2start: CGFloat { mid*0.70 }
 	var rect2Width: CGFloat { w-(rect2start*2) }
 	var rect3start: CGFloat { mid*0.40 }
 	var rect3Width: CGFloat { w-(rect3start*2) }
-	let frame: CGRect
+	weak var view: UIView!
 	var offset: CGFloat {
 		22*ratio
 	}
@@ -162,8 +163,8 @@ class ViewDataModel {
 
 	let ratio: CGFloat
 	
-	init(frame: CGRect, ratio: CGFloat) {
-		self.frame = frame
+    init(ratio: CGFloat, width: CGFloat) {
 		self.ratio = ratio
+        self.width = width
 	}
 }

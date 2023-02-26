@@ -14,7 +14,7 @@ class CircleView: UIView {
     let circleLayer: CAShapeLayer = {
         // Setup the CAShapeLayer with the path, colors, and line width
         let circle = CAShapeLayer()
-        circle.fillColor = UIColor.white.cgColor
+        circle.fillColor = UIColor.defaultThemeColor.cgColor
         circle.strokeColor = UIColor.green.cgColor
         circle.lineWidth = ratio*3.0
 
