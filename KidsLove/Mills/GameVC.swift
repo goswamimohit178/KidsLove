@@ -60,22 +60,27 @@ class GameVC: UIViewController {
     
     fileprivate func createNewGame() {
 //        let stackView = UIStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-        let stackView = UIStackView()
+        let margins = view.safeAreaLayoutGuide
 
+        let stackView = UIStackView()
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
         stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.spacing = 10
         view.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        stackView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 0).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
 
         
         //buttons
         let buttonStackView = UIStackView()
         buttonStackView.axis = .horizontal
+        buttonStackView.alignment = .center
+        buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 20
         
         restartButton = UIButton()
@@ -100,9 +105,9 @@ class GameVC: UIViewController {
 
         
         // Header view
-        let myFrame = view.bounds
+        let myFrame = margins.layoutFrame
         let isWidthLess = (myFrame.width < myFrame.height)
-        let widthRequired = (isWidthLess ? myFrame.width: myFrame.height)
+        let widthRequired = min((isWidthLess ? myFrame.width: myFrame.height), 70000)
         ratio = widthRequired/350
         let estimatedPlayerHeight = ((myFrame.height-widthRequired-60)/2)
         let height: CGFloat = estimatedPlayerHeight > 100 ? 100: estimatedPlayerHeight
@@ -127,8 +132,8 @@ class GameVC: UIViewController {
         viewDataModel.view = gameView
        
         gameView.translatesAutoresizingMaskIntoConstraints = false
-        gameView.widthAnchor.constraint(equalToConstant: view.bounds.height*0.60).isActive = true
-        gameView.heightAnchor.constraint(equalToConstant: view.bounds.height*0.60).isActive = true
+        gameView.widthAnchor.constraint(equalToConstant: widthRequired).isActive = true
+        gameView.heightAnchor.constraint(equalToConstant: widthRequired).isActive = true
         gameView.viewModel = viewModel
         viewModel.delegate = gameView
         gameView.showAlert = showAlert
@@ -156,29 +161,6 @@ class GameVC: UIViewController {
 //        setShadow(view: playerView)
 //        setShadow(view: gameView)
 //        setCornerRadius(view: playerView)
-        //        let myFrame = view.bounds
-        //        let isWidthLess = (myFrame.width < myFrame.height)
-        //        let widthRequired = (isWidthLess ? myFrame.width: myFrame.height)
-        //        ratio = widthRequired/350
-        //        let estimatedPlayerHeight = ((myFrame.height-widthRequired-60)/2)
-        //        let height: CGFloat = estimatedPlayerHeight > 100 ? 100: estimatedPlayerHeight
-        //        let restartButtonHeight: CGFloat = 60
-        //        var availableSpace = myFrame.height - (height + widthRequired + height + restartButtonHeight)
-        //        availableSpace = availableSpace>0 ? availableSpace: 0
-        //
-        //        let xRequired = isWidthLess ? 0: (((myFrame.width - widthRequired)/2))
-        //        let yRequired = isWidthLess ? (myFrame.height - widthRequired-110): 0
-        //
-                
-        //        playerView = PlayerView.instanceFromNib(ratio: ratio) as? PlayerView
-            
-        //        currentPlayerCoinModel = CoinModel(imageName: player1.coinIcon)
-                
-        //        self.headerModel = HeaderViewModel(player1: player1.$playerScoreModel, player2: player2.$playerScoreModel, playerIcon: $currentPlayerCoinModel)
-        //        let boardRect = CGRect(x: xRequired, y: yRequired, width: widthRequired, height: widthRequired)
-            
-        //        playerView.frame = CGRect(x: 5, y: 200, width: myFrame.width-10, height: 0)
-                
     }
     
     fileprivate func showAlert(title: String, message: String) {

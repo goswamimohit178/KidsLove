@@ -12,10 +12,10 @@
         <scene sceneID="cXg-AC-G5h">
             <objects>
                 <viewController restorationIdentifier="GameVC" storyboardIdentifier="GameVC" id="9dr-kR-9qk" userLabel="GameVC" customClass="GameVC" customModule="KidsLove" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="01HomeScreen" id="Rcj-wX-mjs">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="01HomeScreen" insetsLayoutMarginsFromSafeArea="NO" id="Rcj-wX-mjs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="oJf-I0-oNV"/>
+                        <viewLayoutGuide key="safeArea" id="Q3q-3o-twT"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <accessibility key="accessibilityConfiguration" identifier="01HomeScreen">
                             <bool key="isElement" value="YES"/>
