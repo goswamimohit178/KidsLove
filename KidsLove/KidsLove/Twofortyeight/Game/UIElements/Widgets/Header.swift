@@ -8,25 +8,26 @@ struct Header: View {
     let menuAction: () -> Void
     let undoAction: () -> Void
     var undoEnabled: Bool
+    var moves: Int
+    private var size: CGFloat {
+        return UIScreen.screenWidth*0.85
+    }
     
     @State var showingAlert = false
     var body: some View {
-        HStack(alignment: .top) {
-            YellowBlock()
+        VStack(alignment: .leading) {
             HStack(alignment: .top) {
-                VStack(alignment: .center, spacing: 10) {
-                    ScoreBox(title: scoreLabel, score:score)
-                    SmallActionButton(title: "NEW GAME", action: self.menuAction, enabled: true)
-                        .accessibility(identifier: "menuButton")
-                    
-                }
-                VStack(alignment: .center, spacing: 10) {
-                    ScoreBox(title: bestScoreLabel, score: bestScore)
-                    SmallActionButton(title: "UNDO", action: self.undoAction, enabled: undoEnabled)
-                    .accessibility(identifier: "undoButton")
-                }
+                SmallActionButton(title: "NEW GAME", action: self.menuAction, enabled: true)
+                SmallActionButton(title: "UNDO", action: self.undoAction, enabled: undoEnabled)
+            }
+            
+            HStack(alignment: .top) {
+                ScoreBox(title: "Moves", score: moves)
+                ScoreBox(title: "Score", score: score)
+                ScoreBox(title: "Best Score", score: bestScore)
             }
         }
+        .frame(width: size)
     }
 }
 struct Header_Previews: PreviewProvider {
@@ -35,6 +36,6 @@ struct Header_Previews: PreviewProvider {
             print("tapped on menu")
         }, undoAction: {
             print("tapped on undo")
-        }, undoEnabled: false)
+        }, undoEnabled: false, moves: 10)
     }
 }

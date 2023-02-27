@@ -3,24 +3,26 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var showMenu = false
-    @State var showAlert = false
+    @State var showingAlert = false
     
     
     var body: some View {
-        VStack(alignment: .center, spacing: 16) {
+        VStack(alignment: .center) {
             Header(score: viewModel.state.score, bestScore: viewModel.bestScore, menuAction: {
-                showAlert = true
+                showingAlert = true
             }, undoAction: {
                 self.viewModel.undo()
-            }, undoEnabled: self.viewModel.isUndoable)
-            GoalText()
+            }, undoEnabled: self.viewModel.isUndoable, moves: viewModel.numberOfMoves)
+            
+//            GoalText()
             Board(board: viewModel.state.board, addedTile: viewModel.addedTile)
             Moves(viewModel.numberOfMoves)
         }
-        //        self.showMenu.toggle()
-        
-        .alert("Important message", isPresented: $showAlert) {
-            Button("OK", role: .cancel) { }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Please confirm"),message: Text("Are you sure to start a new game?"), primaryButton: .destructive(Text("Yeah sure")) {
+                self.viewModel.reset()
+            }, secondaryButton: .cancel())
+
         }
         .frame(minWidth: .zero,
                maxWidth: .infinity,

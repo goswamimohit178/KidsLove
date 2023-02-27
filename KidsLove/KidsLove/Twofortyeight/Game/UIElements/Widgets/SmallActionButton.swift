@@ -9,6 +9,7 @@ struct SmallActionButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
+                .frame(maxWidth: .infinity)
                 .font(.system(size: 19, weight: .black, design: .rounded))
                 .padding(.horizontal, 20)
                 .padding(.vertical, 9)
@@ -16,7 +17,8 @@ struct SmallActionButton: View {
                 .foregroundColor(enabled ? Color.white : Color(UIColor.white.withAlphaComponent(0.5)))
                 .cornerRadius(4)
                 
-            }.disabled(!enabled)
+            }
+        .disabled(!enabled)
     }
 }
 
