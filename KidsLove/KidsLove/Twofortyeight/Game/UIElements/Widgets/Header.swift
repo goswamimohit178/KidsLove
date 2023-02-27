@@ -10,47 +10,24 @@ struct Header: View {
     var undoEnabled: Bool
     var moves: Int
     private var size: CGFloat {
-        return UIScreen.screenWidth*0.90
+        return UIScreen.screenWidth*0.85
     }
     
     @State var showingAlert = false
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
-               
-                ScoreBox(title: "Moves", score: moves)
-                    .frame(width: size/3)
-//                    .frame(maxWidth: .infinity)
-
-                   .aspectRatio(contentMode: .fill)
-                ScoreBox(title: scoreLabel, score:score)
-                    .frame(width: size/3)
-//                    .frame(maxWidth: .infinity)
-
-                    .aspectRatio(contentMode: .fill)
-                ScoreBox(title: bestScoreLabel, score: bestScore)
-                    .frame(width: size/3)
-//                    .frame(maxWidth: .infinity)
-                    .aspectRatio(contentMode: .fit)
-            }
-            .frame(width: size)
-
-            
-          HStack(alignment: .top) {
                 SmallActionButton(title: "NEW GAME", action: self.menuAction, enabled: true)
-                  .frame(maxWidth: .infinity)
+                SmallActionButton(title: "UNDO", action: self.undoAction, enabled: undoEnabled)
+            }
             
-              SmallActionButton(title: "UNDO", action: self.undoAction, enabled: undoEnabled)
-                  .frame(maxWidth: .infinity)
-
-          }
-          .frame(width: size)
-          .background(.red)
-
+            HStack(alignment: .top) {
+                ScoreBox(title: "Moves", score: moves)
+                ScoreBox(title: "Moves", score: moves)
+                ScoreBox(title: "Moves", score: moves)
+            }
         }
         .frame(width: size)
-//        .aspectRatio(contentMode: .fill)
-
     }
 }
 struct Header_Previews: PreviewProvider {

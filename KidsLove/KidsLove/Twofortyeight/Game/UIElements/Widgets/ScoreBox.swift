@@ -7,13 +7,9 @@ struct ScoreBox: View {
     var body: some View {
         VStack() {
             Text(title)
-                .frame(maxWidth: .infinity)
                 .font(.system(size: 18, weight: .medium, design: .rounded))
                 .foregroundColor(.init(white: 0.9))
-                
-            
             Text(score.description)
-                .frame(maxWidth: .infinity)
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .minimumScaleFactor(0.9)
                 .truncationMode(.tail)
@@ -21,9 +17,6 @@ struct ScoreBox: View {
                 .accessibility(identifier: "\(title.lowercased())Value")
         }
         .frame(maxWidth: .infinity)
-        
-        .padding(.horizontal, 10)
-        .padding(.vertical, 9)
         .background(Color.boardBackground)
         .cornerRadius(6)
     }
