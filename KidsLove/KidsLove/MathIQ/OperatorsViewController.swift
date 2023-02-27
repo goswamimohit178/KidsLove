@@ -4,7 +4,6 @@
 //
 //  Created by Vikash on 03/02/23.
 //
-//self.navigationController?.pushViewController(QuestionViewController(), animated: true)
 import UIKit
 import SwiftUI
 
@@ -38,6 +37,7 @@ final class OperatorsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -85,6 +85,7 @@ extension OperatorsViewController: UITableViewDataSource{
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
+        navigationController?.tabBarController?.tabBar.isHidden = true
         let cellType = model.math[unitNumber].levels[levelNumber].type
         guard case .math(_, _, _, _) = cellType else {
             if case .game(let gameType) = cellType {

@@ -47,8 +47,8 @@ struct SettingsView: View {
                         }
                     Picker("Language", selection: .constant(0)) {
                         Text("English").tag(0)
-                        Text("Spanish").tag(1)
-                        Text("Chinese").tag(2)
+//                        Text("Spanish").tag(1)
+//                        Text("Chinese").tag(2)
                     }
                     .onChange(of: selectedThemeColor) { color in
                         updateThemeColor(color)

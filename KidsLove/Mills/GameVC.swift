@@ -32,6 +32,8 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startNewGame()
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func startNewGame() {
