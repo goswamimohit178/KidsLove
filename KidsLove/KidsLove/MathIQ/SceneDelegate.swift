@@ -23,7 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let tababar = TabBarController()
+           // let tababar = TabBarController()
+            let tababar = LaunchScreenViewController()
+
             window.rootViewController = tababar
             self.window = window
             UINavigationBar.appearance().tintColor = UIColor.bodyFontColor()

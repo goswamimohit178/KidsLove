@@ -65,22 +65,36 @@ class HeaderViewModel: Identifiable, ObservableObject {
 
 struct HeaderView: View {
     @ObservedObject var model: HeaderViewModel
-
+    @State private var scaling = false
+    @State var size: CGSize = .zero
+    
     var body: some View {
         HStack(alignment: .top) {
             PlayerScoreView(playerModel: model.player1)
                 .padding()
+            
             ImageView(icon: model.playerIcon)
                 .padding()
-
+                .offset(y: scaling ? 0 : 100)
+                .onAppear {
+                    withAnimation(
+                        .spring()
+                        .repeatForever(
+                            autoreverses: false)) {
+                                scaling.toggle()
+                            }
+                }
+            
+            
             PlayerScoreView(playerModel: model.player2)
                 .padding()
         }
         .border(Color(UIColor.defaultThemeColor), width: 5)
-//        .shadow(radius: 10)
+        //        .shadow(radius: 10)
         .cornerRadius(10)
     }
 }
+
 
 //struct HeaderView_Previews: PreviewProvider {
 //    static var previews: some View {
@@ -146,3 +160,4 @@ struct CoinView: View {
         .listRowInsets(.init(top: 4, leading: 4, bottom: 4, trailing: 4))
     }
 }
+

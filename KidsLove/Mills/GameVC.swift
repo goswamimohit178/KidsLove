@@ -20,7 +20,7 @@ class GameVC: UIViewController {
     private var playerView: UIView!
     private var soundButton: UIButton!
     private var restartButton: UIButton!
-    
+   
     private var disposable = Set<AnyCancellable>()
     
     @Published var headerModel: HeaderViewModel!
@@ -147,8 +147,11 @@ class GameVC: UIViewController {
         .store(in: &disposable)
 
         viewModel.playerChangeSubject.sink { playerIcon in
-            self.headerView.model.playerIcon = CoinModel(imageName: playerIcon)
+                self.headerView.model.playerIcon = CoinModel(imageName: playerIcon)
+                
+            
         }
+       
         .store(in: &disposable)
 
         viewModel.player2.passthroughSubject.sink { millsAndAvailableCoin in
