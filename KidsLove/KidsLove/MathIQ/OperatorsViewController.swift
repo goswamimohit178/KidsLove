@@ -85,6 +85,7 @@ extension OperatorsViewController: UITableViewDataSource{
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
+        navigationController?.tabBarController?.tabBar.isHidden = true
         let cellType = model.math[unitNumber].levels[levelNumber].type
         guard case .math(_, _, _, _) = cellType else {
             if case .game(let gameType) = cellType {
