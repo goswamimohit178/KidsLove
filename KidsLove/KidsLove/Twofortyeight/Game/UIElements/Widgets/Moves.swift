@@ -9,7 +9,7 @@ struct Moves: View {
     
     var body: some View {
         HStack {
-            Text("moves: \(moves)").bold()
+//            Text("moves: \(moves)").bold()
         }
         .font(.myBodyFont)
         .foregroundColor(.white50)

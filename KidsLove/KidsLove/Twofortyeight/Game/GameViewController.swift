@@ -10,6 +10,11 @@ class GameViewController: UIHostingController<GameView> {
         setupGestures()
         viewModel.start()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
         
     private func setupGestures() {
         view.addGestureRecognizer(Swipe(.left) { [weak self] in

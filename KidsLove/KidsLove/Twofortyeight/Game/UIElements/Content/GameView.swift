@@ -11,16 +11,16 @@ struct GameView: View {
                 showingAlert = true
             }, undoAction: {
                 self.viewModel.undo()
-            }, undoEnabled: self.viewModel.isUndoable)
+            }, undoEnabled: self.viewModel.isUndoable, moves: viewModel.numberOfMoves)
             
-            GoalText()
+//            GoalText()
             Board(board: viewModel.state.board, addedTile: viewModel.addedTile)
             Moves(viewModel.numberOfMoves)
         }
         .alert(isPresented: $showingAlert) {
-            Alert(title: Text("Are You Sure?"),message: Text("Are You Sure to start a new game?"), primaryButton: .destructive(Text("Yeah Sure")){
+            Alert(title: Text("Please confirm"),message: Text("Are you sure to start a new game?"), primaryButton: .cancel() {
                 self.viewModel.reset()
-            }, secondaryButton: .cancel())
+            }, secondaryButton: .destructive(Text("cancellll")))
         }
         .frame(minWidth: .zero,
                maxWidth: .infinity,

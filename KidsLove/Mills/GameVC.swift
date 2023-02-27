@@ -28,6 +28,10 @@ class GameVC: UIViewController {
     view.addSubview(blurredView)
     startNewGame()
   }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
 	
 	func startNewGame() {
 		createNewGame()

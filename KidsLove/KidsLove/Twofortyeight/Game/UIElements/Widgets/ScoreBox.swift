@@ -5,19 +5,24 @@ struct ScoreBox: View {
     let score: Int
     
     var body: some View {
-        VStack {
+        VStack() {
             Text(title)
+                .frame(maxWidth: .infinity)
                 .font(.system(size: 18, weight: .medium, design: .rounded))
                 .foregroundColor(.init(white: 0.9))
+                
             
             Text(score.description)
+                .frame(maxWidth: .infinity)
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .minimumScaleFactor(0.9)
                 .truncationMode(.tail)
                 .foregroundColor(.white)
                 .accessibility(identifier: "\(title.lowercased())Value")
         }
-        .padding(.horizontal, 25)
+        .frame(maxWidth: .infinity)
+        
+        .padding(.horizontal, 10)
         .padding(.vertical, 9)
         .background(Color.boardBackground)
         .cornerRadius(6)

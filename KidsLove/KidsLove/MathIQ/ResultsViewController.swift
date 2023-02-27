@@ -55,6 +55,11 @@ class ResultsViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
