@@ -31,21 +31,16 @@ class LaunchScreenViewController: UIViewController {
       
 
         // Do any additional setup after loading the view.
-//        tabBarController?.present(OperatorsViewController(), animated: true)
+     // tabBarController?.present(OperatorsViewController(), animated: true)
 
-          //  self.navigationController?.pushViewController(OperatorsViewController(), animated: true)
+         //  self.navigationController?.pushViewController(TabBarController(), animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            let nextViewController = TabBarController() // replace this with the view controller you want to show
+            self.present(nextViewController, animated: true)
+        }
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -23,10 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-           // let tababar = TabBarController()
-            let tababar = LaunchScreenViewController()
+        
+            let tabbar = LaunchScreenViewController()
 
-            window.rootViewController = tababar
+                
+            window.rootViewController = tabbar
+            
             self.window = window
             UINavigationBar.appearance().tintColor = UIColor.bodyFontColor()
             window.makeKeyAndVisible()

@@ -106,10 +106,14 @@ struct ImageView: View {
     @ObservedObject var icon: CoinModel
 
     var body: some View {
-        Image(icon.imageName)
-            .resizable()
-            .frame(width: 45, height: 45)
-            .cornerRadius(45/2)
+        GeometryReader { geo in
+            Image(icon.imageName)
+                .resizable()
+                .clipped()
+                .scaledToFit()
+                .frame(width: geo.size.width * 0.8)
+                .cornerRadius(45/2)
+        }
 
     }
 }
@@ -139,7 +143,7 @@ struct CoinView: View {
     var coins: [CoinModel]
     
     var gridItemLayout = [
-        GridItem(.adaptive(minimum: 10), spacing: 5),
+        GridItem(.adaptive(minimum: 10), spacing: 10),
         GridItem(.adaptive(minimum: 10), spacing: 5),
         GridItem(.adaptive(minimum: 10), spacing: 5)
     ]
@@ -147,12 +151,16 @@ struct CoinView: View {
     var body: some View {
         LazyVGrid(columns: gridItemLayout, spacing: 0) {
             ForEach(coins) { coin in
+                GeometryReader { geo in
                 Image(coin.imageName)
                     .resizable()
-                    .frame(width: 20, height: 20)
+                    //.aspectRatio(contentMode: .fill)
+                    .scaledToFit()
+                    .frame(width: geo.size.width * 1)
                     .padding(2)
                     .cornerRadius(45/2)
             }
+        }
         }
         .padding(6)
         .cornerRadius(5)
