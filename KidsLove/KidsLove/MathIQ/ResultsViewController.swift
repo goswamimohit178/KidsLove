@@ -146,8 +146,7 @@ class ResultsViewController: UIViewController {
     }
     private func calculateResultProgress() -> Float{
         let previousProgress = getPreviousProgress()
-        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
-        switch currentProgress {
+        switch previousProgress {
         case .zero:
             return  0.0
         case .oneThird:
@@ -167,13 +166,11 @@ struct ContentView: View {
                 .frame(width: 10, height: 10)
                 .modifier(ParticlesModifier())
                 .offset(x: -100, y : -50)
-            
             Circle()
                 .fill(Color.orange)
                 .frame(width: 10, height: 10)
                 .modifier(ParticlesModifier())
                 .offset(x: 50, y : 60)
-            
         }
     }
 }
@@ -185,7 +182,6 @@ struct ParticlesModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         ZStack {
-            
             ForEach(0..<80, id: \.self) { index in
                 content
                     .hueRotation(Angle(degrees: time * 80))
@@ -204,7 +200,6 @@ struct ParticlesModifier: ViewModifier {
                 self.time = duration
                 self.scale = 1.0
                 self.radius += 1
-                
             }
         }
     }
