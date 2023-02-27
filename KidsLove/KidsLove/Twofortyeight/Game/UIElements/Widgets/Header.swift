@@ -23,8 +23,8 @@ struct Header: View {
             
             HStack(alignment: .top) {
                 ScoreBox(title: "Moves", score: moves)
-                ScoreBox(title: "Moves", score: moves)
-                ScoreBox(title: "Moves", score: moves)
+                ScoreBox(title: "Score", score: score)
+                ScoreBox(title: "Best Score", score: bestScore)
             }
         }
         .frame(width: size)

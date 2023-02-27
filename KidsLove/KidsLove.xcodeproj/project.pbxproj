@@ -898,7 +898,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7H62X7A726;
+				DEVELOPMENT_TEAM = 382MKF227K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KidsLove/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -909,7 +909,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.sebastian-hagedorn.StateRestorationDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "MathIQ---com.mathIQ";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -926,7 +926,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7H62X7A726;
+				DEVELOPMENT_TEAM = 382MKF227K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KidsLove/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -937,7 +937,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.sebastian-hagedorn.StateRestorationDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "MathIQ---com.mathIQ";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

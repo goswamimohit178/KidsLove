@@ -3,7 +3,7 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var showMenu = false
-    @State var showAlert = false
+    @State var showingAlert = false
     
     
     var body: some View {
@@ -19,9 +19,9 @@ struct GameView: View {
             Moves(viewModel.numberOfMoves)
         }
         .alert(isPresented: $showingAlert) {
-            Alert(title: Text("Please confirm"),message: Text("Are you sure to start a new game?"), primaryButton: .cancel() {
+            Alert(title: Text("Please confirm"),message: Text("Are you sure to start a new game?"), primaryButton: .destructive(Text("Yeah sure")) {
                 self.viewModel.reset()
-            }, secondaryButton: .destructive(Text("cancellll")))
+            }, secondaryButton: .cancel())
 
         }
         .frame(minWidth: .zero,
