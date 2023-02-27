@@ -3,7 +3,8 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var showMenu = false
-    @State private var showingAlert = false
+    @State var showAlert = false
+    
     
     var body: some View {
         VStack(alignment: .center) {
@@ -21,18 +22,19 @@ struct GameView: View {
             Alert(title: Text("Please confirm"),message: Text("Are you sure to start a new game?"), primaryButton: .cancel() {
                 self.viewModel.reset()
             }, secondaryButton: .destructive(Text("cancellll")))
+
         }
         .frame(minWidth: .zero,
                maxWidth: .infinity,
                minHeight: .zero,
                maxHeight: .infinity,
                alignment: .center)
-            .background(Color.gameBackground)
-            .background(Menu())
-            .background(GameOver())
-            .edgesIgnoringSafeArea(.all)
-            
+        .background(Color.gameBackground)
+        .background(Menu())
+        .background(GameOver())
+        .edgesIgnoringSafeArea(.all)
     }
+    
 }
 
 extension GameView {
@@ -55,7 +57,6 @@ extension GameView {
             }
         }
     }
-    
 }
 
 struct GameView_Previews: PreviewProvider {

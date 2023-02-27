@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwiftUI
 import AVFAudio
-
+import Lottie
 class QuestionViewController: UIViewController {
     @IBOutlet private weak var progressBar: UIProgressView!
     @IBOutlet private weak var option1Btn: UIButton!
@@ -18,7 +19,11 @@ class QuestionViewController: UIViewController {
     @IBOutlet private weak var oprand1Label: UILabel!
     @IBOutlet private weak var questionStackView: UIStackView!
     @IBOutlet private weak var questionImageView: UIImageView!
-
+    @IBOutlet weak var woodenLEadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var blackboard: UIStackView!
+    @IBOutlet weak var blackBoardOutlet: UIImageView!
+    @IBOutlet weak var questionLable: UILabel!
+    
     var opratorVC: OperatorsViewController!
     var currentUnitNumber: Int!
     var currentLevelNumber: Int!
@@ -26,17 +31,18 @@ class QuestionViewController: UIViewController {
     private var noCorrect: Int = 0
     private var selectedIndex: Int? = nil
     private var isFirstTimeTapped: Bool = true
-    
     private var optionButtons = [UIButton]()
     var questionList: [Question]!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         addOptionButtons()
         setQuestionFonts()
         setupModel()
         setCornerRadius()
         setOptionButtonsShadow()
+        setOwlAnimation()
         //r̥overrideUserInterfaceStyle = .dark
         continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
         continueBtn.titleLabel?.tintColor = UIColor.bodyFontColor()
@@ -45,13 +51,17 @@ class QuestionViewController: UIViewController {
         let value:Float = Float(1)/Float(questionList.count)
         progressBar.setProgress(value, animated: true)
         progressBar.tintColor = UIColor.progressBarColor()
-//        questionStackView.layer.borderWidth = 10
+        //        questionStackView.layer.borderWidth = 10
         questionImageView.setShadowAndCornerRadius(cornerRadius: 20)
         questionStackView.setShadowAndCornerRadius(cornerRadius: 20)
-//        questionImageView.layer.cornerRadius = 20
-//        questionStackView.layer.cornerRadius = 20
-//        questionStackView.clipsToBounds = true
-//        questionStackView.layer.borderColor = UIColor.clear.cgColor
+        //        questionImageView.layer.cornerRadius = 20
+        //        questionStackView.layer.cornerRadius = 20
+        //        questionStackView.clipsToBounds = true
+        //        questionStackView.layer.borderColor = UIColor.clear.cgColor
+        
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,6 +142,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func goToNextQuestion() {
+        setOwlAnimation()
         enableAll()
         currentQuestionNumber += 1
         let value:Float = Float(currentQuestionNumber+1)/Float(questionList.count)
@@ -201,6 +212,24 @@ class QuestionViewController: UIViewController {
         }
     }
     
+    private func setOwlAnimation() {
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let height = screenHeight*0.17
+        let animationView = Lottie.LottieAnimationView()
+        let animation = Lottie.LottieAnimationView(name: "panchi").animation
+        animationView.animation = animation
+        animationView.play()
+        view.addSubview(animationView)
+        animationView.contentMode = .scaleToFill
+        animationView.centerYAnchor.constraint(equalTo: self.blackBoardOutlet.centerYAnchor).isActive = true
+        animationView.leadingAnchor.constraint(equalTo: progressBar.leadingAnchor, constant: 0).isActive = true
+        animationView.widthAnchor.constraint(equalToConstant: height*2).isActive = true
+        animationView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+    }
+    
     private func resetOptionBtnColor() {
         optionButtons.forEach { button in
             button.backgroundColor = UIColor.buttonBackgroundColor()
@@ -209,7 +238,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func setQuestions(model: Question){
-//        self.oprand1Label.text = nil
+        //        self.oprand1Label.text = nil
         oprand1Label.shakeView(duration: 1)
         let animation2: CATransition = CATransition()
         animation2.duration = 0.3
@@ -217,7 +246,7 @@ class QuestionViewController: UIViewController {
         animation2.timingFunction = CAMediaTimingFunction(name: .easeOut)
         oprand1Label.layer.add(animation2, forKey: "changeTextTransition")
         self.oprand1Label.text = model.questionText
-
+        
         for (index, button) in optionButtons.enumerated() {
             button.setTitle(String(model.answer[index]), for: .normal)
             

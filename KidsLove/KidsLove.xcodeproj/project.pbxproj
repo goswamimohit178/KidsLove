@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0492993C29A1019900331306 /* remote_config_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0492993B29A1019900331306 /* remote_config_defaults.plist */; };
 		0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0492993D29A101BD00331306 /* GoogleService-Info.plist */; };
+		04934BB129AB69FC0099CBDC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 04934BB029AB69FC0099CBDC /* Lottie */; };
+		04934BB429AB6C4D0099CBDC /* panchi.json in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB329AB6C4D0099CBDC /* panchi.json */; };
 		04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B329A08E34008F70FB /* FirebaseAnalytics */; };
 		04DA93B629A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B529A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion */; };
 		04DA93B829A08E34008F70FB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B729A08E34008F70FB /* FirebaseAnalyticsSwift */; };
@@ -28,6 +30,7 @@
 		139D2BA62993A349006CAEF9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BA52993A349006CAEF9 /* Model.swift */; };
 		139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */; };
 		139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BEA299CCABA006CAEF9 /* rightButton.wav */; };
+		363313E429A8D4050072BD66 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313E329A8D4050072BD66 /* HeaderView.swift */; };
 		364D781B299F7C7700FF42D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781A299F7C7700FF42D7 /* SettingsView.swift */; };
 		364D781D299F940800FF42D7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781C299F940800FF42D7 /* AppRouter.swift */; };
 		364D781F299F994A00FF42D7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781E299F994A00FF42D7 /* SoundPlayer.swift */; };
@@ -125,6 +128,7 @@
 /* Begin PBXFileReference section */
 		0492993B29A1019900331306 /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
 		0492993D29A101BD00331306 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04934BB329AB6C4D0099CBDC /* panchi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panchi.json; sourceTree = "<group>"; };
 		04DA93C529A0C8C7008F70FB /* FireBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseConfig.swift; sourceTree = "<group>"; };
 		1331E231298D39DD00AFD1E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1331E232298D39DD00AFD1E0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		139D2BA52993A349006CAEF9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQuestions.swift; sourceTree = "<group>"; };
 		139D2BEA299CCABA006CAEF9 /* rightButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rightButton.wav; sourceTree = "<group>"; };
+		363313E329A8D4050072BD66 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		364D781A299F7C7700FF42D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		364D781C299F940800FF42D7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		364D781E299F994A00FF42D7 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
@@ -246,6 +251,7 @@
 			files = (
 				04DA93B829A08E34008F70FB /* FirebaseAnalyticsSwift in Frameworks */,
 				04DA93C229A08E34008F70FB /* FirebaseRemoteConfigSwift in Frameworks */,
+				04934BB129AB69FC0099CBDC /* Lottie in Frameworks */,
 				04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */,
 				04DA93BE29A08E34008F70FB /* FirebasePerformance in Frameworks */,
 				04DA93C029A08E34008F70FB /* FirebaseRemoteConfig in Frameworks */,
@@ -258,6 +264,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04934BB229AB6C4D0099CBDC /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				04934BB329AB6C4D0099CBDC /* panchi.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		139D2B9C298FA1DE006CAEF9 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				36B3B81929A34930000707C9 /* White Milk.ttf */,
+				04934BB229AB6C4D0099CBDC /* Lottie */,
 				36939D16298CFB6000927B1E /* Info.plist */,
 				36B3B79929A28084000707C9 /* Mills */,
 				36B3B76029A275E9000707C9 /* Twofortyeight */,
@@ -448,6 +463,7 @@
 				36B3B7BE29A28084000707C9 /* InitialVC.swift */,
 				36B3B79B29A28084000707C9 /* ViewDataModel.swift */,
 				36B3B7D029A28084000707C9 /* notAllowed.mp3 */,
+				363313E329A8D4050072BD66 /* HeaderView.swift */,
 				36B3B7BD29A28084000707C9 /* place-player-2.mp3 */,
 				36B3B79C29A28084000707C9 /* select.mp3 */,
 				36B3B7D629A28084000707C9 /* PlayerView.xib */,
@@ -562,6 +578,7 @@
 				04DA93BD29A08E34008F70FB /* FirebasePerformance */,
 				04DA93BF29A08E34008F70FB /* FirebaseRemoteConfig */,
 				04DA93C129A08E34008F70FB /* FirebaseRemoteConfigSwift */,
+				04934BB029AB69FC0099CBDC /* Lottie */,
 			);
 			productName = KidsLove;
 			productReference = 36939D05298CFB5F00927B1E /* KidsLove.app */;
@@ -593,6 +610,7 @@
 			mainGroup = 36939CFC298CFB5F00927B1E;
 			packageReferences = (
 				04DA93B229A08E34008F70FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				04934BAF29AB69FC0099CBDC /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 36939D06298CFB5F00927B1E /* Products */;
 			projectDirPath = "";
@@ -636,6 +654,7 @@
 				36B3B7FA29A28084000707C9 /* place-player-1.mp3 in Resources */,
 				36B3B7F829A28084000707C9 /* bhar.mp3 in Resources */,
 				36B3B7F529A28084000707C9 /* char.mp3 in Resources */,
+				04934BB429AB6C4D0099CBDC /* panchi.json in Resources */,
 				36B3B80229A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
 				36B3B81A29A34930000707C9 /* White Milk.ttf in Resources */,
 				36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */,
@@ -722,6 +741,7 @@
 				1331E237298D3CE700AFD1E0 /* OperatorsViewController.swift in Sources */,
 				139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */,
 				36B3B76F29A27644000707C9 /* GoalText.swift in Sources */,
+				363313E429A8D4050072BD66 /* HeaderView.swift in Sources */,
 				36B3B77229A27644000707C9 /* Moves.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -950,6 +970,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		04934BAF29AB69FC0099CBDC /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		04DA93B229A08E34008F70FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -961,6 +989,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		04934BB029AB69FC0099CBDC /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04934BAF29AB69FC0099CBDC /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		04DA93B329A08E34008F70FB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04DA93B229A08E34008F70FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

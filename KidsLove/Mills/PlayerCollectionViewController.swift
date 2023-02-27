@@ -11,17 +11,29 @@ import UIKit
 private let reuseIdentifier = "CoinCollectionViewCell"
 
 class PlayerCollectionViewController:  NSObject, UICollectionViewDataSource {
-	var imageNames = [String]() {
+	var image1Names = [String]() {
 		didSet {
-			collectionView.reloadData()
+            player1CollectionView.reloadData()
 		}
 	}
-
-	var collectionView: UICollectionView! {
-    didSet {
-      self.collectionView!.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    
+    var image2Names = [String]() {
+        didSet {
+            player2CollectionView.reloadData()
+        }
     }
-  }
+
+    var player2CollectionView: UICollectionView! {
+        didSet {
+            self.player2CollectionView!.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        }
+    }
+    
+    var player1CollectionView: UICollectionView! {
+        didSet {
+            self.player1CollectionView!.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        }
+    }
   
     // MARK: UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -30,12 +42,19 @@ class PlayerCollectionViewController:  NSObject, UICollectionViewDataSource {
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-			return imageNames.count
+        if collectionView == player1CollectionView {
+            return image1Names.count
+        }
+        return image2Names.count
     }
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CoinCollectionViewCell
-		cell.coinImage.image =  UIImage(named: imageNames[indexPath.row])
+        if collectionView == player1CollectionView {
+            cell.coinImage.image =  UIImage(named: image1Names[indexPath.row])
+        } else {
+            cell.coinImage.image =  UIImage(named: image2Names[indexPath.row])
+        }
 		return cell
 	}
 
