@@ -4,7 +4,6 @@
 //
 //  Created by Vikash on 03/02/23.
 //
-//self.navigationController?.pushViewController(QuestionViewController(), animated: true)
 import UIKit
 import SwiftUI
 
@@ -38,6 +37,7 @@ final class OperatorsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

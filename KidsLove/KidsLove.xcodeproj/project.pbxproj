@@ -117,7 +117,6 @@
 		36B3B81529A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BC29A28084000707C9 /* InitialVC.swift */; };
 		36B3B81629A28084000707C9 /* Mills.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */; };
 		36B3B81A29A34930000707C9 /* White Milk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B81929A34930000707C9 /* White Milk.ttf */; };
-		36B3B81C29A3498F000707C9 /* MathQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B81B29A3498F000707C9 /* MathQuestionView.swift */; };
 		36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6080298D0BAC00F059FB /* QuestionViewController.swift */; };
 		36DD6083298D0BAC00F059FB /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36DD6081298D0BAC00F059FB /* QuestionViewController.xib */; };
 		36DD6086298E12E000F059FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD6084298E12E000F059FB /* ResultsViewController.swift */; };
@@ -236,7 +235,6 @@
 		36B3B7D929A28084000707C9 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
 		36B3B7DA29A28084000707C9 /* Mills.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mills.xcdatamodel; sourceTree = "<group>"; };
 		36B3B81929A34930000707C9 /* White Milk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "White Milk.ttf"; sourceTree = "<group>"; };
-		36B3B81B29A3498F000707C9 /* MathQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestionView.swift; sourceTree = "<group>"; };
 		36DD6080298D0BAC00F059FB /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		36DD6081298D0BAC00F059FB /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		36DD6084298E12E000F059FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 		36939CFC298CFB5F00927B1E = {
 			isa = PBXGroup;
 			children = (
-				36B3B81B29A3498F000707C9 /* MathQuestionView.swift */,
 				36939D07298CFB5F00927B1E /* KidsLove */,
 				36939D06298CFB5F00927B1E /* Products */,
 			);
@@ -708,7 +705,6 @@
 				36B3B80529A28084000707C9 /* GameModels.swift in Sources */,
 				36B3B76629A27632000707C9 /* GameOverView.swift in Sources */,
 				36B3B76C29A27644000707C9 /* HeaderBarTitle.swift in Sources */,
-				36B3B81C29A3498F000707C9 /* MathQuestionView.swift in Sources */,
 				36B3B7E629A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
 				36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */,
 				36B3B77629A27655000707C9 /* LocalStorage.swift in Sources */,
@@ -901,6 +897,8 @@
 				DEVELOPMENT_TEAM = Z928FCJVR4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KidsLove/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MathIQ;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -929,6 +927,8 @@
 				DEVELOPMENT_TEAM = Z928FCJVR4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KidsLove/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MathIQ;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
