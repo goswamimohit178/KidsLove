@@ -31,6 +31,10 @@
 		139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */; };
 		139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BEA299CCABA006CAEF9 /* rightButton.wav */; };
 		363313E429A8D4050072BD66 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313E329A8D4050072BD66 /* HeaderView.swift */; };
+		363313EC29ACA9050072BD66 /* KidsLoveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313EB29ACA9050072BD66 /* KidsLoveUITests.swift */; };
+		363313EE29ACA9050072BD66 /* KidsLoveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313ED29ACA9050072BD66 /* KidsLoveUITestsLaunchTests.swift */; };
+		363313FB29ACA91A0072BD66 /* KidsLoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313FA29ACA91A0072BD66 /* KidsLoveTests.swift */; };
+		3633140229ACA95C0072BD66 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633140129ACA95C0072BD66 /* SnapshotHelper.swift */; };
 		364D781B299F7C7700FF42D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781A299F7C7700FF42D7 /* SettingsView.swift */; };
 		364D781D299F940800FF42D7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781C299F940800FF42D7 /* AppRouter.swift */; };
 		364D781F299F994A00FF42D7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781E299F994A00FF42D7 /* SoundPlayer.swift */; };
@@ -124,6 +128,23 @@
 		36DD608B29911CD100F059FB /* ColorAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD608A29911CD000F059FB /* ColorAndFonts.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		363313EF29ACA9050072BD66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36939CFD298CFB5F00927B1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36939D04298CFB5F00927B1E;
+			remoteInfo = KidsLove;
+		};
+		363313FC29ACA91A0072BD66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36939CFD298CFB5F00927B1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36939D04298CFB5F00927B1E;
+			remoteInfo = KidsLove;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0492993B29A1019900331306 /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
 		0492993D29A101BD00331306 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -140,6 +161,12 @@
 		139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQuestions.swift; sourceTree = "<group>"; };
 		139D2BEA299CCABA006CAEF9 /* rightButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rightButton.wav; sourceTree = "<group>"; };
 		363313E329A8D4050072BD66 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		363313E929ACA9050072BD66 /* KidsLoveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KidsLoveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		363313EB29ACA9050072BD66 /* KidsLoveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsLoveUITests.swift; sourceTree = "<group>"; };
+		363313ED29ACA9050072BD66 /* KidsLoveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsLoveUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		363313F829ACA91A0072BD66 /* KidsLoveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KidsLoveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		363313FA29ACA91A0072BD66 /* KidsLoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsLoveTests.swift; sourceTree = "<group>"; };
+		3633140129ACA95C0072BD66 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		364D781A299F7C7700FF42D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		364D781C299F940800FF42D7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		364D781E299F994A00FF42D7 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
@@ -243,6 +270,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		363313E629ACA9050072BD66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		363313F529ACA91A0072BD66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36939D02298CFB5F00927B1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,10 +320,30 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		363313EA29ACA9050072BD66 /* KidsLoveUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3633140129ACA95C0072BD66 /* SnapshotHelper.swift */,
+				363313EB29ACA9050072BD66 /* KidsLoveUITests.swift */,
+				363313ED29ACA9050072BD66 /* KidsLoveUITestsLaunchTests.swift */,
+			);
+			path = KidsLoveUITests;
+			sourceTree = "<group>";
+		};
+		363313F929ACA91A0072BD66 /* KidsLoveTests */ = {
+			isa = PBXGroup;
+			children = (
+				363313FA29ACA91A0072BD66 /* KidsLoveTests.swift */,
+			);
+			path = KidsLoveTests;
+			sourceTree = "<group>";
+		};
 		36939CFC298CFB5F00927B1E = {
 			isa = PBXGroup;
 			children = (
 				36939D07298CFB5F00927B1E /* KidsLove */,
+				363313EA29ACA9050072BD66 /* KidsLoveUITests */,
+				363313F929ACA91A0072BD66 /* KidsLoveTests */,
 				36939D06298CFB5F00927B1E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -291,6 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				36939D05298CFB5F00927B1E /* KidsLove.app */,
+				363313E929ACA9050072BD66 /* KidsLoveUITests.xctest */,
+				363313F829ACA91A0072BD66 /* KidsLoveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -553,6 +616,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		363313E829ACA9050072BD66 /* KidsLoveUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 363313F329ACA9050072BD66 /* Build configuration list for PBXNativeTarget "KidsLoveUITests" */;
+			buildPhases = (
+				363313E529ACA9050072BD66 /* Sources */,
+				363313E629ACA9050072BD66 /* Frameworks */,
+				363313E729ACA9050072BD66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363313F029ACA9050072BD66 /* PBXTargetDependency */,
+			);
+			name = KidsLoveUITests;
+			productName = KidsLoveUITests;
+			productReference = 363313E929ACA9050072BD66 /* KidsLoveUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		363313F729ACA91A0072BD66 /* KidsLoveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 363313FE29ACA91A0072BD66 /* Build configuration list for PBXNativeTarget "KidsLoveTests" */;
+			buildPhases = (
+				363313F429ACA91A0072BD66 /* Sources */,
+				363313F529ACA91A0072BD66 /* Frameworks */,
+				363313F629ACA91A0072BD66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363313FD29ACA91A0072BD66 /* PBXTargetDependency */,
+			);
+			name = KidsLoveTests;
+			productName = KidsLoveTests;
+			productReference = 363313F829ACA91A0072BD66 /* KidsLoveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		36939D04298CFB5F00927B1E /* KidsLove */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36939D19298CFB6000927B1E /* Build configuration list for PBXNativeTarget "KidsLove" */;
@@ -591,6 +690,14 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					363313E829ACA9050072BD66 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 36939D04298CFB5F00927B1E;
+					};
+					363313F729ACA91A0072BD66 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 36939D04298CFB5F00927B1E;
+					};
 					36939D04298CFB5F00927B1E = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -614,11 +721,27 @@
 			projectRoot = "";
 			targets = (
 				36939D04298CFB5F00927B1E /* KidsLove */,
+				363313E829ACA9050072BD66 /* KidsLoveUITests */,
+				363313F729ACA91A0072BD66 /* KidsLoveTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		363313E729ACA9050072BD66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		363313F629ACA91A0072BD66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36939D03298CFB5F00927B1E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -667,6 +790,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		363313E529ACA9050072BD66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				363313EE29ACA9050072BD66 /* KidsLoveUITestsLaunchTests.swift in Sources */,
+				363313EC29ACA9050072BD66 /* KidsLoveUITests.swift in Sources */,
+				3633140229ACA95C0072BD66 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		363313F429ACA91A0072BD66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				363313FB29ACA91A0072BD66 /* KidsLoveTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36939D01298CFB5F00927B1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -744,6 +885,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		363313F029ACA9050072BD66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36939D04298CFB5F00927B1E /* KidsLove */;
+			targetProxy = 363313EF29ACA9050072BD66 /* PBXContainerItemProxy */;
+		};
+		363313FD29ACA91A0072BD66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36939D04298CFB5F00927B1E /* KidsLove */;
+			targetProxy = 363313FC29ACA91A0072BD66 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		36939D13298CFB6000927B1E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -772,6 +926,80 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		363313F129ACA9050072BD66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N7U2DC3WBS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-ChatAppDemo.KidsLoveUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KidsLove;
+			};
+			name = Debug;
+		};
+		363313F229ACA9050072BD66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N7U2DC3WBS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-ChatAppDemo.KidsLoveUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KidsLove;
+			};
+			name = Release;
+		};
+		363313FF29ACA91A0072BD66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N7U2DC3WBS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-ChatAppDemo.KidsLoveTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KidsLove.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KidsLove";
+			};
+			name = Debug;
+		};
+		3633140029ACA91A0072BD66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N7U2DC3WBS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-ChatAppDemo.KidsLoveTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KidsLove.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KidsLove";
+			};
+			name = Release;
+		};
 		36939D17298CFB6000927B1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -949,6 +1177,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		363313F329ACA9050072BD66 /* Build configuration list for PBXNativeTarget "KidsLoveUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				363313F129ACA9050072BD66 /* Debug */,
+				363313F229ACA9050072BD66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		363313FE29ACA91A0072BD66 /* Build configuration list for PBXNativeTarget "KidsLoveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				363313FF29ACA91A0072BD66 /* Debug */,
+				3633140029ACA91A0072BD66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		36939D00298CFB5F00927B1E /* Build configuration list for PBXProject "KidsLove" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
