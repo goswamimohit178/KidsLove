@@ -147,25 +147,40 @@ struct CoinView: View {
         GridItem(.adaptive(minimum: 10), spacing: 5),
         GridItem(.adaptive(minimum: 10), spacing: 5)
     ]
-
-    var body: some View {
-        LazyVGrid(columns: gridItemLayout, spacing: 0) {
-            ForEach(coins) { coin in
-                GeometryReader { geo in
-                Image(coin.imageName)
+    
+//    var body: some View {
+//        LazyVGrid(columns: gridItemLayout, spacing: 0) {
+//            ForEach(coins) { coin in
+//                GeometryReader { geo in
+//                    Image(coin.imageName)
+//                        .resizable()
+//                    //.aspectRatio(contentMode: .fill)
+//                        .scaledToFit()
+//                        .frame(width: geo.size.width * 1)
+//                        .padding(2)
+//                        .cornerRadius(45/2)
+//                }
+//            }
+//        }
+        var body: some View {
+            ZStack {
+                // LazyVGrid(columns: gridItemLayout, spacing: 0) {
+                ForEach(coins) { coin in
+                    withAnimation(.interpolatingSpring(stiffness: 10, damping: 1)) {
+                        Image(coin.imageName)
+                    }
                     .resizable()
-                    //.aspectRatio(contentMode: .fill)
-                    .scaledToFit()
-                    .frame(width: geo.size.width * 1)
+                    .frame(width: 30, height: 30)
                     .padding(2)
                     .cornerRadius(45/2)
+                }
+                //}
             }
+            .frame(width: 30)
+            .padding(6)
+            .cornerRadius(5)
+            .border(Color(UIColor.defaultThemeColor), width: 3)
+            .listRowInsets(.init(top: 4, leading: 4, bottom: 4, trailing: 4))
         }
-        }
-        .padding(6)
-        .cornerRadius(5)
-        .border(Color(UIColor.defaultThemeColor), width: 3)
-        .listRowInsets(.init(top: 4, leading: 4, bottom: 4, trailing: 4))
     }
-}
 
