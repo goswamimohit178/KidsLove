@@ -150,9 +150,7 @@ class GameVC: UIViewController {
         .store(in: &disposable)
 
         viewModel.playerChangeSubject.sink { playerIcon in
-                self.headerView.model.playerIcon = CoinModel(imageName: playerIcon)
-                
-            
+            self.headerView.model.playerIcon = CoinModel(imageName: playerIcon, offset: 0)            
         }
        
         .store(in: &disposable)
