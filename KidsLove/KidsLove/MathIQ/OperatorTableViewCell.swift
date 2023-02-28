@@ -39,8 +39,8 @@ class OperatorTableViewCell: UITableViewCell {
             switch level.type {
             case .game(_):
                 return
-            case .math(progress: _, oprator: _, noOfOprands: _, levelType: let levelType):
-                let isEnabled = (levelType == .easy) || (unit.levels[index-1].type.mathProgress == .complete)
+            case .math(let model):
+                let isEnabled = (model.levelType == .easy) || (unit.levels[index-1].type.mathProgress == .complete)
                 buttons[index].isEnabled = isEnabled
                 if isEnabled {
                     buttons[index].backgroundColor = UIColor.homeButtonColor()
@@ -111,16 +111,16 @@ class OperatorTableViewCell: UITableViewCell {
         let levelView = levelView()
         levelView.titleLabel.text = model.title
         levelView.titleLabel.textColor = UIColor.bodyFontColor()
-        guard case .math(let progress, let oprator, _, let levelType) = model.type else {
+        guard case .math(let mathModel) = model.type else {
             if case .game(let gameType) = model.type{
                 levelView.button.tag =  model.type.index
                 levelView.button.setTitle(gameType.title, for: .normal)
             }
             return levelView
         }
-        levelView.button.setTitle(oprator.getOperator(), for: .normal)
-        levelView.button.createCircularPath(duration: circularViewDuration, progress: progress, buttonWidth: buttonWidth)
-        levelView.button.tag = levelType.rawValue
+        levelView.button.setTitle(mathModel.oprator.getOperator(), for: .normal)
+        levelView.button.createCircularPath(duration: circularViewDuration, progress: mathModel.progress, buttonWidth: buttonWidth)
+        levelView.button.tag = mathModel.levelType.rawValue
         return levelView
     }
     

@@ -60,8 +60,10 @@ final class OperatorsViewController: UIViewController {
         switch model.math[unitNumber].levels[levelNumber].type {
         case .game(game: _):
             fatalError("Invalid state")
-        case .math(progress: _, oprator: let oprator, noOfOprands: let noOfOprands, levelType: let levelType):
-            model.math[unitNumber].levels[levelNumber].type = .math(progress: progress, oprator: oprator, noOfOprands: noOfOprands, levelType: levelType)
+        case .math(let model):
+            let newModel = MathModel(progress: progress, oprator: model.oprator, noOfOprands: model.noOfOprands, levelType: model.levelType)
+            
+            self.model.math[unitNumber].levels[levelNumber].type = CellType.math(mathModel: newModel)
         }
         operatorTableView.reloadData()
     }
@@ -87,7 +89,7 @@ extension OperatorsViewController: UITableViewDataSource{
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
         navigationController?.tabBarController?.tabBar.isHidden = true
         let cellType = model.math[unitNumber].levels[levelNumber].type
-        guard case .math(_, _, _, _) = cellType else {
+        guard case .math(_) = cellType else {
             if case .game(let gameType) = cellType {
                 switch gameType {
                 case .TwoZeroFourEight:

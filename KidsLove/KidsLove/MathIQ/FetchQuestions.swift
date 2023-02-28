@@ -84,12 +84,16 @@ class NetworkService {
         let hardMultiplyprogress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 2)
         let practiceProgress = getProgressFromUserDefault(currentUnitNumber: unitNumber, currentLevelNumber: 3)
         
-        let easyCellModel =  LevelCellModel(type: .math(progress: easyMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .easy), title: "Easy")
-       
-        let mediumCellModel = LevelCellModel(type: .math(progress: mediumMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .medium), title: "Medium")
         
-        let hardCellModel = LevelCellModel(type: .math(progress: hardMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .practice), title: "Hard")
-        let praticeCellModel = LevelCellModel(type: .math(progress: practiceProgress, oprator: oprator, noOfOprands: 3, levelType: .practice), title: "Practice")
+        let model = MathModel(progress: easyMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .easy)
+        let easyCellModel =  LevelCellModel(type: .math(mathModel: model), title: "Easy")
+       
+        let mediumCellModel = LevelCellModel(type: .math(mathModel: MathModel(progress: mediumMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .medium)), title: "Medium")
+        
+        let hardCellModel = LevelCellModel(type: .math(mathModel: MathModel(progress: hardMultiplyprogress, oprator: oprator, noOfOprands: 2, levelType: .practice)), title: "Hard")
+                                           
+                                           
+        let praticeCellModel = LevelCellModel(type: .math(mathModel: MathModel(progress: practiceProgress, oprator: oprator, noOfOprands: 3, levelType: .practice)), title: "Practice")
 
         return [easyCellModel, mediumCellModel, hardCellModel, praticeCellModel]
         

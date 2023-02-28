@@ -21,16 +21,24 @@ enum Game: Int {
     }
 }
 
+struct MathModel {
+    let progress: Progress
+    let oprator: Oprator
+    let noOfOprands: Int
+    let levelType: LevelType
+    
+}
+
 enum CellType {
     case game(game: Game)
-    case math(progress: Progress, oprator: Oprator, noOfOprands: Int, levelType: LevelType)
+    case math(mathModel: MathModel)
     
     var index: Int {
         switch self {
         case .game(game: _):
             return 0
-        case .math(progress: _, oprator: _, noOfOprands: _, levelType: let levelType):
-            return levelType.rawValue
+        case .math(let model):
+            return model.levelType.rawValue
         }
     }
     
@@ -38,8 +46,8 @@ enum CellType {
         switch self {
         case .game(game: _):
             fatalError("Invalid state")
-        case .math(progress: let progress, oprator: _, noOfOprands: _, levelType: _):
-            return progress
+        case .math(let model):
+            return model.progress
         }
     }
 }
@@ -59,11 +67,11 @@ struct LevelCellModel {
     let title: String
     
     func questions() -> [Question] {
-        guard case .math(_, let oprator, let noOfOprands, let levelType) = type else {
+        guard case .math(let model) = type else {
             fatalError("Invalid state")
         }
         return NetworkService()
-            .getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: AppConfig().numberOfQuestions , oprator: oprator, noOfOprands: noOfOprands)
+            .getQuestions(range: model.levelType.range, numberOfOptions: 4, numberOfQuestions: AppConfig().numberOfQuestions , oprator: model.oprator, noOfOprands: model.noOfOprands)
     }
 }
 struct Question {
