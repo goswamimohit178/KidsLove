@@ -130,8 +130,8 @@ struct PlayerScoreView: View {
                     Text("Coins")
                         .font(.body)
                     CoinView(coins:playerModel.playerCoins)
-                        .frame(width: geo.size.width, height:  geo.size.width*0.20)
-                        .background(.blue)
+//                        .frame(width: geo.size.width, height: geo.size.width*0.20)
+//                        .background(.blue)
                     
                 }
                 
@@ -139,7 +139,7 @@ struct PlayerScoreView: View {
                     Text("Mills")
                         .font(.body)
                     CoinView(coins: playerModel.playerMills)
-                        .frame(width: geo.size.width, height:  geo.size.width*0.20)
+                        .frame(width: geo.size.width, height:  geo.size.width*0.30)
 
                 }
             }
@@ -158,7 +158,6 @@ struct CoinView: View {
                         .resizable()
                         .frame(width: geo.size.width*0.20, height:  geo.size.width*0.20)
                         .offset(x: coin.offset)
-                        .background(.cyan)
                 }
             }
         }

@@ -87,7 +87,9 @@ class GameVC: UIViewController {
         buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 20
         buttonStackView.backgroundColor = .brown
-        
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        buttonStackView.heightAnchor.constraint(equalToConstant: view.frame.height*0.10).isActive = true
         restartButton = UIButton()
         restartButton.setTitle("Restart", for: .normal)
         restartButton.addTarget(self, action: #selector(restartButtonAction), for: .touchUpInside)
@@ -112,7 +114,7 @@ class GameVC: UIViewController {
         // Header view
         let myFrame = margins.layoutFrame
         let isWidthLess = (myFrame.width < myFrame.height)
-        let widthRequired = min((isWidthLess ? myFrame.width: myFrame.height), 70000)
+        let widthRequired = view.frame.height * 0.60
         ratio = widthRequired/350
         let estimatedPlayerHeight = ((myFrame.height-widthRequired-60)/2)
         let height: CGFloat = estimatedPlayerHeight > 100 ? 100: estimatedPlayerHeight
@@ -131,8 +133,11 @@ class GameVC: UIViewController {
         self.headerView = HeaderView(model: headerModel)
         playerView = UIHostingController(rootView: headerView).view
         stackView.addArrangedSubview(playerView)
+        playerView.translatesAutoresizingMaskIntoConstraints = false
         playerView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        playerView.heightAnchor.constraint(equalToConstant: view.frame.height*0.16).isActive = true
+        playerView.heightAnchor.constraint(equalToConstant: view.frame.height*0.20).isActive = true
+        
+
 
         playerView.backgroundColor = .red
 
@@ -142,7 +147,7 @@ class GameVC: UIViewController {
         gameView.backgroundColor = .blue
 
         gameView.translatesAutoresizingMaskIntoConstraints = false
-        gameView.widthAnchor.constraint(equalToConstant: widthRequired).isActive = true
+        gameView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         gameView.heightAnchor.constraint(equalToConstant: widthRequired).isActive = true
         gameView.viewModel = viewModel
         viewModel.delegate = gameView
