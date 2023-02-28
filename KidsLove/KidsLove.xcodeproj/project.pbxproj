@@ -15,6 +15,8 @@
 		0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0492993D29A101BD00331306 /* GoogleService-Info.plist */; };
 		04934BB129AB69FC0099CBDC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 04934BB029AB69FC0099CBDC /* Lottie */; };
 		04934BB429AB6C4D0099CBDC /* panchi.json in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB329AB6C4D0099CBDC /* panchi.json */; };
+		049512AD29AE0BE500933CD7 /* bottomAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 049512AC29AE0BE500933CD7 /* bottomAnimation.json */; };
+		049512AF29AE0FB000933CD7 /* childAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 049512AE29AE0FB000933CD7 /* childAnimation.json */; };
 		04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B329A08E34008F70FB /* FirebaseAnalytics */; };
 		04DA93B629A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B529A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion */; };
 		04DA93B829A08E34008F70FB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B729A08E34008F70FB /* FirebaseAnalyticsSwift */; };
@@ -136,6 +138,8 @@
 		0492993B29A1019900331306 /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
 		0492993D29A101BD00331306 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04934BB329AB6C4D0099CBDC /* panchi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panchi.json; sourceTree = "<group>"; };
+		049512AC29AE0BE500933CD7 /* bottomAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bottomAnimation.json; sourceTree = "<group>"; };
+		049512AE29AE0FB000933CD7 /* childAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = childAnimation.json; sourceTree = "<group>"; };
 		04DA93C529A0C8C7008F70FB /* FireBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseConfig.swift; sourceTree = "<group>"; };
 		1331E231298D39DD00AFD1E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1331E232298D39DD00AFD1E0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 				04906A9C29AC896000EC970E /* panchi1.json */,
 				04906AA029AC9F0100EC970E /* LaunchScreenAnimation.json */,
 				04906AA229ACA27300EC970E /* teacherAnimation.json */,
+				049512AC29AE0BE500933CD7 /* bottomAnimation.json */,
+				049512AE29AE0FB000933CD7 /* childAnimation.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				139D2BA0298FA206006CAEF9 /* wrongButton.wav in Resources */,
 				36B3B7E129A28084000707C9 /* place-player-2.mp3 in Resources */,
 				36B3B7F029A28084000707C9 /* select.mp3 in Resources */,
+				049512AD29AE0BE500933CD7 /* bottomAnimation.json in Resources */,
 				36B3B7E029A28084000707C9 /* notAllowed.mp3 in Resources */,
 				139D2BA429921C31006CAEF9 /* OperatorTableViewCell.xib in Resources */,
 				36B3B80C29A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
@@ -671,6 +678,7 @@
 				36B3B81A29A34930000707C9 /* White Milk.ttf in Resources */,
 				36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */,
 				36B3B7EB29A28084000707C9 /* Assets.xcassets in Resources */,
+				049512AF29AE0FB000933CD7 /* childAnimation.json in Resources */,
 				36B3B80D29A28084000707C9 /* place-player-1.mp3 in Resources */,
 				36B3B7FD29A28084000707C9 /* move.mp3 in Resources */,
 				36B3B7DC29A28084000707C9 /* char.mp3 in Resources */,

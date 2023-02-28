@@ -15,19 +15,26 @@ class LaunchScreenViewController: UIViewController {
         let screenSize = UIScreen.main.bounds
         //let screenHeight = screenSize.height
         let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
        // let height = screenHeight*0.20
         let animationView = Lottie.LottieAnimationView()
-        let animation = Lottie.LottieAnimationView(name: "teacherAnimation").animation
+        let animation = Lottie.LottieAnimationView(name: "childAnimation").animation
         animationView.animation = animation
+        animationView.contentMode = .scaleAspectFill
         animationView.play()
-        view.addSubview(animationView)
-        animationView.contentMode = .scaleToFill
+        
        // animationView.backgroundColor = .red
+       
         animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.center = CGPoint(x: view.bounds.size.width/2 , y: view.bounds.size.height/2)
+        animationView.widthAnchor.constraint(equalToConstant: screenWidth ).isActive = true
+        animationView.heightAnchor.constraint(equalToConstant: screenHeight).isActive = true
+//        animationView.widthAnchor.constraint(equalToConstant: screenWidth).isActive = true
+//        animationView.heightAnchor.constraint(equalToConstant: screenWidth).isActive = true
+        view.addSubview(animationView)
 //        let horizontalConstraint = NSLayoutConstraint(item: animationView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 0.8, constant: 0)
 //        let verticalConstraint = NSLayoutConstraint(item: animationView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 0.8, constant: 0)
-        animationView.widthAnchor.constraint(equalToConstant: screenWidth).isActive = true
-        animationView.heightAnchor.constraint(equalToConstant: screenWidth).isActive = true
+      
       
 
         // Do any additional setup after loading the view.
@@ -35,7 +42,7 @@ class LaunchScreenViewController: UIViewController {
 
          //  self.navigationController?.pushViewController(TabBarController(), animated: true)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let nextViewController = TabBarController() // replace this with the view controller you want to show
             self.present(nextViewController, animated: true)
         }
