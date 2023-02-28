@@ -78,6 +78,7 @@ class GameVC: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
         stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
 
+        stackView.backgroundColor = .black
         
         //buttons
         let buttonStackView = UIStackView()
@@ -85,6 +86,7 @@ class GameVC: UIViewController {
         buttonStackView.alignment = .center
         buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 20
+        buttonStackView.backgroundColor = .brown
         
         restartButton = UIButton()
         restartButton.setTitle("Restart", for: .normal)
@@ -129,11 +131,16 @@ class GameVC: UIViewController {
         self.headerView = HeaderView(model: headerModel)
         playerView = UIHostingController(rootView: headerView).view
         stackView.addArrangedSubview(playerView)
-        
+        playerView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        playerView.heightAnchor.constraint(equalToConstant: view.frame.height*0.16).isActive = true
+
+        playerView.backgroundColor = .red
+
         // Game board
         gameView = MillsGameView(viewDataModel: viewDataModel, viewModel: viewModel, ratio: ratio)
         viewDataModel.view = gameView
-       
+        gameView.backgroundColor = .blue
+
         gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.widthAnchor.constraint(equalToConstant: widthRequired).isActive = true
         gameView.heightAnchor.constraint(equalToConstant: widthRequired).isActive = true

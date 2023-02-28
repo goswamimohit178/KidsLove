@@ -71,15 +71,22 @@ struct HeaderView: View {
     @State var size: CGSize = .zero
     
     var body: some View {
-        HStack(alignment: .top) {
-            PlayerScoreView(playerModel: model.player1)
-                .padding()
-            ImageView(icon: model.playerIcon)
-            PlayerScoreView(playerModel: model.player2)
-                .padding()
+        GeometryReader { geo in
+            HStack(alignment: .top) {
+                PlayerScoreView(playerModel: model.player1)
+                    .frame(width: geo.size.width*0.33, height: geo.size.width*0.33)
+
+                    .padding()
+                ImageView(icon: model.playerIcon)
+                    .frame(width: geo.size.width*0.33, height: geo.size.width*0.33)
+
+                PlayerScoreView(playerModel: model.player2)
+                    .frame(width: geo.size.width*0.33, height: geo.size.width*0.33)
+                    .padding()
+            }
+            .border(Color(UIColor.defaultThemeColor), width: 5)
+            .cornerRadius(10)
         }
-        .border(Color(UIColor.defaultThemeColor), width: 5)
-        .cornerRadius(10)
     }
 }
 
@@ -93,7 +100,7 @@ struct ImageView: View {
                 .resizable()
                 .clipped()
                 .scaledToFit()
-//                .frame(width: geo.size.width * 0.8)
+                .frame(width: geo.size.width * 0.40)
                 .cornerRadius(45/2)
                 .padding()
                 .offset(y: scaling ? 0 : 100)
@@ -113,24 +120,28 @@ struct PlayerScoreView: View {
     @ObservedObject var playerModel: PlayerModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Player 1")
-                .font(.title)
-       
-            if !playerModel.playerCoins.isEmpty {
-                Text("Coins")
-                    .font(.body)
-                CoinView(coins:playerModel.playerCoins)
-                    .frame(width: 100, height: 50)
-                    .background(.red)
+        GeometryReader { geo in
+            
+            VStack(alignment: .leading) {
+                Text("Player 1")
+                    .font(.title)
+                
+                if !playerModel.playerCoins.isEmpty {
+                    Text("Coins")
+                        .font(.body)
+                    CoinView(coins:playerModel.playerCoins)
+                        .frame(width: geo.size.width, height:  geo.size.width*0.20)
+                        .background(.blue)
+                    
+                }
+                
+                if !playerModel.playerMills.isEmpty {
+                    Text("Mills")
+                        .font(.body)
+                    CoinView(coins: playerModel.playerMills)
+                        .frame(width: geo.size.width, height:  geo.size.width*0.20)
 
-            }
-
-            if !playerModel.playerMills.isEmpty {
-                Text("Mills")
-                    .font(.body)
-                CoinView(coins: playerModel.playerMills)
-//                    .frame(width: 500)
+                }
             }
         }
     }
@@ -143,10 +154,11 @@ struct CoinView: View {
         GeometryReader { geo in
             ZStack {
                 ForEach(coins) { coin in
-                    Image("coin1")
+                    Image(coin.imageName)
                         .resizable()
-                        .frame(width: geo.size.width*0.50, height:  geo.size.width*0.50)
+                        .frame(width: geo.size.width*0.20, height:  geo.size.width*0.20)
                         .offset(x: coin.offset)
+                        .background(.cyan)
                 }
             }
         }
