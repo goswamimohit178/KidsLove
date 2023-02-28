@@ -74,14 +74,14 @@ struct HeaderView: View {
         GeometryReader { geo in
             HStack(alignment: .top) {
                 PlayerScoreView(playerModel: model.player1)
-                    .frame(width: geo.size.width*0.33, height: geo.size.width*0.33)
+                    .frame(height: geo.size.width*0.33)
 
                     .padding()
                 ImageView(icon: model.playerIcon)
-                    .frame(width: geo.size.width*0.33, height: geo.size.width*0.33)
+                    .frame(height: geo.size.width*0.33)
 
                 PlayerScoreView(playerModel: model.player2)
-                    .frame(width: geo.size.width*0.33, height: geo.size.width*0.33)
+                    .frame(height: geo.size.width*0.33)
                     .padding()
             }
             .border(Color(UIColor.defaultThemeColor), width: 5)
@@ -124,13 +124,13 @@ struct PlayerScoreView: View {
             
             VStack(alignment: .leading) {
                 Text("Player 1")
-                    .font(.title)
+                    .font(.body.bold())
                 
                 if !playerModel.playerCoins.isEmpty {
                     Text("Coins")
                         .font(.body)
                     CoinView(coins:playerModel.playerCoins)
-//                        .frame(width: geo.size.width, height: geo.size.width*0.20)
+                        .frame(width: geo.size.width, height: geo.size.width*0.30)
 //                        .background(.blue)
                     
                 }

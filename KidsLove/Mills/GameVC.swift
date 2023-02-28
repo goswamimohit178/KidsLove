@@ -29,9 +29,26 @@ class GameVC: UIViewController {
     
     var viewModel: MillsGameViewModel!
     
+    var myFrame: CGRect {
+        let margins = view.safeAreaLayoutGuide
+        let myFrame = margins.layoutFrame
+        return myFrame
+    }
+    
+    var buttonHeight: CGFloat {
+        return myFrame.height * 0.07
+    }
+    
+    var boardHeight: CGFloat {
+        return min(myFrame.width, myFrame.height * 0.60)
+    }
+    
+    var headerHeight: CGFloat {
+        return myFrame.height * 0.20
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        startNewGame()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
     }
@@ -44,6 +61,7 @@ class GameVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        startNewGame()
     }
     
     func setCurrentPlayer() {
@@ -62,11 +80,10 @@ class GameVC: UIViewController {
     }
     
     fileprivate func createNewGame() {
-//        let stackView = UIStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         let margins = view.safeAreaLayoutGuide
 
         let stackView = UIStackView()
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.axis = .vertical
         stackView.spacing = 10
@@ -87,9 +104,11 @@ class GameVC: UIViewController {
         buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 20
         buttonStackView.backgroundColor = .brown
+        
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        buttonStackView.heightAnchor.constraint(equalToConstant: view.frame.height*0.10).isActive = true
+        buttonStackView.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        
         restartButton = UIButton()
         restartButton.setTitle("Restart", for: .normal)
         restartButton.addTarget(self, action: #selector(restartButtonAction), for: .touchUpInside)
@@ -110,35 +129,20 @@ class GameVC: UIViewController {
         
         stackView.addArrangedSubview(buttonStackView)
 
-        
         // Header view
-        let myFrame = margins.layoutFrame
-        let isWidthLess = (myFrame.width < myFrame.height)
-        let widthRequired = view.frame.height * 0.60
-        ratio = widthRequired/350
-        let estimatedPlayerHeight = ((myFrame.height-widthRequired-60)/2)
-        let height: CGFloat = estimatedPlayerHeight > 100 ? 100: estimatedPlayerHeight
-        let restartButtonHeight: CGFloat = 60
-        var availableSpace = myFrame.height - (height + widthRequired + height + restartButtonHeight)
-        availableSpace = availableSpace>0 ? availableSpace: 0
-        
-        let xRequired = isWidthLess ? 0: (((myFrame.width - widthRequired)/2))
-        let yRequired = isWidthLess ? (myFrame.height - widthRequired-110): 0
-        let boardRect = CGRect(x: xRequired, y: yRequired, width: widthRequired, height: widthRequired)
+        ratio = boardHeight/350
 
-        let viewDataModel = ViewDataModel(ratio: ratio, width: widthRequired)
+        let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
         self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
         self.headerView = HeaderView(model: headerModel)
+
         playerView = UIHostingController(rootView: headerView).view
         stackView.addArrangedSubview(playerView)
         playerView.translatesAutoresizingMaskIntoConstraints = false
         playerView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        playerView.heightAnchor.constraint(equalToConstant: view.frame.height*0.20).isActive = true
-        
-
-
+        playerView.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         playerView.backgroundColor = .red
 
         // Game board
@@ -147,8 +151,9 @@ class GameVC: UIViewController {
         gameView.backgroundColor = .blue
 
         gameView.translatesAutoresizingMaskIntoConstraints = false
-        gameView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        gameView.heightAnchor.constraint(equalToConstant: widthRequired).isActive = true
+        gameView.widthAnchor.constraint(equalToConstant: boardHeight).isActive = true
+        gameView.heightAnchor.constraint(equalToConstant: boardHeight).isActive = true
+        
         gameView.viewModel = viewModel
         viewModel.delegate = gameView
         gameView.showAlert = showAlert
