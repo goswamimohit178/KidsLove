@@ -44,7 +44,8 @@ class LaunchScreenViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let nextViewController = TabBarController() // replace this with the view controller you want to show
-            self.present(nextViewController, animated: true)
+            UIApplication.shared.windows.first?.rootViewController = nextViewController
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
         }
         
     }
