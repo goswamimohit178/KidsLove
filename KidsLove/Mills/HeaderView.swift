@@ -21,13 +21,15 @@ class CoinModel: Identifiable, ObservableObject {
 }
 
 class PlayerModel: Identifiable, ObservableObject {
-    internal init(id: UUID = UUID(), playerCoins: [CoinModel], playerMills: [CoinModel]) {
+    internal init(id: UUID = UUID(), playerCoins: [CoinModel], playerMills: [CoinModel], name: String) {
         self.id = id
         self.playerCoins = playerCoins
         self.playerMills = playerMills
+        self.name = name
     }
     
     var id: UUID = UUID()
+    @Published var name: String
     @Published var playerCoins: [CoinModel]
     @Published var playerMills: [CoinModel]
 }
@@ -39,8 +41,8 @@ func defaultPlayerCoins(imageName: String, range: ClosedRange<Int> = (0...9)) ->
 class HeaderViewModel: Identifiable, ObservableObject {
     internal init(id: UUID = UUID(), playerIcon: CoinModel) {
         self.id = id
-        self.player1 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin1"), playerMills: [])
-        self.player2 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin2"), playerMills: [])
+        self.player1 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin1"), playerMills: [], name: "Silver Player")
+        self.player2 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin2"), playerMills: [], name: "Gold Player")
         self.playerIcon = playerIcon
     }
     var id: UUID = UUID()
@@ -69,23 +71,37 @@ class HeaderViewModel: Identifiable, ObservableObject {
 struct HeaderView: View {
     @ObservedObject var model: HeaderViewModel
     @State var size: CGSize = .zero
-    
+    @State private var isMute = SoundPlayer.isMute
+
+    var restratAction: ()-> Void
+    var muteAction: ()-> Void
+
     var body: some View {
         GeometryReader { geo in
-            HStack(alignment: .top) {
-                PlayerScoreView(playerModel: model.player1)
-                    .frame(height: geo.size.width*0.33)
+            VStack {
+                HStack(alignment: .top) {
+                   SmallActionButton(title: "Restart", action: restratAction, enabled: true)
+                    SmallActionButton(title: !isMute ? "Mute" : "Unmute", action: {
+                        isMute.toggle()
+                        muteAction()
+                    }, enabled: true)
+                }
+                .padding()
 
-                    .padding()
-                ImageView(icon: model.playerIcon)
-                    .frame(height: geo.size.width*0.33)
-
-                PlayerScoreView(playerModel: model.player2)
-                    .frame(height: geo.size.width*0.33)
-                    .padding()
+                HStack(alignment: .top) {
+                    PlayerScoreView(playerModel: model.player1)
+                        .frame(width: geo.size.width*0.28)
+                    ImageView(icon: model.playerIcon)
+                        .frame(width: geo.size.width*0.28)
+                    
+                    PlayerScoreView(playerModel: model.player2)
+                        .frame(width: geo.size.width*0.29)
+                }
+                .padding()
+                .border(Color(UIColor.defaultThemeColor), width: 5)
+                .cornerRadius(10)
             }
-            .border(Color(UIColor.defaultThemeColor), width: 5)
-            .cornerRadius(10)
+
         }
     }
 }
@@ -121,26 +137,18 @@ struct PlayerScoreView: View {
     
     var body: some View {
         GeometryReader { geo in
-            
             VStack(alignment: .leading) {
-                Text("Player 1")
+                Text(playerModel.name)
                     .font(.body.bold())
-                
                 if !playerModel.playerCoins.isEmpty {
                     Text("Coins")
                         .font(.body)
                     CoinView(coins:playerModel.playerCoins)
-                        .frame(width: geo.size.width, height: geo.size.width*0.30)
-//                        .background(.blue)
-                    
                 }
-                
                 if !playerModel.playerMills.isEmpty {
                     Text("Mills")
                         .font(.body)
                     CoinView(coins: playerModel.playerMills)
-                        .frame(width: geo.size.width, height:  geo.size.width*0.30)
-
                 }
             }
         }

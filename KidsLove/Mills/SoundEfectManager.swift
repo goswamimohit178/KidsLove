@@ -41,7 +41,7 @@ class SoundEfectManager {
       fileName = "select"
     }
 		
-		guard !isUserOnMute else {
+		guard !SoundPlayer.isMute else {
 			return
 		}
     
