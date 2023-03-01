@@ -37,6 +37,12 @@
 		139D2BE72998E03D006CAEF9 /* FetchQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */; };
 		139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BEA299CCABA006CAEF9 /* rightButton.wav */; };
 		363313E429A8D4050072BD66 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313E329A8D4050072BD66 /* HeaderView.swift */; };
+		3633140429AF49190072BD66 /* think-tank.json in Resources */ = {isa = PBXBuildFile; fileRef = 3633140329AF49190072BD66 /* think-tank.json */; };
+		3633140929AF55090072BD66 /* cute-astronaut-flying-in-space-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3633140529AF55080072BD66 /* cute-astronaut-flying-in-space-animation.json */; };
+		3633140A29AF55090072BD66 /* happy-loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 3633140629AF55090072BD66 /* happy-loader.json */; };
+		3633140B29AF55090072BD66 /* inchworm-character-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3633140729AF55090072BD66 /* inchworm-character-animation.json */; };
+		3633140C29AF55090072BD66 /* kids.json in Resources */ = {isa = PBXBuildFile; fileRef = 3633140829AF55090072BD66 /* kids.json */; };
+		3633141029AF5AE50072BD66 /* teacher.json in Resources */ = {isa = PBXBuildFile; fileRef = 3633140F29AF5AE40072BD66 /* teacher.json */; };
 		364D781B299F7C7700FF42D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781A299F7C7700FF42D7 /* SettingsView.swift */; };
 		364D781D299F940800FF42D7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781C299F940800FF42D7 /* AppRouter.swift */; };
 		364D781F299F994A00FF42D7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D781E299F994A00FF42D7 /* SoundPlayer.swift */; };
@@ -152,6 +158,12 @@
 		139D2BE62998E03D006CAEF9 /* FetchQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQuestions.swift; sourceTree = "<group>"; };
 		139D2BEA299CCABA006CAEF9 /* rightButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rightButton.wav; sourceTree = "<group>"; };
 		363313E329A8D4050072BD66 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		3633140329AF49190072BD66 /* think-tank.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "think-tank.json"; sourceTree = "<group>"; };
+		3633140529AF55080072BD66 /* cute-astronaut-flying-in-space-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cute-astronaut-flying-in-space-animation.json"; sourceTree = "<group>"; };
+		3633140629AF55090072BD66 /* happy-loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "happy-loader.json"; sourceTree = "<group>"; };
+		3633140729AF55090072BD66 /* inchworm-character-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "inchworm-character-animation.json"; sourceTree = "<group>"; };
+		3633140829AF55090072BD66 /* kids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kids.json; sourceTree = "<group>"; };
+		3633140F29AF5AE40072BD66 /* teacher.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teacher.json; sourceTree = "<group>"; };
 		364D781A299F7C7700FF42D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		364D781C299F940800FF42D7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		364D781E299F994A00FF42D7 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
@@ -278,10 +290,16 @@
 			isa = PBXGroup;
 			children = (
 				04934BB329AB6C4D0099CBDC /* panchi.json */,
+				3633140F29AF5AE40072BD66 /* teacher.json */,
 				04906A9C29AC896000EC970E /* panchi1.json */,
 				04906AA029AC9F0100EC970E /* LaunchScreenAnimation.json */,
 				04906AA229ACA27300EC970E /* teacherAnimation.json */,
+				3633140729AF55090072BD66 /* inchworm-character-animation.json */,
+				3633140529AF55080072BD66 /* cute-astronaut-flying-in-space-animation.json */,
+				3633140629AF55090072BD66 /* happy-loader.json */,
+				3633140829AF55090072BD66 /* kids.json */,
 				049512AC29AE0BE500933CD7 /* bottomAnimation.json */,
+				3633140329AF49190072BD66 /* think-tank.json */,
 				049512AE29AE0FB000933CD7 /* childAnimation.json */,
 			);
 			path = Lottie;
@@ -650,12 +668,14 @@
 				36B3B7E029A28084000707C9 /* notAllowed.mp3 in Resources */,
 				139D2BA429921C31006CAEF9 /* OperatorTableViewCell.xib in Resources */,
 				36B3B80C29A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
+				3633141029AF5AE50072BD66 /* teacher.json in Resources */,
 				36B3B7E329A28084000707C9 /* PlayerView.xib in Resources */,
 				36939D12298CFB6000927B1E /* Assets.xcassets in Resources */,
 				36B3B7DB29A28084000707C9 /* lose.mp3 in Resources */,
 				36B3B7E229A28084000707C9 /* select.mp3 in Resources */,
 				04906AA329ACA27300EC970E /* teacherAnimation.json in Resources */,
 				36B3B7FB29A28084000707C9 /* move.mp3 in Resources */,
+				3633140429AF49190072BD66 /* think-tank.json in Resources */,
 				36DD6087298E12E000F059FB /* ResultsViewController.xib in Resources */,
 				36B3B7F429A28084000707C9 /* Main.storyboard in Resources */,
 				36B3B80329A28084000707C9 /* PlayerView.xib in Resources */,
@@ -668,6 +688,8 @@
 				0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */,
 				1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */,
 				139D2BEB299CCABA006CAEF9 /* rightButton.wav in Resources */,
+				3633140B29AF55090072BD66 /* inchworm-character-animation.json in Resources */,
+				3633140C29AF55090072BD66 /* kids.json in Resources */,
 				36B3B7FA29A28084000707C9 /* place-player-1.mp3 in Resources */,
 				36B3B7F829A28084000707C9 /* bhar.mp3 in Resources */,
 				36B3B7F529A28084000707C9 /* char.mp3 in Resources */,
@@ -677,10 +699,12 @@
 				36B3B80229A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
 				36B3B81A29A34930000707C9 /* White Milk.ttf in Resources */,
 				36B3B7FC29A28084000707C9 /* Mills.ipa in Resources */,
+				3633140929AF55090072BD66 /* cute-astronaut-flying-in-space-animation.json in Resources */,
 				36B3B7EB29A28084000707C9 /* Assets.xcassets in Resources */,
 				049512AF29AE0FB000933CD7 /* childAnimation.json in Resources */,
 				36B3B80D29A28084000707C9 /* place-player-1.mp3 in Resources */,
 				36B3B7FD29A28084000707C9 /* move.mp3 in Resources */,
+				3633140A29AF55090072BD66 /* happy-loader.json in Resources */,
 				36B3B7DC29A28084000707C9 /* char.mp3 in Resources */,
 				36B3B7F729A28084000707C9 /* win.mp3 in Resources */,
 				36B3B7FE29A28084000707C9 /* lose.mp3 in Resources */,
