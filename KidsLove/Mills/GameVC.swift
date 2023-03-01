@@ -12,14 +12,11 @@ import SwiftUI
 import Combine
 
 var ratio: CGFloat = 1
-var isUserOnMute = false
 
 class GameVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var gameView: MillsGameView!
     private var playerView: UIView!
-    private var soundButton: UIButton!
-    private var restartButton: UIButton!
    
     private var disposable = Set<AnyCancellable>()
     
@@ -35,16 +32,12 @@ class GameVC: UIViewController {
         return myFrame
     }
     
-    var buttonHeight: CGFloat {
-        return myFrame.height * 0.07
-    }
-    
     var boardHeight: CGFloat {
         return min(myFrame.width, myFrame.height * 0.60)
     }
     
     var headerHeight: CGFloat {
-        return myFrame.height * 0.20
+        return myFrame.height * 0.30
     }
     
     override func viewDidLoad() {
@@ -71,8 +64,6 @@ class GameVC: UIViewController {
     fileprivate func cleanup() {
         gameView.removeFromSuperview()
         playerView.removeFromSuperview()
-        soundButton.removeFromSuperview()
-        restartButton.removeFromSuperview()
     }
     
     func showAlert(message: String) {
@@ -84,7 +75,7 @@ class GameVC: UIViewController {
 
         let stackView = UIStackView()
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.spacing = 10
         view.addSubview(stackView)
@@ -95,40 +86,6 @@ class GameVC: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
         stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
 
-//        stackView.backgroundColor = .black
-        
-        //buttons
-        let buttonStackView = UIStackView()
-        buttonStackView.axis = .horizontal
-        buttonStackView.alignment = .center
-        buttonStackView.distribution = .fillEqually
-        buttonStackView.spacing = 20
-//        buttonStackView.backgroundColor = .brown
-        
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        buttonStackView.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        
-        restartButton = UIButton()
-        restartButton.setTitle("Restart", for: .normal)
-        restartButton.addTarget(self, action: #selector(restartButtonAction), for: .touchUpInside)
-        restartButton.setTitleColor(UIColor.defaultTextColor(), for: .normal)
-        restartButton.tintColor = UIColor.defaultThemeColor
-
-        soundButton = UIButton()
-        soundButton.setTitleColor(UIColor.defaultTextColor(), for: .normal)
-        soundButton.setTitle("Mute", for: .normal)
-        soundButton.addTarget(self, action: #selector(muteButtonAction), for: .touchUpInside)
-        soundButton.tintColor = UIColor.defaultThemeColor
-        
-        restartButton.setImage(UIImage(systemName: "play"), for: .normal)
-        soundButton.setImage(UIImage(systemName: "speaker"), for: .normal)
-        
-        buttonStackView.addArrangedSubview(soundButton)
-        buttonStackView.addArrangedSubview(restartButton)
-        
-        stackView.addArrangedSubview(buttonStackView)
-
         // Header view
         ratio = boardHeight/350
 
@@ -136,7 +93,7 @@ class GameVC: UIViewController {
         self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
-        self.headerView = HeaderView(model: headerModel)
+        self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)
 
         playerView = UIHostingController(rootView: headerView).view
         stackView.addArrangedSubview(playerView)
@@ -194,24 +151,24 @@ class GameVC: UIViewController {
         self.present(alert, animated: false, completion: nil)
     }
     
-    @objc func restartButtonAction(button: UIButton) {
+    func restartButtonAction() {
         showAlert(title: "Restart Game!", message: "Are you sure you want to restart?")
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id-\(button.titleLabel!.text!)",
+            AnalyticsParameterItemID: "id",
             AnalyticsParameterItemName: "User restarted game",
             AnalyticsParameterContentType: "cont"
         ])
     }
     
-    @objc func muteButtonAction(button: UIButton) {
-        isUserOnMute = !isUserOnMute
-        if isUserOnMute {
-            button.setTitle("Unmute", for: .normal)
-        } else {
-            button.setTitle("Mute", for: .normal)
-        }
+    func muteButtonAction() {
+        SoundPlayer.isMute.toggle()
+//        if isUserOnMute {
+//            button.setTitle("Unmute", for: .normal)
+//        } else {
+//            button.setTitle("Mute", for: .normal)
+//        }
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id-\(button.titleLabel!.text!)",
+            AnalyticsParameterItemID: "id",
             AnalyticsParameterItemName: "User muted",
             AnalyticsParameterContentType: "cont"
         ])
