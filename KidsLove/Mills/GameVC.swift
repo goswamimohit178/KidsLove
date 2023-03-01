@@ -95,7 +95,7 @@ class GameVC: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
         stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
 
-        stackView.backgroundColor = .black
+//        stackView.backgroundColor = .black
         
         //buttons
         let buttonStackView = UIStackView()
@@ -103,7 +103,7 @@ class GameVC: UIViewController {
         buttonStackView.alignment = .center
         buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 20
-        buttonStackView.backgroundColor = .brown
+//        buttonStackView.backgroundColor = .brown
         
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
@@ -143,12 +143,12 @@ class GameVC: UIViewController {
         playerView.translatesAutoresizingMaskIntoConstraints = false
         playerView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         playerView.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
-        playerView.backgroundColor = .red
+//        playerView.backgroundColor = .red
 
         // Game board
         gameView = MillsGameView(viewDataModel: viewDataModel, viewModel: viewModel, ratio: ratio)
         viewDataModel.view = gameView
-        gameView.backgroundColor = .blue
+//        gameView.backgroundColor = .blue
 
         gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.widthAnchor.constraint(equalToConstant: boardHeight).isActive = true
