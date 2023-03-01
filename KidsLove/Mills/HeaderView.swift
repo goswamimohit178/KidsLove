@@ -114,13 +114,13 @@ struct ImageView: View {
         GeometryReader { geo in
             Image(icon.imageName)
                 .resizable()
-                .scaleEffect(x: (scaling ?  1 : 0), y: (scaling ?  1 : 0))
+                .scaleEffect(x: (scaling ?  1 : 0.80), y: (scaling ?  1 : 0.80))
                 .onAppear {
                     withAnimation(
                         .spring()
                         .repeatForever(
                             autoreverses: true)
-                        .speed(0.25)) {
+                        .speed(0.50)) {
                                 scaling.toggle()
                             }
                 }

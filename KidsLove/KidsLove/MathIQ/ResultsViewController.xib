@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -96,7 +97,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="189.33333333333334" height="70"/>
                             <color key="tintColor" name="textColor"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Try Again"/>
+                            <state key="normal" title="Play Again"/>
                             <connections>
                                 <action selector="tryAgainBtnTapped:" destination="-1" eventType="touchUpInside" id="ICU-Ol-Wwj"/>
                             </connections>
