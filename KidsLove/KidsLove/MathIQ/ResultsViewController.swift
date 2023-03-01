@@ -45,16 +45,6 @@ class ResultsViewController: UIViewController {
         self.navigationController?.popToViewController(opratorVC, animated: true)
     }
     
-    fileprivate func updateResult() {
-        percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
-        replaceStarsImages(percentage: percentage)
-        if percentage >= 80.0 {
-            let previousProgress = getPreviousProgress()
-            let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
-            setNewProgress(currentProgress: currentProgress)
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -63,21 +53,18 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fontAndColorResults()
-        updateResult()
         if var viewControllers = navigationController?.viewControllers {
             viewControllers.remove(at: viewControllers.count-2)
             navigationController?.viewControllers = viewControllers
         }
 
         let resultprogress = calculateResultProgress()
-        resultProgressBar.setProgress(resultprogress, animated: true)
+        percentage = Float(correctAnswer) / Float(totalMarks) * 100.0
+        replaceStarsImages(percentage: percentage)
+     
+        resultProgressBar.setProgress(resultprogress.0, animated: true)
         resultProgressBar.tintColor = UIColor.progressBarColor()
-        let vc = UIHostingController(rootView: ContentView())
-        self.view.addSubview(vc.view)
-        vc.view.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
-        let previousProgress = getPreviousProgress()
-        let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
-        if currentProgress == .complete {
+        if resultprogress.1 == .complete {
             goToNextLevelButton.isEnabled = true
         } else {
             goToNextLevelButton.isEnabled = false
@@ -144,90 +131,19 @@ class ResultsViewController: UIViewController {
         print(keyForProgrss)
         defaults.set(currentProgress.rawValue, forKey: keyForProgrss)
     }
-    private func calculateResultProgress() -> Float{
+    private func calculateResultProgress() -> (Float, Progress) {
         let previousProgress = getPreviousProgress()
         let currentProgress = calculateCurrentProgress(previousProgress: previousProgress)
+        setNewProgress(currentProgress: currentProgress)
         switch currentProgress {
         case .zero:
-            return  0.0
+            return (0.0, .complete)
         case .oneThird:
-            return 0.3
+            return (0.3, .oneThird)
         case .twoThird:
-            return 0.66
+            return (0.66, .twoThird)
         case .complete:
-            return 1
+            return (1, .complete)
         }
     }
 }
-struct ContentView: View {
-    var body: some View {
-        ZStack {
-            Circle()
-                .fill(Color.pink)
-                .frame(width: 10, height: 10)
-                .modifier(ParticlesModifier())
-                .offset(x: -100, y : -50)
-            
-            Circle()
-                .fill(Color.orange)
-                .frame(width: 10, height: 10)
-                .modifier(ParticlesModifier())
-                .offset(x: 50, y : 60)
-            
-        }
-    }
-}
-struct ParticlesModifier: ViewModifier {
-    @State var time = 0.0
-    @State var scale = 0.1
-    let duration = 3.0
-    @State private var radius = 2
-    
-    func body(content: Content) -> some View {
-        ZStack {
-            
-            ForEach(0..<80, id: \.self) { index in
-                content
-                    .hueRotation(Angle(degrees: time * 80))
-                    .scaleEffect(scale)
-                    .modifier(FireworkParticlesGeometryEffect(time: time))
-                    .opacity(((duration-time) / duration))
-                Circle().fill(Color.yellow)
-                    .hueRotation(Angle(degrees: time * 200))
-                    .scaleEffect(scale)
-                    .modifier(FireworkParticlesGeometryEffect(time: time))
-                    .opacity(((duration-time) / duration))
-            }
-        }
-        .onAppear {
-            withAnimation (.easeOut(duration: duration)) {
-                self.time = duration
-                self.scale = 1.0
-                self.radius += 1
-                
-            }
-        }
-    }
-    func calculateRandom() -> CGFloat {
-        return CGFloat(Int.random(in: 30..<150))
-    }
-}
-
-struct FireworkParticlesGeometryEffect : GeometryEffect {
-    var time : Double
-    var speed = Double.random(in: 20 ... 200)
-    var direction = Double.random(in: -Double.pi ...  Double.pi)
-    
-    var animatableData: Double {
-        get { time }
-        set { time = newValue }
-    }
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        let xTranslation = speed * cos(direction) * time
-        let yTranslation = speed * sin(direction) * time
-        let affineTranslation =  CGAffineTransform(translationX: xTranslation, y: yTranslation)
-        return ProjectionTransform(affineTranslation)
-    }
-}
-
-

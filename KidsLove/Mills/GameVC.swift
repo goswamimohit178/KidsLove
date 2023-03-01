@@ -119,7 +119,7 @@ class GameVC: UIViewController {
 
         viewModel.player1.passthroughSubject.sink { millsAndAvailableCoin in
             self.headerView.model.player1.playerCoins = (millsAndAvailableCoin.availableCoins > 0) ? defaultPlayerCoins(imageName: "coin1", range: 0...millsAndAvailableCoin.availableCoins-1) : []
-            self.headerView.model.player1.playerMills = (millsAndAvailableCoin.mills > 0) ? defaultPlayerCoins(imageName: "coin2", range: 0...millsAndAvailableCoin.mills-1): []
+            self.headerView.model.player2.playerMills = (millsAndAvailableCoin.mills > 0) ? defaultPlayerCoins(imageName: "coin1", range: 0...millsAndAvailableCoin.mills-1): []
         }
         .store(in: &disposable)
 
@@ -132,7 +132,7 @@ class GameVC: UIViewController {
         viewModel.player2.passthroughSubject.sink { millsAndAvailableCoin in
             self.headerView.model.player2.playerCoins = (millsAndAvailableCoin.availableCoins > 0) ? defaultPlayerCoins(imageName: "coin2", range: 0...millsAndAvailableCoin.availableCoins-1) : []
 
-            self.headerView.model.player2.playerMills = (millsAndAvailableCoin.mills > 0) ? defaultPlayerCoins(imageName: "coin1", range: 0...millsAndAvailableCoin.mills-1): []
+            self.headerView.model.player1.playerMills = (millsAndAvailableCoin.mills > 0) ? defaultPlayerCoins(imageName: "coin2", range: 0...millsAndAvailableCoin.mills-1): []
         }
         .store(in: &disposable)
         
