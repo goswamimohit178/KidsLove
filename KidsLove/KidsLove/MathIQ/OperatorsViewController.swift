@@ -6,6 +6,7 @@
 //
 import UIKit
 import SwiftUI
+import GameKit
 
 final class OperatorsViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
@@ -24,6 +25,7 @@ final class OperatorsViewController: UIViewController {
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
+        authenticateUser()
         router = AppRouter(navigationController: navigationController!)
         setButtonStyle()
         headerLabel.font = UIFont.myAppBodyFonts()
@@ -38,6 +40,19 @@ final class OperatorsViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func authenticateUser() {
+        let player = GKLocalPlayer.local
+        player.authenticateHandler = { vc, error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            if let vc = vc {
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
