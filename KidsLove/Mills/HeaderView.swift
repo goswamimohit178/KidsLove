@@ -65,19 +65,19 @@ class HeaderViewModel: Identifiable, ObservableObject {
 
 struct HeaderView: View {
     @ObservedObject var model: HeaderViewModel
-
+    
     var body: some View {
         HStack(alignment: .top) {
             PlayerScoreView(playerModel: model.player1)
                 .padding()
             ImageView(icon: model.playerIcon)
                 .padding()
-
+            
             PlayerScoreView(playerModel: model.player2)
                 .padding()
         }
         .border(Color(UIColor.defaultThemeColor), width: 5)
-//        .shadow(radius: 10)
+        //        .shadow(radius: 10)
         .cornerRadius(10)
     }
 }
@@ -90,33 +90,33 @@ struct HeaderView: View {
 
 struct ImageView: View {
     @ObservedObject var icon: CoinModel
-
+    
     var body: some View {
         Image(icon.imageName)
             .resizable()
             .frame(width: 45, height: 45)
             .cornerRadius(45/2)
-
+        
     }
 }
 
 struct PlayerScoreView: View {
     @ObservedObject var playerModel: PlayerModel
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Player 1")
                 .font(.title)
             Text("Coins")
                 .font(.body)
-//            if !playerModel.playerCoins.isEmpty {
-                CoinView(coins:playerModel.playerCoins)
-//            }
+            //            if !playerModel.playerCoins.isEmpty {
+            CoinView(coins:playerModel.playerCoins)
+            //            }
             Text("Mills")
                 .font(.body)
-//            if !playerModel.playerMills.isEmpty {
-                CoinView(coins: playerModel.playerMills)
-//            }
+            //            if !playerModel.playerMills.isEmpty {
+            CoinView(coins: playerModel.playerMills)
+            //            }
         }
     }
 }
@@ -129,7 +129,7 @@ struct CoinView: View {
         GridItem(.adaptive(minimum: 10), spacing: 5),
         GridItem(.adaptive(minimum: 10), spacing: 5)
     ]
-
+    
     var body: some View {
         LazyVGrid(columns: gridItemLayout, spacing: 0) {
             ForEach(coins) { coin in
@@ -145,4 +145,6 @@ struct CoinView: View {
         .border(Color(UIColor.defaultThemeColor), width: 3)
         .listRowInsets(.init(top: 4, leading: 4, bottom: 4, trailing: 4))
     }
+    
+    
 }

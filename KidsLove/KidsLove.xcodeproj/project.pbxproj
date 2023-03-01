@@ -24,6 +24,8 @@
 		1331E234298D39DD00AFD1E0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1331E232298D39DD00AFD1E0 /* HomeViewController.xib */; };
 		1331E237298D3CE700AFD1E0 /* OperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */; };
 		1331E238298D3CE700AFD1E0 /* OperatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */; };
+		138ACFC629ADDAFD00D318E6 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ACFC529ADDAFD00D318E6 /* QuestionView.swift */; };
+		138ACFC829ADF9D600D318E6 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ACFC729ADF9D600D318E6 /* QuestionViewModel.swift */; };
 		139D2BA0298FA206006CAEF9 /* wrongButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139D2B9F298FA206006CAEF9 /* wrongButton.wav */; };
 		139D2BA329921C31006CAEF9 /* OperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */; };
 		139D2BA429921C31006CAEF9 /* OperatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */; };
@@ -133,6 +135,8 @@
 		1331E232298D39DD00AFD1E0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1331E235298D3CE700AFD1E0 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
 		1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatorsViewController.xib; sourceTree = "<group>"; };
+		138ACFC529ADDAFD00D318E6 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		138ACFC729ADF9D600D318E6 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 		139D2B9F298FA206006CAEF9 /* wrongButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrongButton.wav; sourceTree = "<group>"; };
 		139D2BA129921C31006CAEF9 /* OperatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewCell.swift; sourceTree = "<group>"; };
 		139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatorTableViewCell.xib; sourceTree = "<group>"; };
@@ -539,6 +543,8 @@
 				139D2BA229921C31006CAEF9 /* OperatorTableViewCell.xib */,
 				1331E236298D3CE700AFD1E0 /* OperatorsViewController.xib */,
 				36DD6080298D0BAC00F059FB /* QuestionViewController.swift */,
+				138ACFC529ADDAFD00D318E6 /* QuestionView.swift */,
+				138ACFC729ADF9D600D318E6 /* QuestionViewModel.swift */,
 				36DD6081298D0BAC00F059FB /* QuestionViewController.xib */,
 				36DD6084298E12E000F059FB /* ResultsViewController.swift */,
 				36DD6085298E12E000F059FB /* ResultsViewController.xib */,
@@ -693,6 +699,8 @@
 				36B3B77429A2764F000707C9 /* StateTracker.swift in Sources */,
 				36B3B76A29A2763E000707C9 /* TileStyle.swift in Sources */,
 				36939D09298CFB5F00927B1E /* AppDelegate.swift in Sources */,
+				138ACFC829ADF9D600D318E6 /* QuestionViewModel.swift in Sources */,
+				138ACFC629ADDAFD00D318E6 /* QuestionView.swift in Sources */,
 				36DD608B29911CD100F059FB /* ColorAndFonts.swift in Sources */,
 				36B3B7EA29A28084000707C9 /* GameVC.swift in Sources */,
 				36B3B7E529A28084000707C9 /* PlayerGuideMessages.swift in Sources */,

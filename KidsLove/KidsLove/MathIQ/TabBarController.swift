@@ -27,7 +27,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     var settingsVC: UIViewController {
-        let settingsVC = UIHostingController(rootView: SettingsView(themeUpdated: themeUpdated))
+//    themeUpdated: themeUpdated
+        let mathUnites = NetworkService().mathUnites()
+        let subjectModel = SubjectModel(math: mathUnites)
+        let levelCellmodel = subjectModel.math[0].levels[0]
+        let vm = QuestionViewModel(model: levelCellmodel)
+        
+        let settingsVC = UIHostingController(rootView: QuestionView(questionViewModel: vm))
+                                             
         settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape"))
         return settingsVC
     }
