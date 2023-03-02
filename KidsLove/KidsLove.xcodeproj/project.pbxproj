@@ -13,6 +13,7 @@
 		04906AA329ACA27300EC970E /* teacherAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 04906AA229ACA27300EC970E /* teacherAnimation.json */; };
 		0492993C29A1019900331306 /* remote_config_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0492993B29A1019900331306 /* remote_config_defaults.plist */; };
 		0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0492993D29A101BD00331306 /* GoogleService-Info.plist */; };
+		0492CD5529B0730200EC520C /* NewQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492CD5429B0730200EC520C /* NewQuestionsView.swift */; };
 		04934BB129AB69FC0099CBDC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 04934BB029AB69FC0099CBDC /* Lottie */; };
 		04934BB429AB6C4D0099CBDC /* panchi.json in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB329AB6C4D0099CBDC /* panchi.json */; };
 		049512AD29AE0BE500933CD7 /* bottomAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 049512AC29AE0BE500933CD7 /* bottomAnimation.json */; };
@@ -145,6 +146,7 @@
 		04906AA229ACA27300EC970E /* teacherAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teacherAnimation.json; sourceTree = "<group>"; };
 		0492993B29A1019900331306 /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
 		0492993D29A101BD00331306 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0492CD5429B0730200EC520C /* NewQuestionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewQuestionsView.swift; sourceTree = "<group>"; };
 		04934BB329AB6C4D0099CBDC /* panchi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panchi.json; sourceTree = "<group>"; };
 		049512AC29AE0BE500933CD7 /* bottomAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bottomAnimation.json; sourceTree = "<group>"; };
 		049512AE29AE0FB000933CD7 /* childAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = childAnimation.json; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				36B3B76029A275E9000707C9 /* Twofortyeight */,
 				36B3B81729A2AB0C000707C9 /* MathIQ */,
 				04906A9E29AC9E9B00EC970E /* LaunchScreenViewController.swift */,
+				0492CD5429B0730200EC520C /* NewQuestionsView.swift */,
 			);
 			path = KidsLove;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				36B3B80029A28084000707C9 /* PlayerView.swift in Sources */,
 				364D781B299F7C7700FF42D7 /* SettingsView.swift in Sources */,
 				36B3B77A29A27662000707C9 /* CustomOperators.swift in Sources */,
+				0492CD5529B0730200EC520C /* NewQuestionsView.swift in Sources */,
 				36B3B72429A27271000707C9 /* TabBarController.swift in Sources */,
 				36B3B77D29A27662000707C9 /* ColorExtensions.swift in Sources */,
 				36B3B7E429A28084000707C9 /* MillsGameView.swift in Sources */,

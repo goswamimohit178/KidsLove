@@ -66,10 +66,11 @@ struct LevelCellModel {
             .getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: AppConfig().numberOfQuestions , oprator: oprator, noOfOprands: noOfOprands)
     }
 }
-struct Question {
-    let questionText: String
-    let answer: [Int]
-    let correctAnswer: Int
+struct Question: Identifiable,Hashable {
+    var id: UUID = UUID()
+    var questionText: String
+    var answer: [String]
+    var correctAnswer: String
 }
 enum Progress: Int {
     case zero

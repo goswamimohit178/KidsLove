@@ -17,12 +17,11 @@ class GameVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var gameView: MillsGameView!
     private var playerView: UIView!
-   
     private var disposable = Set<AnyCancellable>()
     
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
-
+    
     
     var viewModel: MillsGameViewModel!
     
@@ -72,12 +71,12 @@ class GameVC: UIViewController {
     
     fileprivate func createNewGame() {
         let margins = view.safeAreaLayoutGuide
-
+        
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 5
         view.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,12 +87,13 @@ class GameVC: UIViewController {
 
         // Header view
         ratio = boardHeight/350
-
+        
         let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
         self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
         self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)
+
 
         playerView = UIHostingController(rootView: headerView).view
         stackView.addArrangedSubview(playerView)
@@ -116,19 +116,19 @@ class GameVC: UIViewController {
         gameView.showAlert = showAlert
         gameView.backgroundColor = UIColor.defaultBG()
         stackView.addArrangedSubview(gameView)
-
+        
         viewModel.player1.passthroughSubject.sink { millsAndAvailableCoin in
             self.headerView.model.player1.playerCoins = (millsAndAvailableCoin.availableCoins > 0) ? defaultPlayerCoins(imageName: "coin1", range: 0...millsAndAvailableCoin.availableCoins-1) : []
             self.headerView.model.player2.playerMills = (millsAndAvailableCoin.mills > 0) ? defaultPlayerCoins(imageName: "coin1", range: 0...millsAndAvailableCoin.mills-1): []
         }
         .store(in: &disposable)
-
+        
         viewModel.playerChangeSubject.sink { playerIcon in
-            self.headerView.model.playerIcon = CoinModel(imageName: playerIcon, offset: 0)            
+            self.headerView.model.playerIcon = CoinModel(imageName: playerIcon, offset: 0)
         }
-       
+        
         .store(in: &disposable)
-
+        
         viewModel.player2.passthroughSubject.sink { millsAndAvailableCoin in
             self.headerView.model.player2.playerCoins = (millsAndAvailableCoin.availableCoins > 0) ? defaultPlayerCoins(imageName: "coin2", range: 0...millsAndAvailableCoin.availableCoins-1) : []
 
@@ -136,9 +136,9 @@ class GameVC: UIViewController {
         }
         .store(in: &disposable)
         
-//        setShadow(view: playerView)
-//        setShadow(view: gameView)
-//        setCornerRadius(view: playerView)
+        //        setShadow(view: playerView)
+        //        setShadow(view: gameView)
+        //        setCornerRadius(view: playerView)
     }
     
     fileprivate func showAlert(title: String, message: String) {

@@ -19,16 +19,13 @@ struct SettingsView: View {
     }
     
     var body: some View {
-       // NavigationView {
+        NavigationView {
             List {
-//                Section(header: Text("ACCOUNT")) {
-//                    NavigationLink(destination: AccountView()) {
-//                        Label("Account", systemImage: "person")
-//                    }
-//                    NavigationLink(destination: SecurityView()) {
-//                        Label("Security", systemImage: "lock")
-//                    }
-//                }
+                Section(header: Text("Debug")) {
+                    NavigationLink(destination: NewQuestionsView()) {
+                        Label("Add questions", systemImage: "person")
+                    }
+                }
                 
                 Section(header: Text("OTHER PREFERENCES")) {
                     Picker(selection: $selectedTheme, label: Text("Theme")) {
@@ -58,7 +55,7 @@ struct SettingsView: View {
                 }
             }
         }
-   // }
+    }
     
     private func updateTheme(_ theme: String) {
         ThemeManager.theme = theme
@@ -90,12 +87,6 @@ struct SettingsView: View {
 struct AccountView: View {
     var body: some View {
         Text("Account Settings")
-    }
-}
-
-struct SecurityView: View {
-    var body: some View {
-        Text("Security Settings")
     }
 }
 
