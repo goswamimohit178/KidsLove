@@ -30,26 +30,25 @@ class NetworkService {
         let (questionString, answer, optionArray) = getQuestionAnswerOptions(range, oprator: oprator, noOfOprands: noOfOprands, numberOfOptions: numberOfOptions)
         
         let shuffledArray = optionArray.shuffled()
-        return Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: shuffledArray.firstIndex(of: answer)!)
+        return Question(questionText: "\(questionString) = ?", answer: shuffledArray, correctAnswer: answer)
     }
     
-    fileprivate func getOptions(_ numberOfOptions: Int, _ answer: Int) -> [Int] {
-        var optionArray: [Int] = []
-        optionArray.append(answer)
+    fileprivate func getOptions(_ numberOfOptions: Int, _ answer: Int) -> [String] {
+        var optionArray: [String] = []
+        optionArray.append(String(answer))
         while optionArray.count < numberOfOptions {
             let option = random(digits: answer.size())
-            if !optionArray.contains(option) {
-                optionArray.append(option)
+            if !optionArray.contains(String(option)) {
+                optionArray.append(String(option))
             }
         }
         return optionArray
     }
     
-    fileprivate func getQuestionAnswerOptions( _ range: ClosedRange<Int>, oprator: Oprator, noOfOprands: Int, numberOfOptions: Int)  -> (String, Int, [Int]) {
+    fileprivate func getQuestionAnswerOptions( _ range: ClosedRange<Int>, oprator: Oprator, noOfOprands: Int, numberOfOptions: Int)  -> (String, String, [String]) {
         let (questionString, answer) = getQuestionAnswer(range, oprator: oprator, noOfOprands: noOfOprands)
-       
         let optionArray = getOptions(numberOfOptions, answer)
-        return (questionString, answer, optionArray)
+        return (questionString, String(answer), optionArray)
     }
     
     private func getQuestionAnswer( _ range: ClosedRange<Int>, oprator: Oprator, noOfOprands: Int) -> (String, Int){
