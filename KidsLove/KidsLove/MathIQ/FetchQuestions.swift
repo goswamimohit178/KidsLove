@@ -128,9 +128,12 @@ class NetworkService {
     func gameUnites() -> [Unit] {
         let twoZeroFourEight = LevelCellModel(type: .game(game: .TwoZeroFourEight), title: "2048")
         let mills = LevelCellModel(type: .game(game: .Mills), title: "Mills")
+        let sudoku = LevelCellModel(type: .game(game: .Sudoku), title: "Sudoku")
         return  [
             Unit(unitNumber: "Games", chapterName: "Number Games", levels: [twoZeroFourEight]),
-            Unit(unitNumber: "Other Games", chapterName: "Mind game", levels: [mills])
+            Unit(unitNumber: "Other Games", chapterName: "Mind game", levels: [mills]),
+            Unit(unitNumber: "Other Games", chapterName: "Mind game", levels: [sudoku])
+            
         ]
     }
     

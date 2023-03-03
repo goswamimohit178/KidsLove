@@ -1,12 +1,12 @@
 import SwiftUI
 import Foundation
 
-class GameViewController: UIHostingController<GameView> {
+class GameViewController: UIHostingController<SudokuGameView> {
     private let viewModel: GameViewModel?
     
     init(viewModel: GameViewModel) {
         self.viewModel = viewModel
-        super.init(rootView: GameView(viewModel: viewModel))
+        super.init(rootView: SudokuGameView())
         setupGestures()
         viewModel.start()
     }

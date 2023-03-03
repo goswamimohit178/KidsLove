@@ -10,6 +10,7 @@ import Foundation
 enum Game: Int {
     case TwoZeroFourEight
     case Mills
+    case Sudoku
         
     var title: String {
         switch self {
@@ -17,6 +18,9 @@ enum Game: Int {
             return "2048"
         case .Mills:
             return "Mills"
+            
+        case .Sudoku:
+            return "Sudoku"
         }
     }
 }

@@ -38,6 +38,7 @@ struct NewQuestionsView: View {
             
             Button("Make JSON") {
                 makeJson(questions: questions)
+                
             }
         }
     }
