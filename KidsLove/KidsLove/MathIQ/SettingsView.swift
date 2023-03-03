@@ -23,6 +23,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
+
                 //                Section(header: Text("ACCOUNT")) {
                 //                    NavigationLink(destination: AccountView()) {
                 //                        Label("Account", systemImage: "person")
@@ -31,6 +32,13 @@ struct SettingsView: View {
                 //                        Label("Security", systemImage: "lock")
                 //                    }
                 //                }
+
+                Section(header: Text("Debug")) {
+                    NavigationLink(destination: NewQuestionsView()) {
+                        Label("Add questions", systemImage: "person")
+                    }
+                }
+
                 
                 Section(header: Text("OTHER PREFERENCES")) {
                     Picker(selection: $selectedTheme, label: Text("Theme")) {
@@ -105,12 +113,6 @@ struct SettingsView: View {
 struct AccountView: View {
     var body: some View {
         Text("Account Settings")
-    }
-}
-
-struct SecurityView: View {
-    var body: some View {
-        Text("Security Settings")
     }
 }
 

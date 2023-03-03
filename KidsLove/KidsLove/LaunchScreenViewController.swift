@@ -9,7 +9,7 @@ import UIKit
 import Lottie
 
 class LaunchScreenViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.defaultBG()
@@ -27,11 +27,18 @@ class LaunchScreenViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let nextViewController = TabBarController() // replace this with the view controller you want to show
-            UIApplication.shared.windows.first?.rootViewController = nextViewController
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
+            let foregroundedScenes = UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }
+            let window = foregroundedScenes.map { $0 as? UIWindowScene }.compactMap { $0 }.first?.windows.filter { $0.isKeyWindow }.first
+            
+            guard let uWindow = window else { return }
+            
+            uWindow.rootViewController = nextViewController
+            UIView.transition(with: uWindow, duration:0.8, options: [.transitionCrossDissolve], animations: {}, completion: nil)
         }
-        
     }
     
-
 }
+
+
+

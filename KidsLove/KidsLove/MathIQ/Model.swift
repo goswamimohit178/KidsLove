@@ -24,7 +24,6 @@ enum Game: Int {
 enum CellType {
     case game(game: Game)
     case math(progress: Progress, oprator: Oprator, noOfOprands: Int, levelType: LevelType)
-    
     var index: Int {
         switch self {
         case .game(game: _):
@@ -62,14 +61,20 @@ struct LevelCellModel {
         guard case .math(_, let oprator, let noOfOprands, let levelType) = type else {
             fatalError("Invalid state")
         }
+        
+        if oprator == .oddOne {
+            return NetworkService().getOddOnesQuestions()
+        }
         return NetworkService()
             .getQuestions(range: levelType.range, numberOfOptions: 4, numberOfQuestions: AppConfig().numberOfQuestions , oprator: oprator, noOfOprands: noOfOprands)
     }
 }
-struct Question {
-    let questionText: String
-    let answer: [Int]
-    let correctAnswer: Int
+
+struct Question: Identifiable,Hashable, Decodable {
+    var id: UUID = UUID()
+    var questionText: String
+    var answer: [String]
+    var correctAnswer: String
 }
 enum Progress: Int {
     case zero

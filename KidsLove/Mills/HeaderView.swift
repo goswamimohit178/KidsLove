@@ -162,6 +162,8 @@ struct CoinView: View {
                         .resizable()
                         .frame(width: geo.size.width*0.20, height:  geo.size.width*0.20)
                         .offset(x: coin.offset)
+                        .shadow(color: Color(UIColor.defaultThemeColor), radius: 5, x: 5, y: 5)
+                        
                 }
             }
         }

@@ -88,7 +88,8 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction private func continueButton(_ sender: UIButton) {
-        let correctAnswerIndex = correctAnsIndex()
+        let correctAnswer = correctAnswer()
+        
         if sender.titleLabel?.text == "Continue" || sender.titleLabel?.text == "View Result" {
             selectedIndex = nil
             resetOptionBtnColor()
@@ -99,17 +100,20 @@ class QuestionViewController: UIViewController {
             continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
         } else {
             checkAnswerBtn()
-            if selectedIndex == correctAnswerIndex  {
-                if currentQuestionNumber+1 == questionList.count {
-                    continueBtn.setTitle("View Result", for: .normal)
-                } else {
-                    continueBtn.setTitle("Continue", for: .normal)
+            if let selectedIndex = selectedIndex {
+                let selectedOption = selectedOption(selectedIndex: selectedIndex)
+                if selectedOption == correctAnswer  {
+                    if currentQuestionNumber+1 == questionList.count {
+                        continueBtn.setTitle("View Result", for: .normal)
+                    } else {
+                        continueBtn.setTitle("Continue", for: .normal)
+                    }
+                    
+                    continueBtn.backgroundColor = UIColor.selectBtnColor()
+                    
+                    continueBtn.setNeedsLayout()
+                    continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
                 }
-                
-                continueBtn.backgroundColor = UIColor.selectBtnColor()
-                
-                continueBtn.setNeedsLayout()
-                continueBtn.titleLabel?.font = UIFont.myAppBodyFonts()
             }
         }
     }
@@ -118,10 +122,16 @@ class QuestionViewController: UIViewController {
         oprand1Label.font = UIFont.headingFonts()
     }
     
-    private func correctAnsIndex() -> Int {
+    private func correctAnswer() -> String {
         let currentQuestion = questionList[currentQuestionNumber]
-        let correctAnswerIndex = currentQuestion.correctAnswer
-        return correctAnswerIndex
+        let correctAnswer = currentQuestion.correctAnswer
+        return correctAnswer
+    }
+    
+    private func selectedOption(selectedIndex: Int) -> String {
+        let currentQuestion = questionList[currentQuestionNumber]
+        let selectedOption = currentQuestion.answer[selectedIndex]
+        return selectedOption
     }
     
     private func checkAnswerBtn() {
@@ -196,7 +206,9 @@ class QuestionViewController: UIViewController {
     
     private func checkAnswer(idx: Int) -> Bool {
         let currentModel = questionList[currentQuestionNumber]
-        if currentModel.correctAnswer == idx {
+        let selectedOption = selectedOption(selectedIndex: idx)
+
+        if currentModel.correctAnswer == selectedOption {
             if isFirstTimeTapped{
                 noCorrect += 1
             }
