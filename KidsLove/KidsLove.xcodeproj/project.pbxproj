@@ -18,6 +18,7 @@
 		04934BB429AB6C4D0099CBDC /* panchi.json in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB329AB6C4D0099CBDC /* panchi.json */; };
 		049512AD29AE0BE500933CD7 /* bottomAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 049512AC29AE0BE500933CD7 /* bottomAnimation.json */; };
 		049512AF29AE0FB000933CD7 /* childAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 049512AE29AE0FB000933CD7 /* childAnimation.json */; };
+		04C5C42629B1E1EA007B2B2F /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C42529B1E1EA007B2B2F /* test.json */; };
 		04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B329A08E34008F70FB /* FirebaseAnalytics */; };
 		04DA93B629A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B529A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion */; };
 		04DA93B829A08E34008F70FB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B729A08E34008F70FB /* FirebaseAnalyticsSwift */; };
@@ -150,6 +151,7 @@
 		04934BB329AB6C4D0099CBDC /* panchi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panchi.json; sourceTree = "<group>"; };
 		049512AC29AE0BE500933CD7 /* bottomAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bottomAnimation.json; sourceTree = "<group>"; };
 		049512AE29AE0FB000933CD7 /* childAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = childAnimation.json; sourceTree = "<group>"; };
+		04C5C42529B1E1EA007B2B2F /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		04DA93C529A0C8C7008F70FB /* FireBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseConfig.swift; sourceTree = "<group>"; };
 		1331E231298D39DD00AFD1E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1331E232298D39DD00AFD1E0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -311,6 +313,14 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		04C5C42429B1E1D9007B2B2F /* Question JSON */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C42529B1E1EA007B2B2F /* test.json */,
+			);
+			path = "Question JSON";
+			sourceTree = "<group>";
+		};
 		139D2B9C298FA1DE006CAEF9 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +349,7 @@
 		36939D07298CFB5F00927B1E /* KidsLove */ = {
 			isa = PBXGroup;
 			children = (
+				04C5C42429B1E1D9007B2B2F /* Question JSON */,
 				3633141129AF5C2E0072BD66 /* hand.ttf */,
 				3633141329AF5D360072BD66 /* Bradley Hand Bold.ttf */,
 				36B3B81929A34930000707C9 /* White Milk.ttf */,
@@ -693,6 +704,7 @@
 				36B3B7F629A28084000707C9 /* win.mp3 in Resources */,
 				36B3B80729A28084000707C9 /* place-player-2.mp3 in Resources */,
 				36B3B81029A28084000707C9 /* notAllowed.mp3 in Resources */,
+				04C5C42629B1E1EA007B2B2F /* test.json in Resources */,
 				3633141229AF5C800072BD66 /* hand.ttf in Resources */,
 				0492993C29A1019900331306 /* remote_config_defaults.plist in Resources */,
 				0492993E29A101BD00331306 /* GoogleService-Info.plist in Resources */,

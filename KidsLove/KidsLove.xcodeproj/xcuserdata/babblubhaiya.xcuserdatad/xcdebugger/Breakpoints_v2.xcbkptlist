@@ -162,6 +162,38 @@
             endingLineNumber = "81"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "2F84B882-AECC-418F-ACFC-DBD161838C54 - ad1d5da3cee5abf0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0)&gt;&gt; in KidsLove.HeaderView.body.getter : some"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/Mills/HeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "644">
+               </Location>
+               <Location
+                  uuid = "2F84B882-AECC-418F-ACFC-DBD161838C54 - 1edec96313ed2b48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0)&gt;&gt; in KidsLove.HeaderView.body.getter : some"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/Mills/HeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "516">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -208,6 +240,54 @@
                   startingLineNumber = "151"
                   endingLineNumber = "151"
                   offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50AF48A8-8F00-4669-B909-12161FF687E9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KidsLove/NewQuestionsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "makeJson(questions:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "50AF48A8-8F00-4669-B909-12161FF687E9 - 7127da7f688d82f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KidsLove.NewQuestionsView.makeJson(questions: Swift.Array&lt;KidsLove.Question&gt;) -&gt; ()"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/KidsLove/NewQuestionsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1624">
+               </Location>
+               <Location
+                  uuid = "50AF48A8-8F00-4669-B909-12161FF687E9 - 7127da7f688d82f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KidsLove.NewQuestionsView.makeJson(questions: Swift.Array&lt;KidsLove.Question&gt;) -&gt; ()"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/KidsLove/NewQuestionsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "4268">
                </Location>
             </Locations>
          </BreakpointContent>

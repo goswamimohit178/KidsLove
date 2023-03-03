@@ -70,7 +70,7 @@ struct LevelCellModel {
     }
 }
 
-struct Question: Identifiable,Hashable, Decodable {
+struct Question: Identifiable,Hashable, Decodable, Encodable {
     var id: UUID = UUID()
     var questionText: String
     var answer: [String]
