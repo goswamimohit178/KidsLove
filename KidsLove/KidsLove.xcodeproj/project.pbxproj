@@ -37,9 +37,7 @@
 		04C5C4F529B1FB9D007B2B2F /* CaviarDreams.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C4DA29B1FB9D007B2B2F /* CaviarDreams.ttf */; };
 		04C5C4F629B1FB9D007B2B2F /* SudokuGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4DD29B1FB9D007B2B2F /* SudokuGameView.swift */; };
 		04C5C4F729B1FB9D007B2B2F /* SudokuSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4DE29B1FB9D007B2B2F /* SudokuSettingsView.swift */; };
-		04C5C4F829B1FB9D007B2B2F /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4DF29B1FB9D007B2B2F /* StatisticsView.swift */; };
 		04C5C4F929B1FB9D007B2B2F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4E029B1FB9D007B2B2F /* RootView.swift */; };
-		04C5C4FA29B1FB9D007B2B2F /* StrategiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4E129B1FB9D007B2B2F /* StrategiesView.swift */; };
 		04C5C4FB29B1FB9D007B2B2F /* SudokuMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4E229B1FB9D007B2B2F /* SudokuMenuView.swift */; };
 		04C5C4FD29B1FB9D007B2B2F /* SceneDelegatek,km.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C4E429B1FB9D007B2B2F /* SceneDelegatek,km.swift */; };
 		04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B329A08E34008F70FB /* FirebaseAnalytics */; };
@@ -195,9 +193,7 @@
 		04C5C4DB29B1FB9D007B2B2F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		04C5C4DD29B1FB9D007B2B2F /* SudokuGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuGameView.swift; sourceTree = "<group>"; };
 		04C5C4DE29B1FB9D007B2B2F /* SudokuSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuSettingsView.swift; sourceTree = "<group>"; };
-		04C5C4DF29B1FB9D007B2B2F /* StatisticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		04C5C4E029B1FB9D007B2B2F /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		04C5C4E129B1FB9D007B2B2F /* StrategiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategiesView.swift; sourceTree = "<group>"; };
 		04C5C4E229B1FB9D007B2B2F /* SudokuMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuMenuView.swift; sourceTree = "<group>"; };
 		04C5C4E429B1FB9D007B2B2F /* SceneDelegatek,km.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SceneDelegatek,km.swift"; sourceTree = "<group>"; };
 		04DA93C529A0C8C7008F70FB /* FireBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseConfig.swift; sourceTree = "<group>"; };
@@ -433,9 +429,7 @@
 			children = (
 				04C5C4DD29B1FB9D007B2B2F /* SudokuGameView.swift */,
 				04C5C4DE29B1FB9D007B2B2F /* SudokuSettingsView.swift */,
-				04C5C4DF29B1FB9D007B2B2F /* StatisticsView.swift */,
 				04C5C4E029B1FB9D007B2B2F /* RootView.swift */,
-				04C5C4E129B1FB9D007B2B2F /* StrategiesView.swift */,
 				04C5C4E229B1FB9D007B2B2F /* SudokuMenuView.swift */,
 			);
 			path = Views;
@@ -912,7 +906,6 @@
 				36B3B76629A27632000707C9 /* GameOverView.swift in Sources */,
 				36B3B76C29A27644000707C9 /* HeaderBarTitle.swift in Sources */,
 				36B3B7E629A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
-				04C5C4FA29B1FB9D007B2B2F /* StrategiesView.swift in Sources */,
 				36DD6082298D0BAC00F059FB /* QuestionViewController.swift in Sources */,
 				36B3B77629A27655000707C9 /* LocalStorage.swift in Sources */,
 				04C5C4FB29B1FB9D007B2B2F /* SudokuMenuView.swift in Sources */,
@@ -945,7 +938,6 @@
 				36B3B80B29A28084000707C9 /* GameModels.swift in Sources */,
 				36B3B7FF29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */,
 				364D781F299F994A00FF42D7 /* SoundPlayer.swift in Sources */,
-				04C5C4F829B1FB9D007B2B2F /* StatisticsView.swift in Sources */,
 				36B3B7ED29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */,
 				36B3B7E929A28084000707C9 /* CircleView.swift in Sources */,
 				36B3B76E29A27644000707C9 /* SmallActionButton.swift in Sources */,
