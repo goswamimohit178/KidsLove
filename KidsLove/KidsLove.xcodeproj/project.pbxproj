@@ -30,7 +30,6 @@
 		049A81CC29B491F900718224 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A81B429B491F800718224 /* Settings.swift */; };
 		049A81CD29B491F900718224 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A81B529B491F800718224 /* Grid.swift */; };
 		049A81CE29B491F900718224 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A81B629B491F800718224 /* Record.swift */; };
-		049A81D129B4952700718224 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049A81D029B4952700718224 /* Info.plist */; };
 		04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B329A08E34008F70FB /* FirebaseAnalytics */; };
 		04DA93B629A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B529A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion */; };
 		04DA93B829A08E34008F70FB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B729A08E34008F70FB /* FirebaseAnalyticsSwift */; };
@@ -881,7 +880,6 @@
 				363314DB29B48BFC0072BD66 /* OperatorTableViewCell.xib in Resources */,
 				363314E329B48BFC0072BD66 /* ResultsViewController.xib in Resources */,
 				363314E929B48BFC0072BD66 /* LaunchScreen.storyboard in Resources */,
-				049A81D129B4952700718224 /* Info.plist in Resources */,
 				36B3B7E029A28084000707C9 /* notAllowed.mp3 in Resources */,
 				36B3B80C29A28084000707C9 /* CoinCollectionViewCell.xib in Resources */,
 				363314E529B48BFC0072BD66 /* QuestionViewController.xib in Resources */,
