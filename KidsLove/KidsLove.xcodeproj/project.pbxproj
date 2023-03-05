@@ -284,7 +284,6 @@
 		363314D429B48BFC0072BD66 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		363314D529B48BFC0072BD66 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		36939D16298CFB6000927B1E /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		36B3B79A29A28084000707C9 /* char.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = char.mp3; sourceTree = "<group>"; };
 		36B3B79B29A28084000707C9 /* ViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataModel.swift; sourceTree = "<group>"; };
 		36B3B79C29A28084000707C9 /* select.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = select.mp3; sourceTree = "<group>"; };
@@ -422,13 +421,6 @@
 				049A81B629B491F800718224 /* Record.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		049A81B729B491F800718224 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 		3633143429B48B180072BD66 /* TicTacToe */ = {
@@ -601,7 +593,6 @@
 			children = (
 				049A819629B491F800718224 /* AppDelegatekljl.swift */,
 				049A819729B491F800718224 /* Assets.xcassets */,
-				049A81B729B491F800718224 /* Base.lproj */,
 				049A81AC29B491F800718224 /* Constant.swift */,
 				049A81AD29B491F800718224 /* en.lproj */,
 				049A81A329B491F800718224 /* fonts */,
@@ -725,7 +716,6 @@
 				3633143429B48B180072BD66 /* TicTacToe */,
 				3633144329B48B190072BD66 /* Twofortyeight */,
 				36B3B79929A28084000707C9 /* Mills */,
-				36939D16298CFB6000927B1E /*  */,
 			);
 			path = KidsLove;
 			sourceTree = "<group>";
