@@ -111,9 +111,24 @@ extension OperatorsViewController: UITableViewDataSource{
                     let stateTracker = GameStateTracker(initialState: (storage.board ?? engine.blankBoard, storage.score))
                     let vc = GameViewController(viewModel: GameViewModel(engine, storage: storage, stateTracker: stateTracker))
                     navigationController?.pushViewController(vc, animated: true)
+                    
                 case .Mills:
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let rootViewController = storyboard.instantiateViewController(withIdentifier: "GameVC")
+                    navigationController?.pushViewController(rootViewController, animated: true)
+                    
+                case .Sudoku:
+                    let managedObjectContent = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                    let rootView = RootView()
+                        .environmentObject(ViewRouter())
+                        .environment(\.managedObjectContext, managedObjectContent)
+                    let vc = UIHostingController(rootView: rootView)
+                    navigationController?.navigationBar.isHidden = false
+                    navigationController?.pushViewController(vc, animated: true)
+                    
+                case .TicTacToe:
+                    let storyboard = UIStoryboard(name: "TicTacToeMain", bundle: nil)
+                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "TicTacToeGameViewController")
                     navigationController?.pushViewController(rootViewController, animated: true)
                 }
             }

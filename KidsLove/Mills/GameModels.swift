@@ -95,6 +95,7 @@ class Player: NSObject {
 
 
   var playerPositions =  [Int]()
+  @objc dynamic private var currentBhars = [[Int]]()
 
   @objc dynamic var isPlaying: Bool
   var playerRemainingPositions = DEFAULT_COIN_COUNT {
@@ -103,7 +104,6 @@ class Player: NSObject {
         }
     }
   @objc dynamic var messageForUser: String
-  @objc dynamic private var currentBhars = [[Int]]()
   @objc dynamic var animateMessage: Bool = true
   var coinIcon: String
   

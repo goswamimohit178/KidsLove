@@ -11,11 +11,11 @@ import Firebase
 
 class AppConfig  {
     var remoteConfig = RemoteConfig.remoteConfig()
-    let settings = RemoteConfigSettings()
+    let settings1 = RemoteConfigSettings()
     
     var numberOfQuestions: Int {
-        settings.minimumFetchInterval = 0
-        remoteConfig.configSettings = settings
+        settings1.minimumFetchInterval = 0
+        remoteConfig.configSettings = settings1
         let noOfQue = remoteConfig.configValue(forKey: "numberOfQuestions")
         remoteConfig.setDefaults(fromPlist: "RemoteConfigDefaults")
         remoteConfig.fetch { (status, error) -> Void in

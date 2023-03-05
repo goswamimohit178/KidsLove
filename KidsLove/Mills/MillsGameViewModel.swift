@@ -63,7 +63,6 @@ struct Bhar {
 }
 
 class MillsGameViewModel {
-   
     @State var currentPlayerCoinModel = CoinModel(imageName: "coin1", offset: 0)
     
   var coinPositions: [CoinPosition]!
