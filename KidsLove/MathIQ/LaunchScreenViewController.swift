@@ -17,7 +17,6 @@ class LaunchScreenViewController: UIViewController {
         animationView.loopMode = .loop
         view.addSubview(animationView)
         animationView.contentMode = .scaleAspectFit
-//        animationView.anima
         animationView.play()
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -39,6 +38,3 @@ class LaunchScreenViewController: UIViewController {
     }
     
 }
-
-
-

@@ -33,11 +33,11 @@ struct SettingsView: View {
                 //                    }
                 //                }
 
-                Section(header: Text("Debug")) {
-                    NavigationLink(destination: NewQuestionsView()) {
-                        Label("Add questions", systemImage: "person")
-                    }
-                }
+//                Section(header: Text("Debug")) {
+//                    NavigationLink(destination: NewQuestionsView()) {
+//                        Label("Add questions", systemImage: "person")
+//                    }
+//                }
 
                 
                 Section(header: Text("OTHER PREFERENCES")) {
@@ -74,9 +74,19 @@ struct SettingsView: View {
                         Text("Achievements")
                     }
                     .sheet(isPresented: $showView) {
-                        MyView() {
+                        MyView(isAchievement: true) {
                             showView.toggle()
                         }
+                    }
+                    Button {
+                        showView.toggle()
+                    } label: {
+                        Text("leaderBoard")
+                    }
+                    .sheet(isPresented: $showView) {
+                        MyView(isAchievement: false, gameCenterViewControllerDidFinish: {
+                            showView.toggle()
+                        })
                     }
                 }
             }
@@ -99,7 +109,6 @@ struct SettingsView: View {
             .connectedScenes
             .flatMap { ($0 as?UIWindowScene)?.windows ?? [] }
             .forEach { $0.overrideUserInterfaceStyle = themeStyle }
-        
     }
     
     private func updateThemeColor(_ color: Color) {
@@ -122,10 +131,10 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 struct MyView: UIViewControllerRepresentable {
-    
+    let isAchievement: Bool = false
     let gameCenterControllerDelegate: GameCenterControllerDelegate
     typealias UIViewControllerType = GKGameCenterViewController
-    init(gameCenterViewControllerDidFinish: @escaping () -> (Void)) {
+    init(isAchievement: Bool ,gameCenterViewControllerDidFinish: @escaping () -> (Void)) {
         self.gameCenterControllerDelegate = GameCenterControllerDelegate() {
             gameCenterViewControllerDidFinish()
         }
@@ -134,7 +143,11 @@ struct MyView: UIViewControllerRepresentable {
         // Return MyViewController instance
         let vc = GKGameCenterViewController()
         vc.gameCenterDelegate = gameCenterControllerDelegate
-        vc.viewState = .leaderboards
+        if isAchievement == true{
+            vc.viewState = .achievements
+        } else {
+            vc.viewState = .leaderboards
+        }
         return vc
     }
     
