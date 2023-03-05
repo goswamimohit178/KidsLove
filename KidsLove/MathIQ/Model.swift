@@ -11,6 +11,7 @@ enum Game: Int {
     case TwoZeroFourEight
     case Mills
     case Sudoku
+    case TicTacToe
         
     var title: String {
         switch self {
@@ -21,6 +22,9 @@ enum Game: Int {
             
         case .Sudoku:
             return "Sudoku"
+
+        case .TicTacToe:
+            return "TicTacToe"
         }
     }
 }

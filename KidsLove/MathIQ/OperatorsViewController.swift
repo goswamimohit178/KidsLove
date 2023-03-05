@@ -126,7 +126,10 @@ extension OperatorsViewController: UITableViewDataSource{
                     navigationController?.navigationBar.isHidden = false
                     navigationController?.pushViewController(vc, animated: true)
                     
-                        
+                case .TicTacToe:
+                    let storyboard = UIStoryboard(name: "TicTacToeMain", bundle: nil)
+                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "TicTacToeGameViewController")
+                    navigationController?.pushViewController(rootViewController, animated: true)
                 }
             }
             return
