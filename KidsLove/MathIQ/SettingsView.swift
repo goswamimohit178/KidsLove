@@ -130,6 +130,7 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(themeUpdated: {})
     }
 }
+
 struct MyView: UIViewControllerRepresentable {
     let isAchievement: Bool = false
     let gameCenterControllerDelegate: GameCenterControllerDelegate
