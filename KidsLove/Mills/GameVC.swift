@@ -189,6 +189,6 @@ class GameVC: UIViewController {
 }
 
 protocol CoinProvider {
-    func provideCoinPositions(with buttonSelected: @escaping (CoinPosition)->Void ) -> [CoinPosition]
+    func provideCoinPositions(with buttonSelected: @escaping (Int)->Void ) -> [CoinPosition]
 }
 

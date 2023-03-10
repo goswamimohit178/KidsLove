@@ -123,6 +123,7 @@
 		3633150129B48BFC0072BD66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363314D429B48BFC0072BD66 /* SceneDelegate.swift */; };
 		3633150229B48BFC0072BD66 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363314D529B48BFC0072BD66 /* TabBarController.swift */; };
 		3633150729B4C1310072BD66 /* MillsSmartPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150629B4C1310072BD66 /* MillsSmartPlayer.swift */; };
+		3633150929BB075E0072BD66 /* MillsBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150829BB075E0072BD66 /* MillsBoard.swift */; };
 		36B3B7DB29A28084000707C9 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CE29A28084000707C9 /* lose.mp3 */; };
 		36B3B7DC29A28084000707C9 /* char.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B79A29A28084000707C9 /* char.mp3 */; };
 		36B3B7DE29A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BE29A28084000707C9 /* InitialVC.swift */; };
@@ -285,6 +286,7 @@
 		363314D429B48BFC0072BD66 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		363314D529B48BFC0072BD66 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3633150629B4C1310072BD66 /* MillsSmartPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsSmartPlayer.swift; sourceTree = "<group>"; };
+		3633150829BB075E0072BD66 /* MillsBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsBoard.swift; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B3B79A29A28084000707C9 /* char.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = char.mp3; sourceTree = "<group>"; };
 		36B3B79B29A28084000707C9 /* ViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataModel.swift; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 				36B3B7CE29A28084000707C9 /* lose.mp3 */,
 				36B3B79A29A28084000707C9 /* char.mp3 */,
 				36B3B7BE29A28084000707C9 /* InitialVC.swift */,
+				3633150829BB075E0072BD66 /* MillsBoard.swift */,
 				36B3B79B29A28084000707C9 /* ViewDataModel.swift */,
 				36B3B7D029A28084000707C9 /* notAllowed.mp3 */,
 				363313E329A8D4050072BD66 /* HeaderView.swift */,
@@ -939,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				363314D929B48BFC0072BD66 /* Model.swift in Sources */,
+				3633150929BB075E0072BD66 /* MillsBoard.swift in Sources */,
 				3633149F29B48B190072BD66 /* Swipe.swift in Sources */,
 				36B3B80429A28084000707C9 /* SoundEfectManager.swift in Sources */,
 				36B3B7DF29A28084000707C9 /* ViewDataModel.swift in Sources */,
