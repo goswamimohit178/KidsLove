@@ -20,7 +20,7 @@ class CoinPosition {
   let position: Int
   let origin: CGPoint
   let size: CGSize
-  let selectAction: (CoinPosition) -> Void
+  let selectAction: (Int) -> Void
   
   var frame: CGRect {
     return CGRect(origin: origin, size: size)
@@ -36,7 +36,7 @@ class CoinPosition {
 	}
 	
   
-	init(position: Int, origin: CGPoint, buttonSize: CGSize, selectAction: @escaping (CoinPosition) -> Void) {
+	init(position: Int, origin: CGPoint, buttonSize: CGSize, selectAction: @escaping (Int) -> Void) {
     self.position = position
     self.origin = origin
     self.size = buttonSize
@@ -44,7 +44,7 @@ class CoinPosition {
   }
   
   @objc func selector() {
-    selectAction(self)
+      selectAction(self.position)
   }
   
   func changing(position: Int) ->  CoinPosition {
@@ -70,7 +70,7 @@ enum OccupiedBy {
     }
   }
 }
-private let DEFAULT_COIN_COUNT = 9
+let DEFAULT_COIN_COUNT = 9
 
 struct MillsAndAvailableCoin {
     let mills: Int
@@ -150,18 +150,18 @@ class Player: NSObject {
     updateCurrentBhar()
   }
   
-  func checkBhar() -> [Int]? {
-    var bharToReturn: [Int]?
-   for bhar in allPossibleBhrs {
-     let listSet = Set(playerPositions)
-     let findListSet = Set(bhar)
-    if findListSet.isSubset(of: listSet), !currentBhars.contains(bhar) {
-       currentBhars.append(bhar)
-       bharToReturn = bhar
-     }
-   }
-	return bharToReturn
-  }
+    func checkBhar() -> [Int]? {
+        var bharToReturn: [Int]?
+        for bhar in allPossibleBhrs {
+            let listSet = Set(playerPositions)
+            let findListSet = Set(bhar)
+            if findListSet.isSubset(of: listSet), !currentBhars.contains(bhar) {
+                currentBhars.append(bhar)
+                bharToReturn = bhar
+            }
+        }
+        return bharToReturn
+    }
   
 	func isPositionInBhar(position: Int) -> Bool {
 		//dont check bhar if all are in bahar
