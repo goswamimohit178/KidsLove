@@ -59,9 +59,6 @@ class QuestionViewController: UIViewController {
         //        questionStackView.clipsToBounds = true
         //        questionStackView.layer.borderColor = UIColor.clear.cgColor
         
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
