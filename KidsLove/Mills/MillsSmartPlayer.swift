@@ -17,8 +17,8 @@ class MillsPlayer {
             passthroughSubject.send(playerScoreModel)
         }
     }
- var passthroughSubject: PassthroughSubject<MillsAndAvailableCoin, Never>
-
+    var passthroughSubject: PassthroughSubject<MillsAndAvailableCoin, Never>
+    
     unowned var board: MillsBoard
     var playerPositions: [Int] {
         var playerPositions = [Int]()
@@ -30,52 +30,52 @@ class MillsPlayer {
         return playerPositions
     }
     
-  @objc dynamic private var currentBhars = [[Int]]()
-
-  @objc dynamic var isPlaying: Bool
-  var playerRemainingPositions = DEFAULT_COIN_COUNT {
+    @objc dynamic private var currentBhars = [[Int]]()
+    
+    @objc dynamic var isPlaying: Bool
+    var playerRemainingPositions = DEFAULT_COIN_COUNT {
         didSet {
             self.playerScoreModel = MillsAndAvailableCoin(mills: playerScoreModel.mills, availableCoins: playerRemainingPositions)
         }
     }
-  @objc dynamic var messageForUser: String
-  @objc dynamic var animateMessage: Bool = true
-
-  
-  var isLost: Bool {
-    guard playerRemainingPositions <= 0 else {
-      return false
+    @objc dynamic var messageForUser: String
+    @objc dynamic var animateMessage: Bool = true
+    
+    
+    var isLost: Bool {
+        guard playerRemainingPositions <= 0 else {
+            return false
+        }
+        return (playerPositions.count+playerRemainingPositions)<=2
     }
-    return (playerPositions.count+playerRemainingPositions)<=2
-  }
-  
-  var isPlacedAllCoins: Bool {
-    return (playerRemainingPositions == 0)
-  }
-  
-  func place(at position: Int) {
-      board.place(at: position, playerNumber: playerNumber)
-  }
-  
-  func char(at position: Int) {
-    playerScoreModel = playerScoreModel.increasingMills
-    board.char(at: position, playerNumber: playerNumber)
-    updateCurrentBhar()
-  }
-  
-  func updateCurrentBhar() {
-    currentBhars = currentBhars.filter { currentBhar in
-      currentBhar.allSatisfy { bharPosition in
-        playerPositions.contains(bharPosition)
-      }
+    
+    var isPlacedAllCoins: Bool {
+        return (playerRemainingPositions == 0)
     }
-  }
-  
-  func movePosition(from: Int, to: Int) {
-    board.movePosition(from: from, to: to, playerNumber: playerNumber)
-    updateCurrentBhar()
-  }
-  
+    
+    func place(at position: Int) {
+        board.place(at: position, playerNumber: playerNumber)
+    }
+    
+    func char(at position: Int) {
+        playerScoreModel = playerScoreModel.increasingMills
+        board.char(at: position, playerNumber: playerNumber)
+        updateCurrentBhar()
+    }
+    
+    func updateCurrentBhar() {
+        currentBhars = currentBhars.filter { currentBhar in
+            currentBhar.allSatisfy { bharPosition in
+                playerPositions.contains(bharPosition)
+            }
+        }
+    }
+    
+    func movePosition(from: Int, to: Int) {
+        board.movePosition(from: from, to: to, playerNumber: playerNumber)
+        updateCurrentBhar()
+    }
+    
     func checkBhar() -> [Int]? {
         var bharToReturn: [Int]?
         for bhar in allPossibleBhrs {
@@ -100,7 +100,7 @@ class MillsPlayer {
         }
         return false
     }
-  
+    
     func isPositionInBhar(position: Int) -> Bool {
         //dont check bhar if all are in bahar
         let allBhars = currentBhars.flatMap({$0})
@@ -120,7 +120,7 @@ class MillsPlayer {
         }
         return allNonBharPosition
     }
-
+    
     private func allNonBharPosition(allBhars: [Int]) -> [Int] {
         return playerPositions.filter { !allBhars.contains($0) }
     }
@@ -203,11 +203,11 @@ class SmartMillsPlayer: MillsPlayer {
                 print("Placed to prevent loss")
                 return noLossMoves[0]
             }
-          
+            
             var possibleBharindex: Int? = nil
             allPossibleBhrs.forEach { bhar in
                 let output = bhar.filter{ playerPositions.contains($0) }
-
+                
                 if output.count == 1 {
                     let emptyPositions = bhar.filter { pos in
                         return (board.fields[pos] == EMPTY_ROW_CONST)
