@@ -786,12 +786,9 @@
 				36B3B7C729A28084000707C9 /* Mills.xcdatamodeld */,
 				36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */,
 				36B3B7BC29A28084000707C9 /* InitialVC.swift */,
-
 				3633150629B4C1310072BD66 /* MillsSmartPlayer.swift */,
-
 				04C060C929BB401000B61130 /* MillsLaunchUIView.swift */,
 				04C060CB29BB654500B61130 /* ConvertUIKitToSwift.swift */,
-
 			);
 			path = Mills;
 			sourceTree = SOURCE_ROOT;
@@ -1228,7 +1225,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 382MKF227K;
+				DEVELOPMENT_TEAM = Z928FCJVR4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KidsLove/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MathIQ;

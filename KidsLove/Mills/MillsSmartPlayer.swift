@@ -259,9 +259,8 @@ class SmartMillsPlayer: MillsPlayer {
             }
             
             // return random move
-            let randomIndex = Int.random(in: 1..<possibleMoves.count)
             print("Placed using random move")
-            return possibleMoves[randomIndex]
+            return possibleMoves.random
         }
     }
     
@@ -405,9 +404,8 @@ class SmarterMillsPlayer: MillsPlayer {
         }
         _ = minimax(board: board, depth: 0)
         if choice == 0 {
-            let randomIndex = Int.random(in: 1..<possibleMoves.count)
             print("Placed using random move")
-            choice = possibleMoves[randomIndex]
+            choice = possibleMoves.random
         }
         return choice
     }
@@ -416,7 +414,6 @@ class SmarterMillsPlayer: MillsPlayer {
         return (1, 24)
     }
 }
-
 
 extension Array {
     var random: Element {
