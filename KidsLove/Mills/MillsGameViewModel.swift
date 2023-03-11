@@ -22,23 +22,61 @@ class MillsGameViewModel {
     @State var currentPlayerCoinModel = CoinModel(imageName: "coin1", offset: 0)
     
     let millsBoard: MillsBoard
-  var coinPositions: [CoinPosition]!
-  var player1Playing = true {
-		didSet {
-			if player1Playing {
-				player1.isPlaying = true
-				player2.isPlaying = false
-			} else {
-				player1.isPlaying = false
-				player2.isPlaying = true
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    self.select(position: self.player2.getMove(board: self.millsBoard))
-                }
-			}
-			setMessage()
+    var coinPositions: [CoinPosition]!
+    var player1Playing = true {
+        didSet {
+            if player1Playing {
+                player1.isPlaying = true
+                player2.isPlaying = false
+            } else {
+                player1.isPlaying = false
+                player2.isPlaying = true
+            }
+            millsBoard.current = player1Playing ? 0 : 1
+            setMessage()
             playerChangeSubject.send(currentPlayer.coinIcon)
-		}
-  }
+        }
+    }
+    
+    func playWithComputerPlayer() {
+        guard currentPlayer == player2 else {
+            return
+        }
+        switch currentIntent {
+        case .place:
+            computerPlayerPlace()
+        case .selectForMove:
+            computerPlayerMove()
+        case .placeMove:
+            fatalError("Invalid state")
+        case .char:
+            computerPlayerChar()
+        }
+    }
+    
+    func computerPlayerPlace() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            let position = self.player2.getPositionToPlace(board: self.millsBoard)
+            self.select(position: position)
+        }
+    }
+    
+    func computerPlayerMove() {
+        let position = self.player2.getPositionToMove(board: self.millsBoard)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.select(position: position.from)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.select(position: position.to)
+            }
+        }
+    }
+    
+    func computerPlayerChar() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            let position = self.player2.charPosition()
+            self.select(position: position)
+        }
+    }
 	
 	func setMessage() {
 		currentPlayer.setPlaceOrMoveMessage()
@@ -60,7 +98,13 @@ class MillsGameViewModel {
   var playerChangeSubject: PassthroughSubject<String, Never>
 
 
-  private var currentIntent: Intent = .place
+    private var currentIntent: Intent = .place {
+        didSet {
+            if case .char = currentIntent {
+                playWithComputerPlayer()
+            }
+        }
+    }
   weak var delegate: GameViewDelegate?
   private let coinPositionsProvider: CoinProvider
 
@@ -98,6 +142,7 @@ extension MillsGameViewModel {
   
   fileprivate func changePlayer() {
     player1Playing = !player1Playing
+    playWithComputerPlayer()
   }
   
   fileprivate func charIfPossible(_ coinPosition: CoinPosition) {
@@ -116,14 +161,14 @@ extension MillsGameViewModel {
   }
 	
 	private func selectForMove(coin: CoinPosition) {
-		guard checkIfAlreadyOccupied(position: coin.position) else {
+        guard millsBoard.checkIfAlreadyOccupied(position: coin.position) else {
 			updateState(newState:.notAllowed, for: coin)
 			return
 		}
 		if let selectedPosition = selectNewCoinIfPossible(coinPosition: coin) {
 			lastSelectedposition = selectedPosition
 			currentIntent = .placeMove
-			let allEmptyNeighborPositions = self.allEmptyNeighborPositions(at: selectedPosition)
+            let allEmptyNeighborPositions = millsBoard.allEmptyNeighborPositions(at: selectedPosition)
 			updateState(newState:.selected(allEmptyNeighborPositions: allEmptyNeighborPositions), for: coin)
 			return
 		}
@@ -146,7 +191,7 @@ extension MillsGameViewModel {
 			return
 		case .placeMove:
 			if let lastSelectedposition = lastSelectedposition {
-				guard canMove(from: lastSelectedposition, to: coin.position) else {
+                guard millsBoard.canMove(from: lastSelectedposition, to: coin.position) else {
 					//to selectMove here
 					selectForMove(coin: coin)
 					return
@@ -204,10 +249,6 @@ extension MillsGameViewModel {
     return allPossibleMoves.count == 0
   }
   
-  func checkIfAlreadyOccupied(position: Int) -> Bool {
-    return player1.playerPositions.contains(position) || player2.playerPositions.contains(position)
-  }
-  
 	fileprivate func placedAtNewPosition(_ coinPosition: CoinPosition) {
 		//possible bhar
 		if let lastBhar = checkBhar() {
@@ -227,53 +268,20 @@ extension MillsGameViewModel {
     return opponentPlayer.playerRemainingPositions != 0
   }
   
-  fileprivate func canMove(from: Int, to position: Int) -> Bool {
-    guard !checkIfAlreadyOccupied(position: position) else {
-      return false
-    }
-    if currentPlayer.playerPositions.count == 3 {
-			return true
-		}
-    return isNeighbor(from: from, to: position)
-   }
-  
-  private func isNeighbor(from: Int, to: Int) -> Bool {
-    return neighborMap[from]!.contains(to)
-  }
-	
-	private func areNeighborsEmpty(at: Int) -> Bool {
-		let allEmptyNeighborPositions = self.allEmptyNeighborPositions(at: at)
-		return !allEmptyNeighborPositions.isEmpty
-  }
-	
-	private func allEmptyNeighborPositions(at: Int) -> [Int] {
-		guard !currentPlayer.isOnly3Left() else {
-			return allEmptyPositions()
-		}
-		return neighborMap[at]!.filter { position in
-			!currentPlayer.playerPositions.contains(position) && !opponentPlayer.playerPositions.contains(position)
-		}
-	}
-	
-	private func allEmptyPositions() -> [Int] {
-		let allOccupied = player1.playerPositions + player1.playerPositions
-		return (1...24).filter { !allOccupied.contains($0) }
-	}
-  
   fileprivate func move(_ lastSelectedposition: Int, _ coinPosition: CoinPosition) {
 		currentPlayer.movePosition(from: lastSelectedposition, to: coinPosition.position)
   }
   
   private func selectNewCoinIfPossible(coinPosition: CoinPosition) -> Int? {
     if currentPlayer.playerRemainingPositions == 0 && currentPlayer.playerPositions.contains(coinPosition.position),
-			areNeighborsEmpty(at: coinPosition.position) {
+       millsBoard.areNeighborsEmpty(at: coinPosition.position) {
       return coinPosition.position
     }
     return nil
   }
   
   fileprivate func checkAndPlaceAtPosition(_ coinPosition: CoinPosition) -> Bool {
-    guard !checkIfAlreadyOccupied(position: coinPosition.position) else {
+      guard !millsBoard.checkIfAlreadyOccupied(position: coinPosition.position) else {
       return false
     }
 		if currentPlayer.playerRemainingPositions == 0 {
@@ -284,26 +292,26 @@ extension MillsGameViewModel {
     return true
   }
 	
-	func updateState(newState: PlayerAction, for coinPosition: CoinPosition) {
-		switch currentIntent {
-		case .place:
-			currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .place)
-		case .selectForMove:
-			currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .selectForMove)
-		case .placeMove:
-			currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .moveSelected)
-		case .char:
-			currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .bhar)
-		}
-		if case PlayerAction.notAllowed = newState {
-			currentPlayer.animateMessage = true
-			Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-					AnalyticsParameterItemID: "id-notAllowed",
-					AnalyticsParameterItemName: "notAllowed pressed",
-					AnalyticsParameterContentType: "cont"
-				])		}
-		delegate?.stateChanged(newState: newState, for: coinPosition)
-	}
+    func updateState(newState: PlayerAction, for coinPosition: CoinPosition) {
+        switch currentIntent {
+        case .place:
+            currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .place)
+        case .selectForMove:
+            currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .selectForMove)
+        case .placeMove:
+            currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .moveSelected)
+        case .char:
+            currentPlayer.messageForUser = PlayerGuideMessages.getMessage(for: .bhar)
+        }
+        if case PlayerAction.notAllowed = newState {
+            currentPlayer.animateMessage = true
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-notAllowed",
+                AnalyticsParameterItemName: "notAllowed pressed",
+                AnalyticsParameterContentType: "cont"
+            ])		}
+        delegate?.stateChanged(newState: newState, for: coinPosition)
+    }
 }
 
 

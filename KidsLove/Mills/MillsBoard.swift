@@ -65,14 +65,14 @@ var EMPTY_ROW_CONST = -1
 class MillsBoard {
     var players = [MillsPlayer]()
     var fields: [Int]
-    var current: Int
     var coinIcon: String
     var passthroughSubject: PassthroughSubject<MillsAndAvailableCoin, Never>
     @objc dynamic var messageForUser: String
     @objc dynamic var animateMessage: Bool = true
     @objc dynamic private var currentBhars = [[Int]]()
     
-    private func getOpponent() -> Int {
+    var current: Int
+    var getOpponent: Int {
         if self.current == 0 {
             return 1
         } else {
@@ -131,12 +131,12 @@ class MillsBoard {
     
     func makeMove(row: Int) {
         self.fields[row] = self.current
-        self.current = self.getOpponent()
+        self.current = getOpponent
     }
     
     func hasWon(playerNumber: Int) -> Bool {
         let player = players[playerNumber]
-        let opponentPlayer = players[getOpponent()]
+        let opponentPlayer = players[getOpponent]
         return player.checkBhar() || opponentPlayer.isLost
     }
     
@@ -165,7 +165,7 @@ class MillsBoard {
         return (self.getResult() != .undecided)
     }
     
-    func getPossibleMoves() -> [Int] {
+    func getPossiblePlacePositions() -> [Int] {
         var possibleMoves = [Int]()
         for i in 0..<fields.count {
             if self.fields[i] == EMPTY_ROW_CONST {
@@ -188,6 +188,53 @@ class MillsBoard {
         fields[from] = EMPTY_ROW_CONST
         makeMove(row: to)
     }
+    
+    var currentPlayer: MillsPlayer {
+        return players[current]
+    }
+    
+    var opponentPlayer: MillsPlayer {
+        return players[getOpponent]
+    }
+    
+    func checkIfAlreadyOccupied(position: Int) -> Bool {
+      return currentPlayer.playerPositions.contains(position) || opponentPlayer.playerPositions.contains(position)
+    }
+    
+    func canMove(from: Int, to position: Int) -> Bool {
+      guard !checkIfAlreadyOccupied(position: position) else {
+        return false
+      }
+      if currentPlayer.playerPositions.count == 3 {
+              return true
+          }
+      return isNeighbor(from: from, to: position)
+     }
+    
+    private func isNeighbor(from: Int, to: Int) -> Bool {
+      return neighborMap[from]!.contains(to)
+    }
+      
+    func areNeighborsEmpty(at: Int) -> Bool {
+        let allEmptyNeighborPositions = self.allEmptyNeighborPositions(at: at)
+          return !allEmptyNeighborPositions.isEmpty
+    }
+
+    func allEmptyNeighborPositions(at: Int, for player: MillsPlayer? = nil) -> [Int] {
+        let player = player ?? currentPlayer
+          guard !player.isOnly3Left() else {
+              return allEmptyPositions()
+          }
+          return neighborMap[at]!.filter { position in
+              !currentPlayer.playerPositions.contains(position) && !opponentPlayer.playerPositions.contains(position)
+          }
+      }
+      
+      private func allEmptyPositions() -> [Int] {
+          let allOccupied = currentPlayer.playerPositions + opponentPlayer.playerPositions
+          return (1...24).filter { !allOccupied.contains($0) }
+      }
+    
     
     //
     //    func char(at position: Int) {

@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-class MillsPlayer {
+class MillsPlayer: Equatable {
+    static func == (lhs: MillsPlayer, rhs: MillsPlayer) -> Bool {
+        lhs.playerNumber == rhs.playerNumber
+    }
+    
     var playerNumber: Int
     var coinIcon: String
     
@@ -30,7 +34,7 @@ class MillsPlayer {
         return playerPositions
     }
     
-    @objc dynamic private var currentBhars = [[Int]]()
+    @objc dynamic var currentBhars = [[Int]]()
     
     @objc dynamic var isPlaying: Bool
     var playerRemainingPositions = DEFAULT_COIN_COUNT {
@@ -90,7 +94,6 @@ class MillsPlayer {
     }
     
     func checkBhar() -> Bool {
-        var bharToReturn: [Int]?
         for bhar in allPossibleBhrs {
             let listSet = Set(playerPositions)
             let findListSet = Set(bhar)
@@ -147,33 +150,66 @@ class MillsPlayer {
         self.playerScoreModel = MillsAndAvailableCoin(mills: 0, availableCoins: 10)
     }
     
-    func getMove(board: MillsBoard) -> Int {
+    func getPositionToPlace(board: MillsBoard) -> Int {
         // This method must be overriden!
         return 0
     }
     
-}
-
-class RandomMillsPlayer: MillsPlayer {
-    override func getMove(board: MillsBoard) -> Int {
-        let possibleMoves = board.getPossibleMoves()
-        let randomIndex = Int.random(in: 1..<possibleMoves.count)
-        return possibleMoves[randomIndex]
+    func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
+        // This method must be overriden!
+        return (1, 24)
     }
-}
-
-class HumanMillsPlayer: MillsPlayer {
-    override func getMove(board: MillsBoard) -> Int {
-        // this has to be done some other way.
+    
+    func charPosition() -> Int {
+        // This method must be overriden!
         return 0
     }
 }
 
+class RandomMillsPlayer: MillsPlayer {
+    override func getPositionToPlace(board: MillsBoard) -> Int {
+        let possibleMoves = board.getPossiblePlacePositions()
+        return possibleMoves.random
+    }
+    
+    override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
+        var positions = [(from: Int, to: Int)]()
+        for position in playerPositions {
+            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
+            if !allEmptyNeighborPositions.isEmpty {
+                positions.append((position, allEmptyNeighborPositions.first!))
+            }
+        }
+        return positions.random
+    }
+    
+    override func charPosition() -> Int {
+        var possibleCharPositions = [Int]()
+        for position in board.opponentPlayer.playerPositions {
+            if !board.opponentPlayer.isPositionInBhar(position: position) {
+                possibleCharPositions.append(position)
+            }
+        }
+        return possibleCharPositions.random
+    }
+}
+
+class HumanMillsPlayer: MillsPlayer {
+    override func getPositionToPlace(board: MillsBoard) -> Int {
+        // this has to be done some other way.
+        return 0
+    }
+    
+    override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
+        return (1, 24)
+    }
+}
+
 class SmartMillsPlayer: MillsPlayer {
-    override func getMove(board: MillsBoard) -> Int {
+    override func getPositionToPlace(board: MillsBoard) -> Int {
         let turn = board.getCurrentPlayer()
         var noLossMoves = [Int]()
-        let possibleMoves = board.getPossibleMoves()
+        let possibleMoves = board.getPossiblePlacePositions()
         if possibleMoves.count == 25 {
             return 1
         } else {
@@ -228,6 +264,83 @@ class SmartMillsPlayer: MillsPlayer {
             return possibleMoves[randomIndex]
         }
     }
+    
+    override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
+        // My bhar
+        var positions = [(from: Int, to: Int)]()
+        for position in playerPositions {
+            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
+            if !allEmptyNeighborPositions.isEmpty {
+                // check for bhar
+                for neighbour in allEmptyNeighborPositions {
+                    if checkBhar(for: neighbour, removingPos: position, player: self) {
+                        positions.append((position, allEmptyNeighborPositions.first!))
+                    }
+                }
+            }
+        }
+        
+        if !positions.isEmpty {
+            let randomIndex = Int.random(in: 0..<positions.count)
+            return positions[randomIndex]
+        }
+        
+        // stop bhar
+        for position in playerPositions {
+            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position, for: board.opponentPlayer)
+            if !allEmptyNeighborPositions.isEmpty {
+                // check for bhar
+                for neighbour in allEmptyNeighborPositions {
+                    if checkBhar(for: neighbour, removingPos: position, player: board.opponentPlayer) {
+                        positions.append((position, allEmptyNeighborPositions.first!))
+                    }
+                }
+            }
+        }
+        
+        if !positions.isEmpty {
+            let randomIndex = Int.random(in: 0..<positions.count)
+            return positions[randomIndex]
+        }
+        
+        // try for future bhar
+        for position in playerPositions {
+            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
+            if !allEmptyNeighborPositions.isEmpty {
+                positions.append((position, allEmptyNeighborPositions.first!))
+            }
+        }
+        
+        if !positions.isEmpty {
+            let randomIndex = Int.random(in: 0..<positions.count)
+            return positions[randomIndex]
+        }
+        
+        // random
+        return RandomMillsPlayer(playerNumber: playerNumber, coinIcon: "", isPlaying: true, board: board).getPositionToMove(board: board)
+        
+        func checkBhar(for position: Int, removingPos: Int, player: MillsPlayer) -> Bool {
+            let positionAfterChange = player.playerPositions.filter { $0 != removingPos} + [position]
+            let listSet = Set(positionAfterChange)
+            for bhar in allPossibleBhrs {
+                let findListSet = Set(bhar)
+                if findListSet.isSubset(of: listSet), !currentBhars.contains(bhar) {
+                    return true
+                }
+            }
+            return false
+        }
+    }
+    
+    override func charPosition() -> Int {
+        var possibleCharPositions = [Int]()
+        for position in board.currentPlayer.playerPositions {
+            if !board.currentPlayer.isPositionInBhar(position: position) {
+                possibleCharPositions.append(position)
+            }
+        }
+        return possibleCharPositions.random
+    }
 }
 
 class SmarterMillsPlayer: MillsPlayer {
@@ -255,7 +368,7 @@ class SmarterMillsPlayer: MillsPlayer {
         let dep = depth + 1
         var scores = [Int]()
         var moves = [Int]()
-        let possibleMoves = board.getPossibleMoves()
+        let possibleMoves = board.getPossiblePlacePositions()
         // if divisible by two, that means it's player's turn. If not, it's the opponent's turn.
         let playersTurn = (depth % 2 == 0)
         
@@ -278,9 +391,9 @@ class SmarterMillsPlayer: MillsPlayer {
         return score
     }
     
-    override func getMove(board: MillsBoard) -> Int {
+    override func getPositionToPlace(board: MillsBoard) -> Int {
         //minor enhancement in the early stages of the game
-        let possibleMoves = board.getPossibleMoves()
+        let possibleMoves = board.getPossiblePlacePositions()
         if possibleMoves.count == 25 {
             return 1
         }
@@ -288,7 +401,7 @@ class SmarterMillsPlayer: MillsPlayer {
         player = board.getCurrentPlayer()
         opponent = (player == 0) ? 1 : 0
         if possibleMoves.count > 10 {
-            return SmartMillsPlayer(playerNumber: player, coinIcon: "", isPlaying: true, board: board).getMove(board: board)
+            return SmartMillsPlayer(playerNumber: player, coinIcon: "", isPlaying: true, board: board).getPositionToPlace(board: board)
         }
         _ = minimax(board: board, depth: 0)
         if choice == 0 {
@@ -298,5 +411,16 @@ class SmarterMillsPlayer: MillsPlayer {
         }
         return choice
     }
+    
+    override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
+        return (1, 24)
+    }
 }
 
+
+extension Array {
+    var random: Element {
+        let randomIndex = Int.random(in: 0..<self.count)
+        return self[randomIndex]
+    }
+}
