@@ -113,9 +113,16 @@ extension OperatorsViewController: UITableViewDataSource{
                     navigationController?.pushViewController(vc, animated: true)
                     
                 case .Mills:
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "GameVC")
-                    navigationController?.pushViewController(rootViewController, animated: true)
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "GameVC")
+//                    navigationController?.pushViewController(rootViewController, animated: true)
+                    let managedObjectContent = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                    let rootView = MillsLaunchUIView()
+                        .environmentObject(ViewRouter())
+                        .environment(\.managedObjectContext, managedObjectContent)
+                    let vc = UIHostingController(rootView: rootView)
+                    navigationController?.navigationBar.isHidden = false
+                    navigationController?.pushViewController(vc, animated: true)
                     
                 case .Sudoku:
                     let managedObjectContent = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

@@ -30,6 +30,8 @@
 		049A81CC29B491F900718224 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A81B429B491F800718224 /* Settings.swift */; };
 		049A81CD29B491F900718224 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A81B529B491F800718224 /* Grid.swift */; };
 		049A81CE29B491F900718224 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A81B629B491F800718224 /* Record.swift */; };
+		04C060CA29BB401000B61130 /* MillsLaunchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C060C929BB401000B61130 /* MillsLaunchUIView.swift */; };
+		04C060CC29BB654500B61130 /* ConvertUIKitToSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C060CB29BB654500B61130 /* ConvertUIKitToSwift.swift */; };
 		04DA93B429A08E34008F70FB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B329A08E34008F70FB /* FirebaseAnalytics */; };
 		04DA93B629A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B529A08E34008F70FB /* FirebaseAnalyticsOnDeviceConversion */; };
 		04DA93B829A08E34008F70FB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93B729A08E34008F70FB /* FirebaseAnalyticsSwift */; };
@@ -38,6 +40,7 @@
 		04DA93BE29A08E34008F70FB /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93BD29A08E34008F70FB /* FirebasePerformance */; };
 		04DA93C029A08E34008F70FB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93BF29A08E34008F70FB /* FirebaseRemoteConfig */; };
 		04DA93C229A08E34008F70FB /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93C129A08E34008F70FB /* FirebaseRemoteConfigSwift */; };
+		13598D7929BC552E002AF961 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13598D7829BC552E002AF961 /* ScoreManager.swift */; };
 		363313E429A8D4050072BD66 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313E329A8D4050072BD66 /* HeaderView.swift */; };
 		3633147829B48B190072BD66 /* TicTacToeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633143529B48B180072BD66 /* TicTacToeGameViewController.swift */; };
 		3633147929B48B190072BD66 /* TicTacToeMain.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3633143629B48B180072BD66 /* TicTacToeMain.strings */; };
@@ -200,6 +203,9 @@
 		049A81B429B491F800718224 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		049A81B529B491F800718224 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		049A81B629B491F800718224 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		04C060C929BB401000B61130 /* MillsLaunchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsLaunchUIView.swift; sourceTree = "<group>"; };
+		04C060CB29BB654500B61130 /* ConvertUIKitToSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertUIKitToSwift.swift; sourceTree = "<group>"; };
+		13598D7829BC552E002AF961 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		363313E329A8D4050072BD66 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3633143529B48B180072BD66 /* TicTacToeGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeGameViewController.swift; sourceTree = "<group>"; };
 		3633143729B48B180072BD66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TicTacToeMain.strings; sourceTree = "<group>"; };
@@ -625,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				363314A529B48BFC0072BD66 /* Bradley Hand Bold.ttf */,
+				13598D7829BC552E002AF961 /* ScoreManager.swift */,
 				363314A629B48BFC0072BD66 /* SettingsView.swift */,
 				363314A729B48BFC0072BD66 /* QuestionViewController.swift */,
 				363314A829B48BFC0072BD66 /* Model.swift */,
@@ -779,7 +786,12 @@
 				36B3B7C729A28084000707C9 /* Mills.xcdatamodeld */,
 				36B3B7BA29A28084000707C9 /* Mills.xcdatamodeld */,
 				36B3B7BC29A28084000707C9 /* InitialVC.swift */,
+
 				3633150629B4C1310072BD66 /* MillsSmartPlayer.swift */,
+
+				04C060C929BB401000B61130 /* MillsLaunchUIView.swift */,
+				04C060CB29BB654500B61130 /* ConvertUIKitToSwift.swift */,
+
 			);
 			path = Mills;
 			sourceTree = SOURCE_ROOT;
@@ -981,7 +993,9 @@
 				363314E729B48BFC0072BD66 /* HomeViewController.swift in Sources */,
 				3633149029B48B190072BD66 /* Tile.swift in Sources */,
 				36B3B80529A28084000707C9 /* GameModels.swift in Sources */,
+				13598D7929BC552E002AF961 /* ScoreManager.swift in Sources */,
 				363314D729B48BFC0072BD66 /* SettingsView.swift in Sources */,
+				04C060CA29BB401000B61130 /* MillsLaunchUIView.swift in Sources */,
 				3633150129B48BFC0072BD66 /* SceneDelegate.swift in Sources */,
 				36B3B7E629A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
 				36B3B80A29A28084000707C9 /* PlayerGuideMessages.swift in Sources */,
@@ -1004,6 +1018,7 @@
 				36B3B80629A28084000707C9 /* CircleView.swift in Sources */,
 				363314FE29B48BFC0072BD66 /* AppDelegate.swift in Sources */,
 				363314DD29B48BFC0072BD66 /* OperatorsViewController.swift in Sources */,
+				04C060CC29BB654500B61130 /* ConvertUIKitToSwift.swift in Sources */,
 				36B3B7EC29A28084000707C9 /* GameVC.swift in Sources */,
 				363314E829B48BFC0072BD66 /* ColorAndFonts.swift in Sources */,
 				3633149B29B48B190072BD66 /* ArrayExtensions.swift in Sources */,

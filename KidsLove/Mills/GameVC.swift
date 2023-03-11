@@ -13,12 +13,12 @@ import Combine
 
 var ratio: CGFloat = 1
 
-class GameVC: UIViewController {
+class GameVC:  UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var gameView: MillsGameView!
     private var playerView: UIView!
     private var disposable = Set<AnyCancellable>()
-    
+    var gameMode: PlayWith?
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
     
@@ -43,13 +43,13 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
+        print("nameeeeeeeeeeeeeeeeeeeeeeeeee---------------------------------------\(gameMode!)")
     }
     
     func startNewGame() {
         createNewGame()
         setCurrentPlayer()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
@@ -191,4 +191,6 @@ class GameVC: UIViewController {
 protocol CoinProvider {
     func provideCoinPositions(with buttonSelected: @escaping (Int)->Void ) -> [CoinPosition]
 }
+
+
 
