@@ -18,7 +18,7 @@ class GameVC:  UIViewController {
     private var gameView: MillsGameView!
     private var playerView: UIView!
     private var disposable = Set<AnyCancellable>()
-    var name: PlayWith?
+    var gameMode: PlayWith?
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
     
@@ -43,7 +43,7 @@ class GameVC:  UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
-        print("nameeeeeeeeeeeeeeeeeeeeeeeeee---------------------------------------\(name!)")
+        print("nameeeeeeeeeeeeeeeeeeeeeeeeee---------------------------------------\(gameMode!)")
     }
     
     func startNewGame() {

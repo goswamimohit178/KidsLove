@@ -13,38 +13,37 @@ struct MillsLaunchUIView: View {
     @State private var tappedBtn3 = false
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    Button("Play with Player") {
-                        tappedBtn.toggle()
-                    }
-                    .sheet(isPresented: $tappedBtn) {
-                        MyPresentableView(playWith: .withPlayerOffline)
-                    }
-                }
-                Section("Play With Computer"){
-                    
-                    Button("Easy"){
-                        tappedBtn1.toggle()
-                    } .sheet(isPresented: $tappedBtn1) {
-                        MyPresentableView(playWith: .withComputer(level: .easyLevel))
+            GeometryReader { geo in
+                List {
+                    Section("Play with Friend") {
+                        Button("Play") {
+                            tappedBtn.toggle()
+                        }
+                        .modifier(DefaultButtonMills(width:  geo.size.width))
+                      
                     }
                     
-                    Button("Medium"){
-                        tappedBtn2.toggle()
-                    } .sheet(isPresented: $tappedBtn2) {
-                        MyPresentableView(playWith: .withComputer(level: .mediumLevel))
+                    Section("Play With Computer"){
+                        Button("Easy"){
+                            tappedBtn1.toggle()
+                        }
+                        .modifier(DefaultButtonMills(width:  geo.size.width))
+                        Button("Medium"){
+                            tappedBtn2.toggle()
+                        }
+                        .modifier(DefaultButtonMills(width:  geo.size.width))
+                        Button("Hard"){
+                            tappedBtn3.toggle()
+                        }
+                        .modifier(DefaultButtonMills(width:  geo.size.width))
                     }
-                    Button("Hard"){
-                        tappedBtn3.toggle()
-                    }
-                    .sheet(isPresented: $tappedBtn3) {
-                        MyPresentableView(playWith: .withComputer(level: .HardLevel))
-                    }
-                    
                 }
             }
         }
+        NavigationLink(destination: MyPresentableView(playWith: .withPlayerOffline), isActive: $tappedBtn) { }
+        NavigationLink(destination: MyPresentableView(playWith:  .withComputer(level: .easyLevel)), isActive: $tappedBtn1) {  }
+        NavigationLink(destination: MyPresentableView(playWith: .withComputer(level: .mediumLevel)), isActive: $tappedBtn2) {  }
+        NavigationLink(destination: MyPresentableView(playWith: .withComputer(level: .HardLevel)), isActive: $tappedBtn3) {  }
     }
 }
 struct MillsLaunchUIView_Previews: PreviewProvider {
@@ -52,8 +51,6 @@ struct MillsLaunchUIView_Previews: PreviewProvider {
         MillsLaunchUIView()
     }
 }
-
-
 
 enum PlayWith {
     case withPlayerOffline
@@ -70,14 +67,32 @@ struct MyPresentableView: UIViewControllerRepresentable {
     let playWith: PlayWith!
     func makeUIViewController(context: Context) -> GameVC {
         let vc  =  GameVC()
-        vc.name = playWith
+        vc.gameMode = playWith
         return vc
     }
     
     func updateUIViewController(_ uiViewController: GameVC, context: Context) {
         
     }
+}
+
+struct DefaultButtonMills: ViewModifier {
+    private var buttonWidth: CGFloat
     
-//    typealias UIViewControllerType = GameVC
+    init(width: CGFloat) {
+        self.buttonWidth = min(width * 1.0, 350.0)
+    }
     
+    func body(content: Content) -> some View {
+        content
+            .frame(width: buttonWidth,
+                   height: 50,
+                   alignment: .center)
+            .background(Color(ThemeManager.themeColor))
+            .cornerRadius(40)
+            .padding(.all, 7)
+            .foregroundColor(Color(UIColor.systemBackground))
+            .shadow(radius: 20)
+        
+    }
 }
