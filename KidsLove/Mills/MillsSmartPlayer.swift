@@ -265,42 +265,44 @@ class SmartMillsPlayer: MillsPlayer {
         }
     }
     
-    override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
-        // My bhar
+    func posibleBhars(player: MillsPlayer) -> [(from: Int, to: Int)] {
         var positions = [(from: Int, to: Int)]()
-        for position in playerPositions {
+
+        for position in player.playerPositions {
             let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
             if !allEmptyNeighborPositions.isEmpty {
                 // check for bhar
                 for neighbour in allEmptyNeighborPositions {
-                    if checkBhar(for: neighbour, removingPos: position, player: self) {
-                        positions.append((position, allEmptyNeighborPositions.first!))
+                    if checkBhar(for: neighbour, removingPos: position, player: player) {
+                        positions.append((position, neighbour))
                     }
                 }
             }
         }
-        
+        return positions
+    }
+    
+    override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
+        // My bhar
+        var positions = posibleBhars(player: self)
+
         if !positions.isEmpty {
-            let randomIndex = Int.random(in: 0..<positions.count)
-            return positions[randomIndex]
+            return positions.random
         }
         
         // stop bhar
         for position in playerPositions {
-            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position, for: board.opponentPlayer)
-            if !allEmptyNeighborPositions.isEmpty {
-                // check for bhar
-                for neighbour in allEmptyNeighborPositions {
-                    if checkBhar(for: neighbour, removingPos: position, player: board.opponentPlayer) {
-                        positions.append((position, allEmptyNeighborPositions.first!))
-                    }
+            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
+            let opponentPlayerBharPositions = posibleBhars(player: board.opponentPlayer)
+            for pos in opponentPlayerBharPositions {
+                if allEmptyNeighborPositions.contains(pos.to) {
+                    positions.append((position, pos.to))
                 }
             }
         }
         
         if !positions.isEmpty {
-            let randomIndex = Int.random(in: 0..<positions.count)
-            return positions[randomIndex]
+            return positions.random
         }
         
         // try for future bhar
@@ -312,24 +314,11 @@ class SmartMillsPlayer: MillsPlayer {
         }
         
         if !positions.isEmpty {
-            let randomIndex = Int.random(in: 0..<positions.count)
-            return positions[randomIndex]
+            return positions.random
         }
         
         // random
         return RandomMillsPlayer(playerNumber: playerNumber, coinIcon: "", isPlaying: true, board: board).getPositionToMove(board: board)
-        
-        func checkBhar(for position: Int, removingPos: Int, player: MillsPlayer) -> Bool {
-            let positionAfterChange = player.playerPositions.filter { $0 != removingPos} + [position]
-            let listSet = Set(positionAfterChange)
-            for bhar in allPossibleBhrs {
-                let findListSet = Set(bhar)
-                if findListSet.isSubset(of: listSet), !currentBhars.contains(bhar) {
-                    return true
-                }
-            }
-            return false
-        }
     }
     
     override func charPosition() -> Int {
@@ -341,10 +330,21 @@ class SmartMillsPlayer: MillsPlayer {
         }
         return possibleCharPositions.random
     }
+    
+    func checkBhar(for position: Int, removingPos: Int, player: MillsPlayer) -> Bool {
+        let positionAfterChange = player.playerPositions.filter { $0 != removingPos} + [position]
+        let listSet = Set(positionAfterChange)
+        for bhar in allPossibleBhrs {
+            let findListSet = Set(bhar)
+            if findListSet.isSubset(of: listSet), !currentBhars.contains(bhar) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 class SmarterMillsPlayer: MillsPlayer {
-    
     var player = -1
     var opponent = -1
     var choice = -1

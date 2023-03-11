@@ -12,7 +12,6 @@ import Firebase
 import SwiftUI
 import Combine
 
-
 struct Bhar {
   var positions: [Int]
   var possibleCharPositions: [Int]
@@ -62,8 +61,8 @@ class MillsGameViewModel {
     }
     
     func computerPlayerMove() {
-        let position = self.player2.getPositionToMove(board: self.millsBoard)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            let position = self.player2.getPositionToMove(board: self.millsBoard)
             self.select(position: position.from)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                 self.select(position: position.to)
