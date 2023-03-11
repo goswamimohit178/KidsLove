@@ -15,7 +15,6 @@ struct SettingsView: View {
     @State var showView = false
     private var themeUpdated: (() -> Void)
     let themes = ["default", "light", "dark"]
-    
     init(themeUpdated: @escaping () -> Void) {
         self.themeUpdated = themeUpdated
     }
@@ -23,7 +22,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-
+                
                 //                Section(header: Text("ACCOUNT")) {
                 //                    NavigationLink(destination: AccountView()) {
                 //                        Label("Account", systemImage: "person")
@@ -32,13 +31,13 @@ struct SettingsView: View {
                 //                        Label("Security", systemImage: "lock")
                 //                    }
                 //                }
-
-//                Section(header: Text("Debug")) {
-//                    NavigationLink(destination: NewQuestionsView()) {
-//                        Label("Add questions", systemImage: "person")
-//                    }
-//                }
-
+                
+                //                Section(header: Text("Debug")) {
+                //                    NavigationLink(destination: NewQuestionsView()) {
+                //                        Label("Add questions", systemImage: "person")
+                //                    }
+                //                }
+                
                 
                 Section(header: Text("OTHER PREFERENCES")) {
                     Picker(selection: $selectedTheme, label: Text("Theme")) {
@@ -74,17 +73,18 @@ struct SettingsView: View {
                         Text("Achievements")
                     }
                     .sheet(isPresented: $showView) {
-                        MyView(isAchievement: true) {
+                        LeaderBoardView(isAchievement: true, gameCenterViewControllerDidFinish: {
                             showView.toggle()
-                        }
+                        })
                     }
+                    
                     Button {
                         showView.toggle()
                     } label: {
-                        Text("leaderBoard")
+                        Text("LeaderBoard")
                     }
                     .sheet(isPresented: $showView) {
-                        MyView(isAchievement: false, gameCenterViewControllerDidFinish: {
+                        LeaderBoardView(isAchievement: false, gameCenterViewControllerDidFinish: {
                             showView.toggle()
                         })
                     }
@@ -117,6 +117,8 @@ struct SettingsView: View {
         UIColor.defaultThemeColor = UIColor(color)
         themeUpdated()
     }
+    
+    
 }
 
 struct AccountView: View {
@@ -130,11 +132,12 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(themeUpdated: {})
     }
 }
-struct MyView: UIViewControllerRepresentable {
-    let isAchievement: Bool = false
+struct LeaderBoardView: UIViewControllerRepresentable {
+    let isAchievement: Bool?
     let gameCenterControllerDelegate: GameCenterControllerDelegate
     typealias UIViewControllerType = GKGameCenterViewController
     init(isAchievement: Bool ,gameCenterViewControllerDidFinish: @escaping () -> (Void)) {
+        self.isAchievement = isAchievement
         self.gameCenterControllerDelegate = GameCenterControllerDelegate() {
             gameCenterViewControllerDidFinish()
         }
@@ -143,7 +146,7 @@ struct MyView: UIViewControllerRepresentable {
         // Return MyViewController instance
         let vc = GKGameCenterViewController()
         vc.gameCenterDelegate = gameCenterControllerDelegate
-        if isAchievement == true{
+        if isAchievement! == true{
             vc.viewState = .achievements
         } else {
             vc.viewState = .leaderboards
@@ -152,7 +155,7 @@ struct MyView: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: GKGameCenterViewController, context: Context) {
-        // Updates the state of the specified view controller with new information from SwiftUI.
+        // Updates the sta te of the specified view controller with new information from SwiftUI.
     }
 }
 class GameCenterControllerDelegate: NSObject, GKGameCenterControllerDelegate {

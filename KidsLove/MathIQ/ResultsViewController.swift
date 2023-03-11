@@ -70,6 +70,7 @@ class ResultsViewController: UIViewController {
             goToNextLevelButton.isEnabled = false
             goToNextLevelButton.backgroundColor = UIColor.buttonBackgroundColor()
         }
+        
     }
     
     private func replaceStarsImages(percentage: Float) {
@@ -77,6 +78,8 @@ class ResultsViewController: UIViewController {
             starImageView1.image = UIImage(named: "filled-star")
             starImageView2.image = UIImage(named: "filled-star")
             starImageView3.image = UIImage(named: "filled-star")
+            let scoreManager = ScoreManager()
+            scoreManager.increaseScore(byValue: 100)
         } else if percentage >= 45 && percentage <= 80 {
             starImageView1.image = UIImage(named: "filled-star")
             starImageView2.image = UIImage(named: "filled-star 1")
