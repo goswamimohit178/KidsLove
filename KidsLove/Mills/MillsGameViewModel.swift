@@ -195,7 +195,7 @@ extension MillsGameViewModel {
   
 	func select(position: Int) {
         let coin = coinPositions[position-1]
-		print(currentIntent)
+		print("CurrentIntent:", currentIntent, "Position:", position)
 		switch currentIntent {
 		case .place:
 			guard checkAndPlaceAtPosition(coin) else {
