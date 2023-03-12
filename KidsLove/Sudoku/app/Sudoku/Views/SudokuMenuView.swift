@@ -178,16 +178,16 @@ struct SudokuMenuView: View {
                                generating: self.$generating,
                                displayWarning: self.$displayWarning)
                 .modifier(DefaultButton(width: width))
-                //				HomeButtonView(label: "main.stats",
-                //							   imageName: "chart.bar.fill",
-                //							   page: Pages.statistics,
-                //							   width: width)
-                //					.modifier(DefaultButton(width: width))
-                //				HomeButtonView(label: "main.strategies",
-                //							   imageName: "lightbulb.fill",
-                //							   page: Pages.strategies,
-                //							   width: width)
-                //					.modifier(DefaultButton(width: width))
+                				HomeButtonView(label: "main.stats",
+                							   imageName: "chart.bar.fill",
+                							   page: Pages.statistics,
+                							   width: width)
+                					.modifier(DefaultButton(width: width))
+                				HomeButtonView(label: "main.strategies",
+                							   imageName: "lightbulb.fill",
+                							   page: Pages.strategies,
+                							   width: width)
+                					.modifier(DefaultButton(width: width))
                 HomeButtonView(label: "main.settings",
                                imageName: "gear",
                                page: Pages.settings,
