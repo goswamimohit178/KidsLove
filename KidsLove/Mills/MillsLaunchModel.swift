@@ -12,10 +12,11 @@ import CloudKit
 
 struct SectionModel: Identifiable {
      var id = UUID()
-     var item: [ButtonType]
+     var items: [ButtonType]
      var sectionTittle: String
 }
-struct ButtonType {
+struct ButtonType: Identifiable {
+    var id = UUID()
     var btnTittle: String
     var action: () -> Void
 }

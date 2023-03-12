@@ -56,8 +56,8 @@ final class OperatorsViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           return 10
-       }
+        return 10
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         UIView(frame: .zero)
@@ -89,7 +89,7 @@ extension OperatorsViewController: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return model.math.count
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,11 +113,29 @@ extension OperatorsViewController: UITableViewDataSource{
                     navigationController?.pushViewController(vc, animated: true)
                     
                 case .Mills:
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "GameVC")
-//                    navigationController?.pushViewController(rootViewController, animated: true)
+                    
                     let managedObjectContent = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                    let rootView = MillsLaunchUIView()
+                    let sections =
+                    [
+                        SectionModel( items:
+                                        [
+                                            ButtonType(btnTittle: "Play with Player", action: {
+                                                self.showMills(gameMode: .withPlayerOffline)
+                                            })
+                                        ], sectionTittle: "Play with player"),
+//                        SectionModel( items:
+//                                        [ButtonType(btnTittle: "Easy ", action: {
+//                                            self.showMills(gameMode: PlayWith.withComputer(level: .easyLevel))
+//                                        }),
+//                                         ButtonType(btnTittle: "Medium ", action: {
+//                                             self.showMills(gameMode: PlayWith.withComputer(level: .mediumLevel))
+//                                         }),
+//                                         ButtonType(btnTittle: "Hard", action: {
+//                                             self.showMills(gameMode: PlayWith.withComputer(level: .HardLevel))
+//                                         })
+//                                        ], sectionTittle: "Play with Computer")
+                    ]
+                    let rootView = MillsLaunchUIView(sections: sections)
                         .environmentObject(ViewRouter())
                         .environment(\.managedObjectContext, managedObjectContent)
                     let vc = UIHostingController(rootView: rootView)
@@ -152,6 +170,13 @@ extension OperatorsViewController: UITableViewDataSource{
         questionVC.currentUnitNumber = unitNumber
         questionVC.currentLevelNumber = levelNumber
         navigationController?.pushViewController(questionVC, animated: true)
+    }
+    
+    func showMills(gameMode: PlayWith) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
+        gameVC.gameMode = gameMode
+        navigationController?.pushViewController(gameVC, animated: true)
     }
     
     func showQuestionsFor(unitNumber: Int, levelNumber: Int) {

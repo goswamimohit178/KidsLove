@@ -11,48 +11,36 @@ struct MillsLaunchUIView: View {
     @State private var tappedBtn1 = false
     @State private var tappedBtn2 = false
     @State private var tappedBtn3 = false
-    @State var buttonModel = [SectionModel( item: [ButtonType(btnTittle: "Play With Friend", action: { print("Play btn Tapped")})], sectionTittle: "Play with player"),
-                              SectionModel(item: [ButtonType(btnTittle: "Easy Level", action: {print("Easy Level")})], sectionTittle: "Play with Computer")
-    ]
+    @State var sections: [SectionModel]
+    
+    init(sections: [SectionModel]) {
+        self.sections = sections
+    }
     
     var body: some View {
-        NavigationView {
-            GeometryReader { geo in
-                List(buttonModel) { buttons in
-                    Section(buttons.sectionTittle) {
-                        Button("Play") {
-                            tappedBtn.toggle()
+        GeometryReader { geo in
+            VStack {
+                List(sections) { section in
+                    Section(section.sectionTittle) {
+                        ForEach(section.items) { item in
+                            Button(item.btnTittle ) {
+                                item.action()
+                            }
                         }
-                        .modifier(DefaultButtonMills(width:  geo.size.width))
-                    }
-                    Section(buttons.sectionTittle){
-                            Button("Easy"){
-                                tappedBtn1.toggle()
-                            }
-                            .modifier(DefaultButtonMills(width:  geo.size.width))
-                            Button("Medium"){
-                                tappedBtn2.toggle()
-                            }
-                            .modifier(DefaultButtonMills(width:  geo.size.width))
-                            Button("Hard"){
-                                tappedBtn3.toggle()
-                            }
-                            .modifier(DefaultButtonMills(width:  geo.size.width))
-                        }
+                        .modifier(DefaultButtonMills(width:  geo.size.width * 0.70))
                     }
                 }
             }
-            NavigationLink(destination: MyPresentableView(playWith: .withPlayerOffline), isActive: $tappedBtn) { }
-            NavigationLink(destination: MyPresentableView(playWith:  .withComputer(level: .easyLevel)), isActive: $tappedBtn1) {  }
-            NavigationLink(destination: MyPresentableView(playWith: .withComputer(level: .mediumLevel)), isActive: $tappedBtn2) {  }
-            NavigationLink(destination: MyPresentableView(playWith: .withComputer(level: .HardLevel)), isActive: $tappedBtn3) {  }
-            // NavigationLink(destination: ContentView(), isActive: $tappedBtn3) {  }
+            .frame(height: geo.size.height * 0.80, alignment: .center)
+            .padding(40)
+            .cornerRadius(150)
         }
     }
+}
 
     struct MillsLaunchUIView_Previews: PreviewProvider {
         static var previews: some View {
-            MillsLaunchUIView()
+            MillsLaunchUIView(sections: [SectionModel]())
         }
     }
     
@@ -93,47 +81,10 @@ struct MillsLaunchUIView: View {
                        height: 50,
                        alignment: .center)
                 .background(Color(ThemeManager.themeColor))
-                .cornerRadius(40)
+                .cornerRadius(30)
                 .padding(.all, 7)
                 .foregroundColor(Color(UIColor.systemBackground))
                 .shadow(radius: 20)
             
         }
     }
-
-/////////////////////////////////////////////////Make Buttons/////////////////
-///
-//struct CustomButton: View {
-//var title: String
-//var action: () -> Void
-//var color: Color
-//
-//var body: some View {
-//    GeometryReader { geo in
-//        Button(btnTittle: action) {
-//            Text(title)
-//                .foregroundColor(.white)
-//                .font(.headline)
-//        }
-//        .modifier(DefaultButtonMills(width:  geo.size.width))
-//    }
-//
-//}
-//}
-//struct ContentView: View {
-//    let buttons = [
-//        CustomButton(title: "Button 1", action: { print("Button 1 tapped") }, color: .blue),
-//        CustomButton(title: "Button 2", action: { print("Button 2 tapped") }, color: .red),
-//        CustomButton(title: "Button 3", action: { print("Button 3 tapped") }, color: .green)
-//    ]
-//
-//    var body: some View {
-//        VStack {
-//            ForEach(buttons, id: \.title) { button in
-//                button
-//            }
-//        }
-//        .padding()
-//
-//    }
-//}
