@@ -215,33 +215,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C4EE28B3-4852-42C3-A98C-533C56C2220D"
+            uuid = "3B4FB9D6-B22F-437D-9379-DC9797E81611"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MathIQ/ScoreManager.swift"
+            filePath = "MathIQ/SettingsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "unlockAchievement(achievement:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D8634E58-6D2D-4973-923F-E3BFE1C97193"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathIQ/ScoreManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "unlockAchievement(achievement:)"
-            landmarkType = "7">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3B4FB9D6-B22F-437D-9379-DC9797E81611 - 17b5a552301061ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; KidsLove.LeaderBoardView in KidsLove.SettingsView.body.getter : some"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikash/Documents/GitHub/KidsLove/KidsLove/MathIQ/SettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "3B4FB9D6-B22F-437D-9379-DC9797E81611 - a004ff46c4051959"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 () -&gt; KidsLove.LeaderBoardView in KidsLove.SettingsView.body.getter : some"
+                  moduleName = "KidsLove"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikash/Documents/GitHub/KidsLove/KidsLove/MathIQ/SettingsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

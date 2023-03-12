@@ -12,7 +12,9 @@ struct SettingsView: View {
     @State private var selectedTheme = ThemeManager.theme
     @State private var isMute = SoundPlayer.isMute
     @State private var selectedThemeColor = Color(ThemeManager.themeColor)
-    @State var showView = false
+    @State var showLeaderBoardView = false
+    @State var showAchivementView = false
+    @State var isAchivement = false
     private var themeUpdated: (() -> Void)
     let themes = ["default", "light", "dark"]
     init(themeUpdated: @escaping () -> Void) {
@@ -68,28 +70,31 @@ struct SettingsView: View {
                 
                 Section(header: Text("LEADER BOARD")) {
                     Button {
-                        showView.toggle()
+                        self.isAchivement = true
+                        showAchivementView.toggle()
                     } label: {
                         Text("Achievements")
                     }
-                    .sheet(isPresented: $showView) {
-                        LeaderBoardView(isAchievement: true, gameCenterViewControllerDidFinish: {
-                            showView.toggle()
-                        })
-                    }
                     
                     Button {
-                        showView.toggle()
+                        self.isAchivement = false
+                        showLeaderBoardView.toggle()
                     } label: {
                         Text("LeaderBoard")
                     }
-                    .sheet(isPresented: $showView) {
-                        LeaderBoardView(isAchievement: false, gameCenterViewControllerDidFinish: {
-                            showView.toggle()
-                        })
-                    }
+                    
                 }
             }
+        }
+        .sheet(isPresented: $showLeaderBoardView) {
+            LeaderBoardView(isAchievement: false, gameCenterViewControllerDidFinish: {
+                showLeaderBoardView.toggle()
+            })
+        }
+        .sheet(isPresented: $showAchivementView) {
+            LeaderBoardView(isAchievement: true, gameCenterViewControllerDidFinish: {
+                showAchivementView.toggle()
+            })
         }
     }
     
