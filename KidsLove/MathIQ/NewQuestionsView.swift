@@ -13,12 +13,62 @@ struct NewQuestionsView: View {
     
     var body: some View {
         VStack {
-            TextField("Enter Question ", text: $currentQuestion.questionText)
-            TextField("Options", text: $currentQuestion.answer[0])
-            TextField("Options", text: $currentQuestion.answer[1])
-            TextField("Options", text: $currentQuestion.answer[2])
-            TextField("Options", text: $currentQuestion.answer[3])
-            TextField("Answer is ", text: $currentQuestion.correctAnswer)
+            HStack {
+                Text("Enter Questions")
+                TextField(" ", text: $currentQuestion.questionText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            HStack {
+                Text("Options")
+                TextField(" ", text: $currentQuestion.answer[0])
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Add") {
+                    questions.append(currentQuestion)
+                    currentQuestion = emptyQuestion
+                }
+                NavigationView {
+                    List() {
+                        ForEach(questions) { question in
+                            let options = question.answer.map { $0 + "," }.reduce("", +)
+                            Button("\(question.questionText), \(options), \(question.correctAnswer)", role: .cancel) {
+                                currentQuestion = question
+                            }
+                        }
+                        .onDelete(perform: onDelete)
+                        .onMove(perform: onMove)
+                    }
+                }
+
+                .frame(width: 1.0, height: 40.0)
+                Button("Add") {
+
+                }
+                .frame(width: 40.0, height: 40.0)
+                
+            }
+//            HStack {
+//                Text("Option 2")
+//                TextField(" ", text: $currentQuestion.answer[1])
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//            }
+//            HStack {
+//                Text("Option 3")
+//                TextField(" ", text: $currentQuestion.answer[2])
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//            }
+//            HStack {
+//                Text("Option 4")
+//                TextField(" ", text: $currentQuestion.answer[3])
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//            }
+            
+            HStack {
+                Text("Answer is")
+                TextField(" ", text: $currentQuestion.correctAnswer)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            
+            
             Button("Make Question") {
                 questions.append(currentQuestion)
                 currentQuestion = emptyQuestion
