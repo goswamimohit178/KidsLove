@@ -18,7 +18,7 @@ class GameVC:  UIViewController {
     private var gameView: MillsGameView!
     private var playerView: UIView!
     private var disposable = Set<AnyCancellable>()
-    var gameMode: PlayWith?
+    var gameMode: PlayWith!
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
     
@@ -89,7 +89,7 @@ class GameVC:  UIViewController {
         ratio = boardHeight/350
         
         let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
-        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel)
+        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel, gameMode: gameMode)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
         self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)

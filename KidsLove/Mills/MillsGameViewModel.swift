@@ -38,7 +38,10 @@ class MillsGameViewModel {
     }
     
     func playWithComputerPlayer() {
-        guard currentPlayer == player2 else {
+        guard currentPlayer == player2,
+        ((player2 is SmartMillsPlayer) ||
+        (player2 is RandomMillsPlayer) ||
+        (player2 is SmarterMillsPlayer)) else {
             return
         }
         switch currentIntent {
@@ -107,15 +110,30 @@ class MillsGameViewModel {
   weak var delegate: GameViewDelegate?
   private let coinPositionsProvider: CoinProvider
 
-  init(coinPositionsProvider: CoinProvider) {
-      self.millsBoard = MillsBoard()
-      self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
-      self.player2 =  SmartMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
-      millsBoard.players = [player1, player2]
-    self.playerChangeSubject = PassthroughSubject()
-    self.coinPositionsProvider = coinPositionsProvider
-    setCoinPositions()
-  }
+    init(coinPositionsProvider: CoinProvider, gameMode: PlayWith) {
+        self.millsBoard = MillsBoard()
+        self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+        switch gameMode {
+        case .withPlayerOffline:
+            self.player2 = MillsPlayer(playerNumber: 1, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+        case .withComputer(level: let level):
+            switch level {
+            case .easyLevel:
+                self.player2 =  RandomMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+                
+            case .mediumLevel:
+                self.player2 =  SmartMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+                
+            case .HardLevel:
+                self.player2 =  SmarterMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+            }
+            
+        }
+        millsBoard.players = [player1, player2]
+        self.playerChangeSubject = PassthroughSubject()
+        self.coinPositionsProvider = coinPositionsProvider
+        setCoinPositions()
+    }
     
     func setCoinPositions() {
         self.coinPositions = coinPositionsProvider.provideCoinPositions(with: self.select(position:))
