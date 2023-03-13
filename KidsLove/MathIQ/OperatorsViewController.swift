@@ -123,17 +123,17 @@ extension OperatorsViewController: UITableViewDataSource{
                                                 self.showMills(gameMode: .withPlayerOffline)
                                             })
                                         ], sectionTittle: "Play with player"),
-//                        SectionModel( items:
-//                                        [ButtonType(btnTittle: "Easy ", action: {
-//                                            self.showMills(gameMode: PlayWith.withComputer(level: .easyLevel))
-//                                        }),
-//                                         ButtonType(btnTittle: "Medium ", action: {
-//                                             self.showMills(gameMode: PlayWith.withComputer(level: .mediumLevel))
-//                                         }),
-//                                         ButtonType(btnTittle: "Hard", action: {
-//                                             self.showMills(gameMode: PlayWith.withComputer(level: .HardLevel))
-//                                         })
-//                                        ], sectionTittle: "Play with Computer")
+                        SectionModel( items:
+                                        [ButtonType(btnTittle: "Easy ", action: {
+                                            self.showMills(gameMode: PlayWith.withComputer(level: .easyLevel))
+                                        }),
+                                         ButtonType(btnTittle: "Medium ", action: {
+                                             self.showMills(gameMode: PlayWith.withComputer(level: .mediumLevel))
+                                         }),
+                                         ButtonType(btnTittle: "Hard", action: {
+                                             self.showMills(gameMode: PlayWith.withComputer(level: .HardLevel))
+                                         })
+                                        ], sectionTittle: "Play with Computer")
                     ]
                     let rootView = MillsLaunchUIView(sections: sections)
                         .environmentObject(ViewRouter())
