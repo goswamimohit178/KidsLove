@@ -38,10 +38,12 @@ class MillsGameViewModel {
     }
     
     func playWithComputerPlayer() {
-        guard currentPlayer == player2,
-        ((player2 is SmartMillsPlayer) ||
-        (player2 is RandomMillsPlayer) ||
-        (player2 is SmarterMillsPlayer)) else {
+        guard isWon() == nil else {
+            return
+        }
+        guard ((currentPlayer is SmartMillsPlayer) ||
+        (currentPlayer is RandomMillsPlayer) ||
+        (currentPlayer is SmarterMillsPlayer)) else {
             return
         }
         switch currentIntent {
@@ -58,14 +60,14 @@ class MillsGameViewModel {
     
     func computerPlayerPlace() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let position = self.player2.getPositionToPlace(board: self.millsBoard)
+            let position = self.currentPlayer.getPositionToPlace(board: self.millsBoard)
             self.select(position: position)
         }
     }
     
     func computerPlayerMove() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let position = self.player2.getPositionToMove(board: self.millsBoard)
+            let position = self.currentPlayer.getPositionToMove(board: self.millsBoard)
             self.select(position: position.from)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                 self.select(position: position.to)
@@ -75,7 +77,7 @@ class MillsGameViewModel {
     
     func computerPlayerChar() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let position = self.player2.charPosition()
+            let position = self.currentPlayer.charPosition()
             self.select(position: position)
         }
     }
@@ -112,7 +114,7 @@ class MillsGameViewModel {
 
     init(coinPositionsProvider: CoinProvider, gameMode: PlayWith) {
         self.millsBoard = MillsBoard()
-        self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+        self.player1 = SmartMillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
         switch gameMode {
         case .withPlayerOffline:
             self.player2 = MillsPlayer(playerNumber: 1, coinIcon: "coin1", isPlaying: true, board: millsBoard)
@@ -133,6 +135,7 @@ class MillsGameViewModel {
         self.playerChangeSubject = PassthroughSubject()
         self.coinPositionsProvider = coinPositionsProvider
         setCoinPositions()
+        playWithComputerPlayer()
     }
     
     func setCoinPositions() {

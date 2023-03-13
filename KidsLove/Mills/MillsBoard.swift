@@ -145,7 +145,7 @@ class MillsBoard {
     
     func getPossiblePlacePositions() -> [Int] {
         var possibleMoves = [Int]()
-        for i in 0..<fields.count {
+        for i in 1..<fields.count {
             if self.fields[i] == EMPTY_ROW_CONST {
                 possibleMoves.append(i)
             }
