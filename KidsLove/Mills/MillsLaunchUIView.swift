@@ -54,20 +54,6 @@ struct MillsLaunchUIView: View {
         case mediumLevel
         case HardLevel
     }
-    
-    struct MyPresentableView: UIViewControllerRepresentable {
-        let playWith: PlayWith!
-        func makeUIViewController(context: Context) -> GameVC {
-            let vc  =  GameVC()
-            vc.gameMode = playWith
-            return vc
-        }
-        
-        func updateUIViewController(_ uiViewController: GameVC, context: Context) {
-            
-        }
-    }
-    
     struct DefaultButtonMills: ViewModifier {
         private var buttonWidth: CGFloat
         
