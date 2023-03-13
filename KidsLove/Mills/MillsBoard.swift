@@ -80,28 +80,6 @@ class MillsBoard {
         }
     }
     
-    //    var playerScoreModel: MillsAndAvailableCoin {
-    //        didSet {
-    //            passthroughSubject.send(playerScoreModel)
-    //        }
-    //    }
-    //    var playerRemainingPositions = DEFAULT_COIN_COUNT {
-    //        didSet {
-    //            self.playerScoreModel = MillsAndAvailableCoin(mills: playerScoreModel.mills, availableCoins: playerRemainingPositions)
-    //        }
-    //    }
-    
-    //    var isLost: Bool {
-    //        guard playerRemainingPositions <= 0 else {
-    //            return false
-    //        }
-    //        return (playerPositions.count+playerRemainingPositions)<=2
-    //    }
-    
-    //    var isPlacedAllCoins: Bool {
-    //        return (playerRemainingPositions == 0)
-    //    }
-    
     init(fields: [Int]? = nil, current: Int = 0) {
         self.fields = fields ?? Array(repeating: EMPTY_ROW_CONST, count: 25)
         self.current = current
@@ -177,7 +155,6 @@ class MillsBoard {
     
     func place(at position: Int, playerNumber: Int) {
         makeMove(row: position)
-    //        fields[position] = playerNumber
     }
     
     func char(at position: Int, playerNumber: Int) {
@@ -234,87 +211,4 @@ class MillsBoard {
           let allOccupied = currentPlayer.playerPositions + opponentPlayer.playerPositions
           return (1...24).filter { !allOccupied.contains($0) }
       }
-    
-    
-    //
-    //    func char(at position: Int) {
-    //        playerScoreModel = playerScoreModel.increasingMills
-    //        playerPositions = playerPositions.filter { $0 != position }
-    //        updateCurrentBhar()
-    //    }
-    //
-    //    func updateCurrentBhar() {
-    //        currentBhars = currentBhars.filter { currentBhar in
-    //            currentBhar.allSatisfy { bharPosition in
-    //                playerPositions.contains(bharPosition)
-    //            }
-    //        }
-    //    }
-    //
-    //    func movePosition(from: Int, to: Int) {
-    //        playerPositions = playerPositions.filter { $0 != from }
-    //        playerPositions.append(to)
-    //        updateCurrentBhar()
-    //    }
-    //
-    //    func checkBhar() -> [Int]? {
-    //        var bharToReturn: [Int]?
-    //        for bhar in allPossibleBhrs {
-    //            let listSet = Set(playerPositions)
-    //            let findListSet = Set(bhar)
-    //            if findListSet.isSubset(of: listSet), !currentBhars.contains(bhar) {
-    //                currentBhars.append(bhar)
-    //                bharToReturn = bhar
-    //            }
-    //        }
-    //        return bharToReturn
-    //    }
-    //
-    //    func isPositionInBhar(position: Int) -> Bool {
-    //        //dont check bhar if all are in bahar
-    //        let allBhars = currentBhars.flatMap({$0})
-    //        let allNonBharPosition = self.allNonBharPosition(allBhars: allBhars)
-    //        guard !allNonBharPosition.isEmpty else {
-    //            return false
-    //        }
-    //        return (allBhars.first { $0 == position } != nil)
-    //    }
-    //
-    //    func canCharAtPositions() -> [Int] {
-    //        //dont check bhar if all are in bahar
-    //        let allBhars = currentBhars.flatMap({$0})
-    //        let allNonBharPosition = self.allNonBharPosition(allBhars: allBhars)
-    //        guard !allNonBharPosition.isEmpty else {
-    //            return allBhars
-    //        }
-    //        return allNonBharPosition
-    //    }
-    //
-    //    private func allNonBharPosition(allBhars: [Int]) -> [Int] {
-    //        return playerPositions.filter { !allBhars.contains($0) }
-    //    }
-    //
-    //    func isOnly3Left() -> Bool {
-    //        return (playerPositions.count == 3) && (playerRemainingPositions == 0)
-    //    }
-    //
-    //    func setPlaceOrMoveMessage() {
-    //        if playerRemainingPositions > 0 {
-    //            messageForUser = PlayerGuideMessages.getMessage(for: .place)
-    //        } else {
-    //            messageForUser = PlayerGuideMessages.getMessage(for: .selectForMove)
-    //        }
-    //    }
 }
-
-//enum GameType {
-//    case personOffline
-//    case computer(level: ComputerLevels)
-//}
-//
-//enum ComputerLevels {
-//    case easy
-//    case hard
-//}
-//
-//var gameType: GameType = .computer(level: .easy)
