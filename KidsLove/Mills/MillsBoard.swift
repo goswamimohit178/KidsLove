@@ -211,7 +211,7 @@ class MillsBoard {
       return isNeighbor(from: from, to: position)
      }
     
-    private func isNeighbor(from: Int, to: Int) -> Bool {
+    func isNeighbor(from: Int, to: Int) -> Bool {
       return neighborMap[from]!.contains(to)
     }
       

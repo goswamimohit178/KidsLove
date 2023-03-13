@@ -205,7 +205,22 @@ class HumanMillsPlayer: MillsPlayer {
     }
 }
 
+
 class SmartMillsPlayer: MillsPlayer {
+    
+    func possiblePlacePositionsToMakeBhar(turn: Int) -> [Int] {
+        var positions = [Int]()
+        let possibleMoves = board.getPossiblePlacePositions()
+        for row in possibleMoves {
+            board.simulateMove(row: row, player: turn)
+            if board.hasWon(playerNumber: turn) {
+                positions.append(row)
+            }
+            board.simulateMove(row: row, player: EMPTY_ROW_CONST)
+        }
+        return positions
+    }
+    
     override func getPositionToPlace(board: MillsBoard) -> Int {
         let turn = board.getCurrentPlayer()
         var noLossMoves = [Int]()
@@ -214,15 +229,11 @@ class SmartMillsPlayer: MillsPlayer {
             return 1
         } else {
             // check winning move
-            for row in possibleMoves {
-                board.simulateMove(row: row, player: turn)
-                if board.hasWon(playerNumber: turn) {
-                    board.simulateMove(row: row, player: EMPTY_ROW_CONST)
-                    print("Placed for wining")
-                    return row
-                }
-                board.simulateMove(row: row, player: EMPTY_ROW_CONST)
+            let possiblePlacePositionsToMakeBhar = possiblePlacePositionsToMakeBhar(turn: turn)
+            if !possiblePlacePositionsToMakeBhar.isEmpty {
+                return possiblePlacePositionsToMakeBhar.random!
             }
+            
             // check prevent loss move
             for row in possibleMoves {
                 var opponent = 1
@@ -304,77 +315,128 @@ class SmartMillsPlayer: MillsPlayer {
     }
     
     func posibleBharsArray(player: MillsPlayer, opponentPlayer: MillsPlayer) -> [[Int]] {
-        var posibleBhars = [[Int]]()
+        var posibleBhars = Set<[Int]>()
         for possibleBhr in allPossibleBhrs {
             let first = player.playerPositions.contains(possibleBhr[0])
             let second = player.playerPositions.contains(possibleBhr[1])
             let third = player.playerPositions.contains(possibleBhr[2])
             if !first, second, third {
                 if !opponentPlayer.playerPositions.contains(possibleBhr[0]) {
-                    posibleBhars.append([possibleBhr[1], possibleBhr[2]])
+                    if player.playerRemainingPositions == 0 {
+                        for pos in player.playerPositions {
+                            if board.isNeighbor(from: possibleBhr[0], to: pos) {
+                                posibleBhars.insert([possibleBhr[1], possibleBhr[2]])
+                            }
+                        }
+                    } else {
+                        posibleBhars.insert([possibleBhr[1], possibleBhr[2]])
+                    }
                 }
+                
             } else if first, !second, third {
                 if !opponentPlayer.playerPositions.contains(possibleBhr[1]) {
-                    posibleBhars.append([possibleBhr[0], possibleBhr[2]])
+                    if player.playerRemainingPositions == 0 {
+                        for pos in player.playerPositions {
+                            if board.isNeighbor(from: possibleBhr[1], to: pos) {
+                                posibleBhars.insert([possibleBhr[0], possibleBhr[2]])
+                            }
+                        }
+                    } else {
+                        posibleBhars.insert([possibleBhr[0], possibleBhr[2]])
+                    }
                 }
+                
             } else if first, second, !third {
                 if !opponentPlayer.playerPositions.contains(possibleBhr[2]) {
-                    posibleBhars.append([possibleBhr[0], possibleBhr[1]])
+                    if player.playerRemainingPositions == 0 {
+                        for pos in player.playerPositions {
+                            if board.isNeighbor(from: possibleBhr[2], to: pos) {
+                                posibleBhars.insert([possibleBhr[0], possibleBhr[1]])
+                            }
+                        }
+                    } else {
+                        posibleBhars.insert([possibleBhr[0], possibleBhr[1]])
+                    }
                 }
             }
         }
-        return posibleBhars
+        return Array(posibleBhars)
     }
     
     override func getPositionToMove(board: MillsBoard) -> (from: Int, to: Int) {
         // make bhar
         var positions = posibleBhars(player: self)
-
         if !positions.isEmpty {
             return positions.random!
         }
         
         // stop bhar
-        for position in playerPositions {
-            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
-            let opponentPlayerBharPositions = posibleBhars(player: board.opponentPlayer)
-            for pos in opponentPlayerBharPositions {
-                if allEmptyNeighborPositions.contains(pos.to) {
-                    positions.append((position, pos.to))
+        let opponentPlayerBharPositions = posibleBhars(player: board.opponentPlayer)
+        if !opponentPlayerBharPositions.isEmpty {
+            for position in playerPositions {
+                let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
+                for pos in opponentPlayerBharPositions {
+                    if allEmptyNeighborPositions.contains(pos.to) {
+                        positions.append((position, pos.to))
+                    }
                 }
             }
         }
+        if !positions.isEmpty {
+            return positions.random!
+        }
         
+        // open already made bhar
+        for bhar in allPossibleBhrs {
+            let superSet = Set(playerPositions)
+            let subSet = Set(bhar)
+            if superSet.isSuperset(of: subSet) {
+                for pos in bhar {
+                    let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: pos)
+                    if !allEmptyNeighborPositions.isEmpty {
+                        positions.append((from: pos, to: allEmptyNeighborPositions.first!))
+                    }
+                }
+            }
+        }
         if !positions.isEmpty {
             return positions.random!
         }
         
         // try for future bhar
-        for position in playerPositions {
-            let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
-            if !allEmptyNeighborPositions.isEmpty {
-                positions.append((position, allEmptyNeighborPositions.first!))
+        let possiblePlacePositionsToMakeBhar = possiblePlacePositionsToMakeBhar(turn: board.current)
+        if !possiblePlacePositionsToMakeBhar.isEmpty {
+            for position in playerPositions {
+                let allEmptyNeighborPositions = board.allEmptyNeighborPositions(at: position)
+                for pos in possiblePlacePositionsToMakeBhar {
+                    let emptyNeighbor = board.allEmptyNeighborPositions(at: pos)
+                    let output = emptyNeighbor.filter(allEmptyNeighborPositions.contains)
+                    for toPos in output {
+                        positions.append((from: position, to: toPos))
+                    }
+                }
             }
         }
-        
+       
         if !positions.isEmpty {
             return positions.random!
         }
         
         // random
+        print("random move")
         return RandomMillsPlayer(playerNumber: playerNumber, coinIcon: "", isPlaying: true, board: board).getPositionToMove(board: board)
     }
     
     override func charPosition() -> Int {
         var possibleCharPositions = [Int]()
         
-        // stop bahr
         for position in board.currentPlayer.playerPositions {
             if !board.currentPlayer.isPositionInBhar(position: position) {
                 possibleCharPositions.append(position)
             }
         }
         
+        // stop bahr
         let opponentPosibleBharsArray = posibleBharsArray(player: board.currentPlayer, opponentPlayer: board.opponentPlayer)
         if let pos = opponentPosibleBharsArray.reduce([], +).duplicates().random {
             return pos
@@ -383,7 +445,7 @@ class SmartMillsPlayer: MillsPlayer {
         }
         
         //make bhar
-        let posibleBharsArrayAfterOneMill = posibleBharsArrayAfterOneMill(player: board.currentPlayer, opponentPlayer: board.opponentPlayer)
+        let posibleBharsArrayAfterOneMill = posibleBharsArrayAfterOneMill(player: board.opponentPlayer, opponentPlayer: board.currentPlayer)
         if !posibleBharsArrayAfterOneMill.isEmpty {
             return posibleBharsArrayAfterOneMill.random!
         }
