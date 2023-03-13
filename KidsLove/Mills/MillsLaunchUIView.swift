@@ -11,73 +11,66 @@ struct MillsLaunchUIView: View {
     @State private var tappedBtn1 = false
     @State private var tappedBtn2 = false
     @State private var tappedBtn3 = false
+    @State var sections: [SectionModel]
+    
+    init(sections: [SectionModel]) {
+        self.sections = sections
+    }
+    
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    Button("Play with Player") {
-                        tappedBtn.toggle()
+        GeometryReader { geo in
+            VStack {
+                List(sections) { section in
+                    Section(section.sectionTittle) {
+                        ForEach(section.items) { item in
+                            Button(item.btnTittle ) {
+                                item.action()
+                            }
+                        }
+                        .modifier(DefaultButtonMills(width:  geo.size.width * 0.70))
                     }
-                    .sheet(isPresented: $tappedBtn) {
-                        MyPresentableView(playWith: .withPlayerOffline)
-                    }
-                }
-                Section("Play With Computer"){
-                    
-                    Button("Easy"){
-                        tappedBtn1.toggle()
-                    } .sheet(isPresented: $tappedBtn1) {
-                        MyPresentableView(playWith: .withComputer(level: .easyLevel))
-                    }
-                    
-                    Button("Medium"){
-                        tappedBtn2.toggle()
-                    } .sheet(isPresented: $tappedBtn2) {
-                        MyPresentableView(playWith: .withComputer(level: .mediumLevel))
-                    }
-                    Button("Hard"){
-                        tappedBtn3.toggle()
-                    }
-                    .sheet(isPresented: $tappedBtn3) {
-                        MyPresentableView(playWith: .withComputer(level: .HardLevel))
-                    }
-                    
                 }
             }
+            .frame(height: geo.size.height * 0.80, alignment: .center)
+            .padding(40)
+            .cornerRadius(150)
         }
     }
 }
-struct MillsLaunchUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        MillsLaunchUIView()
-    }
-}
 
-
-
-enum PlayWith {
-    case withPlayerOffline
-    case withComputer(level: ComputerLevel)
-}
-
-enum ComputerLevel {
-    case easyLevel
-    case mediumLevel
-    case HardLevel
-}
-
-struct MyPresentableView: UIViewControllerRepresentable {
-    let playWith: PlayWith!
-    func makeUIViewController(context: Context) -> GameVC {
-        let vc  =  GameVC()
-        vc.name = playWith
-        return vc
+    struct MillsLaunchUIView_Previews: PreviewProvider {
+        static var previews: some View {
+            MillsLaunchUIView(sections: [SectionModel]())
+        }
     }
     
-    func updateUIViewController(_ uiViewController: GameVC, context: Context) {
+    enum PlayWith {
+        case withPlayerOffline
+        case withComputer(level: ComputerLevel)
+    }
+    
+    enum ComputerLevel {
+        case easyLevel
+        case mediumLevel
+        case HardLevel
+    }
+    struct DefaultButtonMills: ViewModifier {
+        private var buttonWidth: CGFloat
         
+        init(width: CGFloat) {
+            self.buttonWidth = min(width * 1.0, 350.0)
+        }
+        
+        func body(content: Content) -> some View {
+            content
+                .frame(width: buttonWidth,
+                       height: 50,
+                       alignment: .center)
+                .background(Color(ThemeManager.themeColor))
+                .cornerRadius(30)
+                .padding(.all, 7)
+                .foregroundColor(Color(UIColor.systemBackground))
+                .shadow(radius: 20)
+            
+        }
     }
-    
-//    typealias UIViewControllerType = GameVC
-    
-}

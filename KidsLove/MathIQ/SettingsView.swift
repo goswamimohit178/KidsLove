@@ -34,11 +34,11 @@ struct SettingsView: View {
                 //                    }
                 //                }
                 
-                //                Section(header: Text("Debug")) {
-                //                    NavigationLink(destination: NewQuestionsView()) {
-                //                        Label("Add questions", systemImage: "person")
-                //                    }
-                //                }
+                                Section(header: Text("Debug")) {
+                                    NavigationLink(destination: NewQuestionsView()) {
+                                        Label("Add questions", systemImage: "person")
+                                    }
+                                }
                 
                 
                 Section(header: Text("OTHER PREFERENCES")) {

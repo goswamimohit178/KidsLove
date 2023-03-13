@@ -12,50 +12,6 @@ import Firebase
 import SwiftUI
 import Combine
 
-let allPossibleBhrs = [
-      [1,2,3],
-      [4,5,6],
-      [7,8,9],
-      [10,11,12],
-      [13,14,15],
-      [16,17,18],
-      [19,20,21],
-      [22,23,24],
-      [1,10,22],
-      [4,11,19],
-      [7,12,16],
-      [2,5,8],
-      [17,20,23],
-      [9,13,18],
-      [6,14,21],
-      [3,15,24]
-]
-
-let neighborMap: [Int: [Int]] =
-  [1:[2,10],
-   2:[5,1,3],
-   3:[2,15],
-   4:[11,5],
-   5:[2,4,6,8],
-   6:[14,5],
-   7:[12,8],
-   8:[7,5,9],
-   9:[8,13],
-   10:[1,11,22],
-   11:[4,10,12,19],
-   12:[7,11,16],
-   13:[9,18,14],
-   14:[13,6,15,21],
-   15:[3,14,24],
-   16:[12,17],
-   17:[16,18,20],
-   18:[17,13],
-   19:[11,20],
-   20:[17,19,21,23],
-   21:[14,20],
-   22:[10,23],
-   23:[20,22,24],
-   24:[15,23]]
 
 struct Bhar {
   var positions: [Int]
@@ -65,8 +21,9 @@ struct Bhar {
 class MillsGameViewModel {
     @State var currentPlayerCoinModel = CoinModel(imageName: "coin1", offset: 0)
     
+    let millsBoard: MillsBoard
   var coinPositions: [CoinPosition]!
-	var player1Playing = true {
+  var player1Playing = true {
 		didSet {
 			if player1Playing {
 				player1.isPlaying = true
@@ -74,6 +31,9 @@ class MillsGameViewModel {
 			} else {
 				player1.isPlaying = false
 				player2.isPlaying = true
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    self.select(position: self.player2.getMove(board: self.millsBoard))
+                }
 			}
 			setMessage()
             playerChangeSubject.send(currentPlayer.coinIcon)
@@ -85,16 +45,16 @@ class MillsGameViewModel {
 		opponentPlayer.messageForUser = ""
 	}
 	
-	private var currentPlayer: Player {
+	private var currentPlayer: MillsPlayer {
 		return player1.isPlaying ? player1: player2
 	}
 	
-	private var opponentPlayer: Player {
+	private var opponentPlayer: MillsPlayer {
 		return player1.isPlaying ? player2: player1
 	}
 	
-  let player1: Player
-  let player2: Player
+  let player1: MillsPlayer
+  let player2: MillsPlayer
   private var lastSelectedposition: Int?
   private var lastBhar: Bhar?
   var playerChangeSubject: PassthroughSubject<String, Never>
@@ -102,18 +62,20 @@ class MillsGameViewModel {
 
   private var currentIntent: Intent = .place
   weak var delegate: GameViewDelegate?
-    private let coinPositionsProvider: CoinProvider
+  private let coinPositionsProvider: CoinProvider
 
   init(coinPositionsProvider: CoinProvider) {
-    self.player1 = Player(isPlaying: true, coinIcon: "coin1")
-    self.player2 = Player(isPlaying: false, coinIcon: "coin2")
+      self.millsBoard = MillsBoard()
+      self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+      self.player2 =  SmartMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+      millsBoard.players = [player1, player2]
     self.playerChangeSubject = PassthroughSubject()
     self.coinPositionsProvider = coinPositionsProvider
     setCoinPositions()
   }
     
     func setCoinPositions() {
-        self.coinPositions = coinPositionsProvider.provideCoinPositions(with: self.select(coin:))
+        self.coinPositions = coinPositionsProvider.provideCoinPositions(with: self.select(position:))
     }
   
 	func checkBhar() -> Bhar? {
@@ -169,15 +131,16 @@ extension MillsGameViewModel {
 		updateState(newState:.notAllowed, for: coin)
 	}
   
-	func select(coin: CoinPosition) {
+	func select(position: Int) {
+        let coin = coinPositions[position-1]
 		print(currentIntent)
 		switch currentIntent {
 		case .place:
-			guard checkIfAllowedToPlaceAtNewposition(coin) else {
+			guard checkAndPlaceAtPosition(coin) else {
 				updateState(newState: .notAllowed, for: coin)
 				return
 			}
-			placeAtNewPosition(coin)
+            placedAtNewPosition(coin)
 		case .selectForMove:
 			selectForMove(coin: coin)
 			return
@@ -217,11 +180,11 @@ extension MillsGameViewModel {
       return Won(isPlayer1Won: true)
     }
     
-		if isPlayerCantMove(player: player1) {
+    if isPlayerCantMove(player: player1) {
       return Won(isPlayer1Won: false)
     }
     
-		if isPlayerCantMove(player: player2) {
+    if isPlayerCantMove(player: player2) {
       return Won(isPlayer1Won: true)
     }
     return nil
@@ -233,7 +196,7 @@ extension MillsGameViewModel {
     } != nil
   }
   
-	func isPlayerCantMove(player: Player) -> Bool {
+	func isPlayerCantMove(player: MillsPlayer) -> Bool {
 		guard player.isPlacedAllCoins, !player.isOnly3Left()  else {
       return false
     }
@@ -245,7 +208,7 @@ extension MillsGameViewModel {
     return player1.playerPositions.contains(position) || player2.playerPositions.contains(position)
   }
   
-	fileprivate func placeAtNewPosition(_ coinPosition: CoinPosition) {
+	fileprivate func placedAtNewPosition(_ coinPosition: CoinPosition) {
 		//possible bhar
 		if let lastBhar = checkBhar() {
 			self.lastBhar = lastBhar
@@ -309,14 +272,14 @@ extension MillsGameViewModel {
     return nil
   }
   
-  fileprivate func checkIfAllowedToPlaceAtNewposition(_ coinPosition: CoinPosition) -> Bool {
+  fileprivate func checkAndPlaceAtPosition(_ coinPosition: CoinPosition) -> Bool {
     guard !checkIfAlreadyOccupied(position: coinPosition.position) else {
       return false
     }
 		if currentPlayer.playerRemainingPositions == 0 {
 			return false
 		}
-		currentPlayer.playerPositions.append(coinPosition.position)
+		currentPlayer.place(at: coinPosition.position)
 		currentPlayer.playerRemainingPositions = currentPlayer.playerRemainingPositions - 1
     return true
   }
