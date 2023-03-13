@@ -14,7 +14,10 @@ class MatchManager: NSObject {
     var localPlayer = GKLocalPlayer.local
     
     var layerUUIDKey = UUID().uuidString
-    
+    var rootViewController: UIViewController? {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        return windowScene?.windows.first?.rootViewController
+    }
     
     func startMatchMaking() {
         let request = GKMatchRequest()
@@ -23,6 +26,7 @@ class MatchManager: NSObject {
         
         let matchMakingVC = GKMatchmakerViewController(matchRequest: request)
         matchMakingVC?.matchmakerDelegate = self
+        rootViewController?.present(matchMakingVC!, animated: true)
     }
     func startGame(newMatch: GKMatch) {
         match = newMatch

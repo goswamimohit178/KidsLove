@@ -100,6 +100,7 @@ extension OperatorsViewController: UITableViewDataSource{
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
+        var matchManager = MatchManager()
         navigationController?.tabBarController?.tabBar.isHidden = true
         let cellType = model.math[unitNumber].levels[levelNumber].type
         guard case .math(_, _, _, _) = cellType else {
@@ -132,8 +133,14 @@ extension OperatorsViewController: UITableViewDataSource{
                                          }),
                                          ButtonType(btnTittle: "Hard", action: {
                                              self.showMills(gameMode: PlayWith.withComputer(level: .HardLevel))
-                                         })
-                                        ], sectionTittle: "Play with Computer")
+                                                 })
+                                        ], sectionTittle: "Play with Computer"),
+                        SectionModel( items:
+                                        [
+                                            ButtonType(btnTittle: "Play", action: {
+                                                matchManager.startMatchMaking()
+                                            })
+                                        ], sectionTittle: "Play online with Players")
                     ]
                     let rootView = MillsLaunchUIView(sections: sections)
                         .environmentObject(ViewRouter())
