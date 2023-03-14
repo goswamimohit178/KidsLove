@@ -15,6 +15,7 @@ class MatchManager: NSObject {
     var navigationController: UINavigationController
     var layerUUIDKey = UUID().uuidString
     var recevedDataAction: ((Data)-> Void)?
+    var isGameOver: Bool = false
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
