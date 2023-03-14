@@ -18,7 +18,7 @@ class GameVC:  UIViewController {
     private var gameView: MillsGameView!
     private var playerView: UIView!
     private var disposable = Set<AnyCancellable>()
-    var gameMode: PlayWith?
+    var gameMode: PlayWith!
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
     
@@ -43,7 +43,8 @@ class GameVC:  UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
-        print("nameeeeeeeeeeeeeeeeeeeeeeeeee---------------------------------------\(gameMode!)")
+        print("game mode:- \(gameMode!)")
+        startNewGame()
     }
     
     func startNewGame() {
@@ -53,7 +54,6 @@ class GameVC:  UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        startNewGame()
     }
     
     func setCurrentPlayer() {
@@ -89,7 +89,7 @@ class GameVC:  UIViewController {
         ratio = boardHeight/350
         
         let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
-        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel)
+        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel, gameMode: gameMode)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
         self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)

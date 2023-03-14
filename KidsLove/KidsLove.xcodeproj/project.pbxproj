@@ -128,6 +128,12 @@
 		3633150229B48BFC0072BD66 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363314D529B48BFC0072BD66 /* TabBarController.swift */; };
 		3633150729B4C1310072BD66 /* MillsSmartPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150629B4C1310072BD66 /* MillsSmartPlayer.swift */; };
 		3633150929BB075E0072BD66 /* MillsBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150829BB075E0072BD66 /* MillsBoard.swift */; };
+		3633150C29BF2B680072BD66 /* MillsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150B29BF2B680072BD66 /* MillsPlayer.swift */; };
+		3633150E29BF2B860072BD66 /* RandomMillsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150D29BF2B860072BD66 /* RandomMillsPlayer.swift */; };
+		3633151029BF2BC20072BD66 /* HumanMillsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150F29BF2BC20072BD66 /* HumanMillsPlayer.swift */; };
+		3633151229BF2BEA0072BD66 /* SmartMllsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633151129BF2BEA0072BD66 /* SmartMllsPlayer.swift */; };
+		3633151429BF2C330072BD66 /* SmarterMillsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633151329BF2C330072BD66 /* SmarterMillsPlayer.swift */; };
+		3633151629BF5D780072BD66 /* MinMaxAlgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633151529BF5D770072BD66 /* MinMaxAlgo.swift */; };
 		36B3B7DB29A28084000707C9 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CE29A28084000707C9 /* lose.mp3 */; };
 		36B3B7DC29A28084000707C9 /* char.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B79A29A28084000707C9 /* char.mp3 */; };
 		36B3B7DE29A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BE29A28084000707C9 /* InitialVC.swift */; };
@@ -295,6 +301,12 @@
 		363314D529B48BFC0072BD66 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3633150629B4C1310072BD66 /* MillsSmartPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsSmartPlayer.swift; sourceTree = "<group>"; };
 		3633150829BB075E0072BD66 /* MillsBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsBoard.swift; sourceTree = "<group>"; };
+		3633150B29BF2B680072BD66 /* MillsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsPlayer.swift; sourceTree = "<group>"; };
+		3633150D29BF2B860072BD66 /* RandomMillsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMillsPlayer.swift; sourceTree = "<group>"; };
+		3633150F29BF2BC20072BD66 /* HumanMillsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanMillsPlayer.swift; sourceTree = "<group>"; };
+		3633151129BF2BEA0072BD66 /* SmartMllsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartMllsPlayer.swift; sourceTree = "<group>"; };
+		3633151329BF2C330072BD66 /* SmarterMillsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmarterMillsPlayer.swift; sourceTree = "<group>"; };
+		3633151529BF5D770072BD66 /* MinMaxAlgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMaxAlgo.swift; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B3B79A29A28084000707C9 /* char.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = char.mp3; sourceTree = "<group>"; };
 		36B3B79B29A28084000707C9 /* ViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataModel.swift; sourceTree = "<group>"; };
@@ -705,6 +717,19 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		3633150A29BF2B570072BD66 /* MillsSmartPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3633150B29BF2B680072BD66 /* MillsPlayer.swift */,
+				3633150F29BF2BC20072BD66 /* HumanMillsPlayer.swift */,
+				3633150D29BF2B860072BD66 /* RandomMillsPlayer.swift */,
+				3633151129BF2BEA0072BD66 /* SmartMllsPlayer.swift */,
+				3633151529BF5D770072BD66 /* MinMaxAlgo.swift */,
+				3633151329BF2C330072BD66 /* SmarterMillsPlayer.swift */,
+			);
+			path = MillsSmartPlayer;
+			sourceTree = "<group>";
+		};
 		36939CFC298CFB5F00927B1E = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +761,7 @@
 		36B3B79929A28084000707C9 /* Mills */ = {
 			isa = PBXGroup;
 			children = (
+				3633150A29BF2B570072BD66 /* MillsSmartPlayer */,
 				36B3B7CE29A28084000707C9 /* lose.mp3 */,
 				36B3B79A29A28084000707C9 /* char.mp3 */,
 				36B3B7BE29A28084000707C9 /* InitialVC.swift */,
@@ -979,6 +1005,7 @@
 				3633149629B48B190072BD66 /* Header.swift in Sources */,
 				36B3B7E429A28084000707C9 /* MillsGameView.swift in Sources */,
 				3633148629B48B190072BD66 /* GameStateTracker.swift in Sources */,
+				3633151629BF5D780072BD66 /* MinMaxAlgo.swift in Sources */,
 				3633147E29B48B190072BD66 /* TicTacToePlayer.swift in Sources */,
 				36B3B7EA29A28084000707C9 /* GameVC.swift in Sources */,
 				363314EE29B48BFC0072BD66 /* NewQuestionsView.swift in Sources */,
@@ -1002,6 +1029,7 @@
 				36B3B80A29A28084000707C9 /* PlayerGuideMessages.swift in Sources */,
 				363314EF29B48BFC0072BD66 /* OperatorTableViewCell.swift in Sources */,
 				3633149129B48B190072BD66 /* GameView.swift in Sources */,
+				3633151229BF2BEA0072BD66 /* SmartMllsPlayer.swift in Sources */,
 				363314DA29B48BFC0072BD66 /* SoundPlayer.swift in Sources */,
 				3633148429B48B190072BD66 /* GameViewController.swift in Sources */,
 				049A81CE29B491F900718224 /* Record.swift in Sources */,
@@ -1026,8 +1054,11 @@
 				049A81BE29B491F900718224 /* GridView.swift in Sources */,
 				36B3B7E829A28084000707C9 /* SoundEfectManager.swift in Sources */,
 				36B3B80929A28084000707C9 /* PlayerView.swift in Sources */,
+				3633150C29BF2B680072BD66 /* MillsPlayer.swift in Sources */,
 				36B3B80B29A28084000707C9 /* GameModels.swift in Sources */,
 				3633148029B48B190072BD66 /* GameScene.swift in Sources */,
+				3633151029BF2BC20072BD66 /* HumanMillsPlayer.swift in Sources */,
+				3633151429BF2C330072BD66 /* SmarterMillsPlayer.swift in Sources */,
 				3633148E29B48B190072BD66 /* Board.swift in Sources */,
 				36B3B7FF29A28084000707C9 /* PlayerCollectionViewController.swift in Sources */,
 				049A81C529B491F900718224 /* SudokuGameView.swift in Sources */,
@@ -1038,6 +1069,7 @@
 				36B3B7E929A28084000707C9 /* CircleView.swift in Sources */,
 				3633149529B48B190072BD66 /* Moves.swift in Sources */,
 				3633150029B48BFC0072BD66 /* FetchQuestions.swift in Sources */,
+				3633150E29BF2B860072BD66 /* RandomMillsPlayer.swift in Sources */,
 				049A81BF29B491F900718224 /* SceneDelegatek,km.swift in Sources */,
 				049A81CA29B491F900718224 /* Seeds.swift in Sources */,
 				049A81C829B491F900718224 /* Constant.swift in Sources */,
@@ -1229,7 +1261,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 382MKF227K;
+				DEVELOPMENT_TEAM = Z928FCJVR4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KidsLove/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MathIQ;
