@@ -9,8 +9,10 @@ import Foundation
 import GameKit
 
 struct OnlinePlayerModel {
-    let localPlayerName: String
-    let matchPlayerName: String
+    var localPlayerName: String? = nil
+    var localPlayerID = UUID().uuidString
+    var matchPlayerID: String?
+    var matchPlayerName: String? = nil
 }
 
 class MatchManager: NSObject {
@@ -20,8 +22,23 @@ class MatchManager: NSObject {
     var navigationController: UINavigationController
     var layerUUIDKey = UUID().uuidString
     var recevedDataAction: ((Data)-> Void)?
+    var playerModel: OnlinePlayerModel {
+        didSet {
+            if playerModel.localPlayerName != nil, playerModel.matchPlayerName != nil, let matchPlayerID = playerModel.matchPlayerID, playerModel.localPlayerID != matchPlayerID {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
+                self.recevedDataAction = gameVC.recevedDataAction
+                gameVC.gameMode = .withPlayerOnline(playerModel)
+                gameVC.matchManager = self
+                navigationController.pushViewController(gameVC, animated: true)
+            } else {
+                sendBeginMessage()
+            }
+        }
+    }
     
     init(navigationController: UINavigationController) {
+        self.playerModel = OnlinePlayerModel()
         self.navigationController = navigationController
     }
     
@@ -34,18 +51,16 @@ class MatchManager: NSObject {
         matchMakingVC?.matchmakerDelegate = self
         navigationController.present(matchMakingVC!, animated: true)
     }
-    func startGame(newMatch: GKMatch) {
-        match = newMatch
-        match?.delegate = self
-        otherplayer = match?.players.first
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
-        self.recevedDataAction = gameVC.recevedDataAction
-        gameVC.gameMode = .withPlayerOnline(OnlinePlayerModel(localPlayerName: localPlayer.displayName, matchPlayerName: otherplayer!.displayName))
-        gameVC.matchManager = self
-        navigationController.pushViewController(gameVC, animated: true)
     
+    func matchedSuccessfully(newMatch: GKMatch) {
+        match?.delegate = self
+        match = newMatch
+        otherplayer = match?.players.first
+        playerModel.localPlayerName = localPlayer.displayName
+        playerModel.matchPlayerName = otherplayer!.displayName
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            self.sendBeginMessage()
+        })
 //        sendstring("hello bro")
     }
 }

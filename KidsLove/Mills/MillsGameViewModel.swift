@@ -136,8 +136,9 @@ class MillsGameViewModel {
             }
             
         case .withPlayerOnline(let model):
-            self.player1 = MillsPlayer(playerName: model.localPlayerName, playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
-            self.player2 = OnlineMillsPlayer(playerName: model.matchPlayerName, playerNumber: 1, coinIcon: "coin2", isPlaying: true, board: millsBoard)
+            let isPlayer1Playing = (model.localPlayerID < model.matchPlayerID!)
+            self.player1 = MillsPlayer(playerName: model.localPlayerName, playerNumber: 0, coinIcon: "coin1", isPlaying: isPlayer1Playing, board: millsBoard)
+            self.player2 = OnlineMillsPlayer(playerName: model.matchPlayerName, playerNumber: 1, coinIcon: "coin2", isPlaying: !isPlayer1Playing, board: millsBoard)
         }
         
         millsBoard.players = [player1, player2]
@@ -212,7 +213,7 @@ extension MillsGameViewModel {
                 select(position: position, sendToRemote: true)
             }
         default:
-            select(position: position, sendToRemote: true)
+            select(position: position, sendToRemote: false)
         }
     }
   

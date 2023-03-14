@@ -8,16 +8,25 @@
 import Foundation
 import GameKit
 
+let delimiter = ":::"
+let beginConst = "Begin"
+
 extension MatchManager: GKMatchDelegate {
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
-        player.displayName
-        recevedDataAction?(data)
         let str = String(decoding: data, as: UTF8.self)
+        let tokens = str.components(separatedBy: delimiter)
+        let messageType = tokens[0]
+        let matchPlayerID = tokens[1]
+        if messageType == beginConst {
+            handleBeginMessage(matchPlayerID: matchPlayerID)
+        } else {
+            recevedDataAction?(data)
+        }
         print(str)
     }
 
-    func sendstring(_ message: String) {
-        guard let encoded = "strData:\(message)".data(using: .utf8 ) else{ return }
+    func sendString(_ message: String) {
+        guard let encoded = message.data(using: .utf8 ) else{ return }
         sendData(encoded, mode: .reliable)
     }
     func sendData(_ data: Data, mode: GKMatch.SendDataMode = .reliable) {
@@ -27,8 +36,23 @@ extension MatchManager: GKMatchDelegate {
             print(error)
         }
     }
+    
     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
 
+    }
+    
+    func handleBeginMessage(matchPlayerID: String) {
+        if matchPlayerID != self.playerModel.localPlayerID {
+            self.playerModel.matchPlayerID = matchPlayerID
+        } else {
+            self.playerModel.localPlayerID = UUID().uuidString
+            sendBeginMessage()
+        }
+    }
+    
+    func sendBeginMessage() {
+        let message = "\(beginConst)\(delimiter)\(self.playerModel.localPlayerID)"
+        sendString(message)
     }
 
 }
