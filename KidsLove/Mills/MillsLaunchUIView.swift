@@ -70,7 +70,7 @@ struct MillsLaunchUIView: View {
                 .cornerRadius(30)
                 .padding(.all)
                 .foregroundColor(Color(UIColor.systemBackground))
-                //.shadow(radius: 20)
+                .shadow(radius: 10)
             
         }
     }

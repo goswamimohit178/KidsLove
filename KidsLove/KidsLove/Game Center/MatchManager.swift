@@ -40,6 +40,5 @@ class MatchManager: NSObject {
         match = newMatch
         match?.delegate = self
         otherplayer = match?.players.first
-        sendstring("hello bro")
     }
 }

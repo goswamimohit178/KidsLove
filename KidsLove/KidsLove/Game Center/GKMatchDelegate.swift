@@ -26,11 +26,15 @@ extension MatchManager: GKMatchDelegate {
         }
     }
     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
-        guard state == .disconnected && !isGameOver else { return }
+        guard state == .disconnected  else { return }
         let alert = UIAlertController(title: "Player Disconnected", message: "The player is disconnected from the game", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             self.match?.disconnect()
+            self.navigationController.popViewController(animated: true)
         })
+        DispatchQueue.main.async {
+            self.navigationController.present(alert, animated: true)
+        }
     }
 
 }

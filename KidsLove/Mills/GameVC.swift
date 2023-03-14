@@ -162,12 +162,14 @@ class GameVC:  UIViewController {
     }
     
     func restartButtonAction() {
-        showAlert(title: "Restart Game!", message: "Are you sure you want to restart?")
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id",
-            AnalyticsParameterItemName: "User restarted game",
-            AnalyticsParameterContentType: "cont"
-        ])
+        
+        matchManager.match?.disconnect()
+//        showAlert(title: "Restart Game!", message: "Are you sure you want to restart?")
+//        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+//            AnalyticsParameterItemID: "id",
+//            AnalyticsParameterItemName: "User restarted game",
+//            AnalyticsParameterContentType: "cont"
+//        ])
     }
     
     func muteButtonAction() {
