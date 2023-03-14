@@ -12,6 +12,7 @@ class MillsPlayer: Equatable {
     static func == (lhs: MillsPlayer, rhs: MillsPlayer) -> Bool {
         lhs.playerNumber == rhs.playerNumber
     }
+    var playerName: String?
     
     var playerNumber: Int
     var coinIcon: String
@@ -140,7 +141,8 @@ class MillsPlayer: Equatable {
         }
     }
     
-    init(playerNumber: Int, coinIcon: String, isPlaying: Bool, board: MillsBoard) {
+    init(playerName: String? = nil, playerNumber: Int, coinIcon: String, isPlaying: Bool, board: MillsBoard) {
+        self.playerName = playerName
         self.board = board
         self.isPlaying = isPlaying
         self.coinIcon = coinIcon

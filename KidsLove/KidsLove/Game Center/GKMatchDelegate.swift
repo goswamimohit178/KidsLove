@@ -7,8 +7,10 @@
 
 import Foundation
 import GameKit
+
 extension MatchManager: GKMatchDelegate {
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
+        player.displayName
         recevedDataAction?(data)
         let str = String(decoding: data, as: UTF8.self)
         print(str)

@@ -23,7 +23,8 @@ class MillsGameViewModel {
     let millsBoard: MillsBoard
     var coinPositions: [CoinPosition]!
     var matchManager: MatchManager?
-
+    let gameMode: PlayWith
+    
     var player1Playing = true {
         didSet {
             if player1Playing {
@@ -97,7 +98,7 @@ class MillsGameViewModel {
 		return player1.isPlaying ? player2: player1
 	}
 	
-  let player1: MillsPlayer
+    var player1: MillsPlayer
   let player2: MillsPlayer
   private var lastSelectedposition: Int?
   private var lastBhar: Bhar?
@@ -116,6 +117,7 @@ class MillsGameViewModel {
 
     init(coinPositionsProvider: CoinProvider, gameMode: PlayWith, matchManager: MatchManager? = nil) {
         self.matchManager = matchManager
+        self.gameMode = gameMode
         self.millsBoard = MillsBoard()
         self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
         switch gameMode {
@@ -133,7 +135,11 @@ class MillsGameViewModel {
                 self.player2 =  SmarterMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
             }
             
+        case .withPlayerOnline(let model):
+            self.player1 = MillsPlayer(playerName: model.localPlayerName, playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+            self.player2 = OnlineMillsPlayer(playerName: model.matchPlayerName, playerNumber: 1, coinIcon: "coin2", isPlaying: true, board: millsBoard)
         }
+        
         millsBoard.players = [player1, player2]
         self.playerChangeSubject = PassthroughSubject()
         self.coinPositionsProvider = coinPositionsProvider
@@ -142,7 +148,7 @@ class MillsGameViewModel {
     }
     
     func setCoinPositions() {
-        self.coinPositions = coinPositionsProvider.provideCoinPositions(with: self.select(position:))
+        self.coinPositions = coinPositionsProvider.provideCoinPositions(with: self.selectButtonTapped(position:))
     }
   
 	func checkBhar() -> Bhar? {
@@ -199,11 +205,18 @@ extension MillsGameViewModel {
 		updateState(newState:.notAllowed, for: coin)
 	}
     
-    func select(position: Int) {
-        select(position: position, sendToRemote: true)
+    func selectButtonTapped(position: Int) {
+        switch gameMode {
+        case .withPlayerOnline(_):
+            if !(currentPlayer is OnlineMillsPlayer) {
+                select(position: position, sendToRemote: true)
+            }
+        default:
+            select(position: position, sendToRemote: true)
+        }
     }
   
-    func select(position: Int, sendToRemote: Bool) {
+    func select(position: Int, sendToRemote: Bool = false) {
         if sendToRemote, let matchManager = matchManager {
             guard let encoded = "\(position)".data(using: .utf8 ) else{ return }
             matchManager.sendData(Data(encoded))

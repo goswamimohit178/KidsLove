@@ -8,6 +8,11 @@
 import Foundation
 import GameKit
 
+struct OnlinePlayerModel {
+    let localPlayerName: String
+    let matchPlayerName: String
+}
+
 class MatchManager: NSObject {
     var match: GKMatch?
     var otherplayer: GKPlayer?
@@ -30,15 +35,17 @@ class MatchManager: NSObject {
         navigationController.present(matchMakingVC!, animated: true)
     }
     func startGame(newMatch: GKMatch) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
-        self.recevedDataAction = gameVC.recevedDataAction
-        gameVC.gameMode = .withPlayerOffline
-        gameVC.matchManager = self
-        navigationController.pushViewController(gameVC, animated: true)
         match = newMatch
         match?.delegate = self
         otherplayer = match?.players.first
-        sendstring("hello bro")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
+        self.recevedDataAction = gameVC.recevedDataAction
+        gameVC.gameMode = .withPlayerOnline(OnlinePlayerModel(localPlayerName: localPlayer.displayName, matchPlayerName: otherplayer!.displayName))
+        gameVC.matchManager = self
+        navigationController.pushViewController(gameVC, animated: true)
+    
+//        sendstring("hello bro")
     }
 }

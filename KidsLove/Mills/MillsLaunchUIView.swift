@@ -44,8 +44,11 @@ struct MillsLaunchUIView: View {
             MillsLaunchUIView(sections: [SectionModel]())
         }
     }
+
+
     
     enum PlayWith {
+        case withPlayerOnline(OnlinePlayerModel)
         case withPlayerOffline
         case withComputer(level: ComputerLevel)
     }
