@@ -11,88 +11,66 @@ struct MillsLaunchUIView: View {
     @State private var tappedBtn1 = false
     @State private var tappedBtn2 = false
     @State private var tappedBtn3 = false
+    @State var sections: [SectionModel]
+    
+    init(sections: [SectionModel]) {
+        self.sections = sections
+    }
+    
     var body: some View {
-        NavigationView {
-            GeometryReader { geo in
-                List {
-                    Section("Play with Friend") {
-                        Button("Play") {
-                            tappedBtn.toggle()
+        GeometryReader { geo in
+            VStack {
+                List(sections) { section in
+                    Section(section.sectionTittle) {
+                        ForEach(section.items) { item in
+                            Button(item.btnTittle ) {
+                                item.action()
+                            }
                         }
-                        .modifier(DefaultButtonMills(width:  geo.size.width))
-                      
-                    }
-                    
-                    Section("Play With Computer"){
-                        Button("Easy"){
-                            tappedBtn1.toggle()
-                        }
-                        .modifier(DefaultButtonMills(width:  geo.size.width))
-                        Button("Medium"){
-                            tappedBtn2.toggle()
-                        }
-                        .modifier(DefaultButtonMills(width:  geo.size.width))
-                        Button("Hard"){
-                            tappedBtn3.toggle()
-                        }
-                        .modifier(DefaultButtonMills(width:  geo.size.width))
+                        .modifier(DefaultButtonMills(width:  geo.size.width * 0.70))
                     }
                 }
             }
+            .frame(height: geo.size.height * 0.80, alignment: .center)
+            .padding(40)
+            .cornerRadius(150)
         }
-        NavigationLink(destination: MyPresentableView(playWith: .withPlayerOffline), isActive: $tappedBtn) { }
-        NavigationLink(destination: MyPresentableView(playWith:  .withComputer(level: .easyLevel)), isActive: $tappedBtn1) {  }
-        NavigationLink(destination: MyPresentableView(playWith: .withComputer(level: .mediumLevel)), isActive: $tappedBtn2) {  }
-        NavigationLink(destination: MyPresentableView(playWith: .withComputer(level: .HardLevel)), isActive: $tappedBtn3) {  }
-    }
-}
-struct MillsLaunchUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        MillsLaunchUIView()
     }
 }
 
-enum PlayWith {
-    case withPlayerOffline
-    case withComputer(level: ComputerLevel)
-}
-
-enum ComputerLevel {
-    case easyLevel
-    case mediumLevel
-    case HardLevel
-}
-
-struct MyPresentableView: UIViewControllerRepresentable {
-    let playWith: PlayWith!
-    func makeUIViewController(context: Context) -> GameVC {
-        let vc  =  GameVC()
-        vc.gameMode = playWith
-        return vc
+    struct MillsLaunchUIView_Previews: PreviewProvider {
+        static var previews: some View {
+            MillsLaunchUIView(sections: [SectionModel]())
+        }
     }
     
-    func updateUIViewController(_ uiViewController: GameVC, context: Context) {
+    enum PlayWith {
+        case withPlayerOffline
+        case withComputer(level: ComputerLevel)
+    }
+    
+    enum ComputerLevel {
+        case easyLevel
+        case mediumLevel
+        case HardLevel
+    }
+    struct DefaultButtonMills: ViewModifier {
+        private var buttonWidth: CGFloat
         
-    }
-}
-
-struct DefaultButtonMills: ViewModifier {
-    private var buttonWidth: CGFloat
-    
-    init(width: CGFloat) {
-        self.buttonWidth = min(width * 1.0, 350.0)
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .frame(width: buttonWidth,
-                   height: 50,
-                   alignment: .center)
-            .background(Color(ThemeManager.themeColor))
-            .cornerRadius(40)
-            .padding(.all, 7)
-            .foregroundColor(Color(UIColor.systemBackground))
-            .shadow(radius: 20)
+        init(width: CGFloat) {
+            self.buttonWidth = min(width * 1.0, 350.0)
+        }
         
+        func body(content: Content) -> some View {
+            content
+                .frame(width: buttonWidth,
+                       height: 50,
+                       alignment: .center)
+                .background(Color(ThemeManager.themeColor))
+                .cornerRadius(30)
+                .padding(.all, 7)
+                .foregroundColor(Color(UIColor.systemBackground))
+                .shadow(radius: 20)
+            
+        }
     }
-}

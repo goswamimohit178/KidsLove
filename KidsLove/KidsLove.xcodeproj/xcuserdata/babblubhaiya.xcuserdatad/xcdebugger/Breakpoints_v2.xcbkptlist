@@ -247,22 +247,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6D10384-2A46-4510-B3CE-71172E08C758"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mills/MillsLaunchUIView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "makeUIViewController(context:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -276,11 +260,11 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - cbf8b4ab890eccf5"
+                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - 4555cada9467c843"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.GameVC.name.getter : Swift.Optional&lt;KidsLove.PlayWith&gt;"
+                  symbolName = "KidsLove.GameVC.gameMode.getter : Swift.Optional&lt;KidsLove.PlayWith&gt;"
                   moduleName = "KidsLove"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/Mills/GameVC.swift"
@@ -291,11 +275,11 @@
                   offsetFromSymbolStart = "84">
                </Location>
                <Location
-                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - 2f244701a098e0c1"
+                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - c1208fc802607bff"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.GameVC.name.setter : Swift.Optional&lt;KidsLove.PlayWith&gt;"
+                  symbolName = "KidsLove.GameVC.gameMode.setter : Swift.Optional&lt;KidsLove.PlayWith&gt;"
                   moduleName = "KidsLove"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/Mills/GameVC.swift"
@@ -306,11 +290,11 @@
                   offsetFromSymbolStart = "92">
                </Location>
                <Location
-                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - b5a393aed40db7f6"
+                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - 3720af569b720b64"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.GameVC.name.modify : Swift.Optional&lt;KidsLove.PlayWith&gt;"
+                  symbolName = "KidsLove.GameVC.gameMode.modify : Swift.Optional&lt;KidsLove.PlayWith&gt;"
                   moduleName = "KidsLove"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/Mills/GameVC.swift"
@@ -321,11 +305,11 @@
                   offsetFromSymbolStart = "0">
                </Location>
                <Location
-                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - 7d269ae4215964f6"
+                  uuid = "EAF2B6DB-29A7-45AB-B890-5975323B3B04 - 65d21982ce8293d4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "KidsLove.GameVC.name.modify : Swift.Optional&lt;KidsLove.PlayWith&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  symbolName = "KidsLove.GameVC.gameMode.modify : Swift.Optional&lt;KidsLove.PlayWith&gt; with unmangled suffix &quot;.resume.0&quot;"
                   moduleName = "KidsLove"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/babblubhaiya/Documents/GitHub/KidsLove/KidsLove/Mills/GameVC.swift"
@@ -554,38 +538,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BF385676-6A8C-4545-8096-D34A71749646"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mills/MillsLaunchUIView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "makeUIViewController(context:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "17B85DCA-CABD-4AFC-B0A7-A813D76E65DF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mills/MillsLaunchUIView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "makeUIViewController(context:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FC28A51F-A46D-4015-82F2-89EC5D3CDC8E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -643,6 +595,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0E1BAED-E41B-40CA-9358-C38AE87E99B0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mills/MillsLaunchUIView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
