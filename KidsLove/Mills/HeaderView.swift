@@ -39,10 +39,16 @@ func defaultPlayerCoins(imageName: String, range: ClosedRange<Int> = (0...9)) ->
 }
 
 class HeaderViewModel: Identifiable, ObservableObject {
-    internal init(id: UUID = UUID(), playerIcon: CoinModel) {
+    internal init(id: UUID = UUID(), playerIcon: CoinModel, playWith: PlayWith) {
         self.id = id
-        self.player1 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin1"), playerMills: [], name: "Silver Player")
-        self.player2 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin2"), playerMills: [], name: "Gold Player")
+        switch playWith {
+        case .withPlayerOnline(let model):
+            self.player1 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin1"), playerMills: [], name: "\(model.localPlayerName)")
+            self.player2 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin2"), playerMills: [], name: "\(model.matchPlayerName)")
+        default:
+            self.player1 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin1"), playerMills: [], name: "Silver Player")
+            self.player2 = PlayerModel(playerCoins: defaultPlayerCoins(imageName: "coin2"), playerMills: [], name: "Gold Player")
+        }
         self.playerIcon = playerIcon
     }
     var id: UUID = UUID()

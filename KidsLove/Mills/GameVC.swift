@@ -37,7 +37,7 @@ class GameVC:  UIViewController {
             print("Invalid data")
             return
         }
-        viewModel.select(position: pos, sendToRemote: false)
+        viewModel.select(position: pos)
     }
 
     
@@ -100,7 +100,7 @@ class GameVC:  UIViewController {
         
         let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
         self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel, gameMode: gameMode, matchManager: matchManager)
-        self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
+        self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel, playWith: gameMode)
 
         self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)
 
@@ -203,6 +203,3 @@ class GameVC:  UIViewController {
 protocol CoinProvider {
     func provideCoinPositions(with buttonSelected: @escaping (Int)->Void ) -> [CoinPosition]
 }
-
-
-
