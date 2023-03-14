@@ -21,7 +21,7 @@ class GameVC:  UIViewController {
     var gameMode: PlayWith!
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
-    
+    var matchManager: MatchManager!
     
     var viewModel: MillsGameViewModel!
     
@@ -32,7 +32,12 @@ class GameVC:  UIViewController {
     }
     
     func recevedDataAction(data: Data)-> Void {
-        
+        let str = String(decoding: data, as: UTF8.self)
+        guard let pos: Int = Int(str) else {
+            print("Invalid data")
+            return
+        }
+        viewModel.select(position: pos, sendToRemote: false)
     }
 
     
@@ -94,7 +99,7 @@ class GameVC:  UIViewController {
         ratio = boardHeight/350
         
         let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
-        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel, gameMode: gameMode)
+        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel, gameMode: gameMode, matchManager: matchManager)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
         self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)

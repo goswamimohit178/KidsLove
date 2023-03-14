@@ -22,6 +22,8 @@ class MillsGameViewModel {
     
     let millsBoard: MillsBoard
     var coinPositions: [CoinPosition]!
+    var matchManager: MatchManager?
+
     var player1Playing = true {
         didSet {
             if player1Playing {
@@ -112,7 +114,8 @@ class MillsGameViewModel {
   weak var delegate: GameViewDelegate?
   private let coinPositionsProvider: CoinProvider
 
-    init(coinPositionsProvider: CoinProvider, gameMode: PlayWith) {
+    init(coinPositionsProvider: CoinProvider, gameMode: PlayWith, matchManager: MatchManager? = nil) {
+        self.matchManager = matchManager
         self.millsBoard = MillsBoard()
         self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
         switch gameMode {
@@ -195,8 +198,16 @@ extension MillsGameViewModel {
 		print("Selected wrong cell")
 		updateState(newState:.notAllowed, for: coin)
 	}
+    
+    func select(position: Int) {
+        select(position: position, sendToRemote: true)
+    }
   
-	func select(position: Int) {
+    func select(position: Int, sendToRemote: Bool) {
+        if sendToRemote, let matchManager = matchManager {
+            guard let encoded = "\(position)".data(using: .utf8 ) else{ return }
+            matchManager.sendData(Data(encoded))
+        }
         let coin = coinPositions[position-1]
 		print("CurrentIntent:", currentIntent, "Position:", position)
 		switch currentIntent {
