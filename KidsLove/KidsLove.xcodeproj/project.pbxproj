@@ -42,6 +42,9 @@
 		04DA93C029A08E34008F70FB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93BF29A08E34008F70FB /* FirebaseRemoteConfig */; };
 		04DA93C229A08E34008F70FB /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA93C129A08E34008F70FB /* FirebaseRemoteConfigSwift */; };
 		13598D7929BC552E002AF961 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13598D7829BC552E002AF961 /* ScoreManager.swift */; };
+		13598D7F29BF32FB002AF961 /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13598D7E29BF32FB002AF961 /* MatchManager.swift */; };
+		13598D8129BF3491002AF961 /* GkMatchManagerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13598D8029BF3491002AF961 /* GkMatchManagerViewControllerDelegate.swift */; };
+		13598D8329BF3E68002AF961 /* GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13598D8229BF3E68002AF961 /* GKMatchDelegate.swift */; };
 		363313E429A8D4050072BD66 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363313E329A8D4050072BD66 /* HeaderView.swift */; };
 		3633147829B48B190072BD66 /* TicTacToeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633143529B48B180072BD66 /* TicTacToeGameViewController.swift */; };
 		3633147929B48B190072BD66 /* TicTacToeMain.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3633143629B48B180072BD66 /* TicTacToeMain.strings */; };
@@ -214,6 +217,10 @@
 		04C060CB29BB654500B61130 /* ConvertUIKitToSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertUIKitToSwift.swift; sourceTree = "<group>"; };
 		04CA23FC29BC71DF00179A14 /* MillsLaunchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillsLaunchModel.swift; sourceTree = "<group>"; };
 		13598D7829BC552E002AF961 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		13598D7C29BF1F34002AF961 /* KidsLove.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KidsLove.entitlements; sourceTree = "<group>"; };
+		13598D7E29BF32FB002AF961 /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
+		13598D8029BF3491002AF961 /* GkMatchManagerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GkMatchManagerViewControllerDelegate.swift; sourceTree = "<group>"; };
+		13598D8229BF3E68002AF961 /* GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKMatchDelegate.swift; sourceTree = "<group>"; };
 		363313E329A8D4050072BD66 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3633143529B48B180072BD66 /* TicTacToeGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeGameViewController.swift; sourceTree = "<group>"; };
 		3633143729B48B180072BD66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TicTacToeMain.strings; sourceTree = "<group>"; };
@@ -447,6 +454,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		13598D7D29BF3243002AF961 /* Game Center */ = {
+			isa = PBXGroup;
+			children = (
+				13598D8229BF3E68002AF961 /* GKMatchDelegate.swift */,
+				13598D8029BF3491002AF961 /* GkMatchManagerViewControllerDelegate.swift */,
+				13598D7829BC552E002AF961 /* ScoreManager.swift */,
+				13598D7E29BF32FB002AF961 /* MatchManager.swift */,
+			);
+			path = "Game Center";
+			sourceTree = "<group>";
+		};
 		3633143429B48B180072BD66 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,14 +663,13 @@
 			isa = PBXGroup;
 			children = (
 				363314A529B48BFC0072BD66 /* Bradley Hand Bold.ttf */,
-				13598D7829BC552E002AF961 /* ScoreManager.swift */,
 				363314A629B48BFC0072BD66 /* SettingsView.swift */,
 				363314A729B48BFC0072BD66 /* QuestionViewController.swift */,
 				363314A829B48BFC0072BD66 /* Model.swift */,
 				363314A929B48BFC0072BD66 /* SoundPlayer.swift */,
 				363314AA29B48BFC0072BD66 /* OperatorTableViewCell.xib */,
-				363314AB29B48BFC0072BD66 /* AppRouter.swift */,
 				363314AC29B48BFC0072BD66 /* OperatorsViewController.swift */,
+				363314AB29B48BFC0072BD66 /* AppRouter.swift */,
 				363314AD29B48BFC0072BD66 /* HomeViewController.xib */,
 				363314AE29B48BFC0072BD66 /* Assets.xcassets */,
 				363314AF29B48BFC0072BD66 /* remote_config_defaults.plist */,
@@ -749,6 +766,8 @@
 		36939D07298CFB5F00927B1E /* KidsLove */ = {
 			isa = PBXGroup;
 			children = (
+				13598D7C29BF1F34002AF961 /* KidsLove.entitlements */,
+				13598D7D29BF3243002AF961 /* Game Center */,
 				363314A429B48BFC0072BD66 /* MathIQ */,
 				3633147229B48B190072BD66 /* Sudoku */,
 				3633143429B48B180072BD66 /* TicTacToe */,
@@ -991,6 +1010,7 @@
 				3633149829B48B190072BD66 /* ActionButton.swift in Sources */,
 				363314E129B48BFC0072BD66 /* ResultsViewController.swift in Sources */,
 				049A81B929B491F900718224 /* AppDelegatekljl.swift in Sources */,
+				13598D8329BF3E68002AF961 /* GKMatchDelegate.swift in Sources */,
 				3633148A29B48B190072BD66 /* Engine.swift in Sources */,
 				3633149D29B48B190072BD66 /* IntExtensions.swift in Sources */,
 				36B3B80129A28084000707C9 /* CoinCollectionViewCell.swift in Sources */,
@@ -1052,6 +1072,7 @@
 				363314E829B48BFC0072BD66 /* ColorAndFonts.swift in Sources */,
 				3633149B29B48B190072BD66 /* ArrayExtensions.swift in Sources */,
 				049A81BE29B491F900718224 /* GridView.swift in Sources */,
+				13598D7F29BF32FB002AF961 /* MatchManager.swift in Sources */,
 				36B3B7E829A28084000707C9 /* SoundEfectManager.swift in Sources */,
 				36B3B80929A28084000707C9 /* PlayerView.swift in Sources */,
 				3633150C29BF2B680072BD66 /* MillsPlayer.swift in Sources */,
@@ -1076,6 +1097,7 @@
 				3633149329B48B190072BD66 /* HeaderBarTitle.swift in Sources */,
 				3633148B29B48B190072BD66 /* GameEngine.swift in Sources */,
 				3633149C29B48B190072BD66 /* ColorExtensions.swift in Sources */,
+				13598D8129BF3491002AF961 /* GkMatchManagerViewControllerDelegate.swift in Sources */,
 				3633149929B48B190072BD66 /* YellowBlock.swift in Sources */,
 				049A81CC29B491F900718224 /* Settings.swift in Sources */,
 				049A81BD29B491F900718224 /* KeyboardView.swift in Sources */,
@@ -1258,6 +1280,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KidsLove/KidsLove.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1289,6 +1312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KidsLove/KidsLove.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

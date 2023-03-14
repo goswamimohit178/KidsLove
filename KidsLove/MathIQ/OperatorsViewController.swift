@@ -14,7 +14,7 @@ final class OperatorsViewController: UIViewController {
     @IBOutlet weak var operatorTableView: UITableView!
     @IBOutlet weak var myView: UIView!
     private var router: AppRouter!
-    
+    var matchManager: MatchManager!
     @IBOutlet weak var settingButton: UIButton!
     @IBAction func settingsButtonTapped(_ sender: Any) {
         router.showSettingsScreen()
@@ -132,8 +132,15 @@ extension OperatorsViewController: UITableViewDataSource{
                                          }),
                                          ButtonType(btnTittle: "Hard", action: {
                                              self.showMills(gameMode: PlayWith.withComputer(level: .HardLevel))
-                                         })
-                                        ], sectionTittle: "Play with Computer")
+                                                 })
+                                        ], sectionTittle: "Play with Computer"),
+                        SectionModel( items:
+                                        [
+                                            ButtonType(btnTittle: "Play", action: {
+                                                self.matchManager = MatchManager(navigationController: self.navigationController!)
+                                                self.matchManager.startMatchMaking()
+                                            })
+                                        ], sectionTittle: "Play online with Players")
                     ]
                     let rootView = MillsLaunchUIView(sections: sections)
                         .environmentObject(ViewRouter())

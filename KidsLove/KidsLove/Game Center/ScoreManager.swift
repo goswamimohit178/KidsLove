@@ -34,7 +34,7 @@ class ScoreManager {
     }
     private func unlockAchievement(achievement: String) {
         let achievement = GKAchievement(identifier: achievement)
-        achievement.percentComplete = 60
+        achievement.percentComplete = 100
         achievement.showsCompletionBanner = true
         GKAchievement.report([achievement]) { error in
             guard error == nil else {
@@ -44,4 +44,5 @@ class ScoreManager {
             print("Done!")
         }
     }
+    
 }

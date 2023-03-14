@@ -63,6 +63,11 @@ class QuestionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.title = "My Title"
+//        let settingsButton = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settingsButtonTapped))
+//        navigationItem.rightBarButtonItem = settingsButton
+
+        navigationController?.navigationBar.backgroundColor = .red
         navigationController?.navigationBar.isHidden = false
     }
     

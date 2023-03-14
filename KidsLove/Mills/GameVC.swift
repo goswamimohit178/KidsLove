@@ -31,6 +31,11 @@ class GameVC:  UIViewController {
         return myFrame
     }
     
+    func recevedDataAction(data: Data)-> Void {
+        
+    }
+
+    
     var boardHeight: CGFloat {
         return min(myFrame.width, myFrame.height * 0.60)
     }
