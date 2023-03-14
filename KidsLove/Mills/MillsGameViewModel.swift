@@ -114,7 +114,7 @@ class MillsGameViewModel {
 
     init(coinPositionsProvider: CoinProvider, gameMode: PlayWith) {
         self.millsBoard = MillsBoard()
-        self.player1 = SmartMillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+        self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
         switch gameMode {
         case .withPlayerOffline:
             self.player2 = MillsPlayer(playerNumber: 1, coinIcon: "coin1", isPlaying: true, board: millsBoard)
