@@ -59,15 +59,10 @@ class GameVC:  UIViewController {
     
     func startNewGame() {
         createNewGame()
-        setCurrentPlayer()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-    }
-    
-    func setCurrentPlayer() {
-        gameView!.viewModel!.player1Playing = true
     }
     
     fileprivate func cleanup() {

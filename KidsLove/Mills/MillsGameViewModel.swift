@@ -18,7 +18,7 @@ struct Bhar {
 }
 
 class MillsGameViewModel {
-    @State var currentPlayerCoinModel = CoinModel(imageName: "coin1", offset: 0)
+    @State var currentPlayerCoinModel: CoinModel
     
     let millsBoard: MillsBoard
     var coinPositions: [CoinPosition]!
@@ -98,7 +98,7 @@ class MillsGameViewModel {
 		return player1.isPlaying ? player2: player1
 	}
 	
-    var player1: MillsPlayer
+  let player1: MillsPlayer
   let player2: MillsPlayer
   private var lastSelectedposition: Int?
   private var lastBhar: Bhar?
@@ -119,33 +119,39 @@ class MillsGameViewModel {
         self.matchManager = matchManager
         self.gameMode = gameMode
         self.millsBoard = MillsBoard()
-        self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: true, board: millsBoard)
         switch gameMode {
         case .withPlayerOffline:
-            self.player2 = MillsPlayer(playerNumber: 1, coinIcon: "coin1", isPlaying: true, board: millsBoard)
+            self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: false, board: millsBoard)
+            self.player2 = MillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: true, board: millsBoard)
         case .withComputer(level: let level):
+            self.player1 = MillsPlayer(playerNumber: 0, coinIcon: "coin1", isPlaying: false, board: millsBoard)
             switch level {
             case .easyLevel:
-                self.player2 =  RandomMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+                self.player2 =  RandomMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: true, board: millsBoard)
                 
             case .mediumLevel:
-                self.player2 =  SmartMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+                self.player2 =  SmartMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: true, board: millsBoard)
                 
             case .HardLevel:
-                self.player2 =  SmarterMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: false, board: millsBoard)
+                self.player2 =  SmarterMillsPlayer(playerNumber: 1, coinIcon: "coin2", isPlaying: true, board: millsBoard)
             }
             
         case .withPlayerOnline(let model):
-            let isPlayer1Playing = (model.localPlayerID < model.matchPlayerID!)
-            self.player1 = MillsPlayer(playerName: model.localPlayerName, playerNumber: 0, coinIcon: "coin1", isPlaying: isPlayer1Playing, board: millsBoard)
-            self.player2 = OnlineMillsPlayer(playerName: model.matchPlayerName, playerNumber: 1, coinIcon: "coin2", isPlaying: !isPlayer1Playing, board: millsBoard)
+            let islocalPlayerPlaying = (model.localPlayerID < model.matchPlayerID!)
+            self.player1 = MillsPlayer(playerName: model.localPlayerName, playerNumber: 0, coinIcon: "coin1", isPlaying: islocalPlayerPlaying, board: millsBoard)
+            self.player2 = OnlineMillsPlayer(playerName: model.matchPlayerName, playerNumber: 1, coinIcon: "coin2", isPlaying: !islocalPlayerPlaying, board: millsBoard)
+            player1Playing = islocalPlayerPlaying
         }
         
         millsBoard.players = [player1, player2]
         self.playerChangeSubject = PassthroughSubject()
         self.coinPositionsProvider = coinPositionsProvider
+        self.player1Playing = player1.isPlaying
+        self.currentPlayerCoinModel = CoinModel(imageName: player1Playing ? player1.coinIcon : player2.coinIcon, offset: 0)
+        millsBoard.current = player1Playing ? 0 : 1
         setCoinPositions()
         playWithComputerPlayer()
+      
     }
     
     func setCoinPositions() {

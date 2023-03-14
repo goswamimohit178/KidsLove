@@ -24,16 +24,7 @@ class MatchManager: NSObject {
     var recevedDataAction: ((Data)-> Void)?
     var playerModel: OnlinePlayerModel {
         didSet {
-            if playerModel.localPlayerName != nil, playerModel.matchPlayerName != nil, let matchPlayerID = playerModel.matchPlayerID, playerModel.localPlayerID != matchPlayerID {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
-                self.recevedDataAction = gameVC.recevedDataAction
-                gameVC.gameMode = .withPlayerOnline(playerModel)
-                gameVC.matchManager = self
-                navigationController.pushViewController(gameVC, animated: true)
-            } else {
-                sendBeginMessage()
-            }
+            checkAndStartGame()
         }
     }
     
@@ -53,14 +44,26 @@ class MatchManager: NSObject {
     }
     
     func matchedSuccessfully(newMatch: GKMatch) {
-        match?.delegate = self
         match = newMatch
+        match?.delegate = self
         otherplayer = match?.players.first
         playerModel.localPlayerName = localPlayer.displayName
         playerModel.matchPlayerName = otherplayer!.displayName
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.sendBeginMessage()
-        })
-//        sendstring("hello bro")
+        self.sendBeginMessage()
+    }
+    
+    func checkAndStartGame() {
+        if playerModel.localPlayerName != nil, playerModel.matchPlayerName != nil, let matchPlayerID = playerModel.matchPlayerID, playerModel.localPlayerID != matchPlayerID {
+            showGamesVC()
+        }
+    }
+    
+    func showGamesVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
+        self.recevedDataAction = gameVC.recevedDataAction
+        gameVC.gameMode = .withPlayerOnline(playerModel)
+        gameVC.matchManager = self
+        navigationController.pushViewController(gameVC, animated: true)
     }
 }

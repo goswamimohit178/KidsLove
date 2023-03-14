@@ -16,8 +16,8 @@ extension MatchManager: GKMatchDelegate {
         let str = String(decoding: data, as: UTF8.self)
         let tokens = str.components(separatedBy: delimiter)
         let messageType = tokens[0]
-        let matchPlayerID = tokens[1]
         if messageType == beginConst {
+            let matchPlayerID = tokens[1]
             handleBeginMessage(matchPlayerID: matchPlayerID)
         } else {
             recevedDataAction?(data)
