@@ -132,6 +132,7 @@
 		3633151029BF2BC20072BD66 /* HumanMillsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633150F29BF2BC20072BD66 /* HumanMillsPlayer.swift */; };
 		3633151229BF2BEA0072BD66 /* SmartMllsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633151129BF2BEA0072BD66 /* SmartMllsPlayer.swift */; };
 		3633151429BF2C330072BD66 /* SmarterMillsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633151329BF2C330072BD66 /* SmarterMillsPlayer.swift */; };
+		3633151629BF5D780072BD66 /* MinMaxAlgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633151529BF5D770072BD66 /* MinMaxAlgo.swift */; };
 		36B3B7DB29A28084000707C9 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B7CE29A28084000707C9 /* lose.mp3 */; };
 		36B3B7DC29A28084000707C9 /* char.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36B3B79A29A28084000707C9 /* char.mp3 */; };
 		36B3B7DE29A28084000707C9 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3B7BE29A28084000707C9 /* InitialVC.swift */; };
@@ -303,6 +304,7 @@
 		3633150F29BF2BC20072BD66 /* HumanMillsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanMillsPlayer.swift; sourceTree = "<group>"; };
 		3633151129BF2BEA0072BD66 /* SmartMllsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartMllsPlayer.swift; sourceTree = "<group>"; };
 		3633151329BF2C330072BD66 /* SmarterMillsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmarterMillsPlayer.swift; sourceTree = "<group>"; };
+		3633151529BF5D770072BD66 /* MinMaxAlgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMaxAlgo.swift; sourceTree = "<group>"; };
 		36939D05298CFB5F00927B1E /* KidsLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B3B79A29A28084000707C9 /* char.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = char.mp3; sourceTree = "<group>"; };
 		36B3B79B29A28084000707C9 /* ViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataModel.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 				3633150F29BF2BC20072BD66 /* HumanMillsPlayer.swift */,
 				3633150D29BF2B860072BD66 /* RandomMillsPlayer.swift */,
 				3633151129BF2BEA0072BD66 /* SmartMllsPlayer.swift */,
+				3633151529BF5D770072BD66 /* MinMaxAlgo.swift */,
 				3633151329BF2C330072BD66 /* SmarterMillsPlayer.swift */,
 			);
 			path = MillsSmartPlayer;
@@ -999,6 +1002,7 @@
 				3633149629B48B190072BD66 /* Header.swift in Sources */,
 				36B3B7E429A28084000707C9 /* MillsGameView.swift in Sources */,
 				3633148629B48B190072BD66 /* GameStateTracker.swift in Sources */,
+				3633151629BF5D780072BD66 /* MinMaxAlgo.swift in Sources */,
 				3633147E29B48B190072BD66 /* TicTacToePlayer.swift in Sources */,
 				36B3B7EA29A28084000707C9 /* GameVC.swift in Sources */,
 				363314EE29B48BFC0072BD66 /* NewQuestionsView.swift in Sources */,
