@@ -18,10 +18,10 @@ class GameVC:  UIViewController {
     private var gameView: MillsGameView!
     private var playerView: UIView!
     private var disposable = Set<AnyCancellable>()
-    var gameMode: PlayWith?
+    var gameMode: PlayWith!
     @Published var headerModel: HeaderViewModel!
     var headerView: HeaderView!
-    
+    var matchManager: MatchManager!
     
     var viewModel: MillsGameViewModel!
     
@@ -32,7 +32,12 @@ class GameVC:  UIViewController {
     }
     
     func recevedDataAction(data: Data)-> Void {
-        
+        let str = String(decoding: data, as: UTF8.self)
+        guard let pos: Int = Int(str) else {
+            print("Invalid data")
+            return
+        }
+        viewModel.select(position: pos, sendToRemote: false)
     }
 
     
@@ -48,7 +53,8 @@ class GameVC:  UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
-        print("nameeeeeeeeeeeeeeeeeeeeeeeeee---------------------------------------\(gameMode!)")
+        print("game mode:- \(gameMode!)")
+        startNewGame()
     }
     
     func startNewGame() {
@@ -58,7 +64,6 @@ class GameVC:  UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        startNewGame()
     }
     
     func setCurrentPlayer() {
@@ -94,7 +99,7 @@ class GameVC:  UIViewController {
         ratio = boardHeight/350
         
         let viewDataModel = ViewDataModel(ratio: ratio, width: boardHeight)
-        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel)
+        self.viewModel = MillsGameViewModel(coinPositionsProvider: viewDataModel, gameMode: gameMode, matchManager: matchManager)
         self.headerModel = HeaderViewModel(playerIcon: viewModel.currentPlayerCoinModel)
 
         self.headerView = HeaderView(model: headerModel, restratAction: restartButtonAction, muteAction: muteButtonAction)

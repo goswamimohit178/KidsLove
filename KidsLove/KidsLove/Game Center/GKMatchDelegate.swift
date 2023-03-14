@@ -18,7 +18,7 @@ extension MatchManager: GKMatchDelegate {
         guard let encoded = "strData:\(message)".data(using: .utf8 ) else{ return }
         sendData(encoded, mode: .reliable)
     }
-    func sendData(_ data: Data, mode: GKMatch.SendDataMode) {
+    func sendData(_ data: Data, mode: GKMatch.SendDataMode = .reliable) {
         do {
             try match?.sendData(toAllPlayers:  data, with: mode)
         } catch {

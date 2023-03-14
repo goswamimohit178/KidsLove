@@ -20,6 +20,7 @@ class MatchManager: NSObject {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
     func startMatchMaking() {
         let request = GKMatchRequest()
         request.minPlayers = 2
@@ -34,11 +35,11 @@ class MatchManager: NSObject {
         let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
         self.recevedDataAction = gameVC.recevedDataAction
         gameVC.gameMode = .withPlayerOffline
+        gameVC.matchManager = self
         navigationController.pushViewController(gameVC, animated: true)
         match = newMatch
         match?.delegate = self
         otherplayer = match?.players.first
         sendstring("hello bro")
-        
     }
 }
