@@ -25,16 +25,7 @@ class MatchManager: NSObject {
 
     var playerModel: OnlinePlayerModel {
         didSet {
-            if playerModel.localPlayerName != nil, playerModel.matchPlayerName != nil, let matchPlayerID = playerModel.matchPlayerID, playerModel.localPlayerID != matchPlayerID {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
-                self.recevedDataAction = gameVC.recevedDataAction
-                gameVC.gameMode = .withPlayerOnline(playerModel)
-                gameVC.matchManager = self
-                navigationController.pushViewController(gameVC, animated: true)
-            } else {
-                sendBeginMessage()
-            }
+            checkAndStartGame()
         }
     }
     
@@ -59,8 +50,21 @@ class MatchManager: NSObject {
         otherplayer = match?.players.first
         playerModel.localPlayerName = localPlayer.displayName
         playerModel.matchPlayerName = otherplayer!.displayName
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-            self.sendBeginMessage()
-        })
+        self.sendBeginMessage()
+    }
+    
+    func checkAndStartGame() {
+        if playerModel.localPlayerName != nil, playerModel.matchPlayerName != nil, let matchPlayerID = playerModel.matchPlayerID, playerModel.localPlayerID != matchPlayerID {
+            showGamesVC()
+        }
+    }
+    
+    func showGamesVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
+        self.recevedDataAction = gameVC.recevedDataAction
+        gameVC.gameMode = .withPlayerOnline(playerModel)
+        gameVC.matchManager = self
+        navigationController.pushViewController(gameVC, animated: true)
     }
 }
