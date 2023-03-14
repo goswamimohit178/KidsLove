@@ -14,7 +14,7 @@ final class OperatorsViewController: UIViewController {
     @IBOutlet weak var operatorTableView: UITableView!
     @IBOutlet weak var myView: UIView!
     private var router: AppRouter!
-    
+    var matchManager: MatchManager!
     @IBOutlet weak var settingButton: UIButton!
     @IBAction func settingsButtonTapped(_ sender: Any) {
         router.showSettingsScreen()
@@ -100,7 +100,6 @@ extension OperatorsViewController: UITableViewDataSource{
         return cell
     }
     func presentQuestionController(unitNumber: Int, levelNumber: Int) {
-        var matchManager = MatchManager()
         navigationController?.tabBarController?.tabBar.isHidden = true
         let cellType = model.math[unitNumber].levels[levelNumber].type
         guard case .math(_, _, _, _) = cellType else {
@@ -138,7 +137,8 @@ extension OperatorsViewController: UITableViewDataSource{
                         SectionModel( items:
                                         [
                                             ButtonType(btnTittle: "Play", action: {
-                                                matchManager.startMatchMaking()
+                                                self.matchManager = MatchManager(navigationController: self.navigationController!)
+                                                self.matchManager.startMatchMaking()
                                             })
                                         ], sectionTittle: "Play online with Players")
                     ]

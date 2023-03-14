@@ -12,13 +12,13 @@ class MatchManager: NSObject {
     var match: GKMatch?
     var otherplayer: GKPlayer?
     var localPlayer = GKLocalPlayer.local
-    
+    var navigationController: UINavigationController
     var layerUUIDKey = UUID().uuidString
-    var rootViewController: UIViewController? {
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        return windowScene?.windows.first?.rootViewController
-    }
+    var recevedDataAction: ((Data)-> Void)?
     
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
     func startMatchMaking() {
         let request = GKMatchRequest()
         request.minPlayers = 2
@@ -26,12 +26,18 @@ class MatchManager: NSObject {
         
         let matchMakingVC = GKMatchmakerViewController(matchRequest: request)
         matchMakingVC?.matchmakerDelegate = self
-        rootViewController?.present(matchMakingVC!, animated: true)
+        navigationController.present(matchMakingVC!, animated: true)
     }
     func startGame(newMatch: GKMatch) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as! GameVC
+        self.recevedDataAction = gameVC.recevedDataAction
+        gameVC.gameMode = .withPlayerOffline
+        navigationController.pushViewController(gameVC, animated: true)
         match = newMatch
         match?.delegate = self
         otherplayer = match?.players.first
+        sendstring("hello bro")
         
     }
 }

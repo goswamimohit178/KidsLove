@@ -30,8 +30,9 @@ struct MillsLaunchUIView: View {
                         .modifier(DefaultButtonMills(width:  geo.size.width * 0.70))
                     }
                 }
+                
             }
-            .frame(height: geo.size.height * 0.80, alignment: .center)
+            .frame(height: geo.size.height * 0.90)
             .padding(40)
             .cornerRadius(150)
         }
@@ -58,19 +59,18 @@ struct MillsLaunchUIView: View {
         private var buttonWidth: CGFloat
         
         init(width: CGFloat) {
-            self.buttonWidth = min(width * 1.0, 350.0)
+            self.buttonWidth = width
         }
         
         func body(content: Content) -> some View {
             content
                 .frame(width: buttonWidth,
-                       height: 50,
-                       alignment: .center)
+                       height: 50)
                 .background(Color(ThemeManager.themeColor))
                 .cornerRadius(30)
-                .padding(.all, 7)
+                .padding(.all)
                 .foregroundColor(Color(UIColor.systemBackground))
-                .shadow(radius: 20)
+                //.shadow(radius: 20)
             
         }
     }
