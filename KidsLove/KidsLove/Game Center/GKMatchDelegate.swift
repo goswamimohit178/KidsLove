@@ -61,6 +61,7 @@ extension MatchManager: GKMatchDelegate {
     func sendBeginMessage() {
         let message = "\(beginConst)\(delimiter)\(self.playerModel.localPlayerID)"
         sendString(message)
+        print(message)
     }
 
 }

@@ -54,15 +54,13 @@ class MatchManager: NSObject {
     }
     
     func matchedSuccessfully(newMatch: GKMatch) {
-        match?.delegate = self
         match = newMatch
+        match?.delegate = self
         otherplayer = match?.players.first
-
         playerModel.localPlayerName = localPlayer.displayName
         playerModel.matchPlayerName = otherplayer!.displayName
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
             self.sendBeginMessage()
         })
-//        sendstring("hello bro")
     }
 }
